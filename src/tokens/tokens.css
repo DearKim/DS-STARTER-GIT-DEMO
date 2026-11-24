@@ -1,0 +1,83 @@
+/**
+ * 생성 파일 — 직접 고치지 마세요. `pnpm ds:tokens` 로 다시 만듭니다.
+ * L2a — primitive 까지 선언, semantic 을 추론
+ * Figma: Design System (샘플) / source 7b556f3582e9a94d
+ */
+@import "tailwindcss";
+
+@theme {
+  /* ── Primitive — hexcode 에 이름을 붙인 층. 화면에서 직접 쓰지 않는다. ── */
+  --color-amber-400: #FBBF24;
+  --color-amber-500: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-blue-50: #E5EFFF;
+  --color-blue-100: #B7D4FF;
+  --color-blue-200: #8AB8FF;
+  --color-blue-300: #5C9DFF;
+  --color-blue-400: #2E81FF;
+  --color-blue-500: #0066FF;
+  --color-blue-600: #0056D6;
+  --color-blue-700: #0045AD;
+  --color-blue-800: #003585;
+  --color-blue-900: #00255C;
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F4F4F5;
+  --color-gray-200: #E4E4E7;
+  --color-gray-300: #D4D4D8;
+  --color-gray-400: #A1A1AA;
+  --color-gray-500: #71717A;
+  --color-gray-600: #52525B;
+  --color-gray-700: #3F3F46;
+  --color-gray-800: #27272A;
+  --color-gray-900: #18181B;
+  --color-green-400: #4ADE80;
+  --color-green-500: #22C55E;
+  --color-green-600: #16A34A;
+  --color-red-400: #F87171;
+  --color-red-500: #EF4444;
+  --color-red-600: #DC2626;
+
+  /* ── Semantic — 역할. 컴포넌트는 이 층만 참조한다. ── */
+  --color-bg: var(--color-gray-50);  /* inferred 0.55 */
+  --color-border: var(--color-gray-300);  /* inferred 0.55 */
+  --color-border-strong: var(--color-gray-400);  /* inferred 0.55 */
+  --color-danger: var(--color-red-500);  /* inferred 0.55 */
+  --color-info: var(--color-blue-500);  /* inferred 0.55 */
+  --color-on-primary: var(--color-gray-50);  /* inferred 0.55 */
+  --color-primary: var(--color-blue-500);  /* inferred 0.40 */
+  --color-primary-active: var(--color-blue-700);  /* inferred 0.55 */
+  --color-primary-hover: var(--color-blue-600);  /* inferred 0.55 */
+  --color-success: var(--color-green-500);  /* inferred 0.55 */
+  --color-surface: var(--color-gray-50);  /* inferred 0.55 */
+  --color-surface-raised: var(--color-gray-50);  /* inferred 0.55 */
+  --color-text: var(--color-gray-900);  /* inferred 0.55 */
+  --color-text-disabled: var(--color-gray-400);  /* inferred 0.55 */
+  --color-text-secondary: var(--color-gray-500);  /* inferred 0.55 */
+  --color-warning: var(--color-amber-500);  /* inferred 0.55 */
+
+  /* ── Layout — 간격·모서리·그림자·모션. ── */
+  --border-width-thick: 2px;  /* synthesized 0.30 */
+  --border-width-thin: 1px;  /* inferred 0.60 */
+  --color-overlay: rgb(0 0 0 / 45%);  /* synthesized 0.30 */
+  --duration-fast: 150ms;  /* synthesized 0.30 */
+  --duration-normal: 250ms;  /* synthesized 0.30 */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);  /* synthesized 0.30 */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;  /* synthesized 0.30 */
+  --text-body-1: 16px;  /* synthesized 0.30 */
+  --text-body-2: 14px;  /* synthesized 0.30 */
+  --text-title: 20px;  /* synthesized 0.30 */
+  --font-weight-bold: 700;  /* synthesized 0.30 */
+  --font-weight-medium: 500;  /* synthesized 0.30 */
+  --font-weight-regular: 400;  /* synthesized 0.30 */
+  --leading-normal: 1.5;  /* synthesized 0.30 */
+  --leading-tight: 1.25;  /* synthesized 0.30 */
+  --radius-full: 9999px;  /* synthesized 0.30 */
+  --radius-lg: 12px;  /* inferred 0.75 */
+  --radius-md: 8px;  /* inferred 0.75 */
+  --radius-sm: 4px;  /* synthesized 0.30 */
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.12);  /* synthesized 0.30 */
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);  /* synthesized 0.30 */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);  /* synthesized 0.30 */
+  --spacing: 4px;  /* inferred 0.75 */
+
+}

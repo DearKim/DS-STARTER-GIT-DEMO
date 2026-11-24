@@ -1,0 +1,70 @@
+/* IconButton — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+.ds-iconbutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+  padding: 0;
+  border: var(--border-width-thin) solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.ds-iconbutton__icon {
+  display: inline-flex;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+
+.ds-iconbutton__icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ds-iconbutton--primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.ds-iconbutton--secondary {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+
+.ds-iconbutton--ghost {
+  background: transparent;
+  color: var(--color-text);
+}
+
+.ds-iconbutton--danger {
+  background: var(--color-danger);
+  color: var(--color-on-primary);
+}
+
+.ds-iconbutton--primary:hover:not(:disabled) { background: var(--color-primary-hover); }
+.ds-iconbutton--primary:active:not(:disabled) { background: var(--color-primary-active); }
+.ds-iconbutton--secondary:hover:not(:disabled),
+.ds-iconbutton--ghost:hover:not(:disabled) { background: var(--color-surface); border-color: var(--color-border-strong); }
+.ds-iconbutton--danger:hover:not(:disabled) { filter: brightness(0.92); }
+
+.ds-iconbutton--sm { width: calc(var(--spacing) * 7); height: calc(var(--spacing) * 7); }
+.ds-iconbutton--lg { width: calc(var(--spacing) * 10); height: calc(var(--spacing) * 10); }
+.ds-iconbutton--lg .ds-iconbutton__icon { width: calc(var(--spacing) * 5); height: calc(var(--spacing) * 5); }
+
+.ds-iconbutton:focus-visible {
+  outline: var(--border-width-thick) solid var(--color-primary);
+  outline-offset: var(--border-width-thick);
+}
+
+.ds-iconbutton:disabled {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}

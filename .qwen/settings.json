@@ -1,0 +1,145 @@
+{
+  "general": {
+    "outputLanguage": "English"
+  },
+  "context": {
+    "fileName": [
+      "QWEN.md"
+    ]
+  },
+  "memory": {
+    "enableManagedAutoMemory": false,
+    "enableManagedAutoDream": false,
+    "enableAutoSkill": false
+  },
+  "tools": {
+    "approvalMode": "auto-edit",
+    "eager": [
+      "read_file",
+      "edit",
+      "write_file",
+      "glob",
+      "grep_search",
+      "run_shell_command",
+      "ask_user_question",
+      "skill"
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(pnpm ai:check *)",
+      "Bash(pnpm.cmd ai:check *)",
+      "Bash(pnpm ai:verify *)",
+      "Bash(pnpm.cmd ai:verify *)",
+      "Bash(pnpm ai:check-page *)",
+      "Bash(pnpm.cmd ai:check-page *)",
+      "Bash(pnpm ai:usage *)",
+      "Bash(pnpm.cmd ai:usage *)",
+      "Bash(pnpm ds:guard *)",
+      "Bash(pnpm.cmd ds:guard *)",
+      "Bash(pnpm ds:figma *)",
+      "Bash(pnpm.cmd ds:figma *)",
+      "Bash(pnpm ds:apply-token-plan *)",
+      "Bash(pnpm.cmd ds:apply-token-plan *)",
+      "Bash(pnpm ds:page *)",
+      "Bash(pnpm.cmd ds:page *)",
+      "Bash(pnpm ds:catalog *)",
+      "Bash(pnpm.cmd ds:catalog *)",
+      "Bash(pnpm typecheck *)",
+      "Bash(pnpm.cmd typecheck *)",
+      "Bash(pnpm web:figma *)",
+      "Bash(pnpm.cmd web:figma *)",
+      "Bash(pnpm web:compare *)",
+      "Bash(pnpm.cmd web:compare *)",
+      "Bash(pnpm web:build *)",
+      "Bash(pnpm.cmd web:build *)",
+      "Bash(pnpm web:dev *)",
+      "Bash(pnpm.cmd web:dev *)",
+      "Bash(pnpm storybook *)",
+      "Bash(pnpm.cmd storybook *)",
+      "Bash(pnpm specs *)",
+      "Bash(pnpm.cmd specs *)",
+      "Bash(pnpm assets *)",
+      "Bash(pnpm.cmd assets *)",
+      "Bash(pnpm mcp:setup *)",
+      "Bash(pnpm.cmd mcp:setup *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "write_file|edit|notebook_edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/ai-check.mjs pre",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/ai-check.mjs pre",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "write_file|edit|notebook_edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/ai-check.mjs post",
+            "timeout": 55,
+            "statusMessage": "규칙 검사 중"
+          }
+        ]
+      },
+      {
+        "matcher": "ask_user_question",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/ai-check.mjs answer",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/ai-check.mjs prompt",
+            "timeout": 55,
+            "statusMessage": "Figma 디자인 읽는 중"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/ai-check.mjs stop",
+            "timeout": 55,
+            "statusMessage": "끝내기 전 검사 중"
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "figma-desktop": {
+      "httpUrl": "http://127.0.0.1:3845/mcp"
+    }
+  },
+  "$version": 4
+}

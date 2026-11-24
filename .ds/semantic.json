@@ -1,0 +1,4 @@
+{
+  "$comment": "사람이 정하는 semantic 매핑 — 역할 → primitive 이름. ownership.semanticMapping 이 human·code 면 여기 적은 것이 Figma 선언·추론보다 이긴다(figma 면 Figma 가 선언하지 않은 역할만 채운다). 파이프라인은 이 파일을 절대 쓰지 않는다 — 추측을 여기 적는 순간 다음 실행에서 사람이 정한 것으로 오인한다.",
+  "$example": { "primary": "blue-600", "border": "gray-200" }
+}

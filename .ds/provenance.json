@@ -1,0 +1,572 @@
+{
+  "level": "L2a",
+  "sourceHash": "7b556f3582e9a94d",
+  "generatedAt": "2026-10-26T04:41:59.205Z",
+  "ownership": {
+    "tokenValue": "figma",
+    "tokenName": "figma",
+    "semanticMapping": "human",
+    "componentApi": "code",
+    "variantMatrix": "figma",
+    "description": "human",
+    "usageGuide": "human"
+  },
+  "notes": [
+    "semantic 계층이 없어 primitive 29개에서 역할 16개를 추론함.",
+    "layout 계층에서 빠진 19개를 기본 세트로 보충함."
+  ],
+  "review": [
+    {
+      "name": "bg",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "무채색 계열 중 가장 밝음"
+    },
+    {
+      "name": "surface",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "bg 와 동일 (분리된 표면 단계가 없음)"
+    },
+    {
+      "name": "text",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "무채색 계열 중 가장 어두움"
+    },
+    {
+      "name": "text-secondary",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "명도 0.45 근처"
+    },
+    {
+      "name": "text-disabled",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "명도 0.65 근처"
+    },
+    {
+      "name": "border",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "명도 0.85 근처"
+    },
+    {
+      "name": "border-strong",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "명도 0.72 근처"
+    },
+    {
+      "name": "surface-raised",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "bg 보다 밝은 무채색이 없어 bg 와 동일"
+    },
+    {
+      "name": "primary",
+      "layer": "semantic",
+      "confidence": 0.4,
+      "reason": "이름 단서 없음 — 채도 높고 중간 밝기인 색"
+    },
+    {
+      "name": "primary-hover",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "primary 램프의 한 단계 어두운 스텝"
+    },
+    {
+      "name": "primary-active",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "primary 램프의 두 단계 어두운 스텝"
+    },
+    {
+      "name": "on-primary",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "primary 대비 4.6:1 로 최대"
+    },
+    {
+      "name": "danger",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "hue 340~20° 계열의 기준 스텝"
+    },
+    {
+      "name": "warning",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "hue 30~65° 계열의 기준 스텝"
+    },
+    {
+      "name": "success",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "hue 90~160° 계열의 기준 스텝"
+    },
+    {
+      "name": "info",
+      "layer": "semantic",
+      "confidence": 0.55,
+      "reason": "hue 190~255° 에 전용 계열이 없어 primary 계열 재사용"
+    },
+    {
+      "name": "overlay",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "sm",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "full",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "thick",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "sm",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "md",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "lg",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "fast",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "normal",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "standard",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "sans",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "body-2",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "body-1",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "title",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "regular",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "medium",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "bold",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "tight",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    {
+      "name": "normal",
+      "layer": "layout",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    }
+  ],
+  "tokens": {
+    "COLOR:blue-50": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-100": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-200": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-300": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-400": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-500": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-700": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-800": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:blue-900": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-50": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-100": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-200": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-300": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-400": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-500": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-700": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-800": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:gray-900": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:red-400": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:red-500": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:red-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:green-400": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:green-500": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:green-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:amber-400": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:amber-500": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:amber-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+    },
+    "COLOR:bg": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "무채색 계열 중 가장 밝음"
+    },
+    "COLOR:surface": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "bg 와 동일 (분리된 표면 단계가 없음)"
+    },
+    "COLOR:text": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "무채색 계열 중 가장 어두움"
+    },
+    "COLOR:text-secondary": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "명도 0.45 근처"
+    },
+    "COLOR:text-disabled": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "명도 0.65 근처"
+    },
+    "COLOR:border": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "명도 0.85 근처"
+    },
+    "COLOR:border-strong": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "명도 0.72 근처"
+    },
+    "COLOR:surface-raised": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "bg 보다 밝은 무채색이 없어 bg 와 동일"
+    },
+    "COLOR:primary": {
+      "source": "inferred",
+      "confidence": 0.4,
+      "reason": "이름 단서 없음 — 채도 높고 중간 밝기인 색"
+    },
+    "COLOR:primary-hover": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "primary 램프의 한 단계 어두운 스텝"
+    },
+    "COLOR:primary-active": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "primary 램프의 두 단계 어두운 스텝"
+    },
+    "COLOR:on-primary": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "primary 대비 4.6:1 로 최대"
+    },
+    "COLOR:danger": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "hue 340~20° 계열의 기준 스텝"
+    },
+    "COLOR:warning": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "hue 30~65° 계열의 기준 스텝"
+    },
+    "COLOR:success": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "hue 90~160° 계열의 기준 스텝"
+    },
+    "COLOR:info": {
+      "source": "inferred",
+      "confidence": 0.55,
+      "reason": "hue 190~255° 에 전용 계열이 없어 primary 계열 재사용"
+    },
+    "RADIUS:md": {
+      "source": "inferred",
+      "confidence": 0.75,
+      "reason": "색이 아닌 카테고리는 layout 계층"
+    },
+    "RADIUS:lg": {
+      "source": "inferred",
+      "confidence": 0.75,
+      "reason": "색이 아닌 카테고리는 layout 계층"
+    },
+    "SPACING_UNIT:base": {
+      "source": "inferred",
+      "confidence": 0.75,
+      "reason": "색이 아닌 카테고리는 layout 계층"
+    },
+    "BORDER_WIDTH:thin": {
+      "source": "inferred",
+      "confidence": 0.6,
+      "reason": "색이 아닌 카테고리는 layout 계층"
+    },
+    "COLOR:overlay": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "RADIUS:sm": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "RADIUS:full": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "BORDER_WIDTH:thick": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "SHADOW:sm": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "SHADOW:md": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "SHADOW:lg": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "DURATION:fast": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "DURATION:normal": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "EASING:standard": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_FAMILY:sans": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_SIZE:body-2": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_SIZE:body-1": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_SIZE:title": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_WEIGHT:regular": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_WEIGHT:medium": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "FONT_WEIGHT:bold": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "LINE_HEIGHT:tight": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    },
+    "LINE_HEIGHT:normal": {
+      "source": "synthesized",
+      "confidence": 0.3,
+      "reason": "기본 layout 세트에서 보충함"
+    }
+  }
+}
