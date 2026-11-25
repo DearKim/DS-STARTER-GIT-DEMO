@@ -1,7 +1,7 @@
 ---
 kind: component
 component: ListingCard
-revision: 1
+revision: 2
 status: approved
 source_kind: figma
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=238-2494&m=dev
@@ -26,7 +26,7 @@ open_questions: 0
 | 항목 | 확인된 사실과 출처 | AI의 해석 | 사용자의 확정/정정 |
 |---|---|---|---|
 | 부품의 역할 | 238:2494: 사진(303×287) + 하트 + 사진 점 + 이름·장소·날짜·가격 + 별점 | 숙소 목록의 카드 한 장 | Q-01 |
-| 누를 수 있는 영역 | 하트(24×24)만 아이콘. 카드 전체의 링크·hover 변형 없음 | 하트만 `<button>`. 카드 자체는 누르지 않음 | Q-02 |
+| 누를 수 있는 영역 | 하트(24×24)만 아이콘. 카드 전체의 링크·hover 변형 없음 | 하트는 `<button>`. rev 2: `href` 를 주면 제목이 `<a>` 가 되고 카드 전체를 덮어 누르면 이동(하트는 그 위에서 따로 동작). 모양은 바뀌지 않음 | Q-02, Q-05 |
 | 클릭/선택/열림 동작 | Figma 에 하트 눌림(채워진) 모양 없음 | 하트 클릭 시 `onFavoriteClick` 호출, `aria-pressed={isFavorite}` 로 상태만 알림. 모양은 바꾸지 않음 | Q-02 |
 | 키보드·포커스 범위 | Figma 에 Focus 변형 없음 | 하트 버튼 하나가 Tab 으로 잡힘. 브라우저 기본 포커스 링 | Q-02 |
 | disabled 동작 | Figma 에 없음 | 만들지 않음 | Q-02 |
@@ -104,6 +104,7 @@ open_questions: 0
 | `price` / `priceUnit` | 238:2504 | "$289" / "night" | 굵은 금액 + 보통 단위 | — | Q-03 |
 | `rating` | 238:2507 | "4.91" | 별 + 글자 | — | Q-03 |
 | `imageSrc` / `imageAlt` | 238:2495 은 회색 바탕 | 없음 / "" | 있으면 사진을 채우고, 없으면 회색 바탕 | — | Q-03 |
+| `href` | rev 2 사용자 요청(Home 카드 → /detail) | 없음 | 있으면 카드를 누르면 그 주소로 이동(제목 링크 + 카드 전체 덮개). 없으면 rev 1 과 같음 | Tab 으로 제목 링크에 포커스, Enter 로 이동. 하트 버튼은 따로 Tab | Q-05 |
 | `isFavorite` / `onFavoriteClick` | 하트 238:2496 | false / — | 클릭 시 콜백 호출, aria-pressed 반영 | Tab 으로 포커스, Enter/Space 동작 | Q-02 |
 
 ## 9. Q&A와 사용자 결정
@@ -113,6 +114,7 @@ open_questions: 0
 | Q-01 | 부품 이름. Figma 세트 이름은 Card 지만 기존 기본 Card 를 페이지가 쓰는 중 | 새 부품 ListingCard / 기본 Card 를 바꿈(기존 사용처 영향) | Approve revision 1·4 (chosen in chat) | resolved |
 | Q-02 | 하트 동작. Figma 에 눌림 모양 없음 | 버튼 + 콜백 + aria-pressed, 모양 변화 없음 | Approve revision 1·4 (chosen in chat) | resolved |
 | Q-03 | 공개 props 와 기본 글자 | 위 8번 표 | Approve revision 1·4 (chosen in chat) | resolved |
+| Q-05 | 카드를 눌러 상세 페이지로 이동(rev 2). Figma 에 링크 모양 변화 없음 | href prop 추가, 모양 변화 없음 | Approve revision 2 (chosen in chat, "전부 제가 직접") | resolved |
 | Q-04 | 새 색 역할 4개(토큰 계획 rev 4) | 위 6번 표 | Approve revision 1·4 (chosen in chat) | resolved |
 
 ## 10. 검증 계획
@@ -129,5 +131,5 @@ open_questions: 0
 ## 11. 사용자 검토
 
 - 계획 내용에 대한 사용자 수정·결정: Q: 부품 계획 ListingCard rev 1 과 토큰 계획 rev 4 를 승인할까? → A: Approve revision 1·4 (chosen in chat, 2026-11-25)
-- 승인한 revision: 1
+- 승인한 revision: 2 (rev 1 → rev 2: href 로 카드 링크 추가, 2026-11-25 사용자가 채팅에서 "전부 제가 직접 (권장)" 선택)
 - 구현 전에 남은 조건: 토큰 계획 revision 4 적용(pnpm ds:apply-token-plan)

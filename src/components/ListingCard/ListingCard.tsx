@@ -23,6 +23,8 @@ export interface ListingCardProps extends Omit<HTMLAttributes<HTMLElement>, "tit
   isFavorite?: boolean;
   /** Called when the heart button is pressed. */
   onFavoriteClick?: MouseEventHandler<HTMLButtonElement>;
+  /** Page address. When set, the title becomes a link and the whole card opens it; the heart still works on its own. */
+  href?: string;
 }
 
 /** A listing card from the Figma Card set, "Default Card" variant (238:2494). */
@@ -38,6 +40,7 @@ export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function Li
     imageAlt = "",
     isFavorite = false,
     onFavoriteClick,
+    href,
     className,
     ...rest
   },
@@ -81,7 +84,15 @@ export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function Li
       <div className="ds-listing-card__body">
         <div className="ds-listing-card__info">
           <div className="ds-listing-card__lines">
-            <p className="ds-listing-card__title">{title}</p>
+            <p className="ds-listing-card__title">
+              {href ? (
+                <a className="ds-listing-card__link" href={href}>
+                  {title}
+                </a>
+              ) : (
+                title
+              )}
+            </p>
             <p className="ds-listing-card__meta">{location}</p>
             <p className="ds-listing-card__meta">{dates}</p>
           </div>

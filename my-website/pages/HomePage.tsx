@@ -71,7 +71,7 @@ export default function HomePage() {
       {/* Navigation */}
       <section className="page-Home__navigation" data-section="navigation">
         <div className="page-Home__navigation-left">
-          <img src="/my-assets/images/logo.png" alt="Airbnb" className="page-Home__logo" />
+          <a href="/" className="page-Home__logo-link"><img src="/my-assets/images/logo.png" alt="Airbnb" className="page-Home__logo" /></a>
         </div>
         <div className="page-Home__navigation-right">
           <Link key="become-host-link" className="page-Home__become-host">{"Become a Host"}</Link>
@@ -172,15 +172,15 @@ export default function HomePage() {
         <h2 className="page-Home__section-heading">{"Stay in Seoul"}</h2>
         <div className="page-Home__category-tabs">
           <div className="page-Home__filter-tabs">
-            <div className="page-Home__chip page-Home__chip--active">Hotels</div>
-            <div className="page-Home__chip">Motel</div>
-            <div className="page-Home__chip">Guesthouse</div>
-            <div className="page-Home__chip">Resort</div>
+            <button type="button" className="page-Home__chip page-Home__chip--active">Hotels</button>
+            <button type="button" className="page-Home__chip">Motel</button>
+            <button type="button" className="page-Home__chip">Guesthouse</button>
+            <button type="button" className="page-Home__chip">Resort</button>
           </div>
         </div>
         <div className="page-Home__listings-grid">
           {listingCards.map((id) => (
-            <ListingCard key={id} />
+            <ListingCard key={id} href="/detail" />
           ))}
         </div>
       </section>

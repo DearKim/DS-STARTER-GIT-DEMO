@@ -1,1 +1,1 @@
-{"schema_version":2,"title":"Airbnb | Find places to stay","locale":"en","pages":[{"name":"Home","path":"/","entry":"my-website/pages/HomePage.tsx","title":"Find places to stay"}],"routes":["/"]}
+{"schema_version":2,"title":"Airbnb | Find places to stay","locale":"en","pages":[{"name":"Home","path":"/","entry":"my-website/pages/HomePage.tsx","title":"Find places to stay"},{"name":"Detail","path":"/detail","entry":"my-website/pages/DetailPage.tsx"}],"routes":["/","/detail"]}

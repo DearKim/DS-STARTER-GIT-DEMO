@@ -29,6 +29,7 @@ const meta = {
     rating: "4.91",
     isFavorite: false,
     onFavoriteClick: fn(),
+    href: "#listing",
   },
   argTypes: {
     title: { control: "text" },
@@ -40,6 +41,7 @@ const meta = {
     imageSrc: { control: "text" },
     imageAlt: { control: "text" },
     isFavorite: { control: "boolean" },
+    href: { control: "text" },
   },
 } satisfies Meta<typeof ListingCard>;
 
@@ -57,5 +59,9 @@ export const Default: Story = {
     await expect(heart).toHaveFocus();
     await userEvent.click(heart);
     await expect(args.onFavoriteClick).toHaveBeenCalledTimes(1);
+    const link = canvas.getByRole("link", { name: "Groveland, California" });
+    await expect(link).toHaveAttribute("href", "#listing");
+    await userEvent.tab();
+    await expect(link).toHaveFocus();
   },
 };
