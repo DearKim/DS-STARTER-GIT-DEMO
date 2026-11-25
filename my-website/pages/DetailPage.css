@@ -708,10 +708,13 @@
   border-radius: 8px;
   cursor: pointer;
   margin-top: 18px;
-}
-
-.page-Detail__booking-reserve:hover {
-  opacity: 0.9;
+  /* <a> 로 바뀐 뒤에도 Figma 버튼처럼: 글자 가운데, 밑줄 없음 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  line-height: normal;
 }
 
 .page-Detail__booking-note {

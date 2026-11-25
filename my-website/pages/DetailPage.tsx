@@ -373,9 +373,9 @@ export default function DetailPage() {
                 <label>GUESTS</label>
                 <input type="text" value="1 guest" readOnly />
               </div>
-              <button className="page-Detail__booking-reserve">
+              <a href="/checkout" className="page-Detail__booking-reserve">
                 {"Reserve"}
-              </button>
+              </a>
               <p className="page-Detail__booking-note">
                 {"You won't be charged yet"}
               </p>

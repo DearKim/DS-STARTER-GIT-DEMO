@@ -1,0 +1,682 @@
+Currently selected nodes:
+- 10613:12099: Booking
+
+
+<frame id="10613:12099" name="Booking" x="24052" y="28519" width="1440" height="2234">
+  <frame id="10613:12100" name="Navigation" x="0" y="0" width="1440" height="80">
+    <instance id="10613:12101" name="Login" x="1111" y="21" width="249" height="38" />
+    <instance id="10613:12102" name="Logo" x="80" y="21" width="102" height="32" />
+  </frame>
+  <frame id="10613:12103" name="footer area" x="0" y="1134" width="1440" height="1100">
+    <frame id="10613:12104" name="Container:margin" x="0" y="0" width="1440" height="359">
+      <frame id="10613:12105" name="Container" x="0" y="0" width="1440" height="359">
+        <frame id="10613:12106" name="Heading 2" x="48" y="48" width="1344" height="26">
+          <text id="10613:12107" name="Inspiration for future getaways" x="0" y="0" width="286" height="26" />
+        </frame>
+        <frame id="10613:12108" name="Container" x="48" y="74" width="1416" height="237">
+          <frame id="10613:12109" name="Container" x="0" y="8" width="1416" height="41">
+            <frame id="10613:12110" name="Container:margin" x="0" y="0" width="1416" height="40">
+              <frame id="10613:12111" name="Container" x="-18" y="0" width="1452" height="40">
+                <frame id="10613:12112" name="Tab List" x="18" y="0" width="1416" height="40">
+                  <frame id="10613:12113" name="Tab:margin" x="0" y="0" width="67" height="40">
+                    <frame id="10613:12114" name="Tab" x="-16" y="11" width="80" height="18">
+                      <text id="10613:12115" name="Popular" x="16" y="0" width="48" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12116" name="Tab:margin" x="67" y="0" width="117" height="40">
+                    <frame id="10613:12117" name="Tab" x="0" y="11" width="117" height="18">
+                      <text id="10613:12118" name="Arts &amp; culture" x="16" y="0" width="85" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12119" name="Tab:margin" x="184" y="0" width="72" height="40">
+                    <frame id="10613:12120" name="Tab" x="0" y="11" width="72" height="18">
+                      <text id="10613:12121" name="Beach" x="16" y="0" width="40" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12122" name="Tab:margin" x="256" y="0" width="98" height="40">
+                    <frame id="10613:12123" name="Tab" x="0" y="11" width="98" height="18">
+                      <text id="10613:12124" name="Mountains" x="16" y="0" width="66" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12125" name="Tab:margin" x="354" y="0" width="91" height="40">
+                    <frame id="10613:12126" name="Tab" x="0" y="11" width="91" height="18">
+                      <text id="10613:12127" name="Outdoors" x="16" y="0" width="59" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12128" name="Tab:margin" x="445" y="0" width="110" height="40">
+                    <frame id="10613:12129" name="Tab" x="0" y="11" width="110" height="18">
+                      <text id="10613:12130" name="Things to do" x="16" y="0" width="78" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12131" name="Tab:margin" x="555" y="0" width="177" height="40">
+                    <frame id="10613:12132" name="Tab" x="0" y="11" width="177" height="18">
+                      <text id="10613:12133" name="Travel tips &amp; inspiration" x="16" y="0" width="145" height="18" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12134" name="Tab:margin" x="732" y="0" width="202" height="40">
+                    <frame id="10613:12135" name="Tab" x="0" y="11" width="202" height="18">
+                      <text id="10613:12136" name="Airbnb-friendly apartments" x="16" y="0" width="170" height="18" />
+                    </frame>
+                  </frame>
+                </frame>
+                <frame id="10613:12137" name="Container" x="18" y="37" width="65" height="3" />
+              </frame>
+            </frame>
+            <frame id="10613:12138" name="Container" x="0" y="40" width="1416" height="1" />
+          </frame>
+          <frame id="10613:12139" name="Tab Panel" x="0" y="49" width="1416" height="188">
+            <frame id="10613:12140" name="List" x="0" y="32" width="1416" height="156">
+              <frame id="10613:12141" name="List Item" x="0" y="0" width="229.3280029296875" height="36">
+                <frame id="10613:12142" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12143" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12144" name="Washington" x="0" y="0" width="78" height="18" />
+                  </frame>
+                  <frame id="10613:12145" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12146" name="Apartment rentals" x="0" y="0" width="117" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12147" name="List Item" x="237.3280029296875" y="0" width="229.33599853515625" height="36">
+                <frame id="10613:12148" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12149" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12150" name="West Palm Beach" x="0" y="0" width="112" height="18" />
+                  </frame>
+                  <frame id="10613:12151" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12152" name="Cottage rentals" x="0" y="0" width="100" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12153" name="List Item" x="474.66400146484375" y="0" width="229.3280029296875" height="36">
+                <frame id="10613:12154" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12155" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12156" name="Savannah" x="0" y="0" width="65" height="18" />
+                  </frame>
+                  <frame id="10613:12157" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12158" name="Villa rentals" x="0" y="0" width="75" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12159" name="List Item" x="711.9920043945312" y="0" width="229.33599853515625" height="36">
+                <frame id="10613:12160" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12161" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12162" name="Manhattan" x="0" y="0" width="71" height="18" />
+                  </frame>
+                  <frame id="10613:12163" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12164" name="Vacation rentals" x="0" y="0" width="104" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12165" name="List Item" x="949.3280029296875" y="0" width="229.33599853515625" height="36">
+                <frame id="10613:12166" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12167" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12168" name="Kansas City" x="0" y="0" width="78" height="18" />
+                  </frame>
+                  <frame id="10613:12169" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12170" name="Apartment rentals" x="0" y="0" width="117" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12171" name="List Item" x="1186.6640625" y="0" width="229.3280029296875" height="36">
+                <frame id="10613:12172" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12173" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12174" name="Destin" x="0" y="0" width="44" height="18" />
+                  </frame>
+                  <frame id="10613:12175" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12176" name="House rentals" x="0" y="0" width="90" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12177" name="List Item" x="0" y="60" width="229.3280029296875" height="36">
+                <frame id="10613:12178" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12179" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12180" name="Amsterdam" x="0" y="0" width="76" height="18" />
+                  </frame>
+                  <frame id="10613:12181" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12182" name="Cabin rentals" x="0" y="0" width="86" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12183" name="List Item" x="237.3280029296875" y="60" width="229.33599853515625" height="36">
+                <frame id="10613:12184" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12185" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12186" name="St. Petersburg" x="0" y="0" width="93" height="18" />
+                  </frame>
+                  <frame id="10613:12187" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12188" name="Vacation rentals" x="0" y="0" width="104" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12189" name="List Item" x="474.66400146484375" y="60" width="229.3280029296875" height="36">
+                <frame id="10613:12190" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12191" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12192" name="Las Vegas" x="0" y="0" width="68" height="18" />
+                  </frame>
+                  <frame id="10613:12193" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12194" name="House rentals" x="0" y="0" width="90" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12195" name="List Item" x="711.9920043945312" y="60" width="229.33599853515625" height="36">
+                <frame id="10613:12196" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12197" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12198" name="Cartagena" x="0" y="0" width="70" height="18" />
+                  </frame>
+                  <frame id="10613:12199" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12200" name="Villa rentals" x="0" y="0" width="75" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12201" name="List Item" x="949.3280029296875" y="60" width="229.33599853515625" height="36">
+                <frame id="10613:12202" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12203" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12204" name="Milan" x="0" y="0" width="37" height="18" />
+                  </frame>
+                  <frame id="10613:12205" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12206" name="Condo rentals" x="0" y="0" width="91" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12207" name="List Item" x="1186.6640625" y="60" width="229.3280029296875" height="36">
+                <frame id="10613:12208" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12209" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12210" name="Pocono Mountains" x="0" y="0" width="120" height="18" />
+                  </frame>
+                  <frame id="10613:12211" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12212" name="Monthly Rentals" x="0" y="0" width="104" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12213" name="List Item" x="0" y="120" width="229.3280029296875" height="36">
+                <frame id="10613:12214" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12215" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12216" name="Sacramento" x="0" y="0" width="79" height="18" />
+                  </frame>
+                  <frame id="10613:12217" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12218" name="Apartment rentals" x="0" y="0" width="117" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12219" name="List Item" x="237.3280029296875" y="120" width="229.33599853515625" height="36">
+                <frame id="10613:12220" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12221" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12222" name="Jersey City" x="0" y="0" width="74" height="18" />
+                  </frame>
+                  <frame id="10613:12223" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12224" name="House rentals" x="0" y="0" width="90" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12225" name="List Item" x="474.66400146484375" y="120" width="229.3280029296875" height="36">
+                <frame id="10613:12226" name="Link" x="0" y="0" width="229.3280029296875" height="36">
+                  <frame id="10613:12227" name="Text" x="0" y="0" width="229.3280029296875" height="18">
+                    <text id="10613:12228" name="Broken Bow" x="0" y="0" width="78" height="18" />
+                  </frame>
+                  <frame id="10613:12229" name="Text" x="0" y="18" width="229.3280029296875" height="18">
+                    <text id="10613:12230" name="Cottage rentals" x="0" y="0" width="100" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12231" name="List Item" x="711.9920043945312" y="120" width="229.33599853515625" height="36">
+                <frame id="10613:12232" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12233" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12234" name="Osaka" x="0" y="0" width="43" height="18" />
+                  </frame>
+                  <frame id="10613:12235" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12236" name="House rentals" x="0" y="0" width="90" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12237" name="List Item" x="949.3280029296875" y="120" width="229.33599853515625" height="36">
+                <frame id="10613:12238" name="Link" x="0" y="0" width="229.33599853515625" height="36">
+                  <frame id="10613:12239" name="Text" x="0" y="0" width="229.33599853515625" height="18">
+                    <text id="10613:12240" name="Sarasota" x="0" y="0" width="59" height="18" />
+                  </frame>
+                  <frame id="10613:12241" name="Text" x="0" y="18" width="229.33599853515625" height="18">
+                    <text id="10613:12242" name="House rentals" x="0" y="0" width="90" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12243" name="List Item" x="1186.6640625" y="120" width="229.3280029296875" height="36">
+                <frame id="10613:12244" name="Button" x="0" y="0" width="87" height="18">
+                  <frame id="10613:12245" name="Text" x="0" y="0" width="71" height="18">
+                    <text id="10613:12246" name="Show more" x="0" y="0" width="71" height="18" />
+                  </frame>
+                  <frame id="10613:12247" name="Container" x="75" y="3" width="12" height="12" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="10613:12249" name="Footer" x="0" y="359" width="1440" height="741">
+      <frame id="10613:12250" name="Container" x="0" y="0" width="1440" height="661">
+        <frame id="10613:12251" name="Container" x="48" y="0" width="1344" height="582">
+          <frame id="10613:12252" name="Section" x="0" y="48" width="461.31201171875" height="486.2030029296875">
+            <frame id="10613:12253" name="Heading 3" x="0" y="0" width="461.31201171875" height="18">
+              <text id="10613:12254" name="Support" x="0" y="0" width="51" height="18" />
+            </frame>
+            <frame id="10613:12255" name="List:margin" x="0" y="18" width="461.31201171875" height="288">
+              <frame id="10613:12256" name="List" x="0" y="16" width="461.31201171875" height="272">
+                <frame id="10613:12257" name="List Item" x="0" y="0" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12258" name="Help Center" x="0" y="0" width="78" height="18" />
+                </frame>
+                <frame id="10613:12259" name="List Item" x="0" y="36.015602111816406" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12260" name="Get help with a safety issue" x="0" y="0" width="178" height="18" />
+                </frame>
+                <frame id="10613:12261" name="List Item" x="0" y="72.03120422363281" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12262" name="AirCover" x="0" y="0" width="56" height="18" />
+                </frame>
+                <frame id="10613:12263" name="List Item" x="0" y="108.04680633544922" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12264" name="Travel insurance" x="0" y="0" width="106" height="18" />
+                </frame>
+                <frame id="10613:12265" name="List Item" x="0" y="144.06240844726562" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12266" name="Anti-discrimination" x="0" y="0" width="123" height="18" />
+                </frame>
+                <frame id="10613:12267" name="List Item" x="0" y="180.0780029296875" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12268" name="Disability support" x="0" y="0" width="114" height="18" />
+                </frame>
+                <frame id="10613:12269" name="List Item" x="0" y="216.09359741210938" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12270" name="Cancellation options" x="0" y="0" width="132" height="18" />
+                </frame>
+                <frame id="10613:12271" name="List Item" x="0" y="252.10919189453125" width="461.3280029296875" height="20.015600204467773">
+                  <text id="10613:12272" name="Report neighborhood concern" x="0" y="0" width="195" height="18" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+          <frame id="10613:12273" name="Section" x="477.31201171875" y="48" width="461.31201171875" height="486.2030029296875">
+            <frame id="10613:12274" name="Heading 3" x="0" y="0" width="461.31201171875" height="18">
+              <text id="10613:12275" name="Hosting" x="0" y="0" width="49" height="18" />
+            </frame>
+            <frame id="10613:12276" name="List:margin" x="0" y="18" width="461.31201171875" height="468">
+              <frame id="10613:12277" name="List" x="0" y="16" width="461.31201171875" height="452">
+                <frame id="10613:12278" name="List Item" x="0" y="0" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12279" name="Airbnb your home" x="0" y="0" width="116" height="18" />
+                </frame>
+                <frame id="10613:12280" name="List Item" x="0" y="36.015602111816406" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12281" name="Airbnb your hotel" x="0" y="0" width="112" height="18" />
+                </frame>
+                <frame id="10613:12282" name="List Item" x="0" y="72.03120422363281" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12283" name="Airbnb your experience" x="0" y="0" width="150" height="18" />
+                </frame>
+                <frame id="10613:12284" name="List Item" x="0" y="108.04680633544922" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12285" name="Airbnb your service" x="0" y="0" width="126" height="18" />
+                </frame>
+                <frame id="10613:12286" name="List Item" x="0" y="144.06240844726562" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12287" name="AirCover for Hosts" x="0" y="0" width="119" height="18" />
+                </frame>
+                <frame id="10613:12288" name="List Item" x="0" y="180.0780029296875" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12289" name="Earnings Protection" x="0" y="0" width="127" height="18" />
+                </frame>
+                <frame id="10613:12290" name="List Item" x="0" y="216.09359741210938" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12291" name="Hosting resources" x="0" y="0" width="118" height="18" />
+                </frame>
+                <frame id="10613:12292" name="List Item" x="0" y="252.10919189453125" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12293" name="Community Center" x="0" y="0" width="122" height="18" />
+                </frame>
+                <frame id="10613:12294" name="List Item" x="0" y="288.1247863769531" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12295" name="Hosting responsibly" x="0" y="0" width="129" height="18" />
+                </frame>
+                <frame id="10613:12296" name="List Item" x="0" y="324.140380859375" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12297" name="Airbnb-friendly apartments" x="0" y="0" width="176" height="18" />
+                </frame>
+                <frame id="10613:12298" name="List Item" x="0" y="360.1559753417969" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12299" name="Join a free hosting class" x="0" y="0" width="157" height="18" />
+                </frame>
+                <frame id="10613:12300" name="List Item" x="0" y="396.17156982421875" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12301" name="Find a co‑host" x="0" y="0" width="94" height="18" />
+                </frame>
+                <frame id="10613:12302" name="List Item" x="0" y="432.1871643066406" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12303" name="Refer a host" x="0" y="0" width="78" height="18" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+          <frame id="10613:12304" name="Section" x="954.6240234375" y="48" width="461.31201171875" height="486.2030029296875">
+            <frame id="10613:12305" name="Heading 3" x="0" y="0" width="461.31201171875" height="18">
+              <text id="10613:12306" name="Airbnb" x="0" y="0" width="42" height="18" />
+            </frame>
+            <frame id="10613:12307" name="List:margin" x="0" y="18" width="461.31201171875" height="216">
+              <frame id="10613:12308" name="List" x="0" y="16" width="461.31201171875" height="200">
+                <frame id="10613:12309" name="List Item" x="0" y="0" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12310" name="2026 Summer Release" x="0" y="0" width="147" height="18" />
+                </frame>
+                <frame id="10613:12311" name="List Item" x="0" y="36.015602111816406" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12312" name="Newsroom" x="0" y="0" width="70" height="18" />
+                </frame>
+                <frame id="10613:12313" name="List Item" x="0" y="72.03120422363281" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12314" name="Careers" x="0" y="0" width="51" height="18" />
+                </frame>
+                <frame id="10613:12315" name="List Item" x="0" y="108.04680633544922" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12316" name="Investors" x="0" y="0" width="59" height="18" />
+                </frame>
+                <frame id="10613:12317" name="List Item" x="0" y="144.06240844726562" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12318" name="Gift cards" x="0" y="0" width="64" height="18" />
+                </frame>
+                <frame id="10613:12319" name="List Item" x="0" y="180.0780029296875" width="461.33599853515625" height="20.015600204467773">
+                  <text id="10613:12320" name="Airbnb.org emergency stays" x="0" y="0" width="182" height="18" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <frame id="10613:12321" name="Container" x="48" y="582" width="1344" height="79">
+          <frame id="10613:12322" name="Section" x="0" y="25" width="1344" height="30">
+            <frame id="10613:12323" name="Container" x="0" y="5" width="435" height="20">
+              <frame id="10613:12324" name="Container" x="-4" y="-4" width="443" height="28">
+                <frame id="10613:12325" name="Container" x="3.90234375" y="4.8125" width="123" height="18">
+                  <text id="10613:12326" name="© 2026 Airbnb, Inc." x="-0.13671875" y="-1" width="128" height="18" />
+                </frame>
+                <text id="10613:12327" name="·" x="135.0390625" y="3.8125" width="5" height="18" />
+                <frame id="10613:12328" name="List Item" x="146.22265625" y="4.8125" width="66" height="18">
+                  <text id="10613:12329" name="Privacy" x="0.16796875" y="-1" width="48" height="18" />
+                  <text id="10613:12330" name="·" x="54.48046875" y="-1" width="5" height="18" />
+                </frame>
+                <frame id="10613:12331" name="List Item" x="212.22265625" y="4.8125" width="59" height="18">
+                  <text id="10613:12332" name="Terms" x="-0.16796875" y="-1" width="40" height="18" />
+                  <text id="10613:12333" name="·" x="47.81640625" y="-1" width="5" height="18" />
+                </frame>
+                <frame id="10613:12334" name="List Item" x="271.3125" y="5" width="168" height="19">
+                  <text id="10613:12335" name="Your Privacy Choices" x="0.078125" y="-1.1875" width="137" height="18" />
+                  <frame id="10613:12336" name="Text" x="141.921875" y="1.1875" width="26" height="18">
+                    <frame id="10613:12337" name="Icon" x="0" y="2" width="26" height="12" />
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+            <frame id="10613:12343" name="Container" x="1054" y="0" width="290" height="30">
+              <frame id="10613:12344" name="Container:margin" x="0" y="0" width="182" height="30">
+                <frame id="10613:12345" name="Container" x="-8" y="0" width="190" height="30">
+                  <frame id="10613:12346" name="Text:margin" x="0" y="0" width="121" height="30">
+                    <frame id="10613:12347" name="Button - Choose a language" x="0" y="0" width="117" height="30">
+                      <frame id="10613:12348" name="Text" x="8" y="6" width="101" height="18">
+                        <frame id="10613:12349" name="Container" x="0" y="1" width="16" height="16" />
+                        <text id="10613:12351" name="English (US)" x="24" y="0" width="77" height="18" />
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="10613:12352" name="Button - Choose a currency" x="121" y="0" width="69" height="30">
+                    <frame id="10613:12353" name="Text" x="8" y="6" width="52" height="18">
+                      <frame id="10613:12354" name="Text" x="0" y="0" width="13" height="18">
+                        <text id="10613:12355" name="₩" x="0" y="0" width="13" height="18" />
+                      </frame>
+                      <frame id="10613:12356" name="Text" x="21" y="0" width="31" height="18">
+                        <text id="10613:12357" name="KRW" x="0" y="0" width="31" height="18" />
+                      </frame>
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12358" name="Container" x="182" y="0" width="108" height="30">
+                <frame id="10613:12359" name="List" x="4" y="7" width="104" height="16">
+                  <frame id="10613:12360" name="List Item:margin" x="8" y="0" width="20" height="16">
+                    <frame id="10613:12361" name="Link - Navigate to Facebook" x="0" y="0" width="16" height="16">
+                      <frame id="10613:12362" name="Text" x="0" y="0" width="16" height="16">
+                        <frame id="10613:12363" name="Container" x="0" y="0" width="16" height="16" />
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="10613:12365" name="List Item:margin" x="48" y="0" width="20" height="16">
+                    <frame id="10613:12366" name="Link - Navigate to Twitter" x="0" y="0" width="16" height="16">
+                      <frame id="10613:12367" name="Text" x="0" y="0" width="16" height="16">
+                        <frame id="10613:12368" name="Container" x="0" y="0" width="16" height="16" />
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="10613:12370" name="Link - Navigate to Instagram" x="88" y="0" width="16" height="16">
+                    <frame id="10613:12371" name="Text" x="0" y="0" width="16" height="16">
+                      <frame id="10613:12372" name="Container" x="0" y="0" width="16" height="16" />
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+  <frame id="10613:12374" name="Section" x="215" y="117" width="1010" height="747">
+    <frame id="10613:12375" name="Container:margin" x="0" y="32" width="0.00009999999747378752" height="651">
+      <frame id="10613:12376" name="Text" x="-68" y="0" width="44" height="44" />
+      <frame id="10613:12377" name="Text" x="-54" y="14" width="16" height="16">
+        <frame id="10613:12378" name="Container" x="0" y="0" width="16" height="16" />
+      </frame>
+    </frame>
+    <frame id="10613:12381" name="Container" x="0" y="32" width="1010" height="651">
+      <frame id="10613:12382" name="Heading 1" x="0" y="0" width="1010" height="36">
+        <text id="10613:12383" name="Confirm and pay" x="0" y="0" width="226" height="36" />
+      </frame>
+      <frame id="10613:12384" name="Container" x="0" y="36" width="1010" height="615">
+        <frame id="10613:12385" name="Container" x="0" y="24" width="540" height="591">
+          <frame id="10613:12386" name="Container" x="0" y="0" width="540" height="361">
+            <frame id="10613:12387" name="Heading 2" x="24" y="24" width="492" height="24">
+              <text id="10613:12388" name="1. Choose when to pay" x="0" y="0" width="185" height="24" />
+            </frame>
+            <frame id="10613:12389" name="Container" x="24" y="48" width="492" height="225">
+              <frame id="10613:12390" name="Container" x="0" y="16" width="492" height="209">
+                <frame id="10613:12391" name="Container" x="0" y="0" width="492" height="208">
+                  <frame id="10613:12392" name="Container" x="0" y="0" width="492" height="40">
+                    <frame id="10613:12393" name="Label" x="0" y="0" width="492" height="24">
+                      <frame id="10613:12394" name="Container" x="0" y="0" width="452" height="24">
+                        <frame id="10613:12395" name="Container" x="0" y="0" width="452" height="20">
+                          <text id="10613:12396" name="Pay £340.91 now" x="0" y="0" width="125" height="20" />
+                        </frame>
+                        <frame id="10613:12397" name="Container:margin" x="0" y="20" width="452" height="4.000100135803223" />
+                      </frame>
+                      <instance id="10613:12398" name="Radio Button" x="468" y="0" width="24" height="24" />
+                    </frame>
+                  </frame>
+                  <frame id="10613:12399" name="Container" x="0" y="40" width="492" height="1" />
+                  <frame id="10613:12400" name="Container" x="0" y="41" width="492" height="74">
+                    <frame id="10613:12401" name="Label" x="0" y="16" width="492" height="42">
+                      <frame id="10613:12402" name="Container" x="0" y="0" width="452" height="42">
+                        <frame id="10613:12403" name="Container" x="0" y="0" width="452" height="20">
+                          <text id="10613:12404" name="Pay £0 now" x="0" y="0" width="85" height="20" />
+                        </frame>
+                        <frame id="10613:12405" name="Container:margin" x="0" y="20" width="452" height="22">
+                          <frame id="10613:12406" name="Container" x="0" y="4" width="452" height="18">
+                            <text id="10613:12407" name="£340.91 charged on 13 Jan 2027. No extra fees." x="0" y="-1" width="309" height="18" />
+                            <frame id="10613:12408" name="Button - Learn more about Pay Less Up Front" x="301.71875" y="0" width="62.0625" height="18">
+                              <text id="10613:12409" name="More info" x="0" y="-1" width="59" height="18" />
+                            </frame>
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="10613:12410" name="Container" x="468" y="0" width="24" height="42">
+                        <instance id="10613:12411" name="Radio Button" x="0" y="0" width="24" height="24" />
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="10613:12412" name="Container" x="0" y="115" width="492" height="1" />
+                  <frame id="10613:12413" name="Container" x="0" y="116" width="492" height="92">
+                    <frame id="10613:12414" name="Label" x="0" y="16" width="492" height="60">
+                      <frame id="10613:12415" name="Container" x="0" y="0" width="452" height="60">
+                        <frame id="10613:12416" name="Container" x="0" y="0" width="452" height="20">
+                          <text id="10613:12417" name="Pay in 3 payments with Klarna" x="0" y="0" width="217" height="20" />
+                        </frame>
+                        <frame id="10613:12418" name="Container:margin" x="0" y="20" width="452" height="40">
+                          <frame id="10613:12419" name="Container" x="0" y="4" width="452" height="36">
+                            <text id="10613:12420" name="3 payments of £113.63 each (0% APR). 18+, T&amp;C appl" x="0" y="-1" width="452" height="36" />
+                            <frame id="10613:12421" name="Button - Learn more about Pay Less Up Front" x="63.296875" y="18" width="62.0625" height="18">
+                              <text id="10613:12422" name="More info" x="0" y="-1" width="59" height="18" />
+                            </frame>
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="10613:12423" name="Container" x="468" y="0" width="24" height="60">
+                        <instance id="10613:12424" name="Radio Button" x="0" y="0" width="24" height="24" />
+                      </frame>
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+            <frame id="10613:12425" name="Container" x="24" y="273" width="492" height="64">
+              <instance id="10613:12426" name="Secondary Buttons" x="414" y="16" width="78" height="48" />
+            </frame>
+          </frame>
+          <frame id="10613:12427" name="Container" x="0" y="385" width="540" height="74">
+            <frame id="10613:12428" name="Heading 2" x="25" y="25" width="490" height="24">
+              <text id="10613:12429" name="2. Add a payment method" x="0" y="0" width="213" height="24" />
+            </frame>
+          </frame>
+          <frame id="10613:12430" name="Container" x="0" y="483" width="540" height="74">
+            <frame id="10613:12431" name="Heading 2" x="25" y="25" width="490" height="24">
+              <text id="10613:12432" name="3. Review your reservation" x="0" y="0" width="218" height="24" />
+            </frame>
+          </frame>
+        </frame>
+        <frame id="10613:12433" name="Container" x="620" y="24" width="390" height="591">
+          <frame id="10613:12434" name="Container" x="0" y="0" width="390" height="519">
+            <frame id="10613:12435" name="Container" x="25" y="25" width="340" height="103">
+              <frame id="10613:12436" name="Container:margin" x="0" y="0" width="119" height="103">
+                <frame id="10613:12437" name="Container" x="0" y="0" width="103" height="103">
+                  <frame id="10613:12438" name="Image" x="0" y="0" width="103" height="103" />
+                </frame>
+              </frame>
+              <frame id="10613:12439" name="Container" x="119" y="30.5" width="221" height="42">
+                <frame id="10613:12440" name="Heading 2" x="0" y="0" width="221" height="24">
+                  <text id="10613:12441" name="STAY 2572" x="0" y="0" width="93" height="24" />
+                </frame>
+                <frame id="10613:12442" name="Container:margin" x="0" y="24" width="221" height="18">
+                  <frame id="10613:12443" name="Container" x="0" y="2" width="221" height="16">
+                    <frame id="10613:12444" name="Text" x="0" y="0" width="91" height="16">
+                      <frame id="10613:12445" name="Text" x="0" y="2" width="12" height="12">
+                        <frame id="10613:12446" name="Container" x="0" y="0" width="12" height="12" />
+                      </frame>
+                      <frame id="10613:12448" name="Text" x="12" y="0" width="63" height="16">
+                        <text id="10613:12449" name="4.98 (487)" x="4" y="0" width="59" height="16" />
+                      </frame>
+                    </frame>
+                    <frame id="10613:12450" name="Container" x="91" y="0" width="100" height="16">
+                      <frame id="10613:12451" name="Container" x="0" y="2" width="16" height="12">
+                        <frame id="10613:12452" name="Container" x="0" y="0" width="12" height="12" />
+                      </frame>
+                      <frame id="10613:12454" name="Container" x="16" y="0" width="84" height="16">
+                        <text id="10613:12455" name="Guest favourite" x="0" y="0" width="84" height="16" />
+                      </frame>
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+            <frame id="10613:12456" name="Container" x="25" y="144" width="340" height="40">
+              <frame id="10613:12457" name="Container" x="0" y="0" width="340" height="18">
+                <text id="10613:12458" name="Free cancellation" x="0" y="0" width="116" height="18" />
+              </frame>
+              <frame id="10613:12459" name="Container:margin" x="0" y="18" width="340" height="22">
+                <frame id="10613:12460" name="Container" x="0" y="4" width="340" height="18">
+                  <text id="10613:12461" name="Cancel before 21 January for a full refund." x="0" y="-1" width="271" height="18" />
+                  <frame id="10613:12462" name="Button" x="270.796875" y="0" width="64.71875" height="18">
+                    <text id="10613:12463" name="Full policy" x="0" y="-1" width="62" height="18" />
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+            <frame id="10613:12464" name="Container" x="25" y="200" width="340" height="1" />
+            <frame id="10613:12465" name="Container" x="25" y="217" width="340" height="44">
+              <frame id="10613:12466" name="Container" x="264.0625" y="0" width="75.9375" height="32">
+                <frame id="10613:12467" name="Button" x="0" y="0" width="75.9375" height="32">
+                  <frame id="10613:12468" name="Text" x="16" y="8" width="43.9375" height="16">
+                    <text id="10613:12469" name="Change" x="1" y="-1" width="43" height="16" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12470" name="Container" x="0" y="0" width="340" height="44">
+                <frame id="10613:12471" name="Container" x="0" y="0" width="340" height="18">
+                  <text id="10613:12472" name="Dates" x="0" y="0" width="40" height="18" />
+                </frame>
+                <frame id="10613:12473" name="Container" x="0" y="18" width="340" height="26">
+                  <text id="10613:12474" name="22–24 Jan 2027" x="0" y="8" width="106" height="18" />
+                </frame>
+              </frame>
+              <frame id="10613:12475" name="Button" x="264.0625" y="0" width="75.9375" height="32">
+                <text id="10613:12476" name="Change" x="17" y="7" width="43" height="16" />
+              </frame>
+            </frame>
+            <frame id="10613:12477" name="Container" x="25" y="277" width="340" height="1" />
+            <frame id="10613:12478" name="Container" x="25" y="294" width="340" height="44">
+              <frame id="10613:12479" name="Container" x="264.0625" y="0" width="75.9375" height="32">
+                <frame id="10613:12480" name="Button" x="0" y="0" width="75.9375" height="32">
+                  <frame id="10613:12481" name="Text" x="16" y="8" width="43.9375" height="16">
+                    <text id="10613:12482" name="Change" x="1" y="-1" width="43" height="16" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12483" name="Container" x="0" y="0" width="340" height="44">
+                <frame id="10613:12484" name="Container" x="0" y="0" width="340" height="18">
+                  <text id="10613:12485" name="Guests" x="0" y="0" width="48" height="18" />
+                </frame>
+                <frame id="10613:12486" name="Container" x="0" y="18" width="340" height="26">
+                  <text id="10613:12487" name="1 adult" x="0" y="8" width="43" height="18" />
+                </frame>
+              </frame>
+              <frame id="10613:12488" name="Button" x="264.0625" y="0" width="75.9375" height="32">
+                <text id="10613:12489" name="Change" x="17" y="7" width="43" height="16" />
+              </frame>
+            </frame>
+            <frame id="10613:12490" name="Container" x="25" y="354" width="340" height="1" />
+            <frame id="10613:12491" name="Container" x="25" y="371" width="340" height="123">
+              <frame id="10613:12492" name="Heading 2" x="0" y="0" width="340" height="18">
+                <text id="10613:12493" name="Price details" x="0" y="0" width="84" height="18" />
+              </frame>
+              <frame id="10613:12494" name="Container" x="0" y="18" width="340" height="105">
+                <frame id="10613:12495" name="Container" x="0" y="8" width="340" height="18">
+                  <text id="10613:12496" name="2 nights x £170.46" x="0" y="0" width="119" height="18" />
+                  <frame id="10613:12497" name="Container" x="287" y="0" width="53" height="18">
+                    <text id="10613:12498" name="£340.91" x="0" y="0" width="53" height="18" />
+                  </frame>
+                </frame>
+                <frame id="10613:12499" name="Container:margin" x="0" y="26" width="340" height="17">
+                  <frame id="10613:12500" name="Container" x="0" y="16" width="340" height="1" />
+                </frame>
+                <frame id="10613:12501" name="Container" x="0" y="43" width="340" height="34">
+                  <frame id="10613:12502" name="Container" x="0" y="16" width="65.90625" height="18">
+                    <text id="10613:12503" name="Total" x="0" y="0" width="34" height="18" />
+                    <frame id="10613:12504" name="Text:margin" x="34" y="0" width="31.90625" height="18">
+                      <frame id="10613:12505" name="Text" x="4" y="0" width="27.90625" height="18">
+                        <frame id="10613:12506" name="Container" x="0" y="0" width="27.90625" height="18">
+                          <frame id="10613:12507" name="Button - Current currency: GBP. Change payment currency" x="0" y="0" width="27.90625" height="18">
+                            <text id="10613:12508" name="GBP" x="0" y="-1" width="28" height="18" />
+                          </frame>
+                        </frame>
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="10613:12509" name="Container" x="284" y="16" width="56" height="18">
+                    <text id="10613:12510" name="£340.91" x="0" y="0" width="56" height="18" />
+                  </frame>
+                </frame>
+                <frame id="10613:12511" name="Container:margin" x="0" y="77" width="340" height="28">
+                  <frame id="10613:12512" name="Container" x="0" y="8" width="340" height="20">
+                    <frame id="10613:12513" name="Button" x="0" y="1" width="110.453125" height="18">
+                      <text id="10613:12514" name="Price breakdown" x="0" y="-1" width="105" height="18" />
+                    </frame>
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+          <frame id="10613:12515" name="Container:margin" x="0" y="519" width="390" height="72">
+            <frame id="10613:12516" name="Container" x="0" y="24" width="390" height="48">
+              <frame id="10613:12517" name="Container:margin" x="56.5" y="16" width="40" height="16">
+                <frame id="10613:12518" name="Container" x="0" y="-8" width="32" height="32">
+                  <frame id="10613:12519" name="Container" x="0" y="0" width="32" height="36">
+                    <frame id="10613:12520" name="Icon" x="0" y="0" width="32" height="32" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="10613:12832" name="Text" x="96.5" y="15" width="237" height="18">
+                <text id="10613:12833" name="Rare find! This place is usually booked" x="0" y="0" width="237" height="18" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+</frame>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.
+IMPORTANT: Inform the user that
