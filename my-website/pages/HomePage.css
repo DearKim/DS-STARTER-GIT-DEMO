@@ -1,4 +1,5 @@
 .page-Home {
+  overflow-x: clip;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--color-text, #222222);
   background: var(--color-bg, #FFFFFF);
@@ -383,6 +384,7 @@
 .page-Home__inspiration {
   background: #f7f7f7;
   padding: 48px;
+  overflow-x: hidden;
 }
 
 .page-Home__inspiration-heading {
@@ -645,4 +647,52 @@
 /* 로고 → Home 링크 */
 .page-Home__logo-link {
   display: flex;
+}
+
+/* Figma 헤더 오른쪽(Login 8:194): 메뉴·아바타 알약 81×38, 선 지구본 */
+.page-Home__user-card {
+  position: relative;
+  display: block;
+  width: 81px;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0;
+  gap: 0;
+  border: 1px solid #EBEBEB;
+  border-radius: 29px;
+  background: #FFFFFF;
+}
+
+.page-Home__menu-button {
+  position: absolute;
+  left: 11px;
+  top: 12.5px;
+  width: 14px;
+  height: 9.5px;
+  padding: 0;
+}
+
+.page-Home__menu-button img,
+.page-Home__avatar-button img,
+.page-Home__globe-button img {
+  display: block;
+}
+
+.page-Home__avatar-button {
+  position: absolute;
+  left: 41px;
+  top: -1px;
+  width: 34px;
+  height: 36px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.page-Home__avatar-button::before {
+  content: none;
+}
+
+.page-Home__globe-button img {
+  margin: -1px;
 }

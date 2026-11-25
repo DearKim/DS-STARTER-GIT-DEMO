@@ -202,7 +202,7 @@ open_questions: 0
     {
       "name": "Detail",
       "path": "/detail",
-      "title": "서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길",
+      "title": "Kalani’s guesthouse TAHAA",
       "evidence": "Figma Detail frame (812-393)",
       "responsive": "1440px source viewport",
       "sections": [
@@ -222,13 +222,13 @@ open_questions: 0
 }
 ```
 
-| Topic | Sourced facts and evidence | AI interpretation | Student decision/correction |
-|---|---|---|---|
-| Complete screens, sections, copy, data and optional matching images | Figma Home frame | Used starter parts: Text, Link, Search, Card, Tabs | Confirmed via chat |
-| Parts, public props, eligible scope and versions | All parts are starter, unchanged | Used Search (lg size), Tabs (line/contained variants), Card, Link, Text | Confirmed via chat |
-| Routes, events, and real/demo outcomes | Home page at / | Demo data only | Confirmed via chat |
-| Layout tokens, viewports and responsive behavior | 1440px source viewport | Single-column layout | Confirmed via chat |
+| Topic                                                               | Sourced facts and evidence       | AI interpretation                                                       | Student decision/correction |
+| ------------------------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------------- | --------------------------- |
+| Complete screens, sections, copy, data and optional matching images | Figma Home frame                 | Used starter parts: Text, Link, Search, Card, Tabs                      | Confirmed via chat          |
+| Parts, public props, eligible scope and versions                    | All parts are starter, unchanged | Used Search (lg size), Tabs (line/contained variants), Card, Link, Text | Confirmed via chat          |
+| Routes, events, and real/demo outcomes                              | Home page at /                   | Demo data only                                                          | Confirmed via chat          |
+| Layout tokens, viewports and responsive behavior                    | 1440px source viewport           | Single-column layout                                                    | Confirmed via chat          |
 
-| Question ID | Decision needed, choices and impact | Student answer | Status |
-|---|---|---|---|
-| Q-01 | Navigation icons not in catalog | Use custom SVG after generation | answered |
+| Question ID | Decision needed, choices and impact | Student answer                  | Status   |
+| ----------- | ----------------------------------- | ------------------------------- | -------- |
+| Q-01        | Navigation icons not in catalog     | Use custom SVG after generation | answered |

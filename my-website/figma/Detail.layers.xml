@@ -438,17 +438,17 @@ Currently selected nodes:
     <frame id="812:4768" name="Container" x="0" y="0" width="1280" height="567.3035888671875">
       <frame id="812:4769" name="Container" x="0" y="0" width="1280" height="640">
         <frame id="812:4770" name="Container" x="0" y="0" width="640" height="640">
-          <frame id="812:4771" name="Button - 서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길 이미지 1" x="0" y="0" width="640" height="567.3035888671875">
+          <frame id="812:4771" name="Button - Kalani’s guesthouse TAHAA 이미지 1" x="0" y="0" width="640" height="567.3035888671875">
             <frame id="812:4772" name="Image" x="0" y="0" width="640" height="567.3035888671875" />
           </frame>
         </frame>
         <frame id="812:4773" name="Container" x="640" y="0" width="320" height="640">
           <frame id="812:4774" name="Container" x="9.142857551574707" y="0" width="310.8571472167969" height="567.3035888671875">
-            <frame id="812:4775" name="Button - 서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길 이미지 2" x="0" y="0" width="310.8571472167969" height="283.6428527832031">
+            <frame id="812:4775" name="Button - Kalani’s guesthouse TAHAA 이미지 2" x="0" y="0" width="310.8571472167969" height="283.6428527832031">
               <frame id="812:4776" name="Image" x="0" y="0" width="310.8571472167969" height="283.6428527832031" />
             </frame>
             <frame id="812:4777" name="Container" x="0.00003487723370199092" y="283.6428527832031" width="310.8571472167969" height="283.6428527832031">
-              <frame id="812:4778" name="Button - 서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길 이미지 3" x="0.00003487723370199092" y="9.142861366271973" width="310.8571472167969" height="274.5">
+              <frame id="812:4778" name="Button - Kalani’s guesthouse TAHAA 이미지 3" x="0.00003487723370199092" y="9.142861366271973" width="310.8571472167969" height="274.5">
                 <frame id="812:4779" name="Image" x="0" y="0" width="310.8571472167969" height="274.5" />
               </frame>
             </frame>
@@ -456,11 +456,11 @@ Currently selected nodes:
         </frame>
         <frame id="812:4780" name="Container" x="960" y="0" width="320" height="640">
           <frame id="812:4781" name="Container" x="9.142857551574707" y="0" width="310.8571472167969" height="567.3035888671875">
-            <frame id="812:4782" name="Button - 서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길 이미지 4" x="0" y="0" width="310.8571472167969" height="283.6428527832031">
+            <frame id="812:4782" name="Button - Kalani’s guesthouse TAHAA 이미지 4" x="0" y="0" width="310.8571472167969" height="283.6428527832031">
               <frame id="812:4783" name="Image" x="0" y="0" width="310.8571472167969" height="283.6428527832031" />
             </frame>
             <frame id="812:4784" name="Container" x="0.00003487723006401211" y="283.6428527832031" width="310.8571472167969" height="283.6428527832031">
-              <frame id="812:4785" name="Button - 서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길 이미지 5" x="0.00003487723006401211" y="9.142861366271973" width="310.8571472167969" height="274.5">
+              <frame id="812:4785" name="Button - Kalani’s guesthouse TAHAA 이미지 5" x="0.00003487723006401211" y="9.142861366271973" width="310.8571472167969" height="274.5">
                 <frame id="812:4786" name="Image" x="0" y="0" width="310.8571472167969" height="274.5" />
               </frame>
             </frame>
@@ -475,7 +475,7 @@ Currently selected nodes:
       </frame>
     </frame>
   </frame>
-  <text id="812:4793" name="서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길" x="80" y="121" width="1280" height="26" />
+  <text id="812:4793" name="Kalani’s guesthouse TAHAA" x="80" y="121" width="1280" height="26" />
   <frame id="812:6948" name="Container" x="1219" y="117" width="72.453125" height="34">
     <frame id="812:6949" name="Button" x="-8" y="0" width="88.453125" height="34">
       <frame id="812:6950" name="Container" x="8" y="8" width="72" height="18">

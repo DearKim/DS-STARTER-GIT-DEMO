@@ -1,4 +1,5 @@
 .page-Detail {
+  overflow-x: clip;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--color-text, #222222);
   background: var(--color-bg, #FFFFFF);
@@ -175,7 +176,7 @@
 .page-Detail__title-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 40px 80px 0;
 }
 
@@ -191,6 +192,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-top: -4px;
 }
 
 .page-Detail__action-button {
@@ -238,6 +240,13 @@
   width: 640px;
   height: 567px;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.page-Detail__gallery-main .page-Detail__gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .page-Detail__gallery-column {
@@ -295,16 +304,16 @@
 /* Content: info + booking card */
 .page-Detail__content {
   display: flex;
-  justify-content: space-between;
   padding: 80px 80px 0;
   gap: 80px;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
 .page-Detail__info {
   width: 653px;
   flex-shrink: 0;
+  margin-left: 80px;
 }
 
 .page-Detail__info-header {
@@ -341,29 +350,30 @@
   gap: 24px;
 }
 
-.page-Detail__guest-favourite-left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.page-Detail__laurel-container {
+.page-Detail__guest-favourite-laurel {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
-.page-Detail__laurel {
+.page-Detail__laurel--left {
+  width: 20px;
   height: 36px;
-  width: auto;
+  object-fit: contain;
+}
+
+.page-Detail__laurel--right {
+  width: 24px;
+  height: 36px;
   object-fit: contain;
 }
 
 .page-Detail__guest-favourite-text {
   font-size: 18px;
   font-weight: 590;
-  line-height: 22px;
+  line-height: 18px;
   color: #222;
+  text-align: center;
 }
 
 .page-Detail__guest-favourite-desc {
@@ -494,6 +504,34 @@
   cursor: pointer;
 }
 
+.page-Detail__highlight-title--info {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6C6C6C;
+  text-decoration: none;
+}
+
+.page-Detail__highlight-icon-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.page-Detail__highlight-icon-small {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.page-Detail__highlight-icon-info {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 .page-Detail__highlight-desc {
   font-size: 14px;
   font-weight: 400;
@@ -503,11 +541,13 @@
 
 /* Booking card */
 .page-Detail__booking-wrapper {
-  width: 467px;
+  width: 373px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 80px;
 }
 
 .page-Detail__booking-card {
@@ -519,6 +559,7 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   padding: 24px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .page-Detail__booking-price-row {
@@ -531,7 +572,7 @@
 .page-Detail__booking-price-left {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 4px;
 }
 
 .page-Detail__booking-original-price {
@@ -569,7 +610,11 @@
 }
 
 .page-Detail__booking-rating-value {
-  font-weight: 590;
+  font-weight: 400;
+  color: #222;
+}
+
+.page-Detail__booking-dot {
   color: #222;
 }
 
@@ -580,7 +625,7 @@
 .page-Detail__booking-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 }
 
 .page-Detail__booking-dates {
@@ -589,7 +634,7 @@
   width: 325px;
   height: 56px;
   border: 1px solid #717171;
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -597,15 +642,20 @@
 .page-Detail__booking-field {
   display: flex;
   flex-direction: column;
-  padding: 8px 12px;
-  justify-content: center;
+  padding: 12px 12px 0;
+  justify-content: flex-start;
+}
+
+.page-Detail__booking-field + .page-Detail__booking-field {
+  border-left: 1px solid #717171;
 }
 
 .page-Detail__booking-field label {
   font-size: 10px;
   font-weight: 590;
   color: #222;
-  margin-bottom: 4px;
+  line-height: 12px;
+  margin-bottom: 2px;
 }
 
 .page-Detail__booking-field input {
@@ -622,18 +672,20 @@
   flex-direction: column;
   width: 325px;
   height: 56px;
-  padding: 8px 12px;
+  padding: 12px 12px 0;
   border: 1px solid #717171;
-  border-radius: 12px;
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .page-Detail__booking-guests label {
   font-size: 10px;
   font-weight: 590;
   color: #222;
-  margin-bottom: 4px;
+  line-height: 12px;
+  margin-bottom: 2px;
 }
 
 .page-Detail__booking-guests input {
@@ -651,11 +703,11 @@
   background: linear-gradient(to right, #D33753 0%, #D13660 50%, #C72D65 100%);
   color: white;
   font-size: 16px;
-  font-weight: 590;
+  font-weight: 400;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 18px;
 }
 
 .page-Detail__booking-reserve:hover {
@@ -667,20 +719,20 @@
   font-weight: 400;
   color: #5E5E5E;
   text-align: center;
-  margin: 8px 0 0;
+  line-height: normal;
+  margin: 21px 0 0;
 }
 
 .page-Detail__booking-fees {
   margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid #DDDDDD;
 }
 
 .page-Detail__booking-fee-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 19px;
+  line-height: normal;
+  margin-bottom: 16px;
 }
 
 .page-Detail__booking-fee-row:last-child {
@@ -707,7 +759,7 @@
 .page-Detail__booking-fee-divider {
   height: 1px;
   background: #DDDDDD;
-  margin: 19px 0;
+  margin: 24px 0 23px;
 }
 
 .page-Detail__booking-fee-row--total .page-Detail__booking-fee-label,
@@ -720,7 +772,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 16px;
   margin-top: 24px;
   font-size: 14px;
   font-weight: 400;
@@ -738,12 +790,76 @@
   object-fit: contain;
 }
 
+/* Translation notice and description */
+.page-Detail__description-section {
+  width: 653px;
+  margin-left: 160px;
+}
+
+.page-Detail__description-divider {
+  width: 653px;
+  height: 1px;
+  background: #DDDDDD;
+  margin-bottom: 32px;
+}
+
+.page-Detail__translation-notice {
+  width: 653px;
+  height: 50px;
+  background: #F7F7F7;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 32px;
+}
+
+.page-Detail__translation-link {
+  font-size: 16px;
+  color: #222;
+  text-decoration: underline;
+}
+
+.page-Detail__description-content {
+  height: 176px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.page-Detail__description-text {
+  font-size: 16px;
+  line-height: 22px;
+  color: #222;
+  margin: 0;
+}
+
+.page-Detail__show-more-button {
+  width: 132px;
+  height: 48px;
+  background: #F2F2F2;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 48px;
+}
+
+.page-Detail__show-more-button:hover {
+  background: #E8E8E8;
+}
+
 /* Where you'll sleep */
 .page-Detail__sleep {
-  padding: 48px 80px;
-  border-top: 1px solid #EBEBEB;
-  max-width: 1280px;
+  padding: 48px 0;
+  border-top: 1px solid #DDDDDD;
+  max-width: 653px;
   margin: 0 auto;
+  margin-left: 160px;
 }
 
 .page-Detail__sleep-heading {
@@ -756,33 +872,51 @@
 
 .page-Detail__sleep-grid {
   display: flex;
-  gap: 24px;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-right: -24px;
+  scrollbar-width: none;
+}
+
+.page-Detail__sleep-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .page-Detail__sleep-card {
-  flex: 0 0 200px;
+  flex: 0 0 318.7px;
 }
 
 .page-Detail__sleep-img {
-  width: 200px;
-  height: 150px;
+  width: 318.7px;
+  height: 212px;
   object-fit: cover;
   border-radius: 8px;
   display: block;
 }
 
 .page-Detail__sleep-label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 20px;
   color: #222;
-  margin-top: 8px;
+  margin-top: 16px;
+}
+
+.page-Detail__sleep-bed {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #6C6C6C;
+  margin-top: 4px;
 }
 
 /* Inspiration */
 .page-Detail__inspiration {
   background: #f7f7f7;
   padding: 48px;
+  margin-top: 214px; /* Figma: 두 칸이 끝난 곳(Where you'll sleep 아래 여백 안쪽)에서 250 */
+  overflow-x: hidden;
 }
 
 .page-Detail__inspiration-heading {
@@ -1044,4 +1178,88 @@
 /* 로고 → Home 링크 */
 .page-Detail__logo-link {
   display: flex;
+}
+
+/* "Learn more about summaries" 줄은 Figma 처럼 높이 16(아이콘 칸 40×16, 글 12px 줄 높이 16) */
+.page-Detail__highlight-icon-container:has(.page-Detail__highlight-icon-info) {
+  height: 16px;
+  align-items: center;
+}
+
+.page-Detail__highlight-title--info {
+  line-height: 16px;
+}
+
+/* 날짜 두 칸을 162.5 씩 똑같이(입력칸 기본 폭이 첫 칸을 넓히지 않게) */
+.page-Detail__booking-dates {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.page-Detail__booking-field input,
+.page-Detail__booking-guests input {
+  width: 100%;
+  min-width: 0;
+}
+
+/* "translated." 와 "Show original" 사이 띄어쓰기(flex 가 끝 공백을 지움) */
+.page-Detail__translation-notice {
+  gap: 4px;
+}
+
+/* Figma 헤더 오른쪽(Login 8:194): 메뉴·아바타 알약 81×38, 선 지구본 */
+.page-Detail__user-card {
+  position: relative;
+  display: block;
+  width: 81px;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0;
+  gap: 0;
+  border: 1px solid #EBEBEB;
+  border-radius: 29px;
+  background: #FFFFFF;
+}
+
+.page-Detail__menu-button {
+  position: absolute;
+  left: 11px;
+  top: 12.5px;
+  width: 14px;
+  height: 9.5px;
+  padding: 0;
+}
+
+.page-Detail__menu-button img,
+.page-Detail__avatar-button img,
+.page-Detail__globe-button img {
+  display: block;
+}
+
+.page-Detail__avatar-button {
+  position: absolute;
+  left: 41px;
+  top: -1px;
+  width: 34px;
+  height: 36px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.page-Detail__avatar-button::before {
+  content: none;
+}
+
+.page-Detail__globe-button img {
+  margin: -1px;
+}
+
+/* 돋보기: Figma 버튼 그림(빨간 원 + 돋보기) 32×32 을 그대로 */
+.page-Detail__search-icon-button {
+  background: transparent;
+}
+
+.page-Detail__search-icon {
+  width: 32px;
+  height: 32px;
 }
