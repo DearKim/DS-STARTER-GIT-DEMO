@@ -1266,3 +1266,21 @@
   width: 32px;
   height: 32px;
 }
+
+/* 넓은 화면(1440 초과)에서도 Figma 1440 틀을 화면 가운데에 둔다. 1440 에서는 위치가 그대로다. */
+.page-Detail__title-section,
+.page-Detail__gallery {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.page-Detail__description-section,
+.page-Detail__sleep {
+  margin-left: max(160px, calc(50% - 560px)); /* 1440 틀의 왼쪽 160 */
+}
+
+.page-Detail__search-bar-center {
+  left: calc(50% - 177px); /* 1440 에서 543, 넓은 화면에서도 가운데 */
+}
