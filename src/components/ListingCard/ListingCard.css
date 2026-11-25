@@ -19,12 +19,21 @@
   background: var(--color-image-placeholder);
 }
 
+/* rev 3: 사진이 여러 장이면 겹쳐 두고 지금 사진만 보인다. 새 사진이 위에서 나타나는 동안 이전 사진은 그대로 있다가 끝나면 숨는다. */
 .ds-listing-card__image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0s linear var(--duration-normal);
+}
+
+.ds-listing-card__image--current {
+  z-index: 1;
+  opacity: 1;
+  transition: opacity var(--duration-normal) var(--ease-standard);
 }
 
 /* 하트 24×24, 사진 오른쪽 위에서 16·16. 속은 Shade 02 30%, 테두리는 흰색 2. */
@@ -61,17 +70,30 @@
   stroke: var(--color-on-image);
 }
 
-/* 사진 점 49×6, 사진 아래에서 8, 가운데. 첫 점은 흰색, 나머지는 Neutral 03. */
+/* 사진 점 49×6, 사진 아래에서 8, 가운데. 지금 사진의 점은 흰색(처음엔 첫 점), 나머지는 Neutral 03. 사진(z-index 1) 위에 그린다. */
 .ds-listing-card__dots {
   position: absolute;
   bottom: calc(var(--spacing) * 2);
   left: 50%;
+  z-index: 1;
   transform: translateX(-50%);
   color: var(--color-indicator);
 }
 
+.ds-listing-card__dot {
+  transition: color var(--duration-normal) var(--ease-standard);
+}
+
 .ds-listing-card__dot--current {
   color: var(--color-on-image);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-listing-card__image,
+  .ds-listing-card__image--current,
+  .ds-listing-card__dot {
+    transition: none;
+  }
 }
 
 /* 글 묶음: 사진 아래 16. 왼쪽은 이름·장소·날짜(줄 사이 4)와 가격(위 8), 오른쪽 끝은 별점. */

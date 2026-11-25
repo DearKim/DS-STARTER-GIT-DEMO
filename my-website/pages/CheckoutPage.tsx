@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Link } from "@/components/Link";
 import { imageUrl } from "@/assets/images";
 import "./CheckoutPage.css";
 
 export default function CheckoutPage() {
+  const [inspTab, setInspTab] = useState("Popular");
+  const [payWhen, setPayWhen] = useState<"now" | "zero" | "klarna" | null>(null);
   const destinations = [
     { title: "Washington", subtitle: "Apartment rentals" },
     { title: "West Palm Beach", subtitle: "Cottage rentals" },
@@ -99,17 +102,16 @@ export default function CheckoutPage() {
             {/* Card 1: Choose when to pay */}
             <div className="page-Checkout__step-card page-Checkout__step-card--primary">
               <h2 className="page-Checkout__step-title">{"1. Choose when to pay"}</h2>
-              <div className="page-Checkout__options">
-                {/* Option 1 */}
-                <div className="page-Checkout__option-row page-Checkout__option-row--pb16">
+              <div className="page-Checkout__options" role="radiogroup" aria-label="Choose when to pay">
+                <label className="page-Checkout__option-row page-Checkout__option-row--pb16">
                   <div className="page-Checkout__option-text">
                     <span>{"Pay £340.91 now"}</span>
                   </div>
-                  <img src={imageUrl("checkout-radio-hover") ?? ""} alt="" className="page-Checkout__radio" width={24} height={24} />
-                </div>
+                  <input className="page-Checkout__radio-input" type="radio" name="pay-when" value="now" checked={payWhen === "now"} onChange={() => setPayWhen("now")} />
+                  <span className="page-Checkout__radio" aria-hidden="true" />
+                </label>
                 <div className="page-Checkout__option-divider"></div>
-                {/* Option 2 */}
-                <div className="page-Checkout__option-row page-Checkout__option-row--py16">
+                <label className="page-Checkout__option-row page-Checkout__option-row--py16">
                   <div className="page-Checkout__option-text">
                     <span>{"Pay £0 now"}</span>
                     <div className="page-Checkout__option-subtitle">
@@ -117,11 +119,11 @@ export default function CheckoutPage() {
                       <a className="page-Checkout__more-info" href="#">{"More info"}</a>
                     </div>
                   </div>
-                  <img src={imageUrl("checkout-radio") ?? ""} alt="" className="page-Checkout__radio" width={24} height={24} />
-                </div>
+                  <input className="page-Checkout__radio-input" type="radio" name="pay-when" value="zero" checked={payWhen === "zero"} onChange={() => setPayWhen("zero")} />
+                  <span className="page-Checkout__radio" aria-hidden="true" />
+                </label>
                 <div className="page-Checkout__option-divider"></div>
-                {/* Option 3 */}
-                <div className="page-Checkout__option-row page-Checkout__option-row--py16">
+                <label className="page-Checkout__option-row page-Checkout__option-row--py16">
                   <div className="page-Checkout__option-text">
                     <span>{"Pay in 3 payments with Klarna"}</span>
                     <div className="page-Checkout__option-subtitle">
@@ -129,8 +131,9 @@ export default function CheckoutPage() {
                       <a className="page-Checkout__more-info" href="#">{"More info"}</a>
                     </div>
                   </div>
-                  <img src={imageUrl("checkout-radio") ?? ""} alt="" className="page-Checkout__radio" width={24} height={24} />
-                </div>
+                  <input className="page-Checkout__radio-input" type="radio" name="pay-when" value="klarna" checked={payWhen === "klarna"} onChange={() => setPayWhen("klarna")} />
+                  <span className="page-Checkout__radio" aria-hidden="true" />
+                </label>
               </div>
               <div className="page-Checkout__next-row">
                 <button className="page-Checkout__next-btn">{"Next"}</button>
@@ -239,15 +242,9 @@ export default function CheckoutPage() {
         <h2 className="page-Checkout__inspiration-heading">{"Inspiration for future getaways"}</h2>
         <div className="page-Checkout__inspiration-tabs">
           <div className="page-Checkout__inspiration-tab-list">
-            <button className="page-Checkout__inspiration-tab page-Checkout__inspiration-tab--active">Popular</button>
-            <button className="page-Checkout__inspiration-tab">Arts &amp; culture</button>
-            <button className="page-Checkout__inspiration-tab">Beach</button>
-            <button className="page-Checkout__inspiration-tab">Mountains</button>
-            <button className="page-Checkout__inspiration-tab">Outdoors</button>
-            <button className="page-Checkout__inspiration-tab">Things to do</button>
-            <button className="page-Checkout__inspiration-tab">Travel tips &amp; inspiration</button>
-            <button className="page-Checkout__inspiration-tab">Airbnb-friendly apartments</button>
-            <div className="page-Checkout__inspiration-tab-underline"></div>
+            {["Popular","Arts & culture","Beach","Mountains","Outdoors","Things to do","Travel tips & inspiration","Airbnb-friendly apartments"].map((label) => (
+              <button key={label} type="button" className={`page-Checkout__inspiration-tab${inspTab === label ? " page-Checkout__inspiration-tab--active" : ""}`} aria-pressed={inspTab === label} onClick={() => setInspTab(label)}>{label}</button>
+            ))}
           </div>
           <div className="page-Checkout__inspiration-divider"></div>
         </div>

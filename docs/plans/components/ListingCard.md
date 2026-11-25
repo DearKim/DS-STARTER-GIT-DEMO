@@ -1,7 +1,7 @@
 ---
 kind: component
 component: ListingCard
-revision: 2
+revision: 3
 status: approved
 source_kind: figma
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=238-2494&m=dev
@@ -28,6 +28,7 @@ open_questions: 0
 | 부품의 역할 | 238:2494: 사진(303×287) + 하트 + 사진 점 + 이름·장소·날짜·가격 + 별점 | 숙소 목록의 카드 한 장 | Q-01 |
 | 누를 수 있는 영역 | 하트(24×24)만 아이콘. 카드 전체의 링크·hover 변형 없음 | 하트는 `<button>`. rev 2: `href` 를 주면 제목이 `<a>` 가 되고 카드 전체를 덮어 누르면 이동(하트는 그 위에서 따로 동작). 모양은 바뀌지 않음 | Q-02, Q-05 |
 | 클릭/선택/열림 동작 | Figma 에 하트 눌림(채워진) 모양 없음 | 하트 클릭 시 `onFavoriteClick` 호출, `aria-pressed={isFavorite}` 로 상태만 알림. 모양은 바꾸지 않음 | Q-02 |
+| 사진 넘김(rev 3) | Figma 사진 점 238:2508 은 사진 5장 중 1번째가 현재(흰색)임을 보여 줌. 넘김 동작은 Figma 에 없음 → 2026-11-26 사용자 요청 | `images` 로 사진을 최대 5장 받아 `autoPlayMs` 마다 다음 사진으로 바뀌고(5번 뒤엔 1번), 흰 점이 지금 사진 순서로 옮겨 감. 바뀔 때 겹쳐 사라지듯 바뀜. 마우스를 올리거나 카드 안에 키보드 포커스가 있으면 멈춤. 동작 줄이기 설정이면 자동으로 넘기지 않음 | Q-06 |
 | 키보드·포커스 범위 | Figma 에 Focus 변형 없음 | 하트 버튼 하나가 Tab 으로 잡힘. 브라우저 기본 포커스 링 | Q-02 |
 | disabled 동작 | Figma 에 없음 | 만들지 않음 | Q-02 |
 
@@ -106,6 +107,8 @@ open_questions: 0
 | `imageSrc` / `imageAlt` | 238:2495 은 회색 바탕 | 없음 / "" | 있으면 사진을 채우고, 없으면 회색 바탕 | — | Q-03 |
 | `href` | rev 2 사용자 요청(Home 카드 → /detail) | 없음 | 있으면 카드를 누르면 그 주소로 이동(제목 링크 + 카드 전체 덮개). 없으면 rev 1 과 같음 | Tab 으로 제목 링크에 포커스, Enter 로 이동. 하트 버튼은 따로 Tab | Q-05 |
 | `isFavorite` / `onFavoriteClick` | 하트 238:2496 | false / — | 클릭 시 콜백 호출, aria-pressed 반영 | Tab 으로 포커스, Enter/Space 동작 | Q-02 |
+| `images` | rev 3 사용자 요청(Stay in Seoul 사진이 몇 초마다 바뀜, 점이 순서 표시) | 없음 / 사진 주소 배열, 앞 5장만 씀(점이 5개) | 있으면 `imageSrc` 대신 쓴다. 첫 사진부터 보이고 흰 점 = 지금 사진 순서. 없으면 rev 2 와 같음(점은 1번째 고정) | 보이는 사진만 `imageAlt`, 나머지는 alt "" | Q-06 |
+| `autoPlayMs` | rev 3 사용자 요청 | 0(넘기지 않음) / 밀리초 | `images` 가 2장 이상이고 0보다 크면 그 간격으로 다음 사진. 바뀌는 효과는 `--duration-normal`·`--ease-standard` | hover·카드 안 포커스 동안 멈춤, `prefers-reduced-motion: reduce` 면 넘기지 않음 | Q-06 |
 
 ## 9. Q&A와 사용자 결정
 
@@ -116,6 +119,7 @@ open_questions: 0
 | Q-03 | 공개 props 와 기본 글자 | 위 8번 표 | Approve revision 1·4 (chosen in chat) | resolved |
 | Q-05 | 카드를 눌러 상세 페이지로 이동(rev 2). Figma 에 링크 모양 변화 없음 | href prop 추가, 모양 변화 없음 | Approve revision 2 (chosen in chat, "전부 제가 직접") | resolved |
 | Q-04 | 새 색 역할 4개(토큰 계획 rev 4) | 위 6번 표 | Approve revision 1·4 (chosen in chat) | resolved |
+| Q-06 | 사진 여러 장 자동 넘김(rev 3). Figma 에 넘김 동작 없음, 점 모양·색은 그대로 | `images` + `autoPlayMs` 추가, 흰 점이 지금 사진으로 이동 | 사용자 요청 원문(2026-11-26): "Stay in Seoul은 몇초마다 사진들이 바뀌어야돼서 관련 숙소들로 해주면 좋아 (카드 안에 ...이 보여지고 있는 순서)" | resolved |
 
 ## 10. 검증 계획
 
@@ -126,10 +130,11 @@ open_questions: 0
 | 아이콘과 노출 조건 | 하트·별·점이 원본 위치·크기 | DOM 크기·위치 측정 | |
 | 클릭·입력·선택 등 기능 | 하트 클릭 → onFavoriteClick 1회 | Storybook play `fn()` + `userEvent.click` | |
 | disabled / Tab / Focus | Tab 한 번에 하트 포커스 | play `userEvent.tab` | |
+| 사진 넘김(rev 3) | `autoPlayMs` 뒤 2번째 사진이 보이고 2번째 점이 흰색 | Storybook `Photos` 스토리 play(`waitFor`), 브라우저에서 Home 카드 관찰 | |
 | 공통 규칙 및 기존 사용처 | 토큰만 사용, 기존 부품 영향 없음 | `pnpm ai:check ListingCard`, `pnpm ai:verify ListingCard`, `pnpm typecheck`, `pnpm ds:guard` | |
 
 ## 11. 사용자 검토
 
 - 계획 내용에 대한 사용자 수정·결정: Q: 부품 계획 ListingCard rev 1 과 토큰 계획 rev 4 를 승인할까? → A: Approve revision 1·4 (chosen in chat, 2026-11-25)
-- 승인한 revision: 2 (rev 1 → rev 2: href 로 카드 링크 추가, 2026-11-25 사용자가 채팅에서 "전부 제가 직접 (권장)" 선택)
+- 승인한 revision: 3 (rev 1 → rev 2: href 로 카드 링크 추가, 2026-11-25 사용자가 채팅에서 "전부 제가 직접 (권장)" 선택 / rev 2 → rev 3: images·autoPlayMs 로 사진 자동 넘김, 2026-11-26 사용자 요청 원문은 Q-06)
 - 구현 전에 남은 조건: 토큰 계획 revision 4 적용(pnpm ds:apply-token-plan)

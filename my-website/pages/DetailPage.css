@@ -1284,3 +1284,24 @@
 .page-Detail__search-bar-center {
   left: calc(50% - 177px); /* 1440 에서 543, 넓은 화면에서도 가운데 */
 }
+
+/* 선택 동작: 누른 항목으로 선택 모양이 옮겨 간다. 밑줄은 선택된 탭에 붙는다(글자 시작 ~ 탭 끝, Figma 65×3). */
+.page-Detail__inspiration-tab {
+  position: relative;
+}
+
+.page-Detail__inspiration-tab--active::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 0;
+  bottom: 3px;
+  height: 3px;
+  background: #222;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Figma: 첫 탭(Popular) 글자가 섹션 왼쪽(48)에 맞게 -16 */
+.page-Detail__inspiration-tab:first-child {
+  margin-left: -16px;
+}

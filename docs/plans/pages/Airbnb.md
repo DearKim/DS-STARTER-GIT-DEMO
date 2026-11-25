@@ -1,7 +1,7 @@
 ---
 kind: page
 site: Airbnb
-revision: 16
+revision: 17
 status: approved
 source_ref: my-docs/specs/plan.md; my-website/figma/Home.png; my-website/figma/Home.layers.xml
 facts_complete: true
@@ -202,7 +202,7 @@ open_questions: 0
     {
       "name": "Detail",
       "path": "/detail",
-      "title": "서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길",
+      "title": "Kalani’s guesthouse TAHAA",
       "evidence": "Figma Detail frame (812-393)",
       "responsive": "1440px source viewport",
       "sections": [

@@ -1,3 +1,4 @@
+import { useState } from "react";
 // ds-page-plan: docs/plans/pages/Airbnb.md 1b0731a49ae670b1bb1cb555cebb43bcdf8ab2f02b45b89cab74e8eff3124884
 import { Card } from "@/components/Card";
 import { Link } from "@/components/Link";
@@ -8,8 +9,16 @@ import { imageUrl } from "@/assets/images";
 import "./HomePage.css";
 
 export default function HomePage() {
+  const [inspTab, setInspTab] = useState("Popular");
+  const [service, setService] = useState("All");
+  const [chip, setChip] = useState("Hotels");
   // Data
   const listingCards = Array.from({ length: 12 }, (_, i) => `listing-card-${i + 1}`);
+  // Free Unsplash photos (docs/photo-credits.md): stay-<card>-<1..5>.jpg, one set of five per card.
+  const stayPhotos = (card: number) =>
+    [1, 2, 3, 4, 5]
+      .map((n) => imageUrl(`stay-${String(card).padStart(2, "0")}-${n}`))
+      .filter((url): url is string => Boolean(url));
 
   const destinations = [
     { title: "Washington", subtitle: "Apartment rentals" },
@@ -88,26 +97,12 @@ export default function HomePage() {
       <section className="page-Home__hero" data-section="hero">
         <h1 className="page-Home__hero-heading">{"Start Your Trip with Airbnb"}</h1>
         <div className="page-Home__service-tabs-hero">
-          <div className="page-Home__service-tab page-Home__service-tab--selected">
-            <img src="/my-assets/images/icon-all.png" alt="All" className="page-Home__service-icon" />
-            <span>All</span>
-          </div>
-          <div className="page-Home__service-tab">
-            <img src="/my-assets/images/icon-homes.png" alt="Homes" className="page-Home__service-icon" />
-            <span>Homes</span>
-          </div>
-          <div className="page-Home__service-tab">
-            <img src="/my-assets/images/icon-hotels.png" alt="Hotels" className="page-Home__service-icon" />
-            <span>Hotels</span>
-          </div>
-          <div className="page-Home__service-tab">
-            <img src="/my-assets/images/icon-experiences.png" alt="Experience" className="page-Home__service-icon" />
-            <span>Experience</span>
-          </div>
-          <div className="page-Home__service-tab">
-            <img src="/my-assets/images/icon-services.png" alt="Services" className="page-Home__service-icon" />
-            <span>Services</span>
-          </div>
+          {([["All","icon-all"],["Homes","icon-homes"],["Hotels","icon-hotels"],["Experience","icon-experiences"],["Services","icon-services"]] as const).map(([label, icon]) => (
+            <button key={label} type="button" className={`page-Home__service-tab${service === label ? " page-Home__service-tab--selected" : ""}`} aria-pressed={service === label} onClick={() => setService(label)}>
+              <img src={`/my-assets/images/${icon}.png`} alt="" className="page-Home__service-icon" />
+              <span>{label}</span>
+            </button>
+          ))}
         </div>
         <div className="page-Home__search-bar">
           <div className="page-Home__search-field">
@@ -144,7 +139,7 @@ export default function HomePage() {
             <div key={`reservation-card-${i}`} className="page-Home__reservation-card">
               <div className="page-Home__reservation-card-title">Your reservation</div>
               <div className="page-Home__reservation-card-inner">
-                <div className="page-Home__reservation-card-image"></div>
+                <img className="page-Home__reservation-card-image" src={imageUrl(`reservation-${i}`) ?? ""} alt="" />
                 <div className="page-Home__reservation-card-content">
                   <div className="page-Home__reservation-status">CANCELED</div>
                   <div className="page-Home__reservation-title">tiny house, tiny farm</div>
@@ -161,15 +156,14 @@ export default function HomePage() {
         <h2 className="page-Home__section-heading">{"Stay in Seoul"}</h2>
         <div className="page-Home__category-tabs">
           <div className="page-Home__filter-tabs">
-            <button type="button" className="page-Home__chip page-Home__chip--active">Hotels</button>
-            <button type="button" className="page-Home__chip">Motel</button>
-            <button type="button" className="page-Home__chip">Guesthouse</button>
-            <button type="button" className="page-Home__chip">Resort</button>
+            {["Hotels", "Motel", "Guesthouse", "Resort"].map((label) => (
+              <button key={label} type="button" className={`page-Home__chip${chip === label ? " page-Home__chip--active" : ""}`} aria-pressed={chip === label} onClick={() => setChip(label)}>{label}</button>
+            ))}
           </div>
         </div>
         <div className="page-Home__listings-grid">
-          {listingCards.map((id) => (
-            <ListingCard key={id} href="/detail" />
+          {listingCards.map((id, i) => (
+            <ListingCard key={id} href="/detail" images={stayPhotos(i + 1)} imageAlt="Listing photo" autoPlayMs={3000 + (i % 4) * 400} />
           ))}
         </div>
       </section>
@@ -179,15 +173,9 @@ export default function HomePage() {
         <h2 className="page-Home__inspiration-heading">{"Inspiration for future getaways"}</h2>
         <div className="page-Home__inspiration-tabs">
           <div className="page-Home__inspiration-tab-list">
-            <button className="page-Home__inspiration-tab page-Home__inspiration-tab--active">Popular</button>
-            <button className="page-Home__inspiration-tab">Arts &amp; culture</button>
-            <button className="page-Home__inspiration-tab">Beach</button>
-            <button className="page-Home__inspiration-tab">Mountains</button>
-            <button className="page-Home__inspiration-tab">Outdoors</button>
-            <button className="page-Home__inspiration-tab">Things to do</button>
-            <button className="page-Home__inspiration-tab">Travel tips &amp; inspiration</button>
-            <button className="page-Home__inspiration-tab">Airbnb-friendly apartments</button>
-            <div className="page-Home__inspiration-tab-underline"></div>
+            {["Popular","Arts & culture","Beach","Mountains","Outdoors","Things to do","Travel tips & inspiration","Airbnb-friendly apartments"].map((label) => (
+              <button key={label} type="button" className={`page-Home__inspiration-tab${inspTab === label ? " page-Home__inspiration-tab--active" : ""}`} aria-pressed={inspTab === label} onClick={() => setInspTab(label)}>{label}</button>
+            ))}
           </div>
           <div className="page-Home__inspiration-divider"></div>
         </div>

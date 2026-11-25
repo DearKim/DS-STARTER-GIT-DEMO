@@ -1,6 +1,15 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import type { HTMLAttributes, MouseEventHandler } from "react";
 import "./ListingCard.css";
+
+/** Figma ellipses 238:2508: five dots, the fifth one smaller. One dot per photo. */
+const DOTS = [
+  { cx: 3, r: 3 },
+  { cx: 14, r: 3 },
+  { cx: 25, r: 3 },
+  { cx: 36, r: 3 },
+  { cx: 47, r: 2 },
+];
 
 export interface ListingCardProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
   /** First line, semibold. Figma default: "Groveland, California". */
@@ -17,8 +26,12 @@ export interface ListingCardProps extends Omit<HTMLAttributes<HTMLElement>, "tit
   rating?: string;
   /** Photo address. Without it the photo area shows the placeholder color. */
   imageSrc?: string;
-  /** Photo description for screen readers. */
+  /** Description of the photo on screen, for screen readers. */
   imageAlt?: string;
+  /** Photo addresses in order, up to 5 (one per dot). Used instead of imageSrc. The white dot shows which photo is on screen. */
+  images?: string[];
+  /** Show the next photo every this many milliseconds (needs 2+ images). 0 keeps the first photo. Stops while the pointer is on the card or the keyboard focus is inside it. */
+  autoPlayMs?: number;
   /** Saved to the wishlist. Sent as aria-pressed; Figma has no filled heart, so the look stays the same. */
   isFavorite?: boolean;
   /** Called when the heart button is pressed. */
@@ -26,6 +39,17 @@ export interface ListingCardProps extends Omit<HTMLAttributes<HTMLElement>, "tit
   /** Page address. When set, the title becomes a link and the whole card opens it; the heart still works on its own. */
   href?: string;
 }
+
+const reducedMotion = () =>
+  typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const isKeyboardFocus = (el: Element) => {
+  try {
+    return el.matches(":focus-visible");
+  } catch {
+    return true;
+  }
+};
 
 /** A listing card from the Figma Card set, "Default Card" variant (238:2494). */
 export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function ListingCard(
@@ -38,23 +62,70 @@ export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function Li
     rating = "4.91",
     imageSrc,
     imageAlt = "",
+    images,
+    autoPlayMs = 0,
     isFavorite = false,
     onFavoriteClick,
     href,
     className,
+    onMouseEnter,
+    onMouseLeave,
+    onFocus,
+    onBlur,
     ...rest
   },
   ref,
 ) {
+  const photos = (images && images.length > 0 ? images : imageSrc ? [imageSrc] : []).slice(0, DOTS.length);
+  const count = photos.length;
+  const [index, setIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const current = index < count ? index : 0;
+  const playing = autoPlayMs > 0 && count > 1 && !hovered && !focused;
+
+  useEffect(() => {
+    if (!playing || reducedMotion()) return undefined;
+    const timer = window.setInterval(() => setIndex((i) => (i + 1) % count), autoPlayMs);
+    return () => window.clearInterval(timer);
+  }, [playing, autoPlayMs, count]);
+
   return (
     <article
       ref={ref}
       className={["ds-listing-card", className].filter(Boolean).join(" ")}
       data-testid="ds-listing-card"
+      onMouseEnter={(event) => {
+        setHovered(true);
+        onMouseEnter?.(event);
+      }}
+      onMouseLeave={(event) => {
+        setHovered(false);
+        onMouseLeave?.(event);
+      }}
+      onFocus={(event) => {
+        setFocused(isKeyboardFocus(event.target));
+        onFocus?.(event);
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+        onBlur?.(event);
+      }}
       {...rest}
     >
       <div className="ds-listing-card__media">
-        {imageSrc ? <img className="ds-listing-card__image" src={imageSrc} alt={imageAlt} /> : null}
+        {photos.map((src, i) => (
+          <img
+            key={`${i}-${src}`}
+            className={`ds-listing-card__image${i === current ? " ds-listing-card__image--current" : ""}`}
+            src={src}
+            alt={i === current ? imageAlt : ""}
+            aria-hidden={i === current ? undefined : true}
+            loading={i === 0 ? undefined : "lazy"}
+            decoding="async"
+            draggable={false}
+          />
+        ))}
         <button
           type="button"
           className="ds-listing-card__heart"
@@ -74,11 +145,16 @@ export const ListingCard = forwardRef<HTMLElement, ListingCardProps>(function Li
           </svg>
         </button>
         <svg className="ds-listing-card__dots" width="49" height="6" viewBox="0 0 49 6" aria-hidden="true" focusable="false">
-          <circle className="ds-listing-card__dot ds-listing-card__dot--current" cx="3" cy="3" r="3" fill="currentColor" />
-          <circle className="ds-listing-card__dot" cx="14" cy="3" r="3" fill="currentColor" />
-          <circle className="ds-listing-card__dot" cx="25" cy="3" r="3" fill="currentColor" />
-          <circle className="ds-listing-card__dot" cx="36" cy="3" r="3" fill="currentColor" />
-          <circle className="ds-listing-card__dot" cx="47" cy="3" r="2" fill="currentColor" />
+          {DOTS.map((dot, i) => (
+            <circle
+              key={dot.cx}
+              className={`ds-listing-card__dot${i === current ? " ds-listing-card__dot--current" : ""}`}
+              cx={dot.cx}
+              cy="3"
+              r={dot.r}
+              fill="currentColor"
+            />
+          ))}
         </svg>
       </div>
       <div className="ds-listing-card__body">

@@ -293,6 +293,8 @@
   background: var(--color-neutral-03, #DDDDDD);
   border-radius: 12px;
   flex-shrink: 0;
+  display: block;
+  object-fit: cover;
 }
 
 .page-Home__reservation-card-content {
@@ -695,4 +697,34 @@
 
 .page-Home__globe-button img {
   margin: -1px;
+}
+
+/* 선택 동작: 누른 항목으로 선택 모양이 옮겨 간다. 밑줄은 선택된 탭에 붙는다(글자 시작 ~ 탭 끝, Figma 65×3). */
+.page-Home__inspiration-tab {
+  position: relative;
+}
+
+.page-Home__inspiration-tab--active::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 0;
+  bottom: 3px;
+  height: 3px;
+  background: #222;
+  border-radius: 3px 3px 0 0;
+}
+
+.page-Home__service-tabs-hero .page-Home__service-tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* Figma: 첫 탭(Popular) 글자가 섹션 왼쪽(48)에 맞게 -16 */
+.page-Home__inspiration-tab:first-child {
+  margin-left: -16px;
 }

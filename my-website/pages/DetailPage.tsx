@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "@/components/Link";
 import { imageUrl } from "@/assets/images";
 import "./DetailPage.css";
 
 export default function DetailPage() {
+  const [inspTab, setInspTab] = useState("Popular");
   const destinations = [
     { title: "Washington", subtitle: "Apartment rentals" },
     { title: "West Palm Beach", subtitle: "Cottage rentals" },
@@ -114,7 +116,7 @@ export default function DetailPage() {
 
       {/* Title */}
       <section className="page-Detail__title-section" data-section="title">
-        <h1 className="page-Detail__title">{"서면/전포역5분/최대8인/프라이빗독채/계단없음/조용한숙소/사잇길"}</h1>
+        <h1 className="page-Detail__title">{"Kalani’s guesthouse TAHAA"}</h1>
         <div className="page-Detail__title-actions">
           <button className="page-Detail__action-button">
             <img
@@ -493,25 +495,9 @@ export default function DetailPage() {
         </h2>
         <div className="page-Detail__inspiration-tabs">
           <div className="page-Detail__inspiration-tab-list">
-            <button className="page-Detail__inspiration-tab page-Detail__inspiration-tab--active">
-              Popular
-            </button>
-            <button className="page-Detail__inspiration-tab">
-              Arts &amp; culture
-            </button>
-            <button className="page-Detail__inspiration-tab">Beach</button>
-            <button className="page-Detail__inspiration-tab">Mountains</button>
-            <button className="page-Detail__inspiration-tab">Outdoors</button>
-            <button className="page-Detail__inspiration-tab">
-              Things to do
-            </button>
-            <button className="page-Detail__inspiration-tab">
-              Travel tips &amp; inspiration
-            </button>
-            <button className="page-Detail__inspiration-tab">
-              Airbnb-friendly apartments
-            </button>
-            <div className="page-Detail__inspiration-tab-underline"></div>
+            {["Popular","Arts & culture","Beach","Mountains","Outdoors","Things to do","Travel tips & inspiration","Airbnb-friendly apartments"].map((label) => (
+              <button key={label} type="button" className={`page-Detail__inspiration-tab${inspTab === label ? " page-Detail__inspiration-tab--active" : ""}`} aria-pressed={inspTab === label} onClick={() => setInspTab(label)}>{label}</button>
+            ))}
           </div>
           <div className="page-Detail__inspiration-divider"></div>
         </div>

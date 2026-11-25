@@ -803,3 +803,67 @@
 .page-Checkout__logo-link {
   display: flex;
 }
+
+/* 선택 동작: 누른 항목으로 선택 모양이 옮겨 간다. 밑줄은 선택된 탭에 붙는다(글자 시작 ~ 탭 끝, Figma 65×3). */
+.page-Checkout__inspiration-tab {
+  position: relative;
+}
+
+.page-Checkout__inspiration-tab--active::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 0;
+  bottom: 3px;
+  height: 3px;
+  background: #222;
+  border-radius: 3px 3px 0 0;
+}
+
+/* 결제 라디오: Figma Radio Button 상태(기본 #DDDDDD / 마우스 올림 #222 / 선택됨 / Tab 포커스 32px) */
+.page-Checkout__option-row {
+  position: relative;
+  cursor: pointer;
+}
+
+.page-Checkout__radio-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-Checkout__radio {
+  display: block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: url("/my-assets/images/checkout-radio.svg") center / 24px 24px no-repeat;
+}
+
+.page-Checkout__option-row:hover .page-Checkout__radio {
+  background-image: url("/my-assets/images/checkout-radio-hover.svg");
+}
+
+.page-Checkout__radio-input:checked + .page-Checkout__radio {
+  background-image: url("/my-assets/images/checkout-radio-checked.svg");
+}
+
+.page-Checkout__radio-input:focus-visible + .page-Checkout__radio {
+  width: 32px;
+  height: 32px;
+  margin: -4px;
+  background-image: url("/my-assets/images/checkout-radio-focus.svg");
+  background-size: 32px 32px;
+}
+
+.page-Checkout__radio-input:checked:focus-visible + .page-Checkout__radio {
+  background-image: url("/my-assets/images/checkout-radio-focus-checked.svg");
+}
+
+/* Figma: 첫 탭(Popular) 글자가 섹션 왼쪽(48)에 맞게 -16 */
+.page-Checkout__inspiration-tab:first-child {
+  margin-left: -16px;
+}
