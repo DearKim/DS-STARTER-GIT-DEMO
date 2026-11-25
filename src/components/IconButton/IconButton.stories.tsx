@@ -1,5 +1,5 @@
 /* @ds-generated cdb47e7dc12c5b50 — `pnpm ds:gen` 이 만든 파일입니다.
-   기준선: IconButton (core)
+   기준선: IconButton (Figma 389:7765)
    직접 고치면 다음 생성 때 충돌로 보고되고 덮어쓰지 않습니다. */
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, within } from "@storybook/test";
@@ -12,19 +12,41 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: { label: "Add", icon: <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" /></svg>, variant: "primary", size: "md", onClick: fn() },
+  args: {
+    label: "Search",
+    variant: "secondary",
+    size: "l",
+    status: "default",
+    onClick: fn(),
+  },
   argTypes: {
-    variant: { control: "inline-radio", options: ["primary", "secondary", "ghost", "danger"] },
-    size: { control: "inline-radio", options: ["sm", "md", "lg"] },
-    icon: { control: false },
+    variant: { control: "inline-radio", options: ["primary", "secondary"] },
+    size: { control: "inline-radio", options: ["l", "s"] },
+    status: { control: "inline-radio", options: ["default", "hover", "selected"] },
+    iconType: {
+      control: "select",
+      options: [
+        "services",
+        "experiences",
+        "hotels",
+        "homes",
+        "all",
+        "profile",
+        "menu",
+        "search",
+        "redirect",
+        "previous",
+        "next",
+      ],
+    },
   },
 } satisfies Meta<typeof IconButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  args: { variant: "primary" },
+export const Secondary: Story = {
+  args: { variant: "secondary" },
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.click(canvas.getByTestId("ds-iconbutton"));
@@ -32,34 +54,62 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {
-  args: { variant: "secondary" },
+export const Primary: Story = {
+  args: { variant: "primary" },
 };
 
-export const Ghost: Story = {
-  args: { variant: "ghost" },
+export const Small: Story = {
+  args: { size: "s" },
 };
 
-export const Danger: Story = {
-  args: { variant: "danger" },
+export const WithIconType: Story = {
+  args: { iconType: "search" },
 };
 
-/** Every Figma variant side by side, to compare with Figma — Variant × Size. */
+/** All Figma variants: Variant × Size × Status */
 export const Matrix: Story = {
   parameters: { controls: { disable: true } },
   render: (args) => (
-    <div style={{ display: "grid", gap: 16 }}>
-      {(["primary","secondary","ghost","danger"] as const).map((variant) => (
-        <div key={variant} style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          {(["sm","md","lg"] as const).map((size) => (
-            <IconButton key={size} {...args} variant={variant} size={size} />
-          ))}
+    <div style={{ display: "grid", gap: 24 }}>
+      {(["secondary", "primary"] as const).map((variant) => (
+        <div key={variant}>
+          <h3 style={{ marginBottom: 12 }}>{variant}</h3>
+          <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+            {(["l", "s"] as const).map((size) => (
+              <div key={size} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <span style={{ fontSize: 12, color: "#666" }}>{size}</span>
+                {(["default", "hover", "selected"] as const).map((status) => (
+                  <IconButton
+                    key={status}
+                    {...args}
+                    variant={variant}
+                    size={size}
+                    status={status}
+                    label={`${variant} ${size} ${status}`}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
   ),
 };
 
-/* Figma 의 State variant(hover, active, focus)는 prop 이 아니다.
-   코드에서는 CSS 의사클래스(:hover/:active/:focus-visible)와 disabled 속성이 처리한다.
-   실제 상호작용과 어긋나지 않도록 story 로 고정하지 않는다. */
+/** Icon types from Figma */
+export const IconTypes: Story = {
+  parameters: { controls: { disable: true } },
+  render: (args) => (
+    <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+      {(["services", "experiences", "hotels", "homes", "all", "profile", "menu", "search", "redirect", "previous", "next"] as const).map(
+        (iconType) => (
+          <div key={iconType} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+            <IconButton {...args} iconType={iconType} label={iconType} />
+            <span style={{ fontSize: 11, color: "#666" }}>{iconType}</span>
+          </div>
+        ),
+      )}
+    </div>
+  ),
+};

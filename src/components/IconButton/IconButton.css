@@ -1,70 +1,117 @@
-/* IconButton — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+/* IconButton — Figma 389:7765 design tokens */
 .ds-iconbutton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: none;
-  width: calc(var(--spacing) * 8);
-  height: calc(var(--spacing) * 8);
-  padding: 0;
-  border: var(--border-width-thin) solid transparent;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  color: var(--color-text);
+  border: none;
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard);
+  font-family: inherit;
+  transition: background-color 0.15s ease, border-color 0.15s ease, background-image 0.15s ease;
 }
 
+/* Size L: 40×40 */
+.ds-iconbutton--l {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Size S: 28×28 */
+.ds-iconbutton--s {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+/* Secondary variant */
+.ds-iconbutton--secondary {
+  background: var(--color-border);
+  color: var(--color-bg);
+}
+
+.ds-iconbutton--secondary:hover:not(:disabled) {
+  background: var(--color-neutral-04);
+}
+
+.ds-iconbutton--secondary:active:not(:disabled) {
+  background: var(--color-neutral-06);
+}
+
+.ds-iconbutton--secondary:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.ds-iconbutton--secondary.ds-iconbutton--disabled,
+.ds-iconbutton--secondary:disabled {
+  background: var(--color-surface-raised);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Primary variant */
+.ds-iconbutton--primary {
+  background-image: var(--gradient-selfmake-1);
+  color: var(--color-bg);
+}
+
+.ds-iconbutton--primary:hover:not(:disabled) {
+  background-image: var(--gradient-selfmake-2);
+}
+
+.ds-iconbutton--primary:active:not(:disabled) {
+  background-image: var(--gradient-selfmake-3);
+}
+
+.ds-iconbutton--primary:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.ds-iconbutton--primary.ds-iconbutton--disabled,
+.ds-iconbutton--primary:disabled {
+  background: var(--color-surface-raised);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Status: Selected */
+.ds-iconbutton--selected {
+  background: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  opacity: 0.2;
+}
+
+/* Icon container */
 .ds-iconbutton__icon {
   display: inline-flex;
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
-}
-
-.ds-iconbutton__icon > svg {
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
-.ds-iconbutton--primary {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+.ds-iconbutton__icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
-.ds-iconbutton--secondary {
-  background: var(--color-surface-raised);
-  color: var(--color-text);
-  border-color: var(--color-border-strong);
+.ds-iconbutton--s .ds-iconbutton__icon svg {
+  width: 12px;
+  height: 12px;
 }
 
-.ds-iconbutton--ghost {
-  background: transparent;
-  color: var(--color-text);
-}
-
-.ds-iconbutton--danger {
-  background: var(--color-danger);
-  color: var(--color-on-primary);
-}
-
-.ds-iconbutton--primary:hover:not(:disabled) { background: var(--color-primary-hover); }
-.ds-iconbutton--primary:active:not(:disabled) { background: var(--color-primary-active); }
-.ds-iconbutton--secondary:hover:not(:disabled),
-.ds-iconbutton--ghost:hover:not(:disabled) { background: var(--color-surface); border-color: var(--color-border-strong); }
-.ds-iconbutton--danger:hover:not(:disabled) { filter: brightness(0.92); }
-
-.ds-iconbutton--sm { width: calc(var(--spacing) * 7); height: calc(var(--spacing) * 7); }
-.ds-iconbutton--lg { width: calc(var(--spacing) * 10); height: calc(var(--spacing) * 10); }
-.ds-iconbutton--lg .ds-iconbutton__icon { width: calc(var(--spacing) * 5); height: calc(var(--spacing) * 5); }
-
-.ds-iconbutton:focus-visible {
-  outline: var(--border-width-thick) solid var(--color-primary);
-  outline-offset: var(--border-width-thick);
-}
-
-.ds-iconbutton:disabled {
-  background: var(--color-surface);
-  border-color: var(--color-border);
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
+/* Icon types - placeholder styles (actual SVGs come from Figma assets) */
+.ds-iconbutton--type-services::before,
+.ds-iconbutton--type-experiences::before,
+.ds-iconbutton--type-hotels::before,
+.ds-iconbutton--type-homes::before,
+.ds-iconbutton--type-all::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: currentColor;
+  border-radius: 4px;
 }

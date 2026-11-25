@@ -1,7 +1,7 @@
 {
   "level": "L2a",
-  "sourceHash": "7b556f3582e9a94d",
-  "generatedAt": "2026-10-26T04:41:59.205Z",
+  "sourceHash": "df761168805da04a",
+  "generatedAt": "2026-11-25T10:41:55.187Z",
   "ownership": {
     "tokenValue": "figma",
     "tokenName": "figma",
@@ -12,561 +12,691 @@
     "usageGuide": "human"
   },
   "notes": [
-    "semantic 계층이 없어 primitive 29개에서 역할 16개를 추론함.",
-    "layout 계층에서 빠진 19개를 기본 세트로 보충함."
+    "샘플 색을 제거했습니다. 누락 역할은 학생 승인이 필요합니다."
   ],
   "review": [
-    {
-      "name": "bg",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "무채색 계열 중 가장 밝음"
-    },
-    {
-      "name": "surface",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "bg 와 동일 (분리된 표면 단계가 없음)"
-    },
-    {
-      "name": "text",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "무채색 계열 중 가장 어두움"
-    },
-    {
-      "name": "text-secondary",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "명도 0.45 근처"
-    },
-    {
-      "name": "text-disabled",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "명도 0.65 근처"
-    },
-    {
-      "name": "border",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "명도 0.85 근처"
-    },
-    {
-      "name": "border-strong",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "명도 0.72 근처"
-    },
-    {
-      "name": "surface-raised",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "bg 보다 밝은 무채색이 없어 bg 와 동일"
-    },
-    {
-      "name": "primary",
-      "layer": "semantic",
-      "confidence": 0.4,
-      "reason": "이름 단서 없음 — 채도 높고 중간 밝기인 색"
-    },
-    {
-      "name": "primary-hover",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "primary 램프의 한 단계 어두운 스텝"
-    },
-    {
-      "name": "primary-active",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "primary 램프의 두 단계 어두운 스텝"
-    },
-    {
-      "name": "on-primary",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "primary 대비 4.6:1 로 최대"
-    },
-    {
-      "name": "danger",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "hue 340~20° 계열의 기준 스텝"
-    },
-    {
-      "name": "warning",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "hue 30~65° 계열의 기준 스텝"
-    },
-    {
-      "name": "success",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "hue 90~160° 계열의 기준 스텝"
-    },
-    {
-      "name": "info",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": "hue 190~255° 에 전용 계열이 없어 primary 계열 재사용"
-    },
     {
       "name": "overlay",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "sm",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "full",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "thick",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "sm",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "md",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "lg",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "fast",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "normal",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "standard",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "sans",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "body-2",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "body-1",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "title",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "regular",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "medium",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "bold",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "tight",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     {
       "name": "normal",
       "layer": "layout",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
+    },
+    {
+      "name": "type-body-copy-14pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/14pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-16pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/16pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-12pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/12pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-14pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/14pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-header-22pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Header/22pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": "텍스트 스타일 \"var(--sds-typography-weight-medium)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다."
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": "텍스트 스타일 \"var(--sds-typography-body-size-small)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다."
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": "텍스트 스타일 \"var(--sds-typography-subheading-font-weight)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다."
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": "텍스트 스타일 \"var(--sds-typography-weight-regular)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다."
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": "텍스트 스타일 \"var(--sds-typography-code-size-small)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다."
+    },
+    {
+      "name": "type-body-copy-18pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/18pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-16pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/16pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
     }
   ],
   "tokens": {
-    "COLOR:blue-50": {
+    "COLOR:shade-01": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-100": {
+    "COLOR:neutral-02": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-200": {
+    "COLOR:shade-02": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-300": {
+    "COLOR:neutral-07": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-400": {
+    "COLOR:primary-02": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-500": {
+    "COLOR:neutral-03": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-600": {
+    "COLOR:neutral-04": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-700": {
+    "COLOR:neutral-06": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-800": {
+    "COLOR:shade-02-30": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:blue-900": {
+    "COLOR:neutral-08": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:gray-50": {
+    "COLOR:fills-vibrant-use-plus-lighter-darker-quaternary": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:gray-100": {
+    "COLOR:var-sds-color-icon-default-default": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
-    "COLOR:gray-200": {
+    "COLOR:error-02": {
       "source": "declared",
       "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-300": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-400": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-500": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-600": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-700": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-800": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:gray-900": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:red-400": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:red-500": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:red-600": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:green-400": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:green-500": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:green-600": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:amber-400": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:amber-500": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:amber-600": {
-      "source": "declared",
-      "confidence": 1,
-      "reason": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴"
-    },
-    "COLOR:bg": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "무채색 계열 중 가장 밝음"
-    },
-    "COLOR:surface": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "bg 와 동일 (분리된 표면 단계가 없음)"
-    },
-    "COLOR:text": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "무채색 계열 중 가장 어두움"
-    },
-    "COLOR:text-secondary": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "명도 0.45 근처"
-    },
-    "COLOR:text-disabled": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "명도 0.65 근처"
-    },
-    "COLOR:border": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "명도 0.85 근처"
-    },
-    "COLOR:border-strong": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "명도 0.72 근처"
-    },
-    "COLOR:surface-raised": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "bg 보다 밝은 무채색이 없어 bg 와 동일"
-    },
-    "COLOR:primary": {
-      "source": "inferred",
-      "confidence": 0.4,
-      "reason": "이름 단서 없음 — 채도 높고 중간 밝기인 색"
-    },
-    "COLOR:primary-hover": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "primary 램프의 한 단계 어두운 스텝"
-    },
-    "COLOR:primary-active": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "primary 램프의 두 단계 어두운 스텝"
-    },
-    "COLOR:on-primary": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "primary 대비 4.6:1 로 최대"
-    },
-    "COLOR:danger": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "hue 340~20° 계열의 기준 스텝"
-    },
-    "COLOR:warning": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "hue 30~65° 계열의 기준 스텝"
-    },
-    "COLOR:success": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "hue 90~160° 계열의 기준 스텝"
-    },
-    "COLOR:info": {
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": "hue 190~255° 에 전용 계열이 없어 primary 계열 재사용"
+      "reason": "학생 Figma의 정확한 원시 색"
     },
     "RADIUS:md": {
-      "source": "inferred",
-      "confidence": 0.75,
-      "reason": "색이 아닌 카테고리는 layout 계층"
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
     },
     "RADIUS:lg": {
-      "source": "inferred",
-      "confidence": 0.75,
-      "reason": "색이 아닌 카테고리는 layout 계층"
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
     },
     "SPACING_UNIT:base": {
-      "source": "inferred",
-      "confidence": 0.75,
-      "reason": "색이 아닌 카테고리는 layout 계층"
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
     },
     "BORDER_WIDTH:thin": {
-      "source": "inferred",
-      "confidence": 0.6,
-      "reason": "색이 아닌 카테고리는 layout 계층"
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "RADIUS:size-title-2": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "RADIUS:xxlarge-headline": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "RADIUS:small-subheadline": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SPACING_UNIT:var-sds-size-space-400": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "RADIUS:var-sds-size-radius-200": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SPACING_UNIT:var-sds-size-space-100": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SPACING_UNIT:var-sds-size-space-800": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SPACING_UNIT:var-sds-size-space-200": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SPACING_UNIT:var-sds-size-space-1200": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "RADIUS:corner-medium": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SPACING_UNIT:var-sds-size-space-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "GRADIENT:selfmake-1": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "GRADIENT:selfmake-2": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "GRADIENT:selfmake-3": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "GRADIENT:selfmake-4": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
     },
     "COLOR:overlay": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "RADIUS:sm": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "RADIUS:full": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "BORDER_WIDTH:thick": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "SHADOW:sm": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "SHADOW:md": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "SHADOW:lg": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "DURATION:fast": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "DURATION:normal": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "EASING:standard": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_FAMILY:sans": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_SIZE:body-2": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_SIZE:body-1": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_SIZE:title": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_WEIGHT:regular": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_WEIGHT:medium": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "FONT_WEIGHT:bold": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "LINE_HEIGHT:tight": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
     },
     "LINE_HEIGHT:normal": {
       "source": "synthesized",
       "confidence": 0.3,
-      "reason": "기본 layout 세트에서 보충함"
+      "reason": "기본 layout 보충"
+    },
+    "FONT_SIZE:type-body-copy-14pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\""
+    },
+    "FONT_WEIGHT:type-body-copy-14pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\""
+    },
+    "FONT_FAMILY:type-body-copy-14pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\""
+    },
+    "LETTER_SPACING:type-body-copy-14pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\""
+    },
+    "FONT_SIZE:type-body-copy-16pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\""
+    },
+    "FONT_WEIGHT:type-body-copy-16pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\""
+    },
+    "FONT_FAMILY:type-body-copy-16pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\""
+    },
+    "LETTER_SPACING:type-body-copy-16pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\""
+    },
+    "FONT_SIZE:type-body-copy-12pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\""
+    },
+    "FONT_WEIGHT:type-body-copy-12pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\""
+    },
+    "FONT_FAMILY:type-body-copy-12pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\""
+    },
+    "LETTER_SPACING:type-body-copy-12pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\""
+    },
+    "FONT_SIZE:type-body-copy-14pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\""
+    },
+    "FONT_WEIGHT:type-body-copy-14pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\""
+    },
+    "FONT_FAMILY:type-body-copy-14pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\""
+    },
+    "LETTER_SPACING:type-body-copy-14pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\""
+    },
+    "FONT_SIZE:type-header-22pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Semibold\""
+    },
+    "FONT_WEIGHT:type-header-22pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Semibold\""
+    },
+    "FONT_FAMILY:type-header-22pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Semibold\""
+    },
+    "LETTER_SPACING:type-header-22pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Semibold\""
+    },
+    "FONT_SIZE:type-body-copy-18pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\""
+    },
+    "FONT_WEIGHT:type-body-copy-18pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\""
+    },
+    "FONT_FAMILY:type-body-copy-18pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\""
+    },
+    "LETTER_SPACING:type-body-copy-18pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\""
+    },
+    "FONT_SIZE:type-body-copy-16pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\""
+    },
+    "FONT_WEIGHT:type-body-copy-16pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\""
+    },
+    "FONT_FAMILY:type-body-copy-16pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\""
+    },
+    "LETTER_SPACING:type-body-copy-16pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\""
+    },
+    "COLOR:bg": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-raised": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border-strong": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text-secondary": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text-disabled": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:primary": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:primary-hover": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:primary-active": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:on-primary": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:danger": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:success": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:warning": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:info": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:image-placeholder": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text-tertiary": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:on-image": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:indicator": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
     }
   }
 }

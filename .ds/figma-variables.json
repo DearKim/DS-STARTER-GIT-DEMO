@@ -1,0 +1,528 @@
+{
+  "$comment": "scripts/figma-tokens.mjs 가 Figma MCP 로 가져온 변수. 손으로 고치지 말고 다시 가져온다. 우리 쪽 정의는 .ds/source.json.",
+  "schema_version": "1.0",
+  "file_key": "Q5QDGE5WoXefOxgm5fziH3",
+  "imported_at": "2026-11-25T06:22:55.807Z",
+  "nodes": [
+    "389:2752",
+    "389:7765"
+  ],
+  "collections": [
+    {
+      "name": "Figma Colors",
+      "modes": [
+        {
+          "id": "f1",
+          "name": "Mode 1"
+        }
+      ],
+      "variables": [
+        {
+          "id": "figma-shade-01",
+          "name": "shade-01",
+          "type": "COLOR",
+          "value": "#FFFFFF",
+          "figmaName": "Shade 01"
+        },
+        {
+          "id": "figma-neutral-02",
+          "name": "neutral-02",
+          "type": "COLOR",
+          "value": "#EBEBEB",
+          "figmaName": "Neutral 02"
+        },
+        {
+          "id": "figma-shade-02",
+          "name": "shade-02",
+          "type": "COLOR",
+          "value": "#222222",
+          "figmaName": "Shade 02"
+        },
+        {
+          "id": "figma-neutral-07",
+          "name": "neutral-07",
+          "type": "COLOR",
+          "value": "#717171",
+          "figmaName": "Neutral 07"
+        },
+        {
+          "id": "figma-primary-02",
+          "name": "primary-02",
+          "type": "COLOR",
+          "value": "#FF385C",
+          "figmaName": "Primary 02"
+        },
+        {
+          "id": "figma-neutral-03",
+          "name": "neutral-03",
+          "type": "COLOR",
+          "value": "#DDDDDD",
+          "figmaName": "Neutral 03"
+        },
+        {
+          "id": "figma-neutral-04",
+          "name": "neutral-04",
+          "type": "COLOR",
+          "value": "#D3D3D3",
+          "figmaName": "Neutral 04"
+        },
+        {
+          "id": "figma-neutral-06",
+          "name": "neutral-06",
+          "type": "COLOR",
+          "value": "#B0B0B0",
+          "figmaName": "Neutral 06"
+        },
+        {
+          "id": "figma-shade-02---30%",
+          "name": "shade-02---30%",
+          "type": "COLOR",
+          "value": "#222222",
+          "figmaName": "Shade 02 - 30%"
+        },
+        {
+          "id": "figma-neutral-08",
+          "name": "neutral-08",
+          "type": "COLOR",
+          "value": "#5E5E5E",
+          "figmaName": "Neutral 08"
+        },
+        {
+          "id": "figma-fills---vibrant-(use-plus-lighter-|-darker)/quaternary",
+          "name": "fills---vibrant-(use-plus-lighter-|-darker)/quaternary",
+          "type": "COLOR",
+          "value": "#F7F7F7",
+          "figmaName": "Fills - Vibrant (Use Plus Lighter | Darker)/Quaternary"
+        },
+        {
+          "id": "figma-var(--sds-color-icon-default-default)",
+          "name": "var(--sds-color-icon-default-default)",
+          "type": "COLOR",
+          "value": "#FFFFFF",
+          "figmaName": "var(--sds-color-icon-default-default)"
+        },
+        {
+          "id": "figma-error-02",
+          "name": "error-02",
+          "type": "COLOR",
+          "value": "#C13515",
+          "figmaName": "Error 02"
+        }
+      ]
+    },
+    {
+      "name": "Figma Layout",
+      "modes": [
+        {
+          "id": "f2",
+          "name": "Mode 1"
+        }
+      ],
+      "variables": [
+        {
+          "id": "figma-size/title-2",
+          "name": "size/title-2",
+          "type": "FLOAT",
+          "value": 22,
+          "figmaName": "Size/Title 2"
+        },
+        {
+          "id": "figma-xxlarge/headline",
+          "name": "xxlarge/headline",
+          "type": "FLOAT",
+          "value": 26,
+          "figmaName": "xxLarge/Headline"
+        },
+        {
+          "id": "figma-small/subheadline",
+          "name": "small/subheadline",
+          "type": "FLOAT",
+          "value": 18,
+          "figmaName": "Small/Subheadline"
+        },
+        {
+          "id": "figma-var(--sds-size-space-400)",
+          "name": "var(--sds-size-space-400)",
+          "type": "FLOAT",
+          "value": 16,
+          "figmaName": "var(--sds-size-space-400)"
+        },
+        {
+          "id": "figma-var(--sds-size-radius-200)",
+          "name": "var(--sds-size-radius-200)",
+          "type": "FLOAT",
+          "value": 8,
+          "figmaName": "var(--sds-size-radius-200)"
+        },
+        {
+          "id": "figma-var(--sds-size-space-100)",
+          "name": "var(--sds-size-space-100)",
+          "type": "FLOAT",
+          "value": 4,
+          "figmaName": "var(--sds-size-space-100)"
+        },
+        {
+          "id": "figma-var(--sds-size-space-800)",
+          "name": "var(--sds-size-space-800)",
+          "type": "FLOAT",
+          "value": 32,
+          "figmaName": "var(--sds-size-space-800)"
+        },
+        {
+          "id": "figma-var(--sds-size-space-200)",
+          "name": "var(--sds-size-space-200)",
+          "type": "FLOAT",
+          "value": 8,
+          "figmaName": "var(--sds-size-space-200)"
+        },
+        {
+          "id": "figma-var(--sds-size-space-1200)",
+          "name": "var(--sds-size-space-1200)",
+          "type": "FLOAT",
+          "value": 48,
+          "figmaName": "var(--sds-size-space-1200)"
+        },
+        {
+          "id": "figma-corner/medium",
+          "name": "corner/medium",
+          "type": "FLOAT",
+          "value": 12,
+          "figmaName": "Corner/Medium"
+        },
+        {
+          "id": "figma-var(--sds-size-space-600)",
+          "name": "var(--sds-size-space-600)",
+          "type": "FLOAT",
+          "value": 24,
+          "figmaName": "var(--sds-size-space-600)"
+        },
+        {
+          "id": "figma-gradient-selfmake-1",
+          "name": "selfmake-1",
+          "type": "STRING",
+          "category": "GRADIENT",
+          "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(4.1582 -4.3501e-7 4.3501e-7 56.542 -1.5819 40)'><stop stop-color='rgba(211,55,83,1)' offset='0'/><stop stop-color='rgba(209,54,96,1)' offset='0.52835'/><stop stop-color='rgba(199,45,101,1)' offset='1'/></radialGradient></defs></svg>\")",
+          "figmaName": "Gradient fill of Selfmake"
+        },
+        {
+          "id": "figma-gradient-selfmake-2",
+          "name": "selfmake-2",
+          "type": "STRING",
+          "category": "GRADIENT",
+          "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\"), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\")",
+          "figmaName": "Gradient fill of Selfmake"
+        },
+        {
+          "id": "figma-gradient-selfmake-3",
+          "name": "selfmake-3",
+          "type": "STRING",
+          "category": "GRADIENT",
+          "value": "linear-gradient(90deg, rgb(235, 76, 96) 0%, rgb(235, 76, 96) 100%), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\"), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\")",
+          "figmaName": "Gradient fill of Selfmake"
+        },
+        {
+          "id": "figma-gradient-selfmake-4",
+          "name": "selfmake-4",
+          "type": "STRING",
+          "category": "GRADIENT",
+          "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(3.7424 -3.915e-7 3.915e-7 50.887 -1.4237 36)'><stop stop-color='rgba(211,55,83,1)' offset='0'/><stop stop-color='rgba(209,54,96,1)' offset='0.52835'/><stop stop-color='rgba(199,45,101,1)' offset='1'/></radialGradient></defs></svg>\")",
+          "figmaName": "Gradient fill of Selfmake"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "typography": {
+    "status": "review-required",
+    "applied": false,
+    "families": [
+      "SF Pro"
+    ],
+    "styles": [
+      {
+        "name": "Body Copy/14pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 14, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "14",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/16pt Regular",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 16, weight: 400, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "16",
+          "weight": "400",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/12pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 12, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "12",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/14pt Regular",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 14, weight: 400, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "14",
+          "weight": "400",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Header/22pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 22, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "22",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "var(--sds-typography-weight-medium)",
+        "raw": "500",
+        "fields": null,
+        "questions": [
+          "글자 변수/참조의 실제 값과 사용할 역할을 확인하세요."
+        ]
+      },
+      {
+        "name": "var(--sds-typography-body-size-small)",
+        "raw": "14",
+        "fields": null,
+        "questions": [
+          "글자 변수/참조의 실제 값과 사용할 역할을 확인하세요."
+        ]
+      },
+      {
+        "name": "var(--sds-typography-subheading-font-weight)",
+        "raw": "400",
+        "fields": null,
+        "questions": [
+          "글자 변수/참조의 실제 값과 사용할 역할을 확인하세요."
+        ]
+      },
+      {
+        "name": "var(--sds-typography-weight-regular)",
+        "raw": "400",
+        "fields": null,
+        "questions": [
+          "글자 변수/참조의 실제 값과 사용할 역할을 확인하세요."
+        ]
+      },
+      {
+        "name": "var(--sds-typography-code-size-small)",
+        "raw": "14",
+        "fields": null,
+        "questions": [
+          "글자 변수/참조의 실제 값과 사용할 역할을 확인하세요."
+        ]
+      },
+      {
+        "name": "Body Copy/18pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 18, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "18",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/16pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 16, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "16",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      }
+    ],
+    "questions": [
+      "대표 글꼴과 기존 --font-sans·--text-*·--leading-*에 연결할 스타일을 학생이 선택하세요. 원본 값과 역할을 별도 글자 계획에서 승인받기 전에는 적용하지 않습니다."
+    ]
+  },
+  "effects": {
+    "converted": [],
+    "review": []
+  },
+  "gradients": [
+    {
+      "name": "selfmake-1",
+      "part": "selfmake",
+      "partName": "Selfmake",
+      "node": "389:7765",
+      "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(4.1582 -4.3501e-7 4.3501e-7 56.542 -1.5819 40)'><stop stop-color='rgba(211,55,83,1)' offset='0'/><stop stop-color='rgba(209,54,96,1)' offset='0.52835'/><stop stop-color='rgba(199,45,101,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "uses": [
+        "Icon button=Default, Size=L, Type=Primary  (414:1896) · Text",
+        "Icon button=Default, Size=S, Type=Secondary (402:69) · Text",
+        "Icon button=Hover, Size=S, Type=Secondary (402:73) · Text",
+        "Icon button=Pressed, Size=S, Type=Secondary (402:77) · Text",
+        "Icon button=Focus, Size=S, Type=Secondary (402:81) · Text",
+        "Icon button=Disabled, Size=S, Type=Secondary (402:87) · Text"
+      ]
+    },
+    {
+      "name": "selfmake-2",
+      "part": "selfmake",
+      "partName": "Selfmake",
+      "node": "389:7765",
+      "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\"), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "uses": [
+        "Icon button=Hover, Size=L, Type=Primary  (414:1903) · root",
+        "Icon button=Hover, Size=L, Type=Primary  (414:1903) · Text"
+      ]
+    },
+    {
+      "name": "selfmake-3",
+      "part": "selfmake",
+      "partName": "Selfmake",
+      "node": "389:7765",
+      "value": "linear-gradient(90deg, rgb(235, 76, 96) 0%, rgb(235, 76, 96) 100%), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\"), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "uses": [
+        "Icon button=Pressed, Size=L, Type=Primary  (414:1910) · root",
+        "Icon button=Pressed, Size=L, Type=Primary  (414:1910) · Text"
+      ]
+    },
+    {
+      "name": "selfmake-4",
+      "part": "selfmake",
+      "partName": "Selfmake",
+      "node": "389:7765",
+      "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(3.7424 -3.915e-7 3.915e-7 50.887 -1.4237 36)'><stop stop-color='rgba(211,55,83,1)' offset='0'/><stop stop-color='rgba(209,54,96,1)' offset='0.52835'/><stop stop-color='rgba(199,45,101,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "uses": [
+        "Icon button=Focus, Size=L, Type=Primary  (414:1924) · Text"
+      ]
+    }
+  ],
+  "raw": {
+    "Shade 01": "#FFFFFF",
+    "Neutral 02": "#EBEBEB",
+    "Shade 02": "#222222",
+    "Neutral 07": "#717171",
+    "Primary 02": "#FF385C",
+    "Body Copy/14pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 14, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Neutral 03": "#DDDDDD",
+    "Gradient 03": ",",
+    "Body Copy/16pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 16, weight: 400, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/12pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 12, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/14pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 14, weight: 400, lineHeight: 100, letterSpacing: 0)",
+    "Neutral 04": "#D3D3D3",
+    "Header/22pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 22, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Neutral 06": "#B0B0B0",
+    "Shade 02 - 30%": "#222222",
+    "Neutral 08": "#5E5E5E",
+    "Size/Title 2": "22",
+    "xxLarge/Headline": "26",
+    "var(--sds-typography-weight-medium)": "500",
+    "var(--sds-typography-body-size-small)": "14",
+    "Small/Subheadline": "18",
+    "var(--sds-size-space-400)": "16",
+    "var(--sds-size-radius-200)": "8",
+    "var(--sds-typography-subheading-font-weight)": "400",
+    "var(--sds-size-space-100)": "4",
+    "var(--sds-size-space-800)": "32",
+    "var(--sds-size-space-200)": "8",
+    "var(--sds-size-space-1200)": "48",
+    "Fills - Vibrant (Use Plus Lighter | Darker)/Quaternary": "#f7f7f7",
+    "var(--sds-typography-weight-regular)": "400",
+    "var(--sds-color-icon-default-default)": "#ffffff",
+    "var(--sds-typography-code-size-small)": "14",
+    "Corner/Medium": "12",
+    "var(--sds-size-space-600)": "24",
+    "Body Copy/18pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 18, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Error 02": "#C13515",
+    "Body Copy/16pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 16, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Gradient 02": "",
+    "Gradient 01": ",,"
+  }
+}

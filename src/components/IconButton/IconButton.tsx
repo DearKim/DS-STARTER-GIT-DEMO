@@ -2,37 +2,77 @@ import { forwardRef } from "react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import "./IconButton.css";
 
-export type IconButtonVariant = "primary" | "secondary" | "ghost" | "danger";
-export type IconButtonSize = "sm" | "md" | "lg";
+export type IconButtonVariant = "primary" | "secondary";
+export type IconButtonSize = "l" | "s";
+export type IconButtonType =
+  | "services"
+  | "experiences"
+  | "hotels"
+  | "homes"
+  | "all"
+  | "profile"
+  | "menu"
+  | "search"
+  | "redirect"
+  | "previous"
+  | "next";
+export type IconButtonStatus = "default" | "hover" | "selected";
 
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Figma: Variant */
+  /** Figma: Type (Primary/Secondary) */
   variant?: IconButtonVariant;
-  /** Figma: Size */
+  /** Figma: Size (L/S) */
   size?: IconButtonSize;
-  /** Figma: Icon — if not given, `children` is used as the icon. */
-  icon?: ReactNode;
-  /**
-   * What the button does. The button has no visible text, so this becomes its accessible name (aria-label) and its tooltip (title).
-   * If you leave it out, a screen reader only says "button".
-   */
+  /** Figma: Icon type */
+  iconType?: IconButtonType;
+  /** Figma: Status (Default/Hover/Selected) */
+  status?: IconButtonStatus;
+  /** Accessible name */
   label: string;
   children?: ReactNode;
 }
 
-/** A button that shows only an icon. It is square, and `label` is its accessible name. */
+/** Icon button with variants, sizes, and icon types from Figma design */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
-  { variant = "primary", size = "md", icon, label, className, children, type = "button", ...rest },
+  {
+    variant = "secondary",
+    size = "l",
+    iconType,
+    status = "default",
+    label,
+    className,
+    children,
+    type = "button",
+    disabled,
+    ...rest
+  },
   ref,
 ) {
-  const classes = ["ds-iconbutton", `ds-iconbutton--${variant}`, `ds-iconbutton--${size}`, className]
+  const classes = [
+    "ds-iconbutton",
+    `ds-iconbutton--${variant}`,
+    `ds-iconbutton--${size}`,
+    `ds-iconbutton--${status}`,
+    iconType && `ds-iconbutton--type-${iconType}`,
+    disabled && "ds-iconbutton--disabled",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <button ref={ref} type={type} className={classes} data-testid="ds-iconbutton" aria-label={label} title={label} {...rest}>
+    <button
+      ref={ref}
+      type={type}
+      className={classes}
+      data-testid="ds-iconbutton"
+      aria-label={label}
+      title={label}
+      disabled={disabled}
+      {...rest}
+    >
       <span className="ds-iconbutton__icon" aria-hidden>
-        {icon ?? children}
+        {children}
       </span>
     </button>
   );

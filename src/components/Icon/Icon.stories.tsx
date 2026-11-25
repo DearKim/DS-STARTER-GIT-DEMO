@@ -195,9 +195,9 @@ export const InputContract: Story = {
 export const WithIconButton: Story = {
   parameters: { controls: { disable: true } },
   render: () => <div style={{ display: "flex", gap: "calc(var(--spacing) * 3)" }}>
-    {sizes.map((size) => <IconButton key={size} size={size} label={`Search ${size}`} icon={<Icon name="search" />} onClick={onClick} />)}
-    <IconButton disabled label="Search (disabled)" icon={<Icon name="search" />} onClick={onDisabledClick} />
-    <IconButton label="Next action" icon={<Icon name="add" />} onClick={onClick} />
+    {(["l", "s"] as const).map((size) => <IconButton key={size} size={size} label={`Search ${size}`} onClick={onClick}><Icon name="search" /></IconButton>)}
+    <IconButton disabled label="Search (disabled)" onClick={onDisabledClick}><Icon name="search" /></IconButton>
+    <IconButton label="Next action" onClick={onClick}><Icon name="add" /></IconButton>
   </div>,
   play: async ({ canvasElement }) => {
     onClick.mockClear();

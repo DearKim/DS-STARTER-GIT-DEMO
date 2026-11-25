@@ -2,182 +2,34 @@
   "schema": 1,
   "level": "L2a",
   "levelLabel": {
-    "ko": "L2a — primitive 까지 선언, semantic 을 추론",
-    "en": "L2a — primitives declared, semantics inferred"
+    "ko": "학생 팔레트: 선언/승인 역할만 적용",
+    "en": "Student palette: only declared or approved roles are applied"
   },
   "notes": [
     {
-      "ko": "semantic 계층이 없어 primitive 29개에서 역할 16개를 추론함.",
-      "en": "No semantic tier: inferred 16 roles from 29 primitives."
-    },
-    {
-      "ko": "layout 계층에서 빠진 19개를 기본 세트로 보충함.",
-      "en": "Filled 19 missing layout tokens from the default set."
+      "ko": "샘플 색을 제거했습니다. 누락 역할은 학생 승인이 필요합니다.",
+      "en": "Sample colors were removed. Missing roles need your approval."
     }
   ],
   "counts": {
-    "primitive": 29,
-    "semantic": 16,
-    "layout": 23
+    "primitive": 13,
+    "layout": 66,
+    "semantic": 20
   },
   "bySource": {
-    "declared": 29,
-    "inferred": 20,
-    "synthesized": 19
+    "declared": 60,
+    "synthesized": 19,
+    "human": 20
   },
   "reviewThreshold": 0.6,
   "review": [
-    {
-      "name": "bg",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "무채색 계열 중 가장 밝음",
-        "en": "Lightest in the neutral family"
-      }
-    },
-    {
-      "name": "surface",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "bg 와 동일 (분리된 표면 단계가 없음)",
-        "en": "Same as bg (no separate surface step)"
-      }
-    },
-    {
-      "name": "text",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "무채색 계열 중 가장 어두움",
-        "en": "Darkest in the neutral family"
-      }
-    },
-    {
-      "name": "text-secondary",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.45 근처",
-        "en": "Nearest to lightness 0.45"
-      }
-    },
-    {
-      "name": "text-disabled",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.65 근처",
-        "en": "Nearest to lightness 0.65"
-      }
-    },
-    {
-      "name": "border",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.85 근처",
-        "en": "Nearest to lightness 0.85"
-      }
-    },
-    {
-      "name": "border-strong",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.72 근처",
-        "en": "Nearest to lightness 0.72"
-      }
-    },
-    {
-      "name": "surface-raised",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "bg 보다 밝은 무채색이 없어 bg 와 동일",
-        "en": "Same as bg (no neutral lighter than bg)"
-      }
-    },
-    {
-      "name": "primary",
-      "layer": "semantic",
-      "confidence": 0.4,
-      "reason": {
-        "ko": "이름 단서 없음 — 채도 높고 중간 밝기인 색",
-        "en": "No name hint — the most saturated mid-lightness color"
-      }
-    },
-    {
-      "name": "primary-hover",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "primary 램프의 한 단계 어두운 스텝",
-        "en": "One step darker in the primary ramp"
-      }
-    },
-    {
-      "name": "primary-active",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "primary 램프의 두 단계 어두운 스텝",
-        "en": "Two steps darker in the primary ramp"
-      }
-    },
-    {
-      "name": "on-primary",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "primary 대비 4.6:1 로 최대",
-        "en": "Highest contrast against primary (4.6:1)"
-      }
-    },
-    {
-      "name": "danger",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 340~20° 계열의 기준 스텝",
-        "en": "Base step of the hue 340–20° family"
-      }
-    },
-    {
-      "name": "warning",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 30~65° 계열의 기준 스텝",
-        "en": "Base step of the hue 30–65° family"
-      }
-    },
-    {
-      "name": "success",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 90~160° 계열의 기준 스텝",
-        "en": "Base step of the hue 90–160° family"
-      }
-    },
-    {
-      "name": "info",
-      "layer": "semantic",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 190~255° 에 전용 계열이 없어 primary 계열 재사용",
-        "en": "No dedicated family in hue 190–255°, so the primary family is reused"
-      }
-    },
     {
       "name": "overlay",
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -185,8 +37,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -194,8 +46,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -203,8 +55,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -212,8 +64,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -221,8 +73,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -230,8 +82,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -239,8 +91,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -248,8 +100,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -257,8 +109,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -266,8 +118,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -275,8 +127,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -284,8 +136,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -293,8 +145,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -302,8 +154,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -311,8 +163,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -320,8 +172,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -329,8 +181,8 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -338,688 +190,467 @@
       "layer": "layout",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
+      }
+    },
+    {
+      "name": "type-body-copy-14pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Body Copy/14pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Body Copy/14pt Semibold\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
+      }
+    },
+    {
+      "name": "type-body-copy-16pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Body Copy/16pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Body Copy/16pt Regular\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
+      }
+    },
+    {
+      "name": "type-body-copy-12pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Body Copy/12pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Body Copy/12pt Semibold\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
+      }
+    },
+    {
+      "name": "type-body-copy-14pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Body Copy/14pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Body Copy/14pt Regular\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
+      }
+    },
+    {
+      "name": "type-header-22pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Header/22pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Header/22pt Semibold\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
+      }
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": {
+        "ko": "텍스트 스타일 \"var(--sds-typography-weight-medium)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다.",
+        "en": "Could not read the size of text style \"var(--sds-typography-weight-medium)\", so it was not added to the type scale."
+      }
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": {
+        "ko": "텍스트 스타일 \"var(--sds-typography-body-size-small)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다.",
+        "en": "Could not read the size of text style \"var(--sds-typography-body-size-small)\", so it was not added to the type scale."
+      }
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": {
+        "ko": "텍스트 스타일 \"var(--sds-typography-subheading-font-weight)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다.",
+        "en": "Could not read the size of text style \"var(--sds-typography-subheading-font-weight)\", so it was not added to the type scale."
+      }
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": {
+        "ko": "텍스트 스타일 \"var(--sds-typography-weight-regular)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다.",
+        "en": "Could not read the size of text style \"var(--sds-typography-weight-regular)\", so it was not added to the type scale."
+      }
+    },
+    {
+      "name": "type-var",
+      "layer": "layout",
+      "confidence": 0,
+      "reason": {
+        "ko": "텍스트 스타일 \"var(--sds-typography-code-size-small)\" 의 글자 크기를 읽지 못해 글자 체계에 넣지 않았습니다.",
+        "en": "Could not read the size of text style \"var(--sds-typography-code-size-small)\", so it was not added to the type scale."
+      }
+    },
+    {
+      "name": "type-body-copy-18pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Body Copy/18pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Body Copy/18pt Semibold\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
+      }
+    },
+    {
+      "name": "type-body-copy-16pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": {
+        "ko": "텍스트 스타일 \"Body Copy/16pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.).",
+        "en": "The line-height unit of text style \"Body Copy/16pt Semibold\" is unknown, so no line height was added (No unit says whether it is a percent or pixels. The size of the number alone is not used to guess.)."
       }
     }
   ],
-  "studentPalette": false,
+  "studentPalette": true,
   "missingRoles": [],
-  "figma": null,
+  "figma": {
+    "fileKey": "Q5QDGE5WoXefOxgm5fziH3",
+    "importedAt": "2026-11-25T06:22:55.807Z",
+    "variables": [
+      {
+        "figma": "Shade 01",
+        "tier": "primitive",
+        "token": "shade-01",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Neutral 02",
+        "tier": "primitive",
+        "token": "neutral-02",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Shade 02",
+        "tier": "primitive",
+        "token": "shade-02",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Neutral 07",
+        "tier": "primitive",
+        "token": "neutral-07",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Primary 02",
+        "tier": "primitive",
+        "token": "primary-02",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Neutral 03",
+        "tier": "primitive",
+        "token": "neutral-03",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Neutral 04",
+        "tier": "primitive",
+        "token": "neutral-04",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Neutral 06",
+        "tier": "primitive",
+        "token": "neutral-06",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Shade 02 - 30%",
+        "tier": "primitive",
+        "token": "shade-02-30",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Neutral 08",
+        "tier": "primitive",
+        "token": "neutral-08",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Fills - Vibrant (Use Plus Lighter | Darker)/Quaternary",
+        "tier": "primitive",
+        "token": "fills-vibrant-use-plus-lighter-darker-quaternary",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "var(--sds-color-icon-default-default)",
+        "tier": "primitive",
+        "token": "var-sds-color-icon-default-default",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Error 02",
+        "tier": "primitive",
+        "token": "error-02",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      }
+    ],
+    "families": [
+      "SF Pro"
+    ]
+  },
   "tokens": [
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-50",
-      "cssVar": "--color-blue-50",
-      "value": "#E5EFFF",
-      "hex": "#E5EFFF",
+      "name": "shade-01",
+      "cssVar": "--color-shade-01",
+      "value": "#FFFFFF",
+      "hex": "#FFFFFF",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-100",
-      "cssVar": "--color-blue-100",
-      "value": "#B7D4FF",
-      "hex": "#B7D4FF",
+      "name": "neutral-02",
+      "cssVar": "--color-neutral-02",
+      "value": "#EBEBEB",
+      "hex": "#EBEBEB",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-200",
-      "cssVar": "--color-blue-200",
-      "value": "#8AB8FF",
-      "hex": "#8AB8FF",
+      "name": "shade-02",
+      "cssVar": "--color-shade-02",
+      "value": "#222222",
+      "hex": "#222222",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-300",
-      "cssVar": "--color-blue-300",
-      "value": "#5C9DFF",
-      "hex": "#5C9DFF",
+      "name": "neutral-07",
+      "cssVar": "--color-neutral-07",
+      "value": "#717171",
+      "hex": "#717171",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-400",
-      "cssVar": "--color-blue-400",
-      "value": "#2E81FF",
-      "hex": "#2E81FF",
+      "name": "primary-02",
+      "cssVar": "--color-primary-02",
+      "value": "#FF385C",
+      "hex": "#FF385C",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-500",
-      "cssVar": "--color-blue-500",
-      "value": "#0066FF",
-      "hex": "#0066FF",
+      "name": "neutral-03",
+      "cssVar": "--color-neutral-03",
+      "value": "#DDDDDD",
+      "hex": "#DDDDDD",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-600",
-      "cssVar": "--color-blue-600",
-      "value": "#0056D6",
-      "hex": "#0056D6",
+      "name": "neutral-04",
+      "cssVar": "--color-neutral-04",
+      "value": "#D3D3D3",
+      "hex": "#D3D3D3",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-700",
-      "cssVar": "--color-blue-700",
-      "value": "#0045AD",
-      "hex": "#0045AD",
+      "name": "neutral-06",
+      "cssVar": "--color-neutral-06",
+      "value": "#B0B0B0",
+      "hex": "#B0B0B0",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-800",
-      "cssVar": "--color-blue-800",
-      "value": "#003585",
-      "hex": "#003585",
+      "name": "shade-02-30",
+      "cssVar": "--color-shade-02-30",
+      "value": "#222222",
+      "hex": "#222222",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "blue-900",
-      "cssVar": "--color-blue-900",
-      "value": "#00255C",
-      "hex": "#00255C",
+      "name": "neutral-08",
+      "cssVar": "--color-neutral-08",
+      "value": "#5E5E5E",
+      "hex": "#5E5E5E",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "gray-50",
-      "cssVar": "--color-gray-50",
-      "value": "#FAFAFA",
-      "hex": "#FAFAFA",
+      "name": "fills-vibrant-use-plus-lighter-darker-quaternary",
+      "cssVar": "--color-fills-vibrant-use-plus-lighter-darker-quaternary",
+      "value": "#F7F7F7",
+      "hex": "#F7F7F7",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "gray-100",
-      "cssVar": "--color-gray-100",
-      "value": "#F4F4F5",
-      "hex": "#F4F4F5",
+      "name": "var-sds-color-icon-default-default",
+      "cssVar": "--color-var-sds-color-icon-default-default",
+      "value": "#FFFFFF",
+      "hex": "#FFFFFF",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
       "layer": "primitive",
       "category": "COLOR",
-      "name": "gray-200",
-      "cssVar": "--color-gray-200",
-      "value": "#E4E4E7",
-      "hex": "#E4E4E7",
+      "name": "error-02",
+      "cssVar": "--color-error-02",
+      "value": "#C13515",
+      "hex": "#C13515",
       "ref": null,
       "source": "declared",
       "confidence": 1,
       "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-300",
-      "cssVar": "--color-gray-300",
-      "value": "#D4D4D8",
-      "hex": "#D4D4D8",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-400",
-      "cssVar": "--color-gray-400",
-      "value": "#A1A1AA",
-      "hex": "#A1A1AA",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-500",
-      "cssVar": "--color-gray-500",
-      "value": "#71717A",
-      "hex": "#71717A",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-600",
-      "cssVar": "--color-gray-600",
-      "value": "#52525B",
-      "hex": "#52525B",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-700",
-      "cssVar": "--color-gray-700",
-      "value": "#3F3F46",
-      "hex": "#3F3F46",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-800",
-      "cssVar": "--color-gray-800",
-      "value": "#27272A",
-      "hex": "#27272A",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "gray-900",
-      "cssVar": "--color-gray-900",
-      "value": "#18181B",
-      "hex": "#18181B",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "red-400",
-      "cssVar": "--color-red-400",
-      "value": "#F87171",
-      "hex": "#F87171",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "red-500",
-      "cssVar": "--color-red-500",
-      "value": "#EF4444",
-      "hex": "#EF4444",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "red-600",
-      "cssVar": "--color-red-600",
-      "value": "#DC2626",
-      "hex": "#DC2626",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "green-400",
-      "cssVar": "--color-green-400",
-      "value": "#4ADE80",
-      "hex": "#4ADE80",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "green-500",
-      "cssVar": "--color-green-500",
-      "value": "#22C55E",
-      "hex": "#22C55E",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "green-600",
-      "cssVar": "--color-green-600",
-      "value": "#16A34A",
-      "hex": "#16A34A",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "amber-400",
-      "cssVar": "--color-amber-400",
-      "value": "#FBBF24",
-      "hex": "#FBBF24",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "amber-500",
-      "cssVar": "--color-amber-500",
-      "value": "#F59E0B",
-      "hex": "#F59E0B",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "primitive",
-      "category": "COLOR",
-      "name": "amber-600",
-      "cssVar": "--color-amber-600",
-      "value": "#D97706",
-      "hex": "#D97706",
-      "ref": null,
-      "source": "declared",
-      "confidence": 1,
-      "reason": {
-        "ko": "ds.config.json tiers.primitive 에 선언된 컬렉션/패턴",
-        "en": "Collection or pattern declared in ds.config.json tiers.primitive"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "bg",
-      "cssVar": "--color-bg",
-      "value": "var(--color-gray-50)",
-      "hex": "#FAFAFA",
-      "ref": "gray-50",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "무채색 계열 중 가장 밝음",
-        "en": "Lightest in the neutral family"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "surface",
-      "cssVar": "--color-surface",
-      "value": "var(--color-gray-50)",
-      "hex": "#FAFAFA",
-      "ref": "gray-50",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "bg 와 동일 (분리된 표면 단계가 없음)",
-        "en": "Same as bg (no separate surface step)"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "text",
-      "cssVar": "--color-text",
-      "value": "var(--color-gray-900)",
-      "hex": "#18181B",
-      "ref": "gray-900",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "무채색 계열 중 가장 어두움",
-        "en": "Darkest in the neutral family"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "text-secondary",
-      "cssVar": "--color-text-secondary",
-      "value": "var(--color-gray-500)",
-      "hex": "#71717A",
-      "ref": "gray-500",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.45 근처",
-        "en": "Nearest to lightness 0.45"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "text-disabled",
-      "cssVar": "--color-text-disabled",
-      "value": "var(--color-gray-400)",
-      "hex": "#A1A1AA",
-      "ref": "gray-400",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.65 근처",
-        "en": "Nearest to lightness 0.65"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "border",
-      "cssVar": "--color-border",
-      "value": "var(--color-gray-300)",
-      "hex": "#D4D4D8",
-      "ref": "gray-300",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.85 근처",
-        "en": "Nearest to lightness 0.85"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "border-strong",
-      "cssVar": "--color-border-strong",
-      "value": "var(--color-gray-400)",
-      "hex": "#A1A1AA",
-      "ref": "gray-400",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "명도 0.72 근처",
-        "en": "Nearest to lightness 0.72"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "surface-raised",
-      "cssVar": "--color-surface-raised",
-      "value": "var(--color-gray-50)",
-      "hex": "#FAFAFA",
-      "ref": "gray-50",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "bg 보다 밝은 무채색이 없어 bg 와 동일",
-        "en": "Same as bg (no neutral lighter than bg)"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "primary",
-      "cssVar": "--color-primary",
-      "value": "var(--color-blue-500)",
-      "hex": "#0066FF",
-      "ref": "blue-500",
-      "source": "inferred",
-      "confidence": 0.4,
-      "reason": {
-        "ko": "이름 단서 없음 — 채도 높고 중간 밝기인 색",
-        "en": "No name hint — the most saturated mid-lightness color"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "primary-hover",
-      "cssVar": "--color-primary-hover",
-      "value": "var(--color-blue-600)",
-      "hex": "#0056D6",
-      "ref": "blue-600",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "primary 램프의 한 단계 어두운 스텝",
-        "en": "One step darker in the primary ramp"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "primary-active",
-      "cssVar": "--color-primary-active",
-      "value": "var(--color-blue-700)",
-      "hex": "#0045AD",
-      "ref": "blue-700",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "primary 램프의 두 단계 어두운 스텝",
-        "en": "Two steps darker in the primary ramp"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "on-primary",
-      "cssVar": "--color-on-primary",
-      "value": "var(--color-gray-50)",
-      "hex": "#FAFAFA",
-      "ref": "gray-50",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "primary 대비 4.6:1 로 최대",
-        "en": "Highest contrast against primary (4.6:1)"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "danger",
-      "cssVar": "--color-danger",
-      "value": "var(--color-red-500)",
-      "hex": "#EF4444",
-      "ref": "red-500",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 340~20° 계열의 기준 스텝",
-        "en": "Base step of the hue 340–20° family"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "warning",
-      "cssVar": "--color-warning",
-      "value": "var(--color-amber-500)",
-      "hex": "#F59E0B",
-      "ref": "amber-500",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 30~65° 계열의 기준 스텝",
-        "en": "Base step of the hue 30–65° family"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "success",
-      "cssVar": "--color-success",
-      "value": "var(--color-green-500)",
-      "hex": "#22C55E",
-      "ref": "green-500",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 90~160° 계열의 기준 스텝",
-        "en": "Base step of the hue 90–160° family"
-      }
-    },
-    {
-      "layer": "semantic",
-      "category": "COLOR",
-      "name": "info",
-      "cssVar": "--color-info",
-      "value": "var(--color-blue-500)",
-      "hex": "#0066FF",
-      "ref": "blue-500",
-      "source": "inferred",
-      "confidence": 0.55,
-      "reason": {
-        "ko": "hue 190~255° 에 전용 계열이 없어 primary 계열 재사용",
-        "en": "No dedicated family in hue 190–255°, so the primary family is reused"
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
       }
     },
     {
@@ -1030,11 +661,11 @@
       "value": "8px",
       "hex": null,
       "ref": null,
-      "source": "inferred",
-      "confidence": 0.75,
+      "source": "declared",
+      "confidence": 1,
       "reason": {
-        "ko": "색이 아닌 카테고리는 layout 계층",
-        "en": "Non-color categories belong to the layout tier"
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
       }
     },
     {
@@ -1045,11 +676,11 @@
       "value": "12px",
       "hex": null,
       "ref": null,
-      "source": "inferred",
-      "confidence": 0.75,
+      "source": "declared",
+      "confidence": 1,
       "reason": {
-        "ko": "색이 아닌 카테고리는 layout 계층",
-        "en": "Non-color categories belong to the layout tier"
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
       }
     },
     {
@@ -1060,11 +691,11 @@
       "value": "4px",
       "hex": null,
       "ref": null,
-      "source": "inferred",
-      "confidence": 0.75,
+      "source": "declared",
+      "confidence": 1,
       "reason": {
-        "ko": "색이 아닌 카테고리는 layout 계층",
-        "en": "Non-color categories belong to the layout tier"
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
       }
     },
     {
@@ -1075,11 +706,236 @@
       "value": "1px",
       "hex": null,
       "ref": null,
-      "source": "inferred",
-      "confidence": 0.6,
+      "source": "declared",
+      "confidence": 1,
       "reason": {
-        "ko": "색이 아닌 카테고리는 layout 계층",
-        "en": "Non-color categories belong to the layout tier"
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "RADIUS",
+      "name": "size-title-2",
+      "cssVar": "--radius-size-title-2",
+      "value": "22px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "RADIUS",
+      "name": "xxlarge-headline",
+      "cssVar": "--radius-xxlarge-headline",
+      "value": "26px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "RADIUS",
+      "name": "small-subheadline",
+      "cssVar": "--radius-small-subheadline",
+      "value": "18px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "SPACING_UNIT",
+      "name": "var-sds-size-space-400",
+      "cssVar": "--spacing-var-sds-size-space-400",
+      "value": "16px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "RADIUS",
+      "name": "var-sds-size-radius-200",
+      "cssVar": "--radius-var-sds-size-radius-200",
+      "value": "8px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "SPACING_UNIT",
+      "name": "var-sds-size-space-100",
+      "cssVar": "--spacing-var-sds-size-space-100",
+      "value": "4px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "SPACING_UNIT",
+      "name": "var-sds-size-space-800",
+      "cssVar": "--spacing-var-sds-size-space-800",
+      "value": "32px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "SPACING_UNIT",
+      "name": "var-sds-size-space-200",
+      "cssVar": "--spacing-var-sds-size-space-200",
+      "value": "8px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "SPACING_UNIT",
+      "name": "var-sds-size-space-1200",
+      "cssVar": "--spacing-var-sds-size-space-1200",
+      "value": "48px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "RADIUS",
+      "name": "corner-medium",
+      "cssVar": "--radius-corner-medium",
+      "value": "12px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "SPACING_UNIT",
+      "name": "var-sds-size-space-600",
+      "cssVar": "--spacing-var-sds-size-space-600",
+      "value": "24px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "GRADIENT",
+      "name": "selfmake-1",
+      "cssVar": "--gradient-selfmake-1",
+      "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(4.1582 -4.3501e-7 4.3501e-7 56.542 -1.5819 40)'><stop stop-color='rgba(211,55,83,1)' offset='0'/><stop stop-color='rgba(209,54,96,1)' offset='0.52835'/><stop stop-color='rgba(199,45,101,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "GRADIENT",
+      "name": "selfmake-2",
+      "cssVar": "--gradient-selfmake-2",
+      "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\"), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "GRADIENT",
+      "name": "selfmake-3",
+      "cssVar": "--gradient-selfmake-3",
+      "value": "linear-gradient(90deg, rgb(235, 76, 96) 0%, rgb(235, 76, 96) 100%), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\"), url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.9578 4 -4 -486.33 39.77 0.0000061807)'><stop stop-color='rgba(199,45,101,1)' offset='0'/><stop stop-color='rgba(210,55,96,1)' offset='0.48442'/><stop stop-color='rgba(210,55,85,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "GRADIENT",
+      "name": "selfmake-4",
+      "cssVar": "--gradient-selfmake-4",
+      "value": "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(3.7424 -3.915e-7 3.915e-7 50.887 -1.4237 36)'><stop stop-color='rgba(211,55,83,1)' offset='0'/><stop stop-color='rgba(209,54,96,1)' offset='0.52835'/><stop stop-color='rgba(199,45,101,1)' offset='1'/></radialGradient></defs></svg>\")",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "기존/가져온 비색상 layout 값",
+        "en": "Existing or imported non-color layout value"
       }
     },
     {
@@ -1093,8 +949,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1108,8 +964,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1123,8 +979,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1138,8 +994,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1153,8 +1009,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1168,8 +1024,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1183,8 +1039,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1198,8 +1054,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1213,8 +1069,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1228,8 +1084,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1243,8 +1099,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1258,8 +1114,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1273,8 +1129,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1288,8 +1144,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1303,8 +1159,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1318,8 +1174,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1333,8 +1189,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1348,8 +1204,8 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
       }
     },
     {
@@ -1363,8 +1219,756 @@
       "source": "synthesized",
       "confidence": 0.3,
       "reason": {
-        "ko": "기본 layout 세트에서 보충함",
-        "en": "Filled from the default layout set"
+        "ko": "기본 layout 보충",
+        "en": "Filled default layout value"
+      }
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-body-copy-14pt-semibold",
+      "cssVar": "--text-type-body-copy-14pt-semibold",
+      "value": "14px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\"",
+        "en": "Figma text style \"Body Copy/14pt Semibold\""
+      },
+      "typeScale": "body-copy-14pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-body-copy-14pt-semibold",
+      "cssVar": "--font-weight-type-body-copy-14pt-semibold",
+      "value": "590",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\"",
+        "en": "Figma text style \"Body Copy/14pt Semibold\""
+      },
+      "typeScale": "body-copy-14pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-body-copy-14pt-semibold",
+      "cssVar": "--font-type-body-copy-14pt-semibold",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\"",
+        "en": "Figma text style \"Body Copy/14pt Semibold\""
+      },
+      "typeScale": "body-copy-14pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-body-copy-14pt-semibold",
+      "cssVar": "--tracking-type-body-copy-14pt-semibold",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Semibold\"",
+        "en": "Figma text style \"Body Copy/14pt Semibold\""
+      },
+      "typeScale": "body-copy-14pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-body-copy-16pt-regular",
+      "cssVar": "--text-type-body-copy-16pt-regular",
+      "value": "16px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\"",
+        "en": "Figma text style \"Body Copy/16pt Regular\""
+      },
+      "typeScale": "body-copy-16pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-body-copy-16pt-regular",
+      "cssVar": "--font-weight-type-body-copy-16pt-regular",
+      "value": "400",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\"",
+        "en": "Figma text style \"Body Copy/16pt Regular\""
+      },
+      "typeScale": "body-copy-16pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-body-copy-16pt-regular",
+      "cssVar": "--font-type-body-copy-16pt-regular",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\"",
+        "en": "Figma text style \"Body Copy/16pt Regular\""
+      },
+      "typeScale": "body-copy-16pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-body-copy-16pt-regular",
+      "cssVar": "--tracking-type-body-copy-16pt-regular",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Regular\"",
+        "en": "Figma text style \"Body Copy/16pt Regular\""
+      },
+      "typeScale": "body-copy-16pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-body-copy-12pt-semibold",
+      "cssVar": "--text-type-body-copy-12pt-semibold",
+      "value": "12px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\"",
+        "en": "Figma text style \"Body Copy/12pt Semibold\""
+      },
+      "typeScale": "body-copy-12pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-body-copy-12pt-semibold",
+      "cssVar": "--font-weight-type-body-copy-12pt-semibold",
+      "value": "590",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\"",
+        "en": "Figma text style \"Body Copy/12pt Semibold\""
+      },
+      "typeScale": "body-copy-12pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-body-copy-12pt-semibold",
+      "cssVar": "--font-type-body-copy-12pt-semibold",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\"",
+        "en": "Figma text style \"Body Copy/12pt Semibold\""
+      },
+      "typeScale": "body-copy-12pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-body-copy-12pt-semibold",
+      "cssVar": "--tracking-type-body-copy-12pt-semibold",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold\"",
+        "en": "Figma text style \"Body Copy/12pt Semibold\""
+      },
+      "typeScale": "body-copy-12pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-body-copy-14pt-regular",
+      "cssVar": "--text-type-body-copy-14pt-regular",
+      "value": "14px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\"",
+        "en": "Figma text style \"Body Copy/14pt Regular\""
+      },
+      "typeScale": "body-copy-14pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-body-copy-14pt-regular",
+      "cssVar": "--font-weight-type-body-copy-14pt-regular",
+      "value": "400",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\"",
+        "en": "Figma text style \"Body Copy/14pt Regular\""
+      },
+      "typeScale": "body-copy-14pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-body-copy-14pt-regular",
+      "cssVar": "--font-type-body-copy-14pt-regular",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\"",
+        "en": "Figma text style \"Body Copy/14pt Regular\""
+      },
+      "typeScale": "body-copy-14pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-body-copy-14pt-regular",
+      "cssVar": "--tracking-type-body-copy-14pt-regular",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/14pt Regular\"",
+        "en": "Figma text style \"Body Copy/14pt Regular\""
+      },
+      "typeScale": "body-copy-14pt-regular"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-header-22pt-semibold",
+      "cssVar": "--text-type-header-22pt-semibold",
+      "value": "22px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Header/22pt Semibold\"",
+        "en": "Figma text style \"Header/22pt Semibold\""
+      },
+      "typeScale": "header-22pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-header-22pt-semibold",
+      "cssVar": "--font-weight-type-header-22pt-semibold",
+      "value": "590",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Header/22pt Semibold\"",
+        "en": "Figma text style \"Header/22pt Semibold\""
+      },
+      "typeScale": "header-22pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-header-22pt-semibold",
+      "cssVar": "--font-type-header-22pt-semibold",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Header/22pt Semibold\"",
+        "en": "Figma text style \"Header/22pt Semibold\""
+      },
+      "typeScale": "header-22pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-header-22pt-semibold",
+      "cssVar": "--tracking-type-header-22pt-semibold",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Header/22pt Semibold\"",
+        "en": "Figma text style \"Header/22pt Semibold\""
+      },
+      "typeScale": "header-22pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-body-copy-18pt-semibold",
+      "cssVar": "--text-type-body-copy-18pt-semibold",
+      "value": "18px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\"",
+        "en": "Figma text style \"Body Copy/18pt Semibold\""
+      },
+      "typeScale": "body-copy-18pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-body-copy-18pt-semibold",
+      "cssVar": "--font-weight-type-body-copy-18pt-semibold",
+      "value": "590",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\"",
+        "en": "Figma text style \"Body Copy/18pt Semibold\""
+      },
+      "typeScale": "body-copy-18pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-body-copy-18pt-semibold",
+      "cssVar": "--font-type-body-copy-18pt-semibold",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\"",
+        "en": "Figma text style \"Body Copy/18pt Semibold\""
+      },
+      "typeScale": "body-copy-18pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-body-copy-18pt-semibold",
+      "cssVar": "--tracking-type-body-copy-18pt-semibold",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/18pt Semibold\"",
+        "en": "Figma text style \"Body Copy/18pt Semibold\""
+      },
+      "typeScale": "body-copy-18pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_SIZE",
+      "name": "type-body-copy-16pt-semibold",
+      "cssVar": "--text-type-body-copy-16pt-semibold",
+      "value": "16px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\"",
+        "en": "Figma text style \"Body Copy/16pt Semibold\""
+      },
+      "typeScale": "body-copy-16pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_WEIGHT",
+      "name": "type-body-copy-16pt-semibold",
+      "cssVar": "--font-weight-type-body-copy-16pt-semibold",
+      "value": "590",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\"",
+        "en": "Figma text style \"Body Copy/16pt Semibold\""
+      },
+      "typeScale": "body-copy-16pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "FONT_FAMILY",
+      "name": "type-body-copy-16pt-semibold",
+      "cssVar": "--font-type-body-copy-16pt-semibold",
+      "value": "\"SF Pro\", var(--font-sans)",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\"",
+        "en": "Figma text style \"Body Copy/16pt Semibold\""
+      },
+      "typeScale": "body-copy-16pt-semibold"
+    },
+    {
+      "layer": "layout",
+      "category": "LETTER_SPACING",
+      "name": "type-body-copy-16pt-semibold",
+      "cssVar": "--tracking-type-body-copy-16pt-semibold",
+      "value": "0px",
+      "hex": null,
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\"",
+        "en": "Figma text style \"Body Copy/16pt Semibold\""
+      },
+      "typeScale": "body-copy-16pt-semibold"
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "bg",
+      "cssVar": "--color-bg",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "surface",
+      "cssVar": "--color-surface",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "surface-raised",
+      "cssVar": "--color-surface-raised",
+      "value": "var(--color-fills-vibrant-use-plus-lighter-darker-quaternary)",
+      "hex": "#F7F7F7",
+      "ref": "fills-vibrant-use-plus-lighter-darker-quaternary",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "border",
+      "cssVar": "--color-border",
+      "value": "var(--color-neutral-03)",
+      "hex": "#DDDDDD",
+      "ref": "neutral-03",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "border-strong",
+      "cssVar": "--color-border-strong",
+      "value": "var(--color-neutral-06)",
+      "hex": "#B0B0B0",
+      "ref": "neutral-06",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "text",
+      "cssVar": "--color-text",
+      "value": "var(--color-shade-02)",
+      "hex": "#222222",
+      "ref": "shade-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "text-secondary",
+      "cssVar": "--color-text-secondary",
+      "value": "var(--color-neutral-07)",
+      "hex": "#717171",
+      "ref": "neutral-07",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "text-disabled",
+      "cssVar": "--color-text-disabled",
+      "value": "var(--color-neutral-06)",
+      "hex": "#B0B0B0",
+      "ref": "neutral-06",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "primary",
+      "cssVar": "--color-primary",
+      "value": "var(--color-primary-02)",
+      "hex": "#FF385C",
+      "ref": "primary-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "primary-hover",
+      "cssVar": "--color-primary-hover",
+      "value": "var(--color-primary-02)",
+      "hex": "#FF385C",
+      "ref": "primary-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "primary-active",
+      "cssVar": "--color-primary-active",
+      "value": "var(--color-primary-02)",
+      "hex": "#FF385C",
+      "ref": "primary-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "on-primary",
+      "cssVar": "--color-on-primary",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "danger",
+      "cssVar": "--color-danger",
+      "value": "var(--color-error-02)",
+      "hex": "#C13515",
+      "ref": "error-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "success",
+      "cssVar": "--color-success",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "warning",
+      "cssVar": "--color-warning",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "info",
+      "cssVar": "--color-info",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "image-placeholder",
+      "cssVar": "--color-image-placeholder",
+      "value": "var(--color-neutral-06)",
+      "hex": "#B0B0B0",
+      "ref": "neutral-06",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "text-tertiary",
+      "cssVar": "--color-text-tertiary",
+      "value": "var(--color-neutral-08)",
+      "hex": "#5E5E5E",
+      "ref": "neutral-08",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "on-image",
+      "cssVar": "--color-on-image",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "indicator",
+      "cssVar": "--color-indicator",
+      "value": "var(--color-neutral-03)",
+      "hex": "#DDDDDD",
+      "ref": "neutral-03",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
       }
     }
   ]
