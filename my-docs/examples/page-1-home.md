@@ -32,7 +32,7 @@ From top to bottom. "Part" is the name of the part in my Storybook. The words in
    - Shows: the title "Stay in Seoul", the chips "Hotels", "Motel", "Guesthouse", "Resort", then 12 stay cards (photos, heart, photo dots, place, area, dates, price, rating)
 5. **Inspiration**
    - Part: Inspiration
-   - Shows: the title "Inspiration for future getaways", 8 tabs "Popular", "Arts & culture", "Beach", "Mountains", "Outdoors", "Things to do", "Travel tips & inspiration", "Airbnb-friendly apartments", a list of 18 places (name and kind of rental), and "Show more"
+   - Shows: the title "Inspiration for future getaways", 8 tabs "Popular", "Arts & culture", "Beach", "Mountains", "Outdoors", "Things to do", "Travel tips & inspiration", "Airbnb-friendly apartments", a list of 17 places (name and kind of rental), and "Show more" in the last spot
 6. **Footer**
    - Part: Footer
    - Shows: 3 columns of links — "Support", "Hosting", "Airbnb" — then "© 2026 Airbnb, Inc. · Privacy · Terms · Your Privacy Choices", "English (US)", "₩ KRW" and the Facebook, X and Instagram icons
