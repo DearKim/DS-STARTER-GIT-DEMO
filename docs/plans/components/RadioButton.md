@@ -1,7 +1,7 @@
 ---
 kind: component
 component: RadioButton
-revision: 1
+revision: 2
 status: approved
 source_kind: figma
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=213-1943&m=dev
@@ -10,6 +10,8 @@ open_questions: 0
 ---
 
 # 컴포넌트 구현 계획 — RadioButton
+
+> **revision 2 (2026-11-26, 재정립 계획 에이전트 E, 승인 대기):** Checkout "1. Choose when to pay" 의 현재 페이지 모양(글자 왼쪽·원 오른쪽, 보조 글 + "More info", 줄 사이 선)을 `variant="list"` 로 더한다. 사용자 결정 "페이지 모양 유지 (권장)" 때문이다. revision 1 에서 승인된 내용(1~11절)은 바꾸지 않고, 바뀌는 것은 **12절**에만 적었다. 4절에 행 하나, 9절에 Q-11~Q-15, 11절에 한 줄을 더했다. 같은 날 사용자 답("추천안 모두 채택", "Figma 스타일 값으로 맞춤", "지금 크기·자간 유지", "Button 에 공용 모양 추가")을 반영했다: 보조 글 색은 `text-secondary`(#717171), "More info" 는 키트 `Button variant="text"`.
 
 > 작성: Claude Code(유지보수자), 2026-11-26. 사용자 요청: "둘 다 확인해서 디자인 시스템에 적용해줘" → 1단계 목록(`docs/plans/design-system-airbnb.md`)의 `RadioButton`. 같은 날 사용자가 채팅에서 "추천안 모두 채택"을 골라 Q-01~Q-10 을 답했다. 이후 사용자가 "Approve revision 1·5 (권장)"을 골라 이 계획 revision 1 과 토큰 계획 revision 5 를 승인했다(리드가 AskUserQuestion 답을 그대로 전달).
 
@@ -64,6 +66,7 @@ open_questions: 0
 |---|---|---|---|---|---|
 | Radio Button (원) | Radio Button (213:1944) | 157:2614 Default·Unchecked / 157:2718 Default·Checked / 157:2619 Hover·Unchecked / 213:1527 Hover·Checked / 157:2633 Focus·Unchecked / 157:2711 Focus·Checked | 213:1934, 213:1938, 213:1941, 213:1932, 213:1933, 213:1931 | none — drawn inside this part from the Figma SVG (213:1944 는 이 계획이 만드는 같은 RadioButton 의 안쪽 원, Q-01 A) | confirmed |
 | Boxes (사각형) | Boxes | Default·Unchecked(213:1926) / Checked(213:1908) / Hover·Unchecked(Boxes property1=Hover) / Hover·Checked(213:1917) / Focus·Unchecked(213:1894) / Focus·Checked(213:1883) | 213:1939, 213:1940, 213:1937, 213:1942, 213:1936, 213:1935 | none — not used; Subtext=on 도 213:1944 원을 이 부품 안에서 그린다(Q-02 A). 원본 이름 Boxes 는 키트 부품과 일치하지 않음 | confirmed |
+| — (rev 2: "More info", Checkout frame "Button - Learn more about Pay Less Up Front" 812:12252·812:12266 — 인스턴스 아님) | — | — | rev 2 `variant="list"` (Checkout 812:12228 의 줄) | Button { variant="text" size="small" tone="secondary" onClick=onActionClick } children actionLabel("More info"), 글자 색 `text-secondary` — Buttons revision 2 §12.7(에이전트 F), label 밖에 놓음(12.4) | confirmed |
 
 - 라벨·보조 글자: Text 부품을 쓰지 않는다. Text 의 `body` 는 `--font-sans`·`line-height: 1.5` 로 Figma "Body Copy/16pt Regular"(SF Pro, line-height normal)와 다르고, `<label>` 태그를 낼 수 없다. 글자는 이 부품 안에서 그린다(ListingCard 와 같은 방식).
 
@@ -177,6 +180,11 @@ open_questions: 0
 | Q-08 | 새 색 역할 5개 | **A (추천)** 새 매핑(이름은 리드가 합침) · B `text`·`surface` 재사용 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 이름: 사용자가 "합친 목록 + 다시 가져오기" 선택 → `control-bg`·`border-emphasis`(←`border-hover`)·`selected`·`on-selected`·`focus-ring` | resolved |
 | Q-09 | 공개 API(8절)와 보조 글 폭 | **A (추천)** 8절 표대로, 보조 글 폭은 부모를 따름 · B 폭 320 고정 · C ReactNode | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
 | Q-10 | Storybook 캔버스 배경 | **A (추천)** 흰색 · B Figma 세트 회색 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-11 | (rev 2) Checkout 목록 줄 모양을 어떤 API 로 더할지(12.3절). rev 1 Q-04 A 를 사용자 결정 "페이지 모양 유지"가 대신함 | **A (추천)** `variant="list"` 하나로 배치·글자·줄 사이 선을 함께 바꾸고, "More info" 는 `actionLabel` + `onActionClick` · B `labelPosition="start"` 등 낱낱의 prop 여러 개(조합이 늘어 검사할 모양이 많아짐) · C 새 부품(예 `RadioRow`) — 같은 역할의 복제라 C03 위반 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-12 | (rev 2) 줄 사이 선(#EBEBEB)과 첫 줄 위 여백 0 을 누가 그릴지 | **A (추천)** `variant="list"` 줄끼리 이어지면 자동으로 둘째 줄부터 위에 선 + 위 여백 16(CSS 인접 선택자, 자기 클래스만) · B `divider` prop 으로 줄마다 지정 · C 묶음(CheckoutStep)이 줄 사이에 자기 선 요소를 넣음 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-13 | (rev 2) "More info" 의 HTML. 지금은 `<label>` 안의 `<a href="#">`(누르면 주소에 # 이 붙고 맨 위로 튐 — PRD "아무 일 없음"과 다름). `<label>` 안에 `<button>` 을 넣는 것은 HTML 규칙 위반(button 은 라벨 대상 요소) | **A (추천)** 줄 루트를 `<div>` 로 하고 라벨 글자와 보조 글을 각각 `<label for>` 로, More info 는 label 밖 `<button type="button">`(보조 글 끝에 이어 보임). 글자·원을 누르면 선택(PRD "its words or its radio"), 줄의 빈 여백은 선택하지 않음. 모양은 ReservationSummary Q-02 결정을 따름 · B `<label>` 안 `<button>`(HTML 위반) · C 지금처럼 `<a href="#">` | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 모양은 사용자 결정 "Button 에 공용 모양 추가 (권장)"(chosen in chat, 2026-11-26) → 키트 `Button variant="text"`(Buttons revision 2, 에이전트 F) | resolved |
+| Q-14 | (rev 2) 보조 글·More info 색 #6C6C6C 의 primitive·역할이 없음(neutral-07 #717171, neutral-08 #5E5E5E 와 다름). Inspiration 의 흐린 글자(#6c6c6c, 에이전트 A)도 같은 값 | **A (추천)** 새 매핑: primitive #6C6C6C(Figma 이름 미조회) → 새 역할(예 `text-supporting`, 리드 tokens rev 6 이 Inspiration 과 합침) · B `text-secondary`(#717171)로 바꿈(모양이 달라짐) · C Figma 라디오 보조 글 색 `text-tertiary`(#5E5E5E)로 바꿈 | 사용자 결정 "Figma 스타일 값으로 맞춤" (chosen in chat, 2026-11-26) → #6C6C6C 는 #717171, 기존 역할 `text-secondary`(neutral-07). 새 역할 `text-supporting` 은 만들지 않음 | resolved |
+| Q-15 | (rev 2) 토큰에 없는 글자 값: 라벨 자간 -0.3125px·보조 글/More info 자간 -0.1504px(모든 tracking 토큰 0), More info 굵기 500 은 키트 합성 토큰 `--font-weight-medium` | **A (추천)** 같은 값의 새 자간 토큰(리드 tokens rev 6), 500 은 `--font-weight-medium` 사용 확정, 줄 높이 20·18 은 `calc(var(--spacing) * 5)`·`* 4.5` · B Figma 라디오 글자 값(자간 0·줄 높이 normal)으로 맞춤 — Klarna 보조 글 줄바꿈 위치가 바뀔 수 있음 | 사용자 결정 "지금 크기·자간 유지 (권장)" (chosen in chat, 2026-11-26) → 자간 `calc(var(--spacing) * -0.078125)`(-0.3125px)·`calc(var(--spacing) * -0.0376)`(-0.1504px), 줄 높이 `* 5`·`* 4.5`. 500 은 `--font-weight-medium`(Figma 변수 sds-typography-weight-medium, More info 는 Button text 가 그림) | resolved |
 
 ## 10. 검증 계획
 
@@ -199,3 +207,89 @@ open_questions: 0
   - Q: 새 색 역할 이름은? → A: 합친 목록 + 다시 가져오기 (chosen in chat, 2026-11-26) — `border-hover` 는 `border-emphasis` 로 합침
 - 승인한 revision: 1 — 사용자 "Approve revision 1·5 (권장)" 선택 (chosen in chat, 2026-11-26)
 - 구현 전에 남은 조건: 없음 — 토큰 계획 `docs/plans/tokens.md` revision 5 승인·적용 완료(리드, `src/tokens/tokens.css`)
+- revision 2(12절) 사용자 결정(chosen in chat, 2026-11-26): "추천안 모두 채택 (권장)" — Q-11·Q-12·Q-13 / "Figma 스타일 값으로 맞춤" — Q-14 / "지금 크기·자간 유지 (권장)" — Q-15 / "Button 에 공용 모양 추가 (권장)" — Q-13 의 More info 모양.
+- 승인한 revision: 2 — 사용자 "승인하고 진행 (권장)" 선택 (chosen in chat, 2026-11-26)
+- revision 2 구현 전 조건: Buttons revision 2(`variant="text"`) 구현 — 리드가 완료를 알림(2026-11-26). 새 토큰은 필요 없다(`border-subtle`·`text-secondary`·`--font-weight-medium` 은 이미 있음).
+
+## 12. Revision 2 — Checkout 목록 줄 모양 `variant="list"` (바뀌는 내용만)
+
+### 12.1 요청과 근거
+
+- 요청: 사이트 재정립(2026-11-26). 사용자 결정 "페이지 모양 유지 (권장)" — 페이지 모양과 Figma 부품 모양이 다르면 페이지를 바꾸지 않고 부품에 variant 를 더한다. rev 1 의 Q-04 A("Figma 대로만, 차이는 페이지 계획에서")는 이 결정으로 바뀐다.
+- 새 부품 `CheckoutStep`(계획 `docs/plans/components/CheckoutStep.md`)이 "1. Choose when to pay" 의 세 줄을 이 부품으로 그린다. Figma 에서도 세 줄의 원은 Radio Button 인스턴스다: 812:12964·812:12958·812:12961(Q5QD `get_metadata 812:1056`, 2026-11-26 직접 조회). 줄 frame 은 812:12234(40)·812:12244(74)·812:12258(92), 사이 선 frame 812:12243·812:12257(492×1).
+- Figma 호출: 이 에이전트 2회(`get_metadata 812:1056` 성공, `get_design_context 812:12280` 실패 — 전송 끊김). 그래서 아래 색·글자의 Figma 변수·스타일 이름은 읽지 못했다. 값은 사용자가 검수한 현재 페이지(git-demo `aa9a593`, `CheckoutPage.tsx` 105~137행, `CheckoutPage.css` 189~256·823~864행)를 Playwright 1440px 로 측정한 것이다(`<로컬 측정 폴더>/rebuild/E/checkout-measure.json`).
+- 읽은 규칙: `docs/ai-component-workflow.md` 1.0 R01~R09, `docs/ai-design-system-spec.md` 1.1.
+
+### 12.2 확인한 사실 — 현재 페이지(기준)와 rev 1 기본 모양의 차이
+
+| 요소 | 현재 페이지(측정) | Figma 812:1056 | rev 1 기본 모양과 다른 점 |
+|---|---|---|---|
+| 줄 배치 | 글자 칸(남은 폭, 492 줄에서 452) + 사이 16 + 원 24(오른쪽 끝), 위쪽 정렬 | "Label" 492: Container 452 + Radio Button (468,0) | 원이 오른쪽, 줄이 부모 폭을 채움 |
+| 줄 여백 | 첫 줄 위 0·아래 16(높이 40) / 다음 줄 위·아래 16(74·92) | 812:12234 40, 812:12244 74(Label y 16 h 42), 812:12258 92 | 새로 |
+| 줄 사이 선 | 1px #EBEBEB, 줄 폭 | 812:12243·812:12257 492×1 | 새로 |
+| 라벨 | 16px / 400 / 줄 높이 20 / 자간 -0.3125px / #222222 | text 812:12238 125×20, 아래 빈칸 4(칸 24) | 줄 높이 normal → 20, 자간 0 → -0.3125px |
+| 보조 글 | 라벨 아래 4, 14px / 400 / 줄 높이 18 / 자간 -0.1504px / **#6C6C6C**, 글자 칸 안에서 줄바꿈(Klarna 는 2줄) | 812:12251 309×18, 812:12265 452×36 | 색 #5E5E5E → `text-secondary` #717171(사용자 결정, 원래 #6C6C6C), 줄 높이·자간 |
+| More info | 보조 글 끝에 공백 뒤 이어 붙음(줄바꿈을 따라감), 14px / **500** / 18 / -0.1504px / #6C6C6C / 밑줄, 60.88×17. 지금 `<a href="#">` | frame "Button - Learn more about Pay Less Up Front" 812:12252 (301.7,0) 62.06×18 · 812:12266 (63.3,18) | 새로 — 키트 `Button variant="text"` 로 그림 |
+| 원 | 24×24. 페이지 그림 `checkout-radio.svg`(a2c2d41b0845)·`-hover.svg`(397ea30461fc)는 rev 1 표의 157:2614·157:2619 와 같은 파일. `-checked.svg`(1c93a1ab897c: r12 채움 #222 + r4 흰 점)·`-focus.svg`(9971218b6cef)·`-focus-checked.svg`(b8572d6634c4)는 파일은 다르지만 같은 크기·색으로 그려짐. 포커스 32 링은 margin -4 로 레이아웃 밖 | Radio Button 인스턴스 | 없음 — rev 1 의 원·점·링 그대로 |
+| hover | 줄 전체에 포인터 → 원 테두리 #222 | — | 없음(rev 1 Q-06 A) |
+| 선택 | 줄 어디든 누르면 선택(줄 전체가 `<label>`). More info 는 선택하지 않음. 처음엔 선택 없음(PRD) | — | 12.4 |
+| 접근성(현재) | 라디오 이름 = 줄 글자 전부(보조 글 + "More info" 까지). 묶음 `role="radiogroup" aria-label="Choose when to pay"` | — | rev 1 대로 이름 = 라벨, 설명 = 보조 글(12.4) |
+| 다른 상태 | Disabled·오류 없음 | — | 없음 |
+
+### 12.3 공개 API에 더하는 것 (기존 prop 은 그대로)
+
+| prop / 이벤트 | 근거 | 기본값·허용값 | 실제 동작 / 결과 | 키보드·disabled 처리 | 사용자 확정 |
+|---|---|---|---|---|---|
+| `variant` | 12.2 표 | `"default"`(rev 1 그대로) / `"list"` | `list`: 글자 왼쪽·원 오른쪽, 부모 폭, 12.2 의 여백·글자·색, 줄끼리 이어지면 선 | 같음 | Q-11 추천안 채택 |
+| `actionLabel` | 812:12253 "More info" | 없음 / 문자열. `list` 에서만 | 보조 글 끝에 이어 붙는 키트 `Button variant="text" size="small" tone="secondary"`(글자 색 `text-secondary`) | `<button type="button">`(Button 기본), Tab 으로 감, 라디오를 선택하지 않음 | Q-11·Q-13 추천안 채택 + "Button 에 공용 모양 추가" |
+| `onActionClick` | PRD: "More info" — nothing, just shows it | — | Button 의 `onClick` 으로 넘김. 콜백만(화면·주소 변화 없음) | Enter/Space | Q-11·Q-13 추천안 채택 |
+
+- 쓰는 모습: `<RadioButton variant="list" name="pay-when" value="zero" label="Pay £0 now" subtext="£340.91 charged on 13 Jan 2027. No extra fees." actionLabel="More info" onActionClick={…} checked={…} onChange={…} />`
+- `subtext` 는 rev 1 대로 문자열. 페이지가 보조 글 안에 UI 를 넣지 않는다(P05).
+
+### 12.4 구조와 상태 (Q-13 A 기준)
+
+- 루트 `<div class="ds-radiobutton ds-radiobutton--list" data-testid="ds-radiobutton">`: 글자 칸 + 원 칸(`__control`: 숨긴 input 이 원을 덮어 누름·키보드를 받음, rev 1 과 같음).
+- 글자 칸: `<label for={id} id={labelId}>` 라벨 + `<p id={subtextId}>` 안에 `<label for={id}>`보조 글`</label>` 과 label 밖의 키트 `<Button variant="text">`(More info). `<label>` 안에 버튼이 들어가지 않는다(HTML 규칙). 라디오 이름 = 라벨(`aria-labelledby`), 설명 = 보조 글 문단(`aria-describedby`, rev 1 과 같음).
+- 이 부품 CSS 는 `.ds-button` 을 선택하거나 `style`·`className` 으로 바꾸지 않는다(R05). Button text 의 글자 색·크기·밑줄은 Button 이 그린다(Buttons revision 2 에 `text-secondary` 색이 필요 — 에이전트 F 에게 보냄).
+- hover: `.ds-radiobutton--list:hover` 일 때 미선택 원 테두리 `border-emphasis`(rev 1 Q-06 A 와 같은 줄 전체). 선택·포커스는 rev 1 CSS 그대로.
+- 줄 사이 선(Q-12 A): `.ds-radiobutton--list + .ds-radiobutton--list` 에 위 선 `--border-width-thin` `border-subtle` + 위 여백 16. 모든 list 줄은 아래 여백 16, 첫 줄은 위 여백 0. → 줄 높이 40 · 75 · 93(선 포함), 합계 208. 묶음 아래 선(#DDDDDD 1px)은 묶음을 가진 CheckoutStep 이 그린다.
+- 크기: 사이 16 `calc(var(--spacing) * 4)`, 라벨 줄 높이 `* 5`, 보조 글 위 4 `* 1`·줄 높이 `* 4.5`, 줄 여백 `* 4`.
+- `state` prop 을 만들지 않는다. Disabled 모양도 만들지 않는다(rev 1 Q-07 A).
+
+### 12.5 색·글자 토큰 (rev 2 에서 더 쓰는 것)
+
+| 요소 / 상태 | 현재 값·alpha (Figma 변수: 미조회) | primitive | semantic / 역할 | 생성 CSS의 해석 값 | 값·역할 일치 여부 | 미확정 또는 새 매핑 필요 사유 |
+|---|---|---|---|---|---|---|
+| 줄 사이 선 | #EBEBEB 1px | neutral-02 | `border-subtle` | #EBEBEB | 일치(가는 구분선) | — |
+| 라벨 | #222222 | shade-02 | `text` | #222222 | 일치 | — |
+| 보조 글 | 원래 #6C6C6C | neutral-07 | `text-secondary` | #717171 | 사용자 결정으로 바꿈 | Q-14: "Figma 스타일 값으로 맞춤" — #6C6C6C → #717171(리드 대응표). 새 역할 없음 |
+| More info | 원래 #6C6C6C | neutral-07 | `text-secondary`(Button text 가 그림) | #717171 | 사용자 결정으로 바꿈 | 이 부품 CSS 에 쓰지 않음 |
+
+| 쓰는 곳 | 현재 값 | 크기·글꼴·굵기 | 줄 높이 | 자간 (Q-15: 지금 값 유지) |
+|---|---|---|---|---|
+| 라벨 | 16 / 400 / 20 / -0.3125px | `--text-type-body-copy-16pt-regular` + `--font-type-…`·`--font-weight-type-body-copy-16pt-regular`(rev 1 과 같음) | `calc(var(--spacing) * 5)` | `calc(var(--spacing) * -0.078125)` |
+| 보조 글 | 14 / 400 / 18 / -0.1504px | `--text-type-body-copy-14pt-regular` + font·weight | `calc(var(--spacing) * 4.5)` | `calc(var(--spacing) * -0.0376)` |
+| More info | 14 / 500 / 18 / -0.1504px, 밑줄 | Button text 가 그림(`--font-weight-medium` 500) | Button | Button |
+
+- 글꼴: 페이지 `-apple-system…` 과 토큰 `"SF Pro", var(--font-sans)` 모두 이 Mac 에서 `.SF NS` 로 그려진다(CDP 확인).
+- 신규 token: 없음. `border-subtle`·`text-secondary`·`border-emphasis` 등은 이미 있다.
+
+### 12.6 아이콘·asset
+
+- 새 그림 없음. 원·점·링은 rev 1 그대로(213:1944). 페이지의 `checkout-radio*.svg` 5개는 이 부품으로 바꾼 뒤 쓰지 않는다.
+
+### 12.7 영향받는 사용처
+
+- `variant` 기본값이 `"default"` 라 rev 1 사용처(stories·Matrix)는 그대로다. 페이지에서 RadioButton 을 쓰는 곳은 아직 없다(rev 1 3절). 새 사용처: CheckoutStep(승인 뒤).
+- 변경할 파일: `RadioButton.tsx`(Button import 추가)·`RadioButton.css`·`RadioButton.stories.tsx`(새 스토리 `List` — Checkout 세 줄, 492 칸, 흰 캔버스). 구현 순서: Buttons revision 2 → 이 revision.
+
+### 12.8 검증 계획 (rev 2 에서 더함)
+
+| 확인 대상 | 원본의 기대 결과 | 검사 방법 | 완료 증거 |
+|---|---|---|---|
+| `List` 스토리 모양 | 492 칸에서 줄 높이 40·75·93, 원 x 468, 라벨 16/20 자간 -0.3125px, 보조 글 #717171 14/18 자간 -0.1504px, More info = `ds-button`(text), 선 #EBEBEB | Storybook iframe 과 `/checkout` 나란히 DOM 측정·스크린샷 | |
+| 선택 | 라벨 글자·보조 글 글자·원 클릭 → 선택 + `onChange` 1회. More info 클릭 → `onActionClick` 1회, 선택 안 바뀜, 주소에 # 없음 | Storybook play `fn()` + `userEvent.click` | |
+| 키보드 | Tab 1번으로 묶음에 들어오고 화살표로 이동, 다음 Tab 은 More info | play `userEvent.tab`·`keyboard`, Playwright 실제 키보드로 링 확인 | |
+| 접근성·하위 부품 | 라디오 이름 = 라벨만, 설명 = 보조 글. `<label>` 안에 `<button>` 없음. More info 의 `ds-button` 이 `ds-radiobutton` 안에 렌더(Nested parts identity) | play `toHaveAccessibleName`·DOM 검사 | |
+| rev 1 회귀 | `variant` 없는 기존 스토리 모양·play 그대로 | `pnpm ai:check RadioButton`, `pnpm ai:verify RadioButton`, `pnpm typecheck`, `pnpm ds:guard` | |

@@ -167,3 +167,37 @@
   font-size: var(--text-type-body-copy-12pt-regular);
   font-weight: var(--font-weight-type-body-copy-12pt-regular);
 }
+
+/* ══ revision 2 — type="banner": Checkout "Rare find!" 띠 812:12363 (계획 12.3). 값은 현재 사이트 측정값. ══ */
+/* 390×48(부모 폭), 여백 12, 모서리 12, 테두리 없음. 바탕은 사용자 결정으로 #FBEFF8 → surface-raised(#F7F7F7).
+   아이콘 32 + 8 + 글자 한 줄, 가로·세로 가운데(아이콘은 48 칸의 가운데에 놓여 위아래 여백 칸을 넘는다 — 지금 페이지와 같음). */
+.ds-callout--banner {
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spacing) * 2);
+  height: calc(var(--spacing) * 12);
+  padding: calc(var(--spacing) * 3);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-raised);
+}
+
+.ds-callout__banner-icon {
+  display: block;
+  flex: none;
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+  object-fit: contain;
+}
+
+/* 14 / 500 / 18, 자간 -0.1504px(지금 값 유지), 줄바꿈 없음 */
+.ds-callout__banner-text {
+  margin: 0;
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: calc(var(--spacing) * -0.0376);
+  white-space: nowrap;
+  color: var(--color-text);
+}

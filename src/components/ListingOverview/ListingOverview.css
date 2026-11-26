@@ -1,0 +1,249 @@
+/* ListingOverview — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   승인 계획: docs/plans/components/ListingOverview.md revision 1 (Figma 812:11135 · 812:11144 · 812:11171, 현재 사이트 값 — 결정 3,
+   Q-06 B 로 호스트 사진·Near 칸만 Figma 값). 인원 줄은 Text, "Learn more" 는 공용 Button 이 그린다(R05). */
+.ds-listing-overview {
+  color: var(--color-text);
+}
+
+/* ── 제목 묶음: 위아래 32 ── */
+.ds-listing-overview__header {
+  padding: calc(var(--spacing) * 8) 0;
+}
+
+/* 22 / 590 / 줄 26, 아래 4 */
+.ds-listing-overview__title {
+  margin: 0 0 calc(var(--spacing) * 1);
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: var(--text-type-header-22pt-semibold);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  letter-spacing: var(--tracking-type-header-22pt-semibold);
+  line-height: calc(var(--spacing) * 6.5);
+}
+
+/* ── Guest favourite 상자: 645 × 89, 테두리 1, 모서리 12, 안쪽 22 / 26, 칸 사이 24, 아래 12 ── */
+.ds-listing-overview__favourite {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 6);
+  box-sizing: border-box;
+  width: calc(var(--spacing) * 161.25);
+  height: calc(var(--spacing) * 22.25);
+  margin-bottom: calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 5.5) calc(var(--spacing) * 6.5);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+/* 월계수 + 두 줄 글자, 사이 2 */
+.ds-listing-overview__badge {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: calc(var(--spacing) * 0.5);
+}
+
+.ds-listing-overview__laurel {
+  display: block;
+  height: calc(var(--spacing) * 9);
+  object-fit: contain;
+}
+
+.ds-listing-overview__laurel--left {
+  width: calc(var(--spacing) * 5);
+}
+
+.ds-listing-overview__laurel--right {
+  width: calc(var(--spacing) * 6);
+}
+
+/* 18 / 590 / 줄 18, 가운데 */
+.ds-listing-overview__badge-text {
+  display: block;
+  font-family: var(--font-type-body-copy-18pt-semibold);
+  font-size: var(--text-type-body-copy-18pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-18pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-18pt-semibold);
+  line-height: calc(var(--spacing) * 4.5);
+  text-align: center;
+}
+
+/* 16 / 400 / 줄 20, 폭 265 */
+.ds-listing-overview__favourite-text {
+  flex: none;
+  width: calc(var(--spacing) * 66.25);
+  margin: 0;
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+  line-height: calc(var(--spacing) * 5);
+}
+
+/* 숫자 묶음: 오른쪽 끝, 칸 사이 24 */
+.ds-listing-overview__stats {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 6);
+  margin-left: auto;
+}
+
+.ds-listing-overview__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+}
+
+/* 22 / 590 / 줄 26 */
+.ds-listing-overview__stat-number {
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: var(--text-type-header-22pt-semibold);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  letter-spacing: var(--tracking-type-header-22pt-semibold);
+  line-height: calc(var(--spacing) * 6.5);
+}
+
+/* 별 10 × 5, 사이 2 */
+.ds-listing-overview__stars {
+  display: flex;
+  gap: calc(var(--spacing) * 0.5);
+}
+
+.ds-listing-overview__star {
+  display: block;
+  width: calc(var(--spacing) * 2.5);
+  height: calc(var(--spacing) * 2.5);
+}
+
+/* 세로선 1 × 40 */
+.ds-listing-overview__stat-divider {
+  width: var(--border-width-thin);
+  height: calc(var(--spacing) * 10);
+  background-color: var(--color-border);
+}
+
+/* 12 / 400 / 줄 16 */
+.ds-listing-overview__stat-label {
+  font-family: var(--font-type-body-copy-12pt-regular);
+  font-size: var(--text-type-body-copy-12pt-regular);
+  font-weight: var(--font-weight-type-body-copy-12pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-12pt-regular);
+  line-height: calc(var(--spacing) * 4);
+}
+
+/* ── 하이라이트: 위아래 32, 줄 사이 24 ── */
+.ds-listing-overview__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 6);
+  padding: calc(var(--spacing) * 8) 0;
+}
+
+/* 그림 칸 – 글자 24 */
+.ds-listing-overview__row {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 6);
+}
+
+.ds-listing-overview__media {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.ds-listing-overview__media-img {
+  display: block;
+}
+
+/* inset — 40 × 40 칸 가운데 34 × 34 (Top 10%) */
+.ds-listing-overview__media--inset {
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+}
+
+.ds-listing-overview__media--inset .ds-listing-overview__media-img {
+  width: calc(var(--spacing) * 8.5);
+  height: calc(var(--spacing) * 8.5);
+  object-fit: contain;
+}
+
+/* framed — 40 × 40: 흰 테두리 2 + 그림 36, 모서리 12, 그림자 Elevation 01 (Near, Q-05 · Q-06 B) */
+.ds-listing-overview__media--framed {
+  box-sizing: border-box;
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+  overflow: hidden;
+  border: var(--border-width-thick) solid var(--color-image-frame);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevation-01);
+}
+
+.ds-listing-overview__media--framed .ds-listing-overview__media-img {
+  width: calc(var(--spacing) * 9);
+  height: calc(var(--spacing) * 9);
+  object-fit: cover;
+}
+
+/* full — 40 × 40 (Kitchen · Cleanliness) */
+.ds-listing-overview__media--full .ds-listing-overview__media-img {
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+  object-fit: contain;
+}
+
+/* 호스트 사진 40 원, cover, 바탕 #DDD (Q-06 B), 배지 20 은 오른쪽·아래 -2 */
+.ds-listing-overview__host {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+}
+
+.ds-listing-overview__host-avatar {
+  display: block;
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+  border-radius: var(--radius-full);
+  background-color: var(--color-image-placeholder-subtle);
+  object-fit: cover;
+}
+
+.ds-listing-overview__host-badge {
+  position: absolute;
+  right: calc(var(--spacing) * -0.5);
+  bottom: calc(var(--spacing) * -0.5);
+  display: block;
+  width: calc(var(--spacing) * 5);
+  height: calc(var(--spacing) * 5);
+  object-fit: contain;
+}
+
+/* 제목 14 / 590 / 줄 20, 아래 2 */
+.ds-listing-overview__row-title {
+  margin: 0 0 calc(var(--spacing) * 0.5);
+  font-family: var(--font-type-body-copy-14pt-semibold);
+  font-size: var(--text-type-body-copy-14pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-14pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-14pt-semibold);
+  line-height: calc(var(--spacing) * 5);
+}
+
+/* 설명 14 / 400 / 줄 20, text-secondary (결정 2) */
+.ds-listing-overview__row-text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+  line-height: calc(var(--spacing) * 5);
+}
+
+/* Learn more: 줄 왼쪽에서 12 들여 놓음(아이콘이 40 칸 가운데), 줄 높이 16 + 아래 2 = 18(지금 페이지) */
+.ds-listing-overview__learn-more {
+  display: flex;
+  margin-left: calc(var(--spacing) * 3);
+  padding-bottom: calc(var(--spacing) * 0.5);
+}

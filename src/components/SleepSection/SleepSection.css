@@ -1,0 +1,32 @@
+/* SleepSection — Detail "Where you'll sleep"(Figma 812:11238). 값은 docs/plans/components/SleepSection.md §5·§6.
+   semantic·layout 토큰만 쓴다. 침실 카드 모양은 Card(sleep, detail)가 그린다 — 여기서는 배치만. */
+.ds-sleep-section {
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(var(--spacing) * 12) 0;
+  border-top: var(--border-width-thin) solid var(--color-border);
+}
+
+/* 제목: 22/590, 줄 높이 26, 아래 24 */
+.ds-sleep-section__heading {
+  margin: 0 0 calc(var(--spacing) * 6);
+  color: var(--color-text);
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: var(--text-type-header-22pt-semibold);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  letter-spacing: var(--tracking-type-header-22pt-semibold);
+  line-height: calc(var(--spacing) * 6.5);
+}
+
+/* 카드 줄: 사이 16, 아래 8 */
+.ds-sleep-section__rooms {
+  display: flex;
+  gap: calc(var(--spacing) * 4);
+  padding-bottom: calc(var(--spacing) * 2);
+}
+
+/* 칸 폭 318.7(지금 페이지 값) */
+.ds-sleep-section__item {
+  flex: none;
+  width: calc(var(--spacing) * 79.675);
+}

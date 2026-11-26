@@ -6,7 +6,7 @@ import { Text } from "./Text";
 import type { TextAs, TextVariant, TextTone } from "./Text";
 
 const tags: TextAs[] = ["span", "p", "h1", "h2", "h3", "h4", "h5", "h6"];
-const variants: TextVariant[] = ["body", "body-sm", "title"];
+const variants: TextVariant[] = ["body", "body-sm", "title", "heading"];
 const tones: TextTone[] = ["default", "secondary"];
 const rootRef = createRef<HTMLElement>();
 const keyboardClick = fn();
@@ -34,11 +34,12 @@ type Story = StoryObj<typeof meta>;
 async function checkTypography(element: HTMLElement, variant: TextVariant, tone: TextTone) {
   const doc = element.ownerDocument;
   const probe = doc.createElement("span");
-  const size = { body: "--text-body-1", "body-sm": "--text-body-2", title: "--text-title" }[variant];
-  probe.style.fontFamily = "var(--font-sans)";
+  const size = { body: "--text-body-1", "body-sm": "--text-body-2", title: "--text-title", heading: "--text-type-header-22pt-semibold" }[variant];
+  const heading = variant === "heading";
+  probe.style.fontFamily = heading ? "var(--font-type-header-22pt-semibold)" : "var(--font-sans)";
   probe.style.fontSize = `var(${size})`;
-  probe.style.fontWeight = `var(--font-weight-${variant === "title" ? "medium" : "regular"})`;
-  probe.style.lineHeight = `var(--leading-${variant === "title" ? "tight" : "normal"})`;
+  probe.style.fontWeight = heading ? "var(--font-weight-type-header-22pt-semibold)" : `var(--font-weight-${variant === "title" ? "medium" : "regular"})`;
+  probe.style.lineHeight = heading ? "normal" : `var(--leading-${variant === "title" ? "tight" : "normal"})`;
   probe.style.color = `var(--color-text${tone === "secondary" ? "-secondary" : ""})`;
   probe.style.backgroundColor = "var(--color-bg)";
   element.parentElement!.append(probe);
@@ -88,7 +89,17 @@ export const Title: Story = {
   },
 };
 
-/** 8 tags × 3 presets × 2 tones. Checks the look and the meaning separately. */
+/** revision 3: Figma Header/22pt Semibold, used for section headings such as Home "Stay in Seoul". */
+export const Heading: Story = {
+  args: { as: "h2", variant: "heading", children: "Stay in Seoul" },
+  play: async ({ args, canvasElement }) => {
+    const element = within(canvasElement).getByRole("heading", { level: 2, name: String(args.children) });
+    await expect(element.tagName).toBe("H2");
+    await checkTypography(element, "heading", "default");
+  },
+};
+
+/** 8 tags × 4 presets × 2 tones. Checks the look and the meaning separately. */
 export const Matrix: Story = {
   parameters: { controls: { disable: true } },
   render: () => <div style={{ display: "grid", gap: "calc(var(--spacing) * 3)" }}>
@@ -99,7 +110,7 @@ export const Matrix: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const elements = canvas.getAllByTestId("ds-text");
-    await expect(elements).toHaveLength(48);
+    await expect(elements).toHaveLength(tags.length * variants.length * tones.length);
     let index = 0;
     for (const as of tags) for (const variant of variants) for (const tone of tones) {
       const element = elements[index++]!;

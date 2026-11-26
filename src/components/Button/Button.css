@@ -1,5 +1,5 @@
 /* Button — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
-   승인 계획: docs/plans/components/Buttons.md revision 1.
+   승인 계획: docs/plans/components/Buttons.md revision 1(primary·secondary·tertiary) + revision 2(ghost·text, 12절).
    버튼 자신은 누르는 영역이고, 모양(바탕·테두리·포커스 링)은 ::before 층이 그린다.
    그래서 Pressed 에서 그림만 좌우로 줄여도(Q-03) 누르는 영역은 그대로다. */
 .ds-button {
@@ -43,7 +43,8 @@
   opacity: 0.05;
 }
 
-.ds-button:focus-visible {
+/* rev 1 세 세트만 Figma 링을 직접 그린다. ghost·text 는 브라우저 기본 링(rev 2 Q-18 A). */
+.ds-button:not(.ds-button--ghost, .ds-button--text):focus-visible {
   outline: none;
 }
 
@@ -129,13 +130,14 @@
 }
 
 /* ── Disabled · Loading ── */
-.ds-button--disabled,
+/* #DDD 모양은 rev 1 세 세트의 Figma 상태다. ghost·text 에는 새 모양을 만들지 않는다(rev 2 Q-20 A). */
+.ds-button--disabled:not(.ds-button--ghost, .ds-button--text),
 .ds-button--primary.ds-button--loading,
 .ds-button--tertiary.ds-button--loading {
   color: var(--color-on-disabled);
 }
 
-.ds-button--disabled::before,
+.ds-button--disabled:not(.ds-button--ghost, .ds-button--text)::before,
 .ds-button--primary.ds-button--loading::before,
 .ds-button--tertiary.ds-button--loading::before {
   border: none;
@@ -205,4 +207,138 @@
   left: calc(var(--spacing) * 6);
   width: calc(var(--spacing) * 6);
   height: calc(var(--spacing) * 6);
+}
+
+/* ══ revision 2 — 공용 모양 ghost · text (계획 12.4). 값은 현재 사이트 측정값, 크기는 토큰 식. ══ */
+
+/* 모서리는 요소 자신에 둔다: 브라우저 기본 포커스 링이 모서리를 따라 그려진다(Q-18 A). */
+.ds-button--ghost,
+.ds-button--text {
+  gap: 0;
+  padding: 0;
+  color: var(--color-text);
+}
+
+.ds-button--ghost .ds-button__icon > svg,
+.ds-button--text .ds-button__icon > svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── ghost: #F2F2F2 상자 ── */
+.ds-button--ghost {
+  border-radius: var(--radius-md);
+  background-color: var(--color-control-bg-subtle);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-normal);
+}
+
+.ds-button--ghost:hover:not(.ds-button--disabled) {
+  background-color: var(--color-control-bg-subtle-hover);
+}
+
+/* small — "Change": 32 높이, 최소 폭 76, 좌우 16, 12/500 */
+.ds-button--ghost.ds-button--small {
+  min-width: calc(var(--spacing) * 19);
+  height: calc(var(--spacing) * 8);
+  padding: 0 calc(var(--spacing) * 4);
+  font-family: var(--font-type-body-copy-12pt-regular);
+  font-size: var(--text-type-body-copy-12pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-12pt-regular);
+}
+
+/* medium — "사진 모두 보기": 37 높이, 최소 폭 136, 내용 왼쪽부터, 모서리 9, 13.7/500, 아이콘 18 + 4.6 */
+.ds-button--ghost.ds-button--medium {
+  justify-content: flex-start;
+  gap: calc(var(--spacing) * 1.15);
+  min-width: calc(var(--spacing) * 34);
+  height: calc(var(--spacing) * 9.25);
+  padding: 0 calc(var(--spacing) * 4);
+  border-radius: calc(var(--radius-sm) * 2.25);
+  font-family: var(--font-type-body-copy-13pt-regular);
+  font-size: calc(var(--spacing) * 3.425);
+  letter-spacing: var(--tracking-type-body-copy-13pt-regular);
+}
+
+.ds-button--ghost.ds-button--medium .ds-button__icon {
+  width: calc(var(--spacing) * 4.5);
+  height: calc(var(--spacing) * 4.5);
+}
+
+/* large — "Show more": 12 + 24 + 12 = 48 높이, 최소 폭 132, 좌우 24.5, 모서리 12, 16/500 */
+.ds-button--ghost.ds-button--large {
+  min-width: calc(var(--spacing) * 33);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6.125);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+}
+
+/* ── text: 바탕 없는 글자 버튼 ── */
+.ds-button--text.ds-button--tone-secondary {
+  color: var(--color-text-secondary);
+}
+
+/* xsmall — "Learn more about summaries": 12/400/16, 아이콘 16 + 36 */
+.ds-button--text.ds-button--xsmall {
+  gap: calc(var(--spacing) * 9);
+  font-family: var(--font-type-body-copy-12pt-regular);
+  font-size: var(--text-type-body-copy-12pt-regular);
+  font-weight: var(--font-weight-type-body-copy-12pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-12pt-regular);
+  line-height: calc(var(--spacing) * 4);
+}
+
+/* small — "Full policy" · "GBP" · "Price breakdown" · "More info": 14/500/18, 자간 -0.1504px, 늘 밑줄.
+   문장 안에 inline 으로 놓여 기준선이 맞는다. */
+.ds-button--text.ds-button--small {
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: calc(var(--spacing) * -0.0376);
+  line-height: calc(var(--spacing) * 4.5);
+}
+
+/* medium — "리스팅 신고하기": 14/400/21, 아이콘 16 + 16, hover 때 글자에만 밑줄 */
+.ds-button--text.ds-button--medium {
+  gap: calc(var(--spacing) * 4);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+  line-height: var(--leading-normal);
+}
+
+/* large — "Show original": 16/400/24, 늘 밑줄 */
+.ds-button--text.ds-button--large {
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+  line-height: var(--leading-normal);
+}
+
+/* xlarge — "공유하기" · "저장": 34 높이(줄 21 이 가운데), 8/12, 모서리 8, 14/500, 아이콘 16 + 8, hover 바탕 */
+.ds-button--text.ds-button--xlarge {
+  gap: calc(var(--spacing) * 2);
+  height: calc(var(--spacing) * 8.5);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+  line-height: var(--leading-normal);
+}
+
+.ds-button--text.ds-button--xlarge:hover:not(.ds-button--disabled) {
+  background-color: var(--color-surface-hover-subtle);
+}
+
+/* 밑줄은 브라우저 기본(두께·위치·skip-ink auto)이며 글자에만 긋는다. */
+.ds-button--text.ds-button--small .ds-button__label,
+.ds-button--text.ds-button--large .ds-button__label,
+.ds-button--text.ds-button--medium:hover:not(.ds-button--disabled) .ds-button__label {
+  text-decoration: underline;
 }

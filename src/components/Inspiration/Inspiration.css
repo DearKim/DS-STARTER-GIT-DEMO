@@ -1,0 +1,122 @@
+/* Inspiration — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   값의 근거: docs/plans/components/Inspiration.md revision 1 (Figma 389:7517, 현재 사이트 값).
+   탭 줄 모양은 키트 Tabs variant="bar" 가 그린다 — 이 파일은 Tabs 의 클래스를 고치지 않는다(R05). */
+.ds-inspiration {
+  /* 구역 1440 × 359, 안쪽 48, 가로 넘침 숨김(여행지 목록 폭 1416 이 오른쪽에서 잘림) */
+  padding: calc(var(--spacing) * 12);
+  overflow-x: hidden;
+  background: var(--color-surface-subtle);
+  color: var(--color-text);
+  font-family: var(--font-type-body-copy-14pt-regular);
+}
+
+/* 제목 22 / 500 / 26 / 자간 −0.7, 아래 8 */
+.ds-inspiration__heading {
+  margin: 0 0 calc(var(--spacing) * 2);
+  font-family: var(--font-type-header-22pt-regular);
+  font-size: var(--text-type-header-22pt-regular);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 6.5);
+  letter-spacing: calc(var(--spacing) * -0.175);
+}
+
+/* 탭 줄 아래 선이 구역 오른쪽 끝(1440)까지 가도록 오른쪽 안쪽 여백만큼 넓힌다(배치). */
+.ds-inspiration__tabs {
+  margin-right: calc(var(--spacing) * -12);
+}
+
+/* 6열 × 229.3, 열 사이 8, 줄 사이 24 */
+.ds-inspiration__grid {
+  display: grid;
+  grid-template-columns: repeat(6, calc(var(--spacing) * 57.325));
+  gap: calc(var(--spacing) * 6) calc(var(--spacing) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-inspiration__cell {
+  display: flex;
+  min-width: 0;
+}
+
+/* 여행지 칸 229.3 × 36: 이름 + 종류 두 줄, 세로 가운데, 왼쪽 정렬, 넘침 숨김 */
+.ds-inspiration__destination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: calc(var(--spacing) * 9);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--text-type-body-copy-14pt-regular);
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: calc(var(--spacing) * -0.0375);
+  text-align: start;
+  cursor: pointer;
+}
+
+.ds-inspiration__title,
+.ds-inspiration__subtitle {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 이름 14 / 500 */
+.ds-inspiration__title {
+  font-weight: var(--font-weight-medium);
+}
+
+/* 종류 14 / 400, text-secondary(결정 2: #6C6C6C → #717171) */
+.ds-inspiration__subtitle {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+}
+
+/* hover: 이름에 밑줄(현재 사이트, Q-01) */
+.ds-inspiration__destination:hover .ds-inspiration__title {
+  text-decoration: underline;
+}
+
+/* Show more 칸: 글자 14 / 500 + 4 + 12×12 화살표, 세로 가운데, 바탕 없음, 모서리 8. hover 변화 없음 */
+.ds-inspiration__show-more {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  width: 100%;
+  height: calc(var(--spacing) * 9);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: calc(var(--spacing) * -0.0375);
+  cursor: pointer;
+}
+
+.ds-inspiration__chevron {
+  display: block;
+  flex: none;
+  width: calc(var(--spacing) * 3);
+  height: calc(var(--spacing) * 3);
+}
+
+/* Focus: 버튼 상자 둘레 2px focus-ring, 크기 변화 없음(Q-01) */
+.ds-inspiration__destination:focus-visible,
+.ds-inspiration__show-more:focus-visible {
+  outline: var(--border-width-thick) solid var(--color-focus-ring);
+  outline-offset: 0;
+}

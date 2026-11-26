@@ -1,10 +1,13 @@
 import { Fragment, forwardRef, useId } from "react";
-import type { ForwardedRef, HTMLAttributes, MouseEvent, MouseEventHandler, Ref } from "react";
+import type { ChangeEvent, ForwardedRef, HTMLAttributes, MouseEvent, MouseEventHandler, Ref } from "react";
 import logoUrl from "./logo.png";
 import "./Navigation.css";
 
 /** Figma "Navigation" set (235:2441), axis `Type`. */
 export type NavigationType = "main" | "stays" | "expanded";
+
+/** Main bar look. `figma` = Figma 8:297 (revision 1). `site` = the current website's top bar (revision 2, Q-15). */
+export type NavigationLook = "figma" | "site";
 
 /** Which search field was pressed. The pill (Main / Stays) has where·when·who; the expanded bar has where·checkIn·checkOut·who. */
 export type NavigationField = "where" | "when" | "who" | "checkIn" | "checkOut";
@@ -20,20 +23,32 @@ export interface NavigationExpandedValues {
 export interface NavigationProps extends Omit<HTMLAttributes<HTMLElement>, "children"> {
   /** Figma `Type`: Main Navigation (bar), Stays Navigation (search pill), Expanded Stays Navigation (search bar). */
   type?: NavigationType;
+  /** Main only. `site` draws the current website's top bar: bottom line only, 71 high without the pill, 81 with it. */
+  look?: NavigationLook;
+  /** Main only. `false` leaves out the search pill in the middle (Home and Checkout top bars). */
+  search?: boolean;
   /** Main only. Address of the logo link. */
   logoHref?: string;
-  /** Main only. Address of the "Become a Host" link. */
+  /** Main only. Address of the "Become a Host" link. Without it, "Become a Host" is a button that calls `onHostClick`. */
   hostHref?: string;
+  /** Main only. Called when "Become a Host" is pressed and there is no `hostHref`. */
+  onHostClick?: MouseEventHandler<HTMLButtonElement>;
   /** Main only. Called when the globe button is pressed. No language menu is built. */
   onLanguageClick?: MouseEventHandler<HTMLButtonElement>;
   /** Main only. Called when the menu/avatar pill is pressed. No menu is built. */
   onMenuClick?: MouseEventHandler<HTMLButtonElement>;
-  /** Called with the field name when one search field is pressed. */
+  /** Called with the field name when one search field button is pressed (not used by `editable` fields). */
   onFieldClick?: (field: NavigationField, event: MouseEvent<HTMLButtonElement>) => void;
   /** Called when the red search button is pressed. */
   onSearchClick?: MouseEventHandler<HTMLButtonElement>;
-  /** Expanded only. Value lines under Where / Check-in / Check-out / Who. */
+  /** Expanded only. Value lines under Where / Check-in / Check-out / Who (placeholders when `editable`). */
   values?: NavigationExpandedValues;
+  /** Expanded only. Fill the parent's width with four equal fields, 62 high (Home hero bar, Figma 418:8282). */
+  stretch?: boolean;
+  /** Expanded only. Each field is a labelled text box you can type in. */
+  editable?: boolean;
+  /** Expanded + editable only. Called with the field name and the typed value. */
+  onFieldChange?: (field: NavigationField, value: string, event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const DEFAULT_VALUES: Required<NavigationExpandedValues> = {
@@ -86,7 +101,14 @@ function SearchPill({ onFieldClick, onSearchClick }: Pick<NavigationProps, "onFi
 }
 
 /** Expanded Stays Navigation 234:4360: four fields and a 48px search button. */
-function SearchBar({ onFieldClick, onSearchClick, values }: Pick<NavigationProps, "onFieldClick" | "onSearchClick" | "values">) {
+function SearchBar({
+  onFieldClick,
+  onSearchClick,
+  values,
+  editable,
+  onFieldChange,
+}: Pick<NavigationProps, "onFieldClick" | "onSearchClick" | "values" | "editable" | "onFieldChange">) {
+  const idBase = useId();
   const v = { ...DEFAULT_VALUES, ...values };
   const segments: { name: NavigationField; label: string; value: string; wide: boolean }[] = [
     { name: "where", label: "Where", value: v.where, wide: true },
@@ -96,19 +118,35 @@ function SearchBar({ onFieldClick, onSearchClick, values }: Pick<NavigationProps
   ];
   return (
     <div className="ds-navigation__bar" role="search">
-      {segments.map((segment, i) => (
-        <Fragment key={segment.name}>
-          {i > 0 && <span className="ds-navigation__divider ds-navigation__divider--tall" aria-hidden="true" />}
-          <button
-            type="button"
-            className={`ds-navigation__segment${segment.wide ? " ds-navigation__segment--wide" : ""}`}
-            onClick={(event) => onFieldClick?.(segment.name, event)}
-          >
-            <span className="ds-navigation__segment-label">{segment.label}</span>
-            <span className="ds-navigation__segment-value">{segment.value}</span>
-          </button>
-        </Fragment>
-      ))}
+      {segments.map((segment, i) => {
+        const segmentClass = `ds-navigation__segment${segment.wide ? " ds-navigation__segment--wide" : ""}`;
+        const inputId = `${idBase}-${segment.name}`;
+        return (
+          <Fragment key={segment.name}>
+            {i > 0 && <span className="ds-navigation__divider ds-navigation__divider--tall" aria-hidden="true" />}
+            {editable ? (
+              /* Revision 2 (Q-20): a labelled text box. Clicking the label moves focus into the box. */
+              <div className={segmentClass}>
+                <label className="ds-navigation__segment-label" htmlFor={inputId}>
+                  {segment.label}
+                </label>
+                <input
+                  id={inputId}
+                  className="ds-navigation__segment-input"
+                  type="text"
+                  placeholder={segment.value}
+                  onChange={(event) => onFieldChange?.(segment.name, event.target.value, event)}
+                />
+              </div>
+            ) : (
+              <button type="button" className={segmentClass} onClick={(event) => onFieldClick?.(segment.name, event)}>
+                <span className="ds-navigation__segment-label">{segment.label}</span>
+                <span className="ds-navigation__segment-value">{segment.value}</span>
+              </button>
+            )}
+          </Fragment>
+        );
+      })}
       <button type="button" className="ds-navigation__search-button ds-navigation__search-button--large" aria-label="Search" onClick={onSearchClick}>
         <SearchIcon large />
       </button>
@@ -117,13 +155,25 @@ function SearchBar({ onFieldClick, onSearchClick, values }: Pick<NavigationProps
 }
 
 /** Figma "Login" 8:189: Become a Host, globe, and the menu/avatar pill. */
-function Actions({ hostHref, onLanguageClick, onMenuClick }: Pick<NavigationProps, "hostHref" | "onLanguageClick" | "onMenuClick">) {
+function Actions({
+  hostHref,
+  onHostClick,
+  onLanguageClick,
+  onMenuClick,
+}: Pick<NavigationProps, "hostHref" | "onHostClick" | "onLanguageClick" | "onMenuClick">) {
   const clipId = `${useId()}-avatar`;
   return (
     <div className="ds-navigation__actions">
-      <a className="ds-navigation__host" href={hostHref}>
-        Become a Host
-      </a>
+      {hostHref !== undefined ? (
+        <a className="ds-navigation__host" href={hostHref}>
+          Become a Host
+        </a>
+      ) : (
+        /* Revision 2 (Q-16): no address → a real button, so Tab reaches it. Same look as the link. */
+        <button type="button" className="ds-navigation__host" onClick={onHostClick}>
+          Become a Host
+        </button>
+      )}
       <button type="button" className="ds-navigation__language" aria-label="Language" onClick={onLanguageClick}>
         {/* Globe 6:807: circle, meridian and equator, stroke 1.5 */}
         <svg className="ds-navigation__globe" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
@@ -160,10 +210,37 @@ function Actions({ hostHref, onLanguageClick, onMenuClick }: Pick<NavigationProp
 
 /** Top navigation from the Figma "Navigation" set (235:2441): the Main bar, the Stays search pill, and the Expanded search bar. */
 export const Navigation = forwardRef<HTMLElement, NavigationProps>(function Navigation(
-  { type = "main", logoHref = "/", hostHref, onLanguageClick, onMenuClick, onFieldClick, onSearchClick, values, className, ...rest },
+  {
+    type = "main",
+    look = "figma",
+    search = true,
+    logoHref = "/",
+    hostHref,
+    onHostClick,
+    onLanguageClick,
+    onMenuClick,
+    onFieldClick,
+    onSearchClick,
+    values,
+    stretch = false,
+    editable = false,
+    onFieldChange,
+    className,
+    ...rest
+  },
   ref: ForwardedRef<HTMLElement>,
 ) {
-  const classes = ["ds-navigation", `ds-navigation--${type}`, className].filter(Boolean).join(" ");
+  const classes = [
+    "ds-navigation",
+    `ds-navigation--${type}`,
+    type === "main" && look === "site" && "ds-navigation--site",
+    type === "main" && !search && "ds-navigation--no-search",
+    type === "expanded" && stretch && "ds-navigation--stretch",
+    type === "expanded" && editable && "ds-navigation--editable",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   if (type === "main") {
     return (
@@ -171,10 +248,12 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(function Navi
         <a className="ds-navigation__logo" href={logoHref}>
           <img className="ds-navigation__logo-image" src={logoUrl} alt="Airbnb" width={102} height={32} draggable={false} />
         </a>
-        <div className="ds-navigation__center">
-          <SearchPill onFieldClick={onFieldClick} onSearchClick={onSearchClick} />
-        </div>
-        <Actions hostHref={hostHref} onLanguageClick={onLanguageClick} onMenuClick={onMenuClick} />
+        {search && (
+          <div className="ds-navigation__center">
+            <SearchPill onFieldClick={onFieldClick} onSearchClick={onSearchClick} />
+          </div>
+        )}
+        <Actions hostHref={hostHref} onHostClick={onHostClick} onLanguageClick={onLanguageClick} onMenuClick={onMenuClick} />
       </header>
     );
   }
@@ -184,7 +263,13 @@ export const Navigation = forwardRef<HTMLElement, NavigationProps>(function Navi
       {type === "stays" ? (
         <SearchPill onFieldClick={onFieldClick} onSearchClick={onSearchClick} />
       ) : (
-        <SearchBar onFieldClick={onFieldClick} onSearchClick={onSearchClick} values={values} />
+        <SearchBar
+          onFieldClick={onFieldClick}
+          onSearchClick={onSearchClick}
+          values={values}
+          editable={editable}
+          onFieldChange={onFieldChange}
+        />
       )}
     </div>
   );

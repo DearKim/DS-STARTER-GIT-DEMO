@@ -1,0 +1,47 @@
+/* CheckoutStep — Figma 812:12227(열린 단계 812:12228, 닫힌 단계 812:12274·812:12277).
+   승인 계획: docs/plans/components/CheckoutStep.md revision 1. semantic·layout 토큰만 쓴다. 값은 현재 사이트 측정값.
+   이 CSS 는 자기 ds-checkoutstep__* 래퍼만 꾸민다(RadioButton·Button 의 모양은 그 부품이 그린다). */
+.ds-checkoutstep {
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(var(--spacing) * 6);
+  color: var(--color-text);
+}
+
+/* 열린 단계: 바탕 없음, 모서리 24, 그림자 Elevation 01(사용자 결정 — 원래 3겹 그림자의 가장 진한 층 y 4) */
+.ds-checkoutstep--open {
+  border-radius: calc(var(--spacing) * 6);
+  box-shadow: var(--shadow-elevation-01);
+}
+
+/* 닫힌 단계: 테두리 1 Neutral 03, 모서리 20 */
+.ds-checkoutstep--closed {
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: calc(var(--spacing) * 5);
+}
+
+/* 단계 제목: 18px / 590(Semibold) / 24, 자간 -0.6195px(지금 값 유지) */
+.ds-checkoutstep__title {
+  margin: 0;
+  font-family: var(--font-type-body-copy-18pt-semibold);
+  font-size: var(--text-type-body-copy-18pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-18pt-semibold);
+  line-height: calc(var(--spacing) * 6);
+  letter-spacing: calc(var(--spacing) * -0.154875);
+}
+
+/* 선택 묶음: 제목 아래 16, 맨 아래 선 1 Neutral 03. 줄과 줄 사이 선은 RadioButton list 가 그린다. */
+.ds-checkoutstep__options {
+  margin-top: calc(var(--spacing) * 4);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+}
+
+/* Next 줄: 높이 64, 위 16, 오른쪽 정렬 */
+.ds-checkoutstep__actions {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: calc(var(--spacing) * 16);
+  padding-top: calc(var(--spacing) * 4);
+}

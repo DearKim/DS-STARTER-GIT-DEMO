@@ -3,7 +3,8 @@ import type { ReactNode, Ref } from "react";
 import "./Text.css";
 
 export type TextAs = "span" | "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-export type TextVariant = "body" | "body-sm" | "title";
+/** "heading" = Figma text style Header/22pt Semibold (Text revision 3). */
+export type TextVariant = "body" | "body-sm" | "title" | "heading";
 export type TextTone = "default" | "secondary";
 
 export interface TextProps {
@@ -20,7 +21,7 @@ export interface TextProps {
   dir?: "ltr" | "rtl" | "auto";
 }
 
-/** Single source for static text and native headings. Starter spec Text revision 2. */
+/** Single source for static text and native headings. Starter spec Text revision 3. */
 export const Text = forwardRef<HTMLElement, TextProps>(function Text(
   { children, as = "span", variant = "body", tone = "default", id, lang, dir },
   ref,

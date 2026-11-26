@@ -1,7 +1,7 @@
 ---
 kind: component
 component: Tabs
-revision: 1
+revision: 2
 status: approved
 source_kind: figma
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=229-2214&m=dev
@@ -13,6 +13,8 @@ open_questions: 0
 
 > 작성: Claude Code, 2026-11-26. 전체 목록 `docs/plans/design-system-airbnb.md` 1단계의 `Tabs`(기존 키트 부품을 Figma 에 맞게 고침). 사용자 승인 전 구현 파일을 고치지 않는다. `approved` 는 사용자만 정한다.
 > 2026-11-26 갱신: 사용자가 채팅에서 "추천안 모두 채택", "합친 목록 + 다시 가져오기", 그림자 "Figma 이름으로 추가"를 골라 Q-01~Q-11 답·색 역할 이름·그림자를 반영했다. 리드가 Dome 원본과 획 정렬 처리 방법을 확인해 주었다(4·5절). Q-08 추천안이 "탭 사이 간격 숫자는 사용자가 정함"이라 그 숫자를 Q-12 로 물었고 사용자가 "32px (권장)" 을 골랐다. 사용자가 "Approve revision 1·5 (권장)" 으로 승인했다.
+> **2026-11-26 revision 2 (에이전트 A, 승인 대기):** 사용자 결정 "구역도 부품으로 (권장)"·"페이지 모양 유지 (권장)"(chosen in chat)에 따라 새 부품 `Inspiration`(`docs/plans/components/Inspiration.md`)이 Tabs 를 쓰도록, Home "Inspiration" 탭 줄 모양(3px 막대 + 1px 목록 선)을 그리는 **옵션 하나만 더한다**. revision 1 에서 승인한 line·pill 의 내용·값·질문 답은 그대로이며 바꾸지 않는다. 바뀐 곳은 각 절의 "revision 2" 표시 부분뿐이다(1·3·4·5·6·7·8·9·10·11절).
+> 2026-11-26 갱신(리드 전달 `rebuild-update.md`): 사용자가 "추천안 모두 채택 (권장)", "Figma 스타일 값으로 맞춤", "지금 크기·자간 유지 (권장)"을 골랐다(chosen in chat). Q-13~Q-16 답을 반영했다 — `variant="bar"`, hover 없음 + `focus-ring` 2px, 막대는 현재 사이트 위치, 안 고른 라벨 #6C6C6C → **#717171 `text-secondary`**(결정 2, 새 역할 없음).
 
 ## 1. 요청과 적용 규칙
 
@@ -24,6 +26,11 @@ open_questions: 0
 - 읽은 스펙: `docs/ai-design-system-spec.md` 버전 1.1
 - Figma 파일·노드·조회 시점·캐시 여부: Q5QDGE5WoXefOxgm5fziH3, 2026-11-26 Figma Desktop MCP 직접 조회, 캐시 아님. `get_design_context(229:2214)`·`get_design_context(237:2219)`(각각 모든 변형 코드 + 스크린샷), `get_variable_defs` 두 세트 각 1회, `get_metadata(229:2214)`(변형별 크기). SVG asset 8개를 Figma 로컬 서버에서 내려받아 경로·색을 읽음(프로젝트에 복사하지 않음). 리드의 문서 전체 메타데이터(`get_metadata 0:0`, 2026-11-26)로 Dome 원본 확인. 보조 근거: `my-website/figma/Home.layers.xml`·`Home.png`(2026-11-25 저장).
 - 대상 코드·토큰 기준 버전: git-demo 작업 폴더 현재 상태(HEAD f3aed50), `src/tokens/tokens.css`(리드가 2026-11-26 Colors·Typography·Elevation 을 다시 가져온 뒤의 상태: `--color-neutral-01` #F7F7F7, `--shadow-elevation-01/02/03` 추가). 새 색 역할과 새 그림자는 리드가 `docs/plans/tokens.md` revision 5 에 모은다.
+- **revision 2 요청(2026-11-26):** Home "Inspiration for future getaways" 의 탭 줄을 Tabs 로 그릴 수 있게 새 옵션을 더한다(사용자 결정 "페이지 모양 유지" — 페이지 모양을 Figma 세트 쪽으로 바꾸지 않고 부품에 옵션을 더함).
+  - 근거 노드: Home 프레임 389:2752 의 일반 frame "Tab List" 389:7214(1416×40) + 막대 389:7240(65×3) + 목록 선 389:7241(1416×1) + "Tab Panel" 389:7243(목록 y 32). 사본 Detail 812:433·Checkout 10613:12104 안 같은 구조(id 를 뺀 레이어 비교 차이 0). 인스턴스 아님.
+  - 값의 근거: `my-website/figma/Home.layers.xml`(2026-11-25 저장본) + **현재 사이트**(git-demo `aa9a593`, `HomePage.css` 401–446·702–731, 세 페이지 같은 값) 1440×900 Playwright 측정(2026-11-26, scratchpad `rebuild/A/measure.mjs` → `measure.json`).
+  - Figma MCP: 에이전트 A 몫 2회(`get_design_context 424:10741`, `389:7203`)가 모두 실패(연결 끊김·300초 무응답) → revision 2 값에 Figma MCP 값 없음. 색·글꼴의 Figma 변수 연결은 미확인.
+  - 기준 코드: 지금 `src/components/Tabs/Tabs.tsx`·`Tabs.css` 는 revision 1 대로 구현되어 있다(`variant: "line" | "pill"`).
 
 ## 2. 컴포넌트의 역할과 AI의 해석
 
@@ -63,6 +70,19 @@ open_questions: 0
   - Home 위쪽 아이콘 서비스 탭은 Figma 에서 `Service tab` 인스턴스(418:3155·418:8261·418:8265·418:8269·418:8273, 60×94, 48×48 컬러 그림 아이콘)다. Underline Tabs(24×24 선 아이콘, 40×65)가 아니며, 승인된 `IconButton` 계획의 Status=Default/Hover/Selected 아이콘 항목(418:3148 등, 60×93)과 같은 모양으로 보인다. 그래서 Underline 의 Icon On 은 지금 사이트에 쓰이는 곳이 없다.
   - Home "Inspiration" 탭은 Figma 에서 인스턴스가 아니라 일반 프레임(389:7214 `Tab List`)이다. 선택 표시가 3px(389:7240, 65×3), 목록 아래 1px 선(389:7241)이 있어 Underline Tabs 세트(2px 밑줄, 목록 선 없음)와 다르다. 나중에 페이지가 Tabs 를 쓰면 모양이 세트 쪽으로 바뀐다.
 
+### revision 2 — 바뀌는 범위
+
+| 지금(rev 1) | 바뀜(rev 2) | 이유 |
+|---|---|---|
+| `variant: "line" \| "pill"` | `variant: "line" \| "pill" \| "bar"`(이름은 Q-13) | Inspiration 탭 줄 모양(5절 revision 2 표)을 그리는 옵션 |
+| CSS `ds-tabs--line`·`ds-tabs--pill` | `ds-tabs--bar` 추가 | 위와 같음 |
+| `items[].icon` | `bar` 에서는 그리지 않음(pill 과 같음) | 389:7214 에 아이콘 없음 |
+| line·pill 의 모양·키보드·API | 그대로 | rev 1 승인 내용 유지 |
+
+- 변경할 파일(rev 2 승인 후): `Tabs.tsx`(variant 타입·주석), `Tabs.css`(`ds-tabs--bar` 규칙), `Tabs.stories.tsx`(생성물 — `Bar` 견본 추가, 충돌로 보고되고 보존됨). `Tabs.figma.tsx` 는 그대로(bar 는 Figma 세트가 아닌 페이지 frame 이라 Code Connect 대상 아님).
+- 영향받는 사용처: 지금 Tabs 를 쓰는 부품·페이지 없음(rev 1 조사와 같음, 2026-11-26 다시 grep). 새로 쓸 곳은 `Inspiration` 계획뿐. line·pill 은 바뀌지 않으므로 `scripts/verify-interactions.mjs` 의 Tabs 검사도 그대로다.
+- 키보드: `bar` 도 rev 1 Q-04 방식(roving tabindex, ←→ = 선택, Home/End)을 그대로 쓴다. 지금 페이지는 탭마다 Tab 멈춤(8번)·`aria-pressed` 라 페이지 쪽 키보드는 바뀐다(Inspiration Q-03 에서 확인).
+
 ## 4. Nested parts
 
 | Figma instance | Original component / set | Figma variant | Found in requested variants | Kit component and props | Status |
@@ -74,6 +94,7 @@ open_questions: 0
 - 같은 세트로 본 안쪽 레이어(행 없음): 229:2083(Focus·Line On·Icon Off) 안의 229:2026 레이어 이름이 "State=Focus, Line=On, Icon=Off" 로 같은 세트의 변형 이름이다. 템플릿 규칙대로 만드는 부품 자신의 안쪽 레이어로 보고 행을 만들지 않는다.
 - Pill Tabs(237:2219): 응답의 모든 레이어가 `div` + 글자뿐이고 인스턴스 표시가 없다 → 하위 부품 없음.
 - 밑줄(`Line 4`)은 벡터 레이어(인스턴스 아님).
+- revision 2 `bar`(389:7214·389:7240·389:7241·389:7243): `Home.layers.xml` 에서 모두 frame·text 이고 `<instance` 0개 → 하위 부품 없음. 막대·목록 선은 CSS 로 그린다.
 
 ## 5. Figma 상태·크기 전체 목록
 
@@ -139,6 +160,31 @@ open_questions: 0
 | Pill 모서리 | 50 / 500 | `--radius-full` |
 | Underline 탭 사이 간격 | 세트에 없음 → Q-12 답 32 | `gap: calc(var(--spacing) * 8)` |
 
+### revision 2 — `bar` (Home "Inspiration" 탭 줄 389:7214, 현재 사이트 값)
+
+Figma 에는 Popular 가 선택된 한 장면만 있다(사이트 캡처 frame, 상태 변형 없음). 상태는 현재 사이트 동작에서 읽었다.
+
+| Figma 노드 ID / 조합 | 읽기 근거 | 발생 이벤트 또는 지속 상태 | 적용 영역 | 기본 상태와 다른 값·구조 | 아이콘 유무 | 코드 API/CSS 연결 | 확정 여부 |
+|---|---|---|---|---|---|---|---|
+| 389:7215 등 선택 안 됨 | layers.xml + 측정 | 선택 안 됨 | 탭 | 탭 상자 높이 40(여백 위아래 11·좌우 16), 라벨 14 / **500** / 줄 높이 18 / 자간 −0.15, 현재 사이트 #6C6C6C → 구현 **#717171**(결정 2, Q-16), 바탕·테두리 없음, 한 줄 | 없음 | `.ds-tabs--bar [aria-selected=false]` | 확정(Q-13·Q-16) |
+| 389:7215(Popular) + 막대 389:7240 선택됨 | layers.xml + 측정(3번째 탭 클릭 → 막대가 그 탭으로 이동) | 선택 | 탭 + 막대 | 라벨 **#222222**. 막대 3px #222222, 모서리 위 3·3 아래 0, 가로 = 라벨 시작 ~ 라벨 끝 + 16(탭 상자 오른쪽 끝; Popular 65.5, Figma 65 = 라벨 48 + 17), 세로 = 탭 아래 끝에서 3 위(탭 기준 y 34~37). **Figma 막대는 y 37~40 으로 목록 선에 붙어 있다** — 현재 사이트 위치로 구현(Q-15) | 없음 | `[aria-selected=true]` | 확정(Q-13·Q-15) |
+| Hover | 현재 사이트: 변화 없음(손가락 커서만, 측정 색 그대로). Figma: 없음 | 포인터 | — | 없음 | — | — | 확정(Q-14) |
+| Pressed | 둘 다 없음 | 누름 | — | 없음 | — | — | 확정(Q-14) |
+| Focus | 현재 사이트: 브라우저 기본 링 `auto 1px rgb(0, 95, 204)` 이 탭 상자(예: 81.5×40)를 모서리 8(버튼 `border-radius: 8px`)로 감쌈. Figma: 없음 | 키보드 | 탭 상자 | 같은 자리(탭 상자 둘레, 모서리 8 = `--radius-md`)에 키트 `focus-ring` 2px 링, 탭 크기 변화 없음 | — | `:focus-visible` | 확정(Q-14) |
+
+- 목록 전체: 탭 사이 간격 0(라벨 사이 32 = 좌우 여백 16 + 16, rev 1 Q-12 의 32 와 같은 값), **첫 탭만 왼쪽 −16**(첫 라벨이 Tabs 왼쪽 끝에 맞고, 탭 상자는 16 바깥으로 나감 — Figma 389:7215 x −16 과 같음), 목록 높이 40, **목록 아래 1px #DDDDDD 선**(Tabs 전체 폭, 389:7241), 막대는 그 선 위 3(현재 사이트).
+- 패널: Figma "Tab Panel" 389:7243 은 목록 선 바로 아래에서 시작하고 안의 List 가 y **32** → `bar` 패널은 위 32·아래 0(현재 사이트도 선 아래 32 에 목록). rev 1 의 패널 여백(16·16)과 글자 값은 line·pill 에서 그대로.
+- Figma 에 실제로 없는 상태: hover · pressed · focus · disabled 모양(사이트 캡처). 만들지 않거나 Q-14 답대로만 그린다. disabled 는 rev 1 Q-06 대로 기능만.
+
+| 요소 | 현재 사이트(측정) / Figma | CSS |
+|---|---|---|
+| 탭 여백 | 위아래 11, 좌우 16 / "Tab" frame 높이 18 이 "Tab:margin" 40 안 y 11 | `padding: calc(var(--spacing) * 2.75) calc(var(--spacing) * 4)` |
+| 첫 탭 왼쪽 | −16 | `margin-inline-start: calc(var(--spacing) * -4)` |
+| 라벨 줄 높이 / 자간 | 18 / −0.15 | `calc(var(--spacing) * 4.5)` / `calc(var(--spacing) * -0.0375)` — Q-16 |
+| 막대 | 높이 3, 모서리 3·3·0·0, 아래 3 위 | `calc(var(--spacing) * 0.75)` 세 곳(높이·모서리·아래 위치), 왼쪽 = 탭 왼쪽 여백 `calc(var(--spacing) * 4)`, 오른쪽 0 |
+| 목록 선 | 1px | `--border-width-thin` |
+| 패널 위 | 32 | `calc(var(--spacing) * 8)` |
+
 ## 6. 색·alpha·디자인 토큰 대응
 
 | 요소 / 상태 | Figma 원본 값·alpha / 변수 ID | primitive | semantic / 역할 | 생성 CSS의 해석 값 | 값·역할 일치 여부 | 미확정 또는 새 매핑 필요 사유 |
@@ -164,9 +210,23 @@ open_questions: 0
 - 글자 토큰(현재 `tokens.css` 에 있음): "Body Copy/14pt Semibold"(Icon On 라벨, Pill) → `--font-type-body-copy-14pt-semibold`, `--text-type-body-copy-14pt-semibold`(14px), `--font-weight-type-body-copy-14pt-semibold`(590), `--tracking-type-body-copy-14pt-semibold`(0px). "Body Copy/14pt Regular"(Icon Off 라벨) → `--…-14pt-regular`(400). 줄 높이는 Figma 코드가 `leading-[normal]`(메타데이터 라벨 높이 17) → `line-height: normal`.
 - 토큰 생성 경로·검증 계획: 토큰 계획 rev 5 승인 → `pnpm ds:apply-token-plan docs/plans/tokens.md` → `pnpm ds:tokens` → `pnpm ds:guard`(G10·G13).
 
+### revision 2 — `bar` 의 색·글자
+
+| 요소 / 상태 | Figma 원본 값·alpha / 변수 ID | primitive | semantic / 역할 | 생성 CSS의 해석 값 | 값·역할 일치 여부 | 미확정 또는 새 매핑 필요 사유 |
+|---|---|---|---|---|---|---|
+| 라벨 · 선택 안 됨 | 현재 사이트 #6C6C6C α1(측정 rgb(108,108,108)), Figma 변수 아님(같은 사이트 캡처의 Detail 노드에서 원시값 `#6c6c6c` — `ListingOverview.md` 6절) | neutral-07 | **`text-secondary`** — 사용자 결정 "Figma 스타일 값으로 맞춤" 리드 매핑 표: #6C6C6C → #717171(Neutral 07). line 의 안 고른 라벨과 같은 역할 | #717171 | 결정 2 로 값을 바꿈(일치) | 제안했던 `text-supporting` 은 없앰(Q-16) |
+| 라벨 · 선택됨 | #222222 | shade-02 | `text` | #222222 | 일치 | — |
+| 막대 | #222222 | shade-02 | `selected`(line 밑줄과 같은 선택 표시 역할) | #222222 | 일치 | — |
+| 목록 선 | #DDDDDD 1px | neutral-03 | `border`("Light border") | #DDDDDD | 일치 | — |
+| 포커스 링 | 현재 사이트 브라우저 기본 rgb(0, 95, 204), Figma 없음 | shade-02 | `focus-ring`(Q-14) | #222222 | 일치 | — |
+| 바탕 | 없음(투명). 놓이는 곳은 Inspiration 의 #F7F7F7 띠 | — | — | — | — | Storybook `Bar` 견본은 흰 캔버스(Tabs 다른 견본과 같음) — 띠 바탕은 Inspiration 견본에서 확인 |
+
+- 글자: 크기 `--text-type-body-copy-14pt-regular`(14px), 굵기 **500** = `--font-weight-medium`(layout 토큰, Figma 변수 `sds-typography-weight-medium` 500 이 Detail 변수 목록에 있음 — 에이전트 C 의 `get_variable_defs 812:393`), 글꼴 `--font-type-body-copy-14pt-regular`("SF Pro", var(--font-sans)) — 현재 사이트는 `-apple-system, BlinkMacSystemFont, …` 라 macOS 화면 대조 필요(Q-16). 줄 높이 18·자간 −0.15 는 사용자 결정 "지금 크기·자간 유지" 대로 `calc(var(--spacing) * 4.5)`·`calc(var(--spacing) * -0.0375)`.
+- 신규 token: 없음(결정 2 로 `text-secondary` 를 씀). 이 계획은 `docs/plans/tokens.md` 를 고치지 않는다.
+
 ## 7. 원본 아이콘·asset
 
-내려받은 위치(분석용, 프로젝트 밖): `/private/tmp/claude-501/-Users-seonghyunkim-Desktop-2026-PROJECTS-DesignSystem-DS-Starter/208150e4-3449-4f9e-b10a-38802bf64272/scratchpad/figma-assets/ChipTabs/`
+내려받은 위치(분석용, 프로젝트 밖): `<로컬 측정 폴더>/figma-assets/ChipTabs/`
 
 | asset / Figma 노드 | 원본 파일/벡터 경로 또는 해시 | 크기·색·stroke·회전 | 나타나는 상태·조합 | 나타나지 않는 상태·조합 | 확인 여부 |
 |---|---|---|---|---|---|
@@ -181,6 +241,7 @@ open_questions: 0
 | Pill Tabs | asset 없음 | — | — | 3개 변형 | 확인 |
 
 - 밑줄은 단색 직선 2px 라 그림 파일이 아니라 CSS(가상 요소, 토큰 색)로 그린다. 두께·위치·색은 원본 그대로이고 폭은 Q-02 대로 라벨 폭. Dome 은 키트 규칙대로 `<svg>` JSX + `fill="currentColor"` 로 stories 에만 둔다.
+- revision 2 `bar`: 그림 asset 없음. 막대 389:7240·목록 선 389:7241 은 단색 사각 frame 이라 CSS 로 그린다.
 
 ## 8. 공개 API와 실제 기능
 
@@ -198,6 +259,16 @@ open_questions: 0
 
 - 최상위 요소: `<div class="ds-tabs ds-tabs--line|pill" data-testid="ds-tabs">`. Hover/Pressed/Focus 는 CSS 의사 클래스, 선택은 `aria-selected`(prop 아님).
 
+### revision 2 — API 변화
+
+| prop / 이벤트 | 근거 | 기본값·허용값 | 실제 동작 / 결과 | 키보드·disabled 처리 | 사용자 확정 |
+|---|---|---|---|---|---|
+| `variant` | rev 1 + Home 389:7214 | `"line"` / `"line" \| "pill" \| "bar"` | `bar` = 5절 revision 2 표의 모양, 패널 위 32·아래 0 | line·pill 과 같은 키보드 | 확정(Q-13) |
+| `items[].icon` | 389:7214 에 아이콘 없음 | — | `bar` 에서는 그리지 않음 | — | 확정(Q-13) |
+| 그 밖의 prop | rev 1 | 그대로 | 그대로(`label` 은 Inspiration 이 제목 글자를 넘김) | 그대로 | rev 1 확정 |
+
+- 최상위 요소: `bar` 이면 `class="ds-tabs ds-tabs--bar"`. 다른 부품은 `.ds-tabs*` 를 고치지 않고 `variant` 로만 고른다(R05).
+
 ## 9. Q&A와 사용자 결정
 
 | 질문 ID | 미확정 항목과 근거 | 선택지 / 각 선택의 영향 | 사용자 답 | 해결 상태 |
@@ -214,6 +285,10 @@ open_questions: 0
 | Q-10 | Pill 칸 너비 | A. 모든 칸 151 고정(Figma 그대로) **(AI 추천)** / B. 라벨 폭 + 좌우 12 / C. 부모 너비를 나눔 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) → A | resolved |
 | Q-11 | 색·그림자 역할 | A. 흰색 = `surface`, #F7F7F7 = `surface-focus`, 새 역할 6개, 그림자는 Elevation 확인 뒤 **(AI 추천)** / B. #F7F7F7 에 `surface-raised` 재사용 / C. 이름을 사용자가 정함 | 추천안 채택 — 사용자가 "추천안 모두 채택"·"합친 목록 + 다시 가져오기"·그림자 "Figma 이름으로 추가" 선택 (chosen in chat, 2026-11-26) → A. `surface-focus` = neutral-01, 그림자는 Elevation 과 달라 `--shadow-pill-tabs` 새 토큰 제안 → 키트 입력 경로가 없어 보류, 지금은 그리지 않음(6절) | resolved |
 | Q-12 | Underline 탭 사이 간격 숫자(Q-08 A 에서 사용자가 정하기로 함). 세트에는 탭 한 개만 있다. Home Inspiration 일반 프레임(389:7214)은 탭마다 좌우 16 안쪽 여백으로 붙어 있어 라벨 사이가 32(첫 칸만 35) | A. 라벨 사이 32 = `calc(var(--spacing) * 8)`(Home Inspiration 실측) **(AI 추천)** / B. 다른 숫자를 사용자가 알려 줌 | Q: 탭 사이 간격? → A: "32px (권장)" (chosen in chat, 2026-11-26) → A. 라벨 사이 32 | resolved |
+| Q-13 | (rev 2) Inspiration 탭 줄 모양(5절 revision 2 표)을 Tabs 에 어떻게 더할지 | **A (추천)** 새 값 `variant="bar"` — 5절 revision 2 표 전체(3px 막대, 1px 목록 선, 첫 탭 −16, 패널 위 32·아래 0, 아이콘 없음) / B `variant="line"` 에 새 prop(예: `indicator="bar"`)을 더해 line 의 모양 일부만 바꿈 — line 의 Figma 값과 섞여 규칙이 복잡해짐 / C 다른 이름을 사용자가 정함 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) → A `variant="bar"` | resolved |
+| Q-14 | (rev 2) `bar` 의 hover·focus 모양. 현재 사이트는 hover 변화 없음, focus 는 브라우저 기본 링(파란 1px, 탭 상자 둘레 모서리 8). Figma 는 둘 다 없음(스펙: 포커스 표시를 새로 정하면 사용자 결정 필요) | **A (추천)** hover 변화 없음(현재 사이트), focus 는 지금 링 자리(탭 상자 둘레, 모서리 8 = `--radius-md`)에 키트 `focus-ring`(#222) 2px 링 / B 브라우저 기본 링 그대로(현재 사이트와 똑같음, 키트 다른 탭과 다름) / C line 의 Figma 모양을 그대로(hover 때 라벨 #B0B0B0, 두 겹 링) | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) → A(hover 없음은 결정 2 "Figma 에 없는 hover 색은 없앰"과도 같음) | resolved |
+| Q-15 | (rev 2) 막대 세로 위치. 현재 사이트는 막대가 목록 선보다 3 위(탭 기준 y 34~37), Figma 389:7240 은 y 37~40 으로 선에 붙음. 막대 폭은 둘 다 라벨 + 16·17 로 같음 | **A (추천)** 현재 사이트 그대로(사용자 결정 "페이지 모양 유지", 브리프: 현재 사이트가 기준) / B Figma 처럼 선에 붙임(막대 아래 위치 0) | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) → A(막대 크기·위치는 결정 3 "지금 크기 유지"와도 같음) | resolved |
+| Q-16 | (rev 2) 색·글자 값(Footer Q-06·Inspiration Q-06 과 같은 질문, 답 하나로 셋 다 정함). 안 고른 라벨 #6C6C6C 는 primitive·역할 없음, 굵기 500·자간 −0.15·줄 높이 18 은 Figma 글자 스타일 토큰에 없음 | **A (추천)** #6C6C6C → 새 역할 `text-supporting`(리드 토큰 계획 rev 6), 굵기 `--font-weight-medium`, 자간 `calc(var(--spacing) * -0.0375)`, 줄 높이 `calc(var(--spacing) * 4.5)`, 글꼴 토큰 + macOS 화면 대조 / B 안 고른 라벨에 기존 `text-secondary`(#717171)와 키트 14pt 글자 스타일을 씀 — 현재 사이트보다 조금 옅고 굵기·자간이 달라짐 / C Figma 에 색 변수·글자 스타일을 먼저 만들고 다시 가져옴 | 사용자 결정 "Figma 스타일 값으로 맞춤" + "지금 크기·자간 유지 (권장)" (chosen in chat, 2026-11-26), 리드 매핑 표 → 안 고른 라벨 #6C6C6C 는 #717171 `text-secondary`(새 역할 없음), 굵기 500 = `--font-weight-medium`, 크기·자간·줄 높이는 지금 값(`--text-type-body-copy-14pt-regular`, `calc(var(--spacing) * -0.0375)`, `calc(var(--spacing) * 4.5)`), 글꼴 토큰 + macOS 화면 대조 | resolved |
 
 답을 받으면 사실·상태·토큰·API 표도 함께 갱신한다. 모든 필요한 질문이 해결된 경우에만 `open_questions: 0`을 기록한다.
 
@@ -231,6 +306,10 @@ open_questions: 0
 | Nested part → composite callback | 해당 없음(아이콘은 누르는 부품이 아님) | — | |
 | Pill 선택 칸 그림자 | 237:2209 `0 6px 8.5px rgba(0,0,0,0.08)` | **보류** — pending: Figma effect style needed, then re-import. 지금 구현은 그림자 없음(알려진 차이) | |
 | 공통 규칙 및 기존 사용처 | 토큰만 사용, 페이지 영향 없음, 삭제한 prop 을 쓰는 곳 없음 | `pnpm ai:check Tabs`, `pnpm ai:verify Tabs`, `pnpm typecheck`, `pnpm ds:guard` | |
+| (rev 2) `bar` 기본 모양 | 현재 사이트 측정과 같음: 목록 높이 40 + 선 1(#DDDDDD, 전체 폭), 라벨 14/500/18 #717171(결정 2, rgb(113,113,113))·선택 #222, 첫 라벨이 왼쪽 끝, 라벨 사이 32, 막대 3px #222 라벨 시작 ~ +16, 탭 아래 3 위(Q-15 답), 패널 위 32 | Storybook `Bar` 견본 iframe 1440 Playwright 측정 → scratchpad `rebuild/A/measure.json`(Home `tabs`·`tabList`·`divider`·`grid`) 대조 | |
+| (rev 2) `bar` 상태 | hover 변화 없음, focus 링(Q-14 답), 선택 이동 | Playwright 실제 포인터·Tab·←→ | |
+| (rev 2) `bar` 기능 | 클릭·화살표 → 선택·`onTabChange(id)` 1회, 패널 전환 | Storybook `play`(`fn()` + `userEvent.click`·`keyboard`) | |
+| (rev 2) line·pill 회귀 | rev 1 값 그대로 | 기존 견본·`scripts/verify-interactions.mjs` Tabs 검사 | |
 
 필수 명령: `pnpm ai:check Tabs`, `pnpm ai:verify Tabs`, `pnpm typecheck`, `pnpm ds:guard`. 명령 검사와 시각 원본 대조를 구분한다. 아직 수행하지 않은 검사는 통과라고 적지 않는다.
 
@@ -238,4 +317,6 @@ open_questions: 0
 
 - 계획 내용에 대한 사용자 수정·결정: Q: 부품 계획 질문을 어떻게 답할까? → A: 추천안 모두 채택 (chosen in chat, 2026-11-26). Q: 새 색 역할 → A: 합친 목록 + 다시 가져오기 (chosen in chat, 2026-11-26). Q: 그림자 → A: Figma 이름으로 추가 (chosen in chat, 2026-11-26). Q: 탭 사이 간격 → A: "32px (권장)" (chosen in chat, 2026-11-26). Q: 연결 안 된 값 → A: "근거와 함께 토큰 추가 (권장)" (chosen in chat, 2026-11-26) — 키트에 입력 경로가 없어 `--shadow-pill-tabs` 는 보류. Q-01~Q-12 와 Nested parts 행에 반영했다(그림자 보류는 10절에도 기록).
 - 승인한 revision: 1 — 사용자 "Approve revision 1·5 (권장)" 선택 (chosen in chat, 2026-11-26)
+- 승인한 revision: 2 — 사용자 "승인하고 진행 (권장)" 선택 (chosen in chat, 2026-11-26)
 - 구현 전에 남은 조건: 없음. 토큰 계획 revision 5 는 승인·적용됨. Pill 그림자는 보류(Figma 효과 스타일이 생기면 다시 가져온 뒤 추가).
+- **revision 2(2026-11-26, 승인 대기):** `bar` 옵션 추가. 사용자 결정 근거 "구역도 부품으로 (권장)"·"페이지 모양 유지 (권장)"(chosen in chat). Q-13~Q-16 은 사용자 결정 "추천안 모두 채택 (권장)"·"Figma 스타일 값으로 맞춤"·"지금 크기·자간 유지 (권장)"(chosen in chat, 2026-11-26, 리드 전달)으로 해결. 새 토큰 필요 없음. 구현 전에 남은 조건: 사용자 승인("Approve revision 2"). revision 1 의 line·pill 구현은 이 revision 과 상관없이 승인 상태 그대로 유지된다.

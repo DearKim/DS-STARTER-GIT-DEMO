@@ -1,8 +1,8 @@
 {
   "$comment": "학생 승인 Markdown을 scripts/apply-token-plan.mjs가 반영함. AI 직접 수정 금지.",
-  "$paletteHash": "f8ba43f43c73ab70dfe0ddd7101d69d76503d84761aa96cc16b2b59d2a667c58",
-  "$planHash": "733a81b3fb8e4d83f347b815379fa5765daa53c57f729b68bbca863b014667fb",
-  "$revision": 5,
+  "$paletteHash": "050d8606258b50bc018470d1050816e882c33429bb6e2778904d80711e0dd234",
+  "$planHash": "b57b234cfe48770c0a6e85582fbc6fb2eebfa1064e18a2cd6703484c865680da",
+  "$revision": 6,
   "$colors": {
     "accent-01": "#F6D7DF",
     "accent-02": "#D03660",
@@ -10,6 +10,8 @@
     "error-01": "#FEF8F6",
     "error-02": "#C13515",
     "fills-vibrant-use-plus-lighter-darker-quaternary": "#F7F7F7",
+    "fills-vibrant-use-plus-lighter-darker-tertiary": "#F2F2F2",
+    "grays-black": "#000000",
     "link": "#004CC4",
     "neutral-01": "#F7F7F7",
     "neutral-02": "#EBEBEB",
@@ -68,5 +70,12 @@
   "icon-accent": "accent-02",
   "icon-accent-subtle": "accent-01",
   "image-placeholder-subtle": "neutral-03",
-  "danger-subtle": "error-01"
+  "danger-subtle": "error-01",
+  "border-accent": "accent-02",
+  "control-bg-subtle": "fills-vibrant-use-plus-lighter-darker-tertiary",
+  "control-bg-subtle-hover": "neutral-02",
+  "surface-subtle": "neutral-01",
+  "surface-hover-subtle": "neutral-01",
+  "image-frame": "shade-01",
+  "image-scrim": "grays-black"
 }

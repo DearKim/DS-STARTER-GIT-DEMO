@@ -1,5 +1,6 @@
 export { Card } from "./Card";
 export type {
+  CardLayout,
   CardLineItem,
   CardProps,
   CardType,

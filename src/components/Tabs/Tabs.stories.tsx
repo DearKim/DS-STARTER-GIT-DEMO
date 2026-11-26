@@ -5,6 +5,7 @@ import type { TabItem } from "./Tabs";
 
 const UNDERLINE_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=229-2214";
 const PILL_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=237-2219";
+const BAR_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=389-7214";
 
 /** Figma "Dome" (235:1803, Internal Only Canvas) — story sample only, original path and 24×24 size (plan Q-07). */
 const DomeIcon = () => (
@@ -21,6 +22,18 @@ const INSPIRATION: TabItem[] = [
   { id: "arts", label: "Arts & culture", content: "Arts & culture destinations" },
   { id: "beach", label: "Beach", content: "Beach destinations" },
   { id: "mountains", label: "Mountains", content: "Mountain destinations" },
+];
+
+/** All eight labels of the Home "Inspiration" tab list (389:7214), for the bar variant. */
+const INSPIRATION_ALL: TabItem[] = [
+  { id: "popular", label: "Popular", content: "Popular destinations" },
+  { id: "arts-culture", label: "Arts & culture", content: "Arts & culture destinations" },
+  { id: "beach", label: "Beach", content: "Beach destinations" },
+  { id: "mountains", label: "Mountains", content: "Mountain destinations" },
+  { id: "outdoors", label: "Outdoors", content: "Outdoor destinations" },
+  { id: "things-to-do", label: "Things to do", content: "Things to do" },
+  { id: "travel-tips", label: "Travel tips & inspiration", content: "Travel tips & inspiration" },
+  { id: "airbnb-friendly", label: "Airbnb-friendly apartments", content: "Airbnb-friendly apartments" },
 ];
 
 /** Figma Underline Tabs Icon=On sample: the "Dome" icon and label (150:2358). */
@@ -46,7 +59,7 @@ const meta = {
   },
   args: { items: INSPIRATION, variant: "line", onTabChange: fn() },
   argTypes: {
-    variant: { control: "inline-radio", options: ["line", "pill"] },
+    variant: { control: "inline-radio", options: ["line", "pill", "bar"] },
   },
 } satisfies Meta<typeof Tabs>;
 
@@ -129,6 +142,41 @@ export const FocusPill: Story = {
     const canvas = within(canvasElement);
     await userEvent.tab();
     await expect(canvas.getAllByRole("tab")[1]).toHaveFocus();
+  },
+};
+
+/** Home "Inspiration" tab list (389:7214, plan rev 2): 3px bar under the selected tab, 1px line under the list, Popular first. */
+export const Bar: Story = {
+  args: { items: INSPIRATION_ALL, variant: "bar", label: "Inspiration for future getaways" },
+  parameters: { layout: "padded", design: { type: "figma", url: BAR_URL } },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("tablist", { name: "Inspiration for future getaways" })).toBeInTheDocument();
+    const tabs = canvas.getAllByRole("tab");
+    await expect(tabs).toHaveLength(8);
+    await expect(tabs[0]).toHaveAttribute("aria-selected", "true");
+    await expect(tabs[0]!.querySelector("svg")).toBeNull();
+    await userEvent.click(tabs[2]!);
+    await expect(args.onTabChange).toHaveBeenCalledTimes(1);
+    await expect(args.onTabChange).toHaveBeenCalledWith("beach");
+    await expect(tabs[2]).toHaveAttribute("aria-selected", "true");
+    await expect(tabs[0]).toHaveAttribute("aria-selected", "false");
+  },
+};
+
+/** Bar, keyboard: one Tab press lands on the selected tab; ← → move and select (plan Q-14: 2px focus ring on the tab box). */
+export const BarFocus: Story = {
+  args: { items: INSPIRATION_ALL, variant: "bar", label: "Inspiration for future getaways" },
+  parameters: { layout: "padded", design: { type: "figma", url: BAR_URL } },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const tabs = canvas.getAllByRole("tab");
+    await userEvent.tab();
+    await expect(tabs[0]).toHaveFocus();
+    await userEvent.keyboard("{ArrowRight}");
+    await expect(tabs[1]).toHaveFocus();
+    await expect(tabs[1]).toHaveAttribute("aria-selected", "true");
+    await expect(args.onTabChange).toHaveBeenCalledWith("arts-culture");
   },
 };
 

@@ -21,5 +21,14 @@
   line-height: var(--leading-tight);
 }
 
+/* revision 3: Figma text style Header/22pt Semibold (22px, 590, tracking 0). Line height "normal" as on the current site. */
+.ds-text--heading {
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: var(--text-type-header-22pt-semibold);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  letter-spacing: var(--tracking-type-header-22pt-semibold);
+  line-height: normal;
+}
+
 .ds-text--default { color: var(--color-text); }
 .ds-text--secondary { color: var(--color-text-secondary); }

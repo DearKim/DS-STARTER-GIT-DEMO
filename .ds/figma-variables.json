@@ -2,13 +2,15 @@
   "$comment": "scripts/figma-tokens.mjs 가 Figma MCP 로 가져온 변수. 손으로 고치지 말고 다시 가져온다. 우리 쪽 정의는 .ds/source.json.",
   "schema_version": "1.0",
   "file_key": "Q5QDGE5WoXefOxgm5fziH3",
-  "imported_at": "2026-11-26T00:38:01.627Z",
+  "imported_at": "2026-11-26T02:38:53.429Z",
   "nodes": [
     "389:2752",
     "389:7765",
     "245:3518",
     "245:3517",
-    "245:3354"
+    "245:3354",
+    "812:393",
+    "812:1056"
   ],
   "collections": [
     {
@@ -173,6 +175,27 @@
           "type": "COLOR",
           "value": "#F7F7F7",
           "figmaName": "Neutral 01"
+        },
+        {
+          "id": "figma-fills---vibrant-(use-plus-lighter-|-darker)/tertiary",
+          "name": "fills---vibrant-(use-plus-lighter-|-darker)/tertiary",
+          "type": "COLOR",
+          "value": "#F2F2F2",
+          "figmaName": "Fills - Vibrant (Use Plus Lighter | Darker)/Tertiary"
+        },
+        {
+          "id": "figma-grays/white",
+          "name": "grays/white",
+          "type": "COLOR",
+          "value": "#FFFFFF",
+          "figmaName": "Grays/White"
+        },
+        {
+          "id": "figma-grays/black",
+          "name": "grays/black",
+          "type": "COLOR",
+          "value": "#000000",
+          "figmaName": "Grays/Black"
         }
       ]
     },
@@ -839,6 +862,9 @@
     "Header/22pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 22, weight: 400, lineHeight: 100, letterSpacing: 0)",
     "Elevation 01": "Effect(type: DROP_SHADOW, color: #0000002B, offset: (0, 4), radius: 18, spread: 0)",
     "Elevation 02": "Effect(type: DROP_SHADOW, color: #00000030, offset: (0, 1), radius: 5, spread: -363)",
-    "Elevation 03": "Effect(type: DROP_SHADOW, color: #0000001F, offset: (0, 6), radius: 16, spread: 0)"
+    "Elevation 03": "Effect(type: DROP_SHADOW, color: #0000001F, offset: (0, 6), radius: 16, spread: 0)",
+    "Fills - Vibrant (Use Plus Lighter | Darker)/Tertiary": "#f2f2f2",
+    "Grays/White": "#ffffff",
+    "Grays/Black": "#000000"
   }
 }

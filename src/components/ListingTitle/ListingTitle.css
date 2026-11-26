@@ -1,0 +1,28 @@
+/* ListingTitle — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   승인 계획: docs/plans/components/ListingTitle.md revision 1 (Figma 812:4793 · 812:6948 · 812:6955, 현재 사이트 값).
+   버튼 모양은 공용 Button variant="text" size="xlarge" 가 그린다. 여기서는 줄 배치만 정한다(R05). */
+.ds-listing-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--color-text);
+}
+
+/* 제목: 22 / 590 / 줄 26 */
+.ds-listing-title__title {
+  margin: 0;
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: var(--text-type-header-22pt-semibold);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  letter-spacing: var(--tracking-type-header-22pt-semibold);
+  line-height: calc(var(--spacing) * 6.5);
+}
+
+/* 버튼 묶음: 제목보다 4 위, 버튼 사이 8 */
+.ds-listing-title__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  margin-top: calc(var(--spacing) * -1);
+}

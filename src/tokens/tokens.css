@@ -1,7 +1,7 @@
 /**
  * 생성 파일 — 직접 고치지 마세요. `pnpm ds:tokens` 로 다시 만듭니다.
  * 학생 팔레트: 선언/승인 역할만 적용
- * Figma: 학생 Figma / source 12e8d80506746da4
+ * Figma: 학생 Figma / source cb7c94b7d89fb4e0
  */
 @import "tailwindcss";
 
@@ -13,6 +13,9 @@
   --color-error-01: #FEF8F6;
   --color-error-02: #C13515;
   --color-fills-vibrant-use-plus-lighter-darker-quaternary: #F7F7F7;
+  --color-fills-vibrant-use-plus-lighter-darker-tertiary: #F2F2F2;
+  --color-grays-black: #000000;
+  --color-grays-white: #FFFFFF;
   --color-link: #004CC4;
   --color-neutral-01: #F7F7F7;
   --color-neutral-02: #EBEBEB;
@@ -34,20 +37,25 @@
   --color-avatar-placeholder: var(--color-neutral-07);  /* human 1.00 */
   --color-bg: var(--color-shade-01);  /* human 1.00 */
   --color-border: var(--color-neutral-03);  /* human 1.00 */
+  --color-border-accent: var(--color-accent-02);  /* human 1.00 */
   --color-border-emphasis: var(--color-shade-02);  /* human 1.00 */
   --color-border-field: var(--color-neutral-07);  /* human 1.00 */
   --color-border-medium: var(--color-neutral-04);  /* human 1.00 */
   --color-border-strong: var(--color-neutral-06);  /* human 1.00 */
   --color-border-subtle: var(--color-neutral-02);  /* human 1.00 */
   --color-control-bg: var(--color-shade-01);  /* human 1.00 */
+  --color-control-bg-subtle: var(--color-fills-vibrant-use-plus-lighter-darker-tertiary);  /* human 1.00 */
+  --color-control-bg-subtle-hover: var(--color-neutral-02);  /* human 1.00 */
   --color-danger: var(--color-error-02);  /* human 1.00 */
   --color-danger-subtle: var(--color-error-01);  /* human 1.00 */
   --color-focus-ring: var(--color-shade-02);  /* human 1.00 */
   --color-focus-ring-inner: var(--color-neutral-04);  /* human 1.00 */
   --color-icon-accent: var(--color-accent-02);  /* human 1.00 */
   --color-icon-accent-subtle: var(--color-accent-01);  /* human 1.00 */
+  --color-image-frame: var(--color-shade-01);  /* human 1.00 */
   --color-image-placeholder: var(--color-neutral-06);  /* human 1.00 */
   --color-image-placeholder-subtle: var(--color-neutral-03);  /* human 1.00 */
+  --color-image-scrim: var(--color-grays-black);  /* human 1.00 */
   --color-indicator: var(--color-neutral-03);  /* human 1.00 */
   --color-indicator-hover: var(--color-neutral-04);  /* human 1.00 */
   --color-info: var(--color-shade-01);  /* human 1.00 */
@@ -66,8 +74,10 @@
   --color-surface-disabled: var(--color-neutral-03);  /* human 1.00 */
   --color-surface-focus: var(--color-neutral-01);  /* human 1.00 */
   --color-surface-hover: var(--color-shade-02-5);  /* human 1.00 */
+  --color-surface-hover-subtle: var(--color-neutral-01);  /* human 1.00 */
   --color-surface-inverse: var(--color-shade-02);  /* human 1.00 */
   --color-surface-raised: var(--color-fills-vibrant-use-plus-lighter-darker-quaternary);  /* human 1.00 */
+  --color-surface-subtle: var(--color-neutral-01);  /* human 1.00 */
   --color-text: var(--color-shade-02);  /* human 1.00 */
   --color-text-disabled: var(--color-neutral-06);  /* human 1.00 */
   --color-text-discount: var(--color-discounts);  /* human 1.00 */

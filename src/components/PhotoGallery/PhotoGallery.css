@@ -1,0 +1,59 @@
+/* PhotoGallery — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   승인 계획: docs/plans/components/PhotoGallery.md revision 1 (Figma 812:4767, 현재 사이트 값 — 결정 3).
+   "사진 모두 보기" 모양은 공용 Button variant="ghost" size="medium" 이 그린다. 여기서는 사진 배치와 버튼 자리만 정한다(R05). */
+
+/* 1280 × 567, 바깥 모서리 14, 열 사이 9 */
+.ds-photo-gallery {
+  position: relative;
+  display: flex;
+  gap: calc(var(--spacing) * 2.25);
+  width: calc(var(--spacing) * 320);
+  height: calc(var(--spacing) * 141.75);
+  overflow: hidden;
+  border-radius: calc(var(--radius-sm) * 3.5);
+}
+
+/* 큰 사진 640 × 567 */
+.ds-photo-gallery__main {
+  flex-shrink: 0;
+  width: calc(var(--spacing) * 160);
+  height: calc(var(--spacing) * 141.75);
+  overflow: hidden;
+}
+
+/* 작은 사진 열 311, 위아래 사이 9 */
+.ds-photo-gallery__column {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: calc(var(--spacing) * 2.25);
+  width: calc(var(--spacing) * 77.75);
+}
+
+.ds-photo-gallery__img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.ds-photo-gallery__main .ds-photo-gallery__img {
+  height: 100%;
+}
+
+/* 위 사진 284 */
+.ds-photo-gallery__img--top {
+  height: calc(var(--spacing) * 71);
+}
+
+/* 아래 사진 274.5 (합계 567.5, 넘친 0.5 는 바깥 모서리 상자가 자른다) */
+.ds-photo-gallery__img--bottom {
+  height: calc(var(--spacing) * 68.625);
+}
+
+/* 버튼 자리: 오른쪽 28 · 아래 27 */
+.ds-photo-gallery__show-all {
+  position: absolute;
+  right: calc(var(--spacing) * 7);
+  bottom: calc(var(--spacing) * 6.75);
+  display: flex;
+}

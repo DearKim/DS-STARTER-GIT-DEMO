@@ -3,24 +3,26 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent, ReactNode,
 import "./Button.css";
 
 /** Figma: Primary Buttons 238:2153 · Secondary Buttons 238:2188 · Tertiary Buttons 238:2256 */
-export type ButtonVariant = "primary" | "secondary" | "tertiary";
-/** Figma: Size = Full Width / Small */
+export type ButtonFigmaVariant = "primary" | "secondary" | "tertiary";
+/** All looks: the three Figma sets plus the shared site looks `ghost` and `text` (plan revision 2). */
+export type ButtonVariant = ButtonFigmaVariant | "ghost" | "text";
+/** Figma: Size = Full Width / Small (primary · secondary · tertiary) */
 export type ButtonSize = "full-width" | "small";
+/** `ghost` sizes by box height: small 32 ("Change") · medium 37 ("사진 모두 보기") · large 48 ("Show more"). */
+export type ButtonGhostSize = "small" | "medium" | "large";
+/**
+ * `text` sizes by box height: xsmall 16 ("Learn more about summaries") · small 18 ("Full policy", "More info") ·
+ * medium 21 ("리스팅 신고하기") · large 24 ("Show original") · xlarge 34 ("공유하기", "저장").
+ */
+export type ButtonTextSize = "xsmall" | "small" | "medium" | "large" | "xlarge";
+/** `text` color role: default = `text`, secondary = `text-secondary`. */
+export type ButtonTone = "default" | "secondary";
 
-export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-  /** Figma component set: Primary / Secondary / Tertiary Buttons */
-  variant?: ButtonVariant;
-  /** Figma: Size. `full-width` fills its parent; `small` fits its label. */
-  size?: ButtonSize;
+interface ButtonCommonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   /**
-   * Figma: State = Loading. Shows three dots instead of the label.
-   * The button keeps keyboard focus and its name, but it does not run `onClick` (and drops `href`).
-   */
-  loading?: boolean;
-  /**
-   * Figma: Icon = On. Only Secondary and Tertiary at Full Width have it:
-   * Secondary puts the icon before the label, Tertiary puts it at the left edge.
-   * Hidden while disabled or loading (Figma shows no icon there).
+   * Leading icon (`<svg>` with `currentColor`). Shown only where the look has one:
+   * secondary · tertiary at Full Width (Figma Icon = On), ghost medium, text xsmall · medium · xlarge.
+   * Primary · secondary · tertiary hide it while disabled or loading (Figma shows no icon there).
    */
   icon?: ReactNode;
   /** When set, the button renders as a real link (`<a href>`) with the same look. */
@@ -29,6 +31,43 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   rel?: string;
   children?: ReactNode;
 }
+
+export interface ButtonFigmaProps extends ButtonCommonProps {
+  /** Figma component set: Primary / Secondary / Tertiary Buttons */
+  variant?: ButtonFigmaVariant;
+  /** Figma: Size. `full-width` fills its parent; `small` fits its label. */
+  size?: ButtonSize;
+  /**
+   * Figma: State = Loading. Shows three dots instead of the label.
+   * The button keeps keyboard focus and its name, but it does not run `onClick` (and drops `href`).
+   */
+  loading?: boolean;
+  tone?: never;
+}
+
+export interface ButtonGhostProps extends ButtonCommonProps {
+  /** Gray #F2F2F2 rounded button (shared site look, no Figma set). Hover = `control-bg-subtle-hover`. */
+  variant: "ghost";
+  size?: ButtonGhostSize;
+  loading?: never;
+  tone?: never;
+}
+
+export interface ButtonTextProps extends ButtonCommonProps {
+  /** Text button without a box (xlarge has a hover background). Underline depends on the size. */
+  variant: "text";
+  size?: ButtonTextSize;
+  tone?: ButtonTone;
+  loading?: never;
+}
+
+export type ButtonProps = ButtonFigmaProps | ButtonGhostProps | ButtonTextProps;
+
+/** Sizes that have a measured leading icon in the shared looks. */
+const ICON_SIZES: Record<"ghost" | "text", readonly string[]> = {
+  ghost: ["medium"],
+  text: ["xsmall", "medium", "xlarge"],
+};
 
 /** Figma "ellipses" (36×8): three dots, the first one muted. Colors come from CSS tokens. */
 function LoadingDots() {
@@ -50,7 +89,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   {
     variant = "primary",
     size = "small",
-    loading = false,
+    loading: loadingProp = false,
+    tone = "default",
     icon,
     href,
     target,
@@ -64,11 +104,17 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   },
   ref,
 ) {
-  const showIcon = Boolean(icon) && variant !== "primary" && size === "full-width" && !loading && !disabled;
+  const shared = variant === "ghost" || variant === "text";
+  // ghost·text have no Loading look (plan Q-20 A): `loading` only works for the Figma sets.
+  const loading = !shared && Boolean(loadingProp);
+  const showIcon = shared
+    ? Boolean(icon) && ICON_SIZES[variant].includes(size)
+    : Boolean(icon) && variant !== "primary" && size === "full-width" && !loading && !disabled;
   const classes = [
     "ds-button",
     `ds-button--${variant}`,
     `ds-button--${size}`,
+    variant === "text" && tone === "secondary" && "ds-button--tone-secondary",
     loading && "ds-button--loading",
     disabled && "ds-button--disabled",
     showIcon && "ds-button--with-icon",

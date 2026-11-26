@@ -1,0 +1,62 @@
+/* Hero — Figma 프레임 418:8305 를 현재 Home 페이지 모양으로(계획 revision 1, Q-03 A).
+   하위 부품(ServiceTab·Navigation)의 .ds-* 클래스는 고르지 않는다. 배치는 ds-hero__* 래퍼에만 둔다. */
+.ds-hero,
+.ds-hero__content,
+.ds-hero__services,
+.ds-hero__search {
+  box-sizing: border-box;
+}
+
+/* 구역: 1440×426(최소 높이), 위 80·좌우 80·아래 60. */
+.ds-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(var(--spacing) * 106.5);
+  padding: calc(var(--spacing) * 20) calc(var(--spacing) * 20) calc(var(--spacing) * 15);
+  color: var(--color-on-image);
+}
+
+/* 배경 사진 418:3082: 칸을 덮고 가운데를 보인다(현재 페이지 모양). */
+.ds-hero__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 사진 위 어두운 막: image-scrim(Grays/Black)에 부품 안에서 불투명도 0.3(토큰 계획 revision 6). */
+.ds-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--color-image-scrim);
+  opacity: 0.3;
+}
+
+.ds-hero__content {
+  position: relative;
+}
+
+/* 제목 418:3120: 40px(지금 크기 유지), Semibold 590, 줄 높이 normal, 흰색, 아래 32. */
+.ds-hero__title {
+  margin: 0 0 calc(var(--spacing) * 8);
+  font-family: var(--font-type-body-copy-16pt-semibold);
+  font-size: calc(var(--spacing) * 10);
+  font-weight: var(--font-weight-type-body-copy-16pt-semibold);
+  line-height: normal;
+  color: var(--color-on-image);
+}
+
+/* Tab group 418:8303: 탭 사이 80, 아래 32. */
+.ds-hero__services {
+  display: flex;
+  gap: calc(var(--spacing) * 20);
+  margin-bottom: calc(var(--spacing) * 8);
+}
+
+/* 검색 막대 418:8282 자리: 폭 1280. 막대 모양은 Navigation(stretch)이 그린다. */
+.ds-hero__search {
+  width: calc(var(--spacing) * 320);
+}

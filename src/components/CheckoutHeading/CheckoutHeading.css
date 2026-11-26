@@ -1,0 +1,40 @@
+/* CheckoutHeading — Figma "Section" 812:12216 의 뒤로(812:12217) + Heading 1(812:12224).
+   승인 계획: docs/plans/components/CheckoutHeading.md revision 1. semantic·layout 토큰만 쓴다. 값은 현재 사이트 측정값. */
+.ds-checkoutheading {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--color-text);
+}
+
+/* 뒤로: 44×44 원, 제목 시작에서 왼쪽 바깥 68, 제목과 같은 위. 바탕 surface-raised(#F7F7F7). hover 모양 없음(Q-03). */
+.ds-checkoutheading__back {
+  position: absolute;
+  top: 0;
+  left: calc(var(--spacing) * -17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--spacing) * 11);
+  height: calc(var(--spacing) * 11);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.ds-checkoutheading__arrow {
+  display: block;
+  flex: none;
+}
+
+/* 제목: 32px / 590(Semibold) / 36, 자간 -0.5537px — 크기·자간은 지금 값 유지(사용자 결정), 굵기는 Figma Semibold. */
+.ds-checkoutheading__title {
+  margin: 0;
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: calc(var(--spacing) * 8);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  line-height: calc(var(--spacing) * 9);
+  letter-spacing: calc(var(--spacing) * -0.138425);
+  color: var(--color-text);
+}

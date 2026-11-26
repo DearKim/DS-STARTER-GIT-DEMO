@@ -1,7 +1,7 @@
 ---
 kind: component
 component: Text
-revision: 2
+revision: 3
 status: approved
 source_kind: starter-spec
 source_ref: docs/plans/components/Text.md
@@ -220,3 +220,12 @@ Q-T01 A의 Text 단일 원본과 Q-T02 A의 span/body/default 기본값·48개 �
 - 2026-10-17 사용자 결정: Q-T01·Q-T02·Q-I01·Q-I02 모두 권고안 A — "권고안 A로 일단 진행".
 - 2026-10-17 사용자 최종 승인(revision 2): "최종 승인은 일단 너의 추천으로 진행해도 될 것 같아".
 - 기록자: PL 세션(사용자 말을 옮겨 적음. AI 자체 승인이 아니다). 근거: 팀 결정 기록.
+
+## 12. revision 3 변경 — Figma `Header/22pt Semibold` 모양 추가 (2026-11-26)
+
+- 요청: 사용자 "지금 사이트를 Storybook 기반으로 재정립해주고 UXUI 체크 후 이슈 없이 만들어줘." 페이지는 부품만 놓아야 하는데, Home "Stay in Seoul" 제목(Figma 424:10650 안 제목, 22px / 590 / #222)을 그릴 Text 모양이 없어 페이지 CSS 에 글꼴·색이 남았다(스펙 P06 위반).
+- 사실: Figma 글자 스타일 `Header/22pt Semibold`(get_variable_defs 812:393, 2026-11-26: SF Pro, Semibold, 22, weight 590, lineHeight 100, letterSpacing 0)가 토큰으로 이미 있다 — `--text-type-header-22pt-semibold`(22px), `--font-weight-type-header-22pt-semibold`(590), `--font-type-header-22pt-semibold`, `--tracking-type-header-22pt-semibold`(0px). 지금 페이지 제목은 22px·590·줄 높이 normal·#222 로 이 스타일과 같다.
+- 변경: `variant` 에 `"heading"` 을 하나 더한다. 값은 위 토큰 네 개, 줄 높이 `normal`(지금 페이지와 같음). 색은 기존 `tone`(default = `text`) 그대로. 기존 `body`·`body-sm`·`title` 은 바꾸지 않는다. 의미 태그는 지금처럼 `as`(예: `as="h2"`)가 정한다.
+- 영향: 새 값만 더하므로 기존 사용처(Text 를 쓰는 부품·페이지)는 바뀌지 않는다. Home 페이지는 `<Text as="h2" variant="heading">Stay in Seoul</Text>` 로 바꾸고 페이지 CSS 의 글꼴·색 규칙을 지운다.
+- 검증: `pnpm ai:check Text`, `pnpm ai:verify Text`, `pnpm typecheck`, `pnpm ds:guard`; Home 의 제목 상자·글자 픽셀을 기준 화면(aa9a593)과 비교.
+- 질문 없음. 승인: 사용자 "Approve revision 3 (권장)" (chosen in chat, 2026-11-26).

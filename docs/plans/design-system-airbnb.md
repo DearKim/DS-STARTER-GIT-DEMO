@@ -146,3 +146,23 @@ status: draft
 
 - **1단계 (지금):** `Button`(Primary·Secondary·Tertiary), `Link`, `Chip`, `Tabs`(Underline·Pill), `Navigation`, `Callout`, `RadioButton`, `TextInput`, `Card`(type 6종), 그림자 토큰(Elevation). 부품 계획을 모두 쓰고 한 번에 승인받는다.
 - **2단계:** `Accordion`, `Checkbox`, `Dropdown`, `Toggle`, `Tooltip`, `Tile`, `Review`, `MapChip`, `Textarea`.
+
+## 8. 3단계 — 사이트를 Storybook 부품으로 다시 세우기 (2026-11-26)
+
+사용자 요청: "지금 사이트를 Storybook 기반으로 재정립해주고 UXUI 체크 후 이슈 없이 만들어줘."
+
+| 결정 | 사용자 답 (chosen in chat) |
+|---|---|
+| Figma 부품이 아닌 구역 | 구역도 부품으로 |
+| 페이지 모양과 부품 모양이 다를 때 | 페이지 모양 유지 — 부품에 옵션 추가 |
+| UX/UI 점검 기준 | 화면 일치(1440), 키보드·접근성, 동작 점검 (좁은 화면은 범위 밖) |
+| 구역 계획의 질문 약 100개 | 추천안 모두 채택 |
+| Figma 변수·스타일이 아닌 페이지 값 | Figma 스타일 값으로 맞춤 — 단, 글자 크기·자간은 지금 값 유지(간격 토큰 계산) |
+| 회색·밑줄 글자 버튼 | Button 에 공용 모양(ghost·text) 추가 |
+| Button revision 2 질문 Q-16~Q-20 | 추천안 채택 |
+| 승인 | 계획 18개 + 토큰 계획 revision 6 "승인하고 진행" |
+
+- 기준 화면: 커밋 `aa9a593` 의 세 페이지(사용자가 확인한 모습). 비교용 캡처는 작업 폴더 밖 scratchpad 에 저장했다.
+- Figma 값으로 바꾼 것: #6C6C6C→`text-secondary`, #FBEFF8→`surface-raised`, #C72D65→`border-accent`(Accent 02), #E8E8E8→`control-bg-subtle-hover`(Neutral 02), 굵기 600→590, Figma 스타일이 아닌 그림자 → 가장 가까운 Elevation(지금 페이지에 없는 그림자는 넣지 않음), Figma 에 없는 hover 색은 뺌.
+- 부품: 새 12개(Hero, ServiceTab, Footer, Inspiration, ListingTitle, PhotoGallery, ListingOverview, ListingDescription, SleepSection, CheckoutHeading, CheckoutStep, ReservationSummary), 수정 6개(Button·Link, Navigation, Tabs, Card, RadioButton, Callout).
+- Figma Desktop 의 `get_design_context` 가 이날 응답하지 않아(300초), 몇몇 사실은 지금 페이지 실측값으로 채웠다(각 계획 §5·§9 에 기록).

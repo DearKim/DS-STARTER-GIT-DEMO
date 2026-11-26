@@ -1,5 +1,7 @@
+import type { MouseEvent } from "react";
 import type { Decorator, Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, within } from "@storybook/test";
+import { imageUrl } from "@/assets/images";
 import { Card } from "./Card";
 
 const FIGMA_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=238-2378";
@@ -37,6 +39,9 @@ const discountFavorite = fn();
 const mapFavorite = fn();
 const mapClose = fn();
 const reserveClick = fn();
+/* The Detail Reserve is a real link to /checkout; the story stops the navigation so the canvas stays. */
+const detailReserveClick = fn((event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => event.preventDefault());
+const detailReportClick = fn();
 
 /** Figma "Sleep Card" (238:2379). */
 export const Sleep: Story = {
@@ -181,6 +186,82 @@ export const ReservationConfirmation: Story = {
     await expect(canvas.getByRole("heading", { name: "Price details" })).toBeInTheDocument();
     await expect(canvas.getByRole("img", { name: "AirCover" })).toBeInTheDocument();
     await expect(canvas.getByText("Total (USD)")).toBeInTheDocument();
+    await expect(canvas.queryByRole("button")).toBeNull();
+  },
+};
+
+/** Detail page booking box (Figma Card instance 812:8724 and the "리스팅 신고하기" button 812:7557 under it). */
+export const ReservationDetail: Story = {
+  name: "Reservation (Detail page)",
+  args: {
+    type: "reservation",
+    layout: "detail",
+    originalPrice: "$500",
+    price: "$440",
+    priceUnit: "night",
+    rating: "4.99",
+    reviewCount: "337 reviews",
+    checkIn: "2/6/2023",
+    checkOut: "2/11/2023",
+    guests: "1 guest",
+    reserveLabel: "Reserve",
+    reserveHref: "/checkout",
+    onReserveClick: detailReserveClick,
+    note: "You won't be charged yet",
+    lineItems: [
+      { label: "500 x 5 nights", amount: "$2,500" },
+      { label: "Long stay discount", amount: "-$300", tone: "discount" },
+      { label: "Cleaning fee", amount: "$200" },
+      { label: "Service fee", amount: "$0" },
+    ],
+    totalLabel: "Total before taxes",
+    total: "$2,400",
+    reportLabel: "리스팅 신고하기",
+    onReportClick: detailReportClick,
+  },
+  decorators: width(373),
+  play: async ({ canvasElement, args }) => {
+    if (args.type !== "reservation") throw new Error("This story renders the reservation card.");
+    const canvas = within(canvasElement);
+    detailReserveClick.mockClear();
+    detailReportClick.mockClear();
+    const root = canvas.getByTestId("ds-card");
+    await expect(root).toHaveClass("ds-card--reservation", "ds-card--layout-detail", "ds-card--with-report");
+    // The dates and guests are text, not inputs (PRD: you can't change them).
+    await expect(canvas.queryByRole("textbox")).toBeNull();
+    const reserve = canvas.getByRole("link", { name: "Reserve" });
+    await expect(reserve).toHaveAttribute("href", "/checkout");
+    // The report line is the shared Button (text look) inside the card root.
+    const report = within(root).getByTestId("ds-button");
+    await expect(report).toHaveAccessibleName("리스팅 신고하기");
+    await userEvent.tab();
+    await expect(reserve).toHaveFocus();
+    await userEvent.tab();
+    await expect(report).toHaveFocus();
+    await userEvent.click(reserve);
+    await expect(args.onReserveClick).toHaveBeenCalledTimes(1);
+    await userEvent.click(report);
+    await expect(args.onReportClick).toHaveBeenCalledTimes(1);
+  },
+};
+
+/** Detail page bedroom card (frame 812:11249 in "Where you'll sleep"). */
+export const SleepDetail: Story = {
+  name: "Sleep (Detail page)",
+  args: {
+    type: "sleep",
+    layout: "detail",
+    imageSrc: imageUrl("detail-bedroom-1"),
+    imageAlt: "Bedroom 1",
+    title: "Bedroom 1",
+    description: "1 queen bed",
+  },
+  decorators: width(318.7),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByTestId("ds-card")).toHaveClass("ds-card--sleep", "ds-card--layout-detail");
+    await expect(canvas.getByRole("img", { name: "Bedroom 1" })).toBeInTheDocument();
+    await expect(canvas.getByText("1 queen bed")).toBeInTheDocument();
     await expect(canvas.queryByRole("button")).toBeNull();
   },
 };

@@ -1,4 +1,4 @@
-<!-- @ds-generated 7bc98640bb3245a6 — `pnpm ds:gen` 이 만든 파일입니다.
+<!-- @ds-generated 2c6f9f2fce688f70 — `pnpm ds:gen` 이 만든 파일입니다.
    ds.config.json + 실제 토큰에서 생성
    직접 고치면 다음 생성 때 충돌로 보고되고 덮어쓰지 않습니다. -->
 # 디자인 토큰 (MUST)
@@ -72,6 +72,13 @@
 --color-icon-accent-subtle   /* accent-01 */
 --color-image-placeholder-subtle   /* neutral-03 */
 --color-danger-subtle   /* error-01 */
+--color-border-accent   /* accent-02 */
+--color-control-bg-subtle   /* fills-vibrant-use-plus-lighter-darker-tertiary */
+--color-control-bg-subtle-hover   /* neutral-02 */
+--color-surface-subtle   /* neutral-01 */
+--color-surface-hover-subtle   /* neutral-01 */
+--color-image-frame   /* shade-01 */
+--color-image-scrim   /* grays-black */
 ```
 
 ## layout 토큰

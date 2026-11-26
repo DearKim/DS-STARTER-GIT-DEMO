@@ -3,21 +3,24 @@ import type { HTMLAttributes, KeyboardEvent, ReactNode } from "react";
 import "./Tabs.css";
 import { useText } from "../../lib/i18n";
 
-/** Figma: "Underline Tabs" (229:2214) = line, "Pill Tabs" (237:2219) = pill. */
-export type TabsVariant = "line" | "pill";
+/**
+ * Figma: "Underline Tabs" (229:2214) = line, "Pill Tabs" (237:2219) = pill.
+ * bar = the Home "Inspiration" tab list (page frame 389:7214): a 3px bar under the selected tab and a 1px line under the list.
+ */
+export type TabsVariant = "line" | "pill" | "bar";
 
 export interface TabItem {
   id: string;
   label: string;
   content: ReactNode;
-  /** Figma Underline Tabs Icon=On: a 24×24 icon above the label. It takes the tab's text color (currentColor). Only the line variant shows it. */
+  /** Figma Underline Tabs Icon=On: a 24×24 icon above the label. It takes the tab's text color (currentColor). Only the line variant shows it (pill and bar have no icon). */
   icon?: ReactNode;
   /** Figma has no Disabled tab, so this only turns the native button off (no new look). Arrow keys skip it. */
   disabled?: boolean;
 }
 
 export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
-  /** Figma: Underline Tabs (line) or Pill Tabs (pill) */
+  /** Figma: Underline Tabs (line), Pill Tabs (pill) or the Home "Inspiration" tab list (bar) */
   variant?: TabsVariant;
   items?: TabItem[];
   defaultTab?: string;
@@ -32,7 +35,7 @@ export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
  *
  * Follows the WAI-ARIA tabs pattern and uses a **roving tabindex**: one press of the Tab key moves
  * into the whole tab list, and inside it ← → move between tabs and select them (Home/End jump to the ends).
- * The selected tab is `aria-selected` — Figma's Line=On (line) or the white segment (pill).
+ * The selected tab is `aria-selected` — Figma's Line=On (line), the white segment (pill) or the 3px bar (bar).
  * Hover, Pressed and Focus come from CSS, not from props.
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(

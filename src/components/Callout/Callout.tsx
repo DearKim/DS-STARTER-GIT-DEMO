@@ -2,8 +2,11 @@ import { forwardRef, useId } from "react";
 import type { HTMLAttributes, ReactNode } from "react";
 import "./Callout.css";
 
-/** Figma "Callouts" set (235:2641), axis `Property 1`: Property Highlight / Cancelation. */
-export type CalloutType = "highlight" | "cancelation";
+/**
+ * Figma "Callouts" set (235:2641), axis `Property 1`: Property Highlight / Cancelation.
+ * `banner` (plan revision 2) is the one-line Checkout "Rare find!" strip (Checkout frame 812:12363, not a Callouts variant).
+ */
+export type CalloutType = "highlight" | "cancelation" | "banner";
 
 /** Figma "Callout Icons" set (235:2613), axis `Type`: Diamond / Tags / Clock. */
 export type CalloutIcon = "diamond" | "tags" | "clock";
@@ -13,7 +16,7 @@ export interface CalloutProps extends Omit<HTMLAttributes<HTMLDivElement>, "titl
   type?: CalloutType;
   /** Highlight: the bold start of the sentence ("This is a rare find."). Cancelation: the heading ("Your reservation"). */
   title?: string;
-  /** Highlight only. The regular text after the bold start. */
+  /** Highlight: the regular text after the bold start. Banner: the one line of text. */
   children?: ReactNode;
   /** Highlight only. The 32×32 icon on the right. */
   icon?: CalloutIcon;
@@ -27,6 +30,8 @@ export interface CalloutProps extends Omit<HTMLAttributes<HTMLDivElement>, "titl
   name?: string;
   /** Cancelation only. Reservation code line. */
   code?: string;
+  /** Banner only. Address of the 32×32 picture before the text (decorative, alt=""). Without it the text stands alone. */
+  iconSrc?: string;
 }
 
 /** Callout Icons 235:2613. Original Figma paths; colors come from CSS tokens. Each group keeps its Figma offset in the 32×32 box. */
@@ -81,7 +86,10 @@ function CalloutIconSvg({ icon }: { icon: CalloutIcon }) {
   );
 }
 
-/** An information box from the Figma "Callouts" set (235:2641): a highlighted fact with an icon, or a canceled reservation. It has nothing to press. */
+/**
+ * An information box from the Figma "Callouts" set (235:2641): a highlighted fact with an icon, or a canceled reservation
+ * (with an optional photo). `banner` is the one-line strip from the Checkout page. It has nothing to press.
+ */
 export const Callout = forwardRef<HTMLDivElement, CalloutProps>(function Callout(
   {
     type = "highlight",
@@ -93,12 +101,22 @@ export const Callout = forwardRef<HTMLDivElement, CalloutProps>(function Callout
     status = "CANCELED",
     name = "tiny house, tiny farm",
     code = "Reservation code: XMPQKAPZ6D",
+    iconSrc,
     className,
     ...rest
   },
   ref,
 ) {
   const classes = ["ds-callout", `ds-callout--${type}`, className].filter(Boolean).join(" ");
+
+  if (type === "banner") {
+    return (
+      <div ref={ref} className={classes} data-testid="ds-callout" {...rest}>
+        {iconSrc ? <img className="ds-callout__banner-icon" src={iconSrc} alt="" draggable={false} /> : null}
+        <p className="ds-callout__banner-text">{children ?? "Rare find! This place is usually booked"}</p>
+      </div>
+    );
+  }
 
   if (type === "cancelation") {
     return (

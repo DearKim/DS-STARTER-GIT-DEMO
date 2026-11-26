@@ -117,3 +117,49 @@
   line-height: normal;
   color: var(--color-text-tertiary);
 }
+
+/* ══ revision 2 — variant="list": Checkout "Choose when to pay" 의 줄 (계획 12절). 값은 현재 사이트 측정값. ══ */
+/* 글자 칸(남은 폭) + 사이 16 + 원 24(오른쪽 끝), 위쪽 정렬. 줄 아래 여백 16, 첫 줄은 위 여백 0. */
+.ds-radiobutton--list {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 4);
+  width: 100%;
+  padding-bottom: calc(var(--spacing) * 4);
+  cursor: default;
+}
+
+/* 줄끼리 이어지면 둘째 줄부터 위에 가는 선(#EBEBEB 1px) + 위 여백 16 (Q-12 A). → 줄 높이 40 · 75 · 93 */
+.ds-radiobutton--list + .ds-radiobutton--list {
+  padding-top: calc(var(--spacing) * 4);
+  border-top: var(--border-width-thin) solid var(--color-border-subtle);
+}
+
+.ds-radiobutton--list .ds-radiobutton__text {
+  flex: 1 1 0;
+}
+
+/* 라벨: 16 / 400 / 20, 자간 -0.3125px. 글자 칸 폭 전체가 누르는 곳이다. */
+.ds-radiobutton--list .ds-radiobutton__label {
+  display: block;
+  line-height: calc(var(--spacing) * 5);
+  letter-spacing: calc(var(--spacing) * -0.078125);
+  cursor: pointer;
+}
+
+/* 보조 글: 14 / 400 / 18, 자간 -0.1504px, text-secondary(사용자 결정: #6C6C6C → #717171). More info(Button)가 이어 붙는다. */
+.ds-radiobutton--list .ds-radiobutton__subtext {
+  margin: 0;
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: calc(var(--spacing) * -0.0376);
+  color: var(--color-text-secondary);
+}
+
+.ds-radiobutton__subtext-label {
+  cursor: pointer;
+}
+
+.ds-radiobutton--list .ds-radiobutton__control {
+  cursor: pointer;
+}

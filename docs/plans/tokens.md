@@ -1,10 +1,10 @@
 ---
 kind: tokens
-revision: 5
+revision: 6
 status: approved
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=389-2752&m=dev
-palette_hash: f8ba43f43c73ab70dfe0ddd7101d69d76503d84761aa96cc16b2b59d2a667c58
-content_hash: 733a81b3fb8e4d83f347b815379fa5765daa53c57f729b68bbca863b014667fb
+palette_hash: 050d8606258b50bc018470d1050816e882c33429bb6e2778904d80711e0dd234
+content_hash: b57b234cfe48770c0a6e85582fbc6fb2eebfa1064e18a2cd6703484c865680da
 open_questions: 0
 ---
 
@@ -62,6 +62,13 @@ open_questions: 0
 | icon-accent-subtle | accent-01 | 245:3518 | #F6D7DF | Callout icon light part (235:2613) = Accent 01. Plan Callout rev 1 |
 | image-placeholder-subtle | neutral-03 | 245:3518 | #DDDDDD | Callout photo box (235:2641) = Neutral 03. Plan Callout rev 1 |
 | danger-subtle | error-01 | 245:3518 | #FEF8F6 | TextInput error background (208:2159) = Error 01. Plan TextInput rev 1 |
+| border-accent | accent-02 | 245:3518 | #D03660 | ServiceTab selected ring. Page value #C72D65 is not a Figma variable; user decision "Figma 스타일 값으로 맞춤" → closest Figma color Accent 02. Plan ServiceTab rev 1 |
+| control-bg-subtle | fills-vibrant-use-plus-lighter-darker-tertiary | 812:393 | #F2F2F2 | Gray buttons (Button ghost) and gallery button = Figma variable "Fills - Vibrant/Tertiary" (812:4787). Plans Buttons rev 2, PhotoGallery, ReservationSummary |
+| control-bg-subtle-hover | neutral-02 | 245:3518 | #EBEBEB | Gray button hover. Page value #E8E8E8 is not a Figma variable; user decision → closest Figma color Neutral 02. Plans Buttons rev 2, PhotoGallery |
+| surface-subtle | neutral-01 | 245:3518 | #F7F7F7 | Footer and Inspiration background (389:7358, 389:7517) = Neutral 01. Plans Footer, Inspiration |
+| surface-hover-subtle | neutral-01 | 245:3518 | #F7F7F7 | Hover background of the share/save text buttons (current page) = Neutral 01. Plans Buttons rev 2, ListingTitle |
+| image-frame | shade-01 | 245:3518 | #FFFFFF | White frame around the "Near Anmok Beach" picture (Figma Grays/White) = Shade 01. Plan ListingOverview |
+| image-scrim | grays-black | 812:393 | #000000 | Dark layer over the hero photo, drawn at 30% opacity in the component (like surface-hover). Figma variable Grays/Black. Plan Hero |
 <!-- token-mappings:end -->
 
 <!-- token-contrast:start -->
@@ -107,4 +114,5 @@ Normal text needs 4.5:1; disabled text is exempt. Colors are never adjusted auto
 
 - 질문에 대한 학생 결정과 선택 이유: AI proposal, chosen in chat
 - Q: Use these color roles? → A: Use these roles (chosen in chat)
+- revision 6 (2026-11-26): 사이트를 Storybook 부품으로 다시 세우는 구역 부품 계획(Footer·Inspiration·Hero·ServiceTab·PhotoGallery·ListingOverview·ReservationSummary·Buttons rev 2)이 쓰는 새 역할 7개. Figma 변수가 아닌 페이지 값은 사용자 결정 "Figma 스타일 값으로 맞춤"(chosen in chat)에 따라 가장 가까운 Figma 색으로 매핑했다. 기존 역할 46개는 그대로다. 승인 대기.
 - revision 5 (2026-11-26): 1단계 부품 계획(Buttons·Chip·Tabs·Navigation·Callout·RadioButton·TextInput·Card)이 쓰는 새 역할 26개. 사용자 결정: "합친 목록 + 다시 가져오기"(chosen in chat) — 값과 역할이 모두 같은 제안만 합쳤고(`docs/plans/design-system-airbnb.md` §6), 새 색은 Figma Colors(245:3518)에서 다시 가져왔다. 기존 역할 20개는 그대로다. 승인 대기.

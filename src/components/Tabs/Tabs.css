@@ -1,6 +1,7 @@
 /* Tabs — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
-   값의 근거: docs/plans/components/Tabs.md revision 1
-   (Figma Underline Tabs 229:2214 = --line, Pill Tabs 237:2219 = --pill). */
+   값의 근거: docs/plans/components/Tabs.md revision 2
+   (Figma Underline Tabs 229:2214 = --line, Pill Tabs 237:2219 = --pill,
+   Home "Inspiration" 탭 줄 389:7214 = --bar — 현재 사이트 값). */
 .ds-tabs {
   display: flex;
   flex-direction: column;
@@ -209,6 +210,61 @@
 .ds-tabs--pill .ds-tabs__tab:focus-visible {
   background: var(--color-surface-focus);
   box-shadow: inset 0 0 0 var(--border-width-thick) var(--color-focus-ring);
+}
+
+/* ── Bar (Home "Inspiration" 탭 줄 389:7214, 계획 rev 2) ───────────── */
+
+/* 목록 높이 40 + 아래 1px Neutral 03 선(Tabs 전체 폭, 389:7241). 탭 사이 간격 0 — 라벨 사이 32 는 탭 좌우 여백 16+16. */
+.ds-tabs--bar .ds-tabs__list {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+}
+
+/* 탭 상자 40(위아래 11·좌우 16), 라벨 14 / 500 / 18 / 자간 −0.15. 선택 안 됨 = text-secondary(Q-16).
+   모서리 8 은 포커스 링 모양에만 쓰인다(바탕 없음). */
+.ds-tabs--bar .ds-tabs__tab {
+  padding: calc(var(--spacing) * 2.75) calc(var(--spacing) * 4);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: calc(var(--spacing) * -0.0375);
+}
+
+/* 첫 라벨이 Tabs 왼쪽 끝에 맞게 첫 탭 상자를 16 바깥으로(389:7215 x −16). */
+.ds-tabs--bar .ds-tabs__tab:first-child {
+  margin-inline-start: calc(var(--spacing) * -4);
+}
+
+.ds-tabs--bar .ds-tabs__tab[aria-selected="true"] {
+  color: var(--color-text);
+}
+
+/* 선택 막대 3px Shade 02, 모서리 3·3·0·0, 라벨 시작 ~ 탭 오른쪽 끝(라벨 + 16), 탭 아래에서 3 위(Q-15). */
+.ds-tabs--bar .ds-tabs__tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: calc(var(--spacing) * 0.75);
+  left: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 0.75);
+  border-radius: calc(var(--spacing) * 0.75) calc(var(--spacing) * 0.75) 0 0;
+  background: var(--color-selected);
+  pointer-events: none;
+}
+
+/* Hover 변화 없음(Q-14). Focus: 탭 상자 둘레 2px focus-ring, 모서리 8, 크기 변화 없음(Q-14). */
+.ds-tabs--bar .ds-tabs__tab:focus-visible {
+  outline: var(--border-width-thick) solid var(--color-focus-ring);
+  outline-offset: 0;
+}
+
+/* 패널: 목록 선 아래 32, 아래 0 (Figma "Tab Panel" 389:7243 의 List y 32). */
+.ds-tabs--bar .ds-tabs__panel {
+  padding: calc(var(--spacing) * 8) 0 0;
 }
 
 /* ── 패널 — Figma 에 없음. 계획 범위 밖이라 기존 키트 값을 유지하고 포커스 색만 Tabs 의 focus-ring 으로. ── */

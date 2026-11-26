@@ -28,7 +28,10 @@
   display: inline-flex;
 }
 
-/* 누를 수 있는 요소의 기본 모양을 지운다. 포커스 링은 브라우저 기본값을 그대로 쓴다(Figma 에 Focus 없음). */
+/* 누를 수 있는 요소의 기본 모양을 지운다. 포커스 링은 브라우저 기본값을 그대로 쓴다(Figma 에 Focus 없음).
+   revision 2: "Become a Host" 버튼(Q-16)과 입력칸(Q-20)도 같은 초기화를 쓴다. 뒤의 규칙이 모양을 다시 정한다. */
+.ds-navigation__host,
+.ds-navigation__segment-input,
 .ds-navigation__field,
 .ds-navigation__search-button,
 .ds-navigation__language,
@@ -288,4 +291,134 @@
   line-height: normal;
   color: var(--color-text-secondary);
   white-space: nowrap;
+}
+
+/* ───────── revision 2 (계획 docs/plans/components/Navigation.md "Revision 2") ───────── */
+
+/* look="site"(Q-15 A): 현재 사이트의 맨 위 막대. 아래 선만 있고, 검색 알약이 있으면 높이 81(Detail), 없으면 71(Home·Checkout).
+   위·왼쪽·오른쪽 선이 없으므로 위치는 페이지에서 잰 값을 그대로 쓴다. */
+.ds-navigation--site {
+  border-width: 0 0 var(--border-width-thin);
+}
+
+.ds-navigation--site.ds-navigation--no-search {
+  height: calc(var(--spacing) * 17.75);
+}
+
+/* 로고: Detail (79,20), Home·Checkout (80,19) */
+.ds-navigation--site .ds-navigation__logo {
+  top: calc(var(--spacing) * 5);
+  left: calc(var(--spacing) * 19.75);
+}
+
+.ds-navigation--site.ds-navigation--no-search .ds-navigation__logo {
+  top: calc(var(--spacing) * 4.75);
+  left: calc(var(--spacing) * 20);
+}
+
+/* 오른쪽 묶음: 오른쪽 여백 80, 위 21(Detail) / 16(Home·Checkout) */
+.ds-navigation--site .ds-navigation__actions {
+  top: calc(var(--spacing) * 5.25);
+  right: calc(var(--spacing) * 20);
+}
+
+.ds-navigation--site.ds-navigation--no-search .ds-navigation__actions {
+  top: calc(var(--spacing) * 4);
+}
+
+/* "Become a Host": 38 높이 묶음의 가운데(위 10.5), 굵기 500(--font-weight-medium = Figma sds-typography-weight-medium) */
+.ds-navigation--site .ds-navigation__host {
+  margin-top: calc(var(--spacing) * 2.625);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Detail 검색 알약: 왼쪽 calc(50% − 177) = 1440 에서 543, 위 16. 폭은 내용(384). */
+.ds-navigation--site .ds-navigation__center {
+  top: calc(var(--spacing) * 4);
+  left: calc(50% - var(--spacing) * 44.25);
+  transform: none;
+}
+
+/* 알약: 테두리 안쪽 여백 왼쪽 28·오른쪽 8(높이 48은 그대로), Neutral 04 테두리, 글자·구분선 사이 24. 그림자 없음. */
+.ds-navigation--site .ds-navigation__search {
+  padding: calc(var(--spacing) * 2 - var(--border-width-thin)) calc(var(--spacing) * 2)
+    calc(var(--spacing) * 2 - var(--border-width-thin)) calc(var(--spacing) * 7);
+  border-color: var(--color-border-medium);
+}
+
+.ds-navigation--site .ds-navigation__fields {
+  gap: calc(var(--spacing) * 6);
+}
+
+.ds-navigation--site .ds-navigation__divider::before {
+  background: var(--color-border-medium);
+}
+
+/* stretch(Q-19 A): Home 히어로 막대(418:8282). 부모 폭, 높이 62, 테두리 안 여백 6, 칸 4개 같은 폭, 칸 사이 0. */
+.ds-navigation--stretch {
+  display: flex;
+  width: 100%;
+}
+
+.ds-navigation--stretch .ds-navigation__bar {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  height: calc(var(--spacing) * 15.5);
+  gap: 0;
+  padding: calc(var(--spacing) * 1.5);
+}
+
+/* 칸: 여백 14·24, 줄 사이 4. 칸 높이(71)가 막대 안쪽(48)보다 커서 위아래로 똑같이 넘친다(현재 페이지와 같음).
+   바탕은 막대의 흰색을 그대로 보이게 투명하게 둔다(넘친 부분이 막대 선을 덮지 않게). */
+.ds-navigation--stretch .ds-navigation__segment {
+  flex: 1 0 0;
+  width: auto;
+  min-width: 0;
+  padding: calc(var(--spacing) * 3.5) calc(var(--spacing) * 6);
+  background: transparent;
+}
+
+.ds-navigation--stretch .ds-navigation__segment-label {
+  height: auto;
+  line-height: calc(var(--spacing) * 4.5);
+}
+
+.ds-navigation--stretch .ds-navigation__segment-value,
+.ds-navigation--stretch .ds-navigation__segment-input {
+  line-height: calc(var(--spacing) * 5.25);
+}
+
+/* editable(Q-20 A): 라벨 + 입력칸. 글자와 placeholder 는 Neutral 07. 포커스 링은 브라우저 기본값. */
+.ds-navigation--editable .ds-navigation__segment,
+.ds-navigation--editable .ds-navigation__segment-label {
+  cursor: text;
+}
+
+.ds-navigation__segment-input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  line-height: normal;
+  color: var(--color-text-secondary);
+  cursor: text;
+}
+
+.ds-navigation__segment-input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
+/* 구분선 칸 폭: 페이지처럼 1(선 두께)을 차지해 칸·글자 위치가 페이지와 같다(site 알약, stretch 막대). */
+.ds-navigation--site .ds-navigation__divider,
+.ds-navigation--stretch .ds-navigation__divider {
+  width: var(--border-width-thin);
+}
+
+/* site 알약 글자: 현재 사이트의 줄 높이 19.5(13px × 1.5). normal 이면 글자가 1px 아래에 그려진다(기준 화면 대조). */
+.ds-navigation--site .ds-navigation__field {
+  line-height: calc(var(--spacing) * 4.875);
 }

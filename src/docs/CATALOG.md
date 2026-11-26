@@ -1,9 +1,9 @@
-<!-- @ds-generated ed53d603c4858768 — `pnpm ds:gen` 이 만든 파일입니다.
+<!-- @ds-generated d0e3eaccfac6f6a3 — `pnpm ds:gen` 이 만든 파일입니다.
    Made from the real public exports, starter baseline and student review versions
    직접 고치면 다음 생성 때 충돌로 보고되고 덮어쓰지 않습니다. -->
 # Parts catalog
 
-Schema: 1; Inventory: dbf86dca86406d993d7d986a450fdcec1ba7393fc8664325c163a37f811144a8; Tokens: 6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329
+Schema: 1; Inventory: e30404f97cdda1e427a23279e68fa3c268c237d4ce1d8f5b47e629acc4c9e06a; Tokens: 4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294
 
 Look up parts: pnpm ds:catalog [part names...]. The command only reads the current code, starter baseline and student review records and works out the latest state.
 An unchanged starter part can use its full public API and shipped states. A changed part is blocked until the student checks it with pnpm ds:review <Name>; that approval is valid only for the recorded props/states. If only token values change after a student review, behavior approval still counts and visuals become needs_review. Do not use failed, unreadable or stale parts.
@@ -47,7 +47,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"28e0f1fad8b614f12934b4fe481fc3213efadd00806c3769381463a77e199d0f","cssHash":"e5c96b95941b5e9e61d46e150e41eee69f01a24df4c0791aa0512144ae875689","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"28e0f1fad8b614f12934b4fe481fc3213efadd00806c3769381463a77e199d0f","cssHash":"e5c96b95941b5e9e61d46e150e41eee69f01a24df4c0791aa0512144ae875689","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Badge
@@ -72,7 +72,7 @@ export type BadgeTone = "neutral" | "info" | "success" | "warning" | "danger";
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"bd4b1f60d93a1493a1e93452adce5d856eb57eb30a10759a5b7e71fc2bff6dd2","cssHash":"0a37288200cbb51f69f1b15709d6a9dd9c010208494a2c701c87f682786837e4","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"bd4b1f60d93a1493a1e93452adce5d856eb57eb30a10759a5b7e71fc2bff6dd2","cssHash":"0a37288200cbb51f69f1b15709d6a9dd9c010208494a2c701c87f682786837e4","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Breadcrumb
@@ -108,55 +108,100 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"baf7bb186c95d58e12abe25962c7906bc6a8679f721e4e337f33e8399c01f395","cssHash":"2b0963be8538847af24477ff79379f4b3b7f7a7874e58eb8d864ad806017b09d","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"baf7bb186c95d58e12abe25962c7906bc6a8679f721e4e337f33e8399c01f395","cssHash":"2b0963be8538847af24477ff79379f4b3b7f7a7874e58eb8d864ad806017b09d","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Button
 
-Role: A button that runs the main action. Use only one Primary button per screen.
+Role: A button that runs an action. Use only one Primary button per screen.
 Import: `import { Button } from "@/components/Button"`
 Source: `src/components/Button/index.ts`
-Status: starter; API: supported; Page use: full public API; Auto checks: not_run
-Reason: Starter part, unchanged
-Behavior/structure/API: starter; Visual: starter
+Status: stale; API: supported; Page use: blocked; Auto checks: not_run
+Reason: Starter part changed: codeHash, cssHash. The student must run pnpm ds:review Button in a terminal.
+Behavior/structure/API: stale; Visual: stale
 
 ### Public props (! = required, ? = optional)
-- `variant?: ButtonVariant`; default: `"primary"`; Figma: Type
-- `size?: ButtonSize`; default: `"m"`; Figma: Size
-- `hasIcon?: boolean`; default: `false`; Figma: Has icon
+- `variant?: ButtonVariant`; default: `"primary"`; Figma component set: Primary / Secondary / Tertiary Buttons
+- `size?: ButtonSize`; default: `"small"`; Figma: Size. `full-width` fills its parent; `small` fits its label.
+- `loading?: boolean`; default: `false`; Figma: State = Loading. Shows three dots instead of the label. The button keeps keyboard focus and its name, but it does not run `onClick` (and drops `href`).
+- `icon?: ReactNode`; default: `unknown`; Figma: Icon = On. Only Secondary and Tertiary at Full Width have it: Secondary puts the icon before the label, Tertiary puts it at the left edge. Hidden while disabled or loading (Figma shows no icon there).
+- `href?: string`; default: `unknown`; When set, the button renders as a real link (`<a href>`) with the same look.
+- `target?: string`; default: `unknown`
+- `rel?: string`; default: `unknown`
 - `children?: ReactNode`; default: `unknown`
 
-Native attributes: `ButtonHTMLAttributes<HTMLButtonElement>`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
-Native defaults: `{"type":"\"button\""}`
+Native attributes: `Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
+Native defaults: `{"disabled":"false","type":"\"button\""}`
 
 Types:
 ````ts
-export type ButtonSize = "l" | "m" | "s";
-export type ButtonVariant = "primary" | "secondary" | "outline" | "tertiary";
+export type ButtonSize = "full-width" | "small";
+export type ButtonVariant = "primary" | "secondary" | "tertiary";
 ````
 
-Review scope: `full public API and shipped states`
-Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"c08f05ffb88e39fd5c8a4dc662abe12a530c0549c793f12aa23e825629c0d26a","cssHash":"d0b00eb69004d8d44e1e4a9e4163b675aa6320c5791a55b4deb8b10556cdf233","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Notes written in the code (not proof of review):
+> A button that runs an action. Use only one Primary button per screen.
+> 
+> Hover, Pressed and Focus are CSS states (`:hover`, `:active`, `:focus-visible`), not props.
+
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"1e3d7a41aed1870ee5a8549bfabf152782cb5226a775053badaf74d15506445a","cssHash":"9826cdbc06b0df63646649162948fab5172005bff6cf1168c4e64678449b5176","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
+Depends on: `pnpm-lock.yaml`
+
+## Callout
+
+Role: An information box from the Figma "Callouts" set (235:2641): a highlighted fact with an icon, or a canceled reservation. It has nothing to press.
+Import: `import { Callout } from "@/components/Callout"`
+Source: `src/components/Callout/index.ts`
+Status: unverified; API: supported; Page use: blocked; Auto checks: not_run
+Reason: No starter baseline or student review yet
+Behavior/structure/API: unverified; Visual: unverified
+
+### Public props (! = required, ? = optional)
+- `type?: CalloutType`; default: `"highlight"`; Figma `Property 1`: "highlight" = Property Highlight (235:2640), "cancelation" = Cancelation (235:2639).
+- `title?: string`; default: `unknown`; Highlight: the bold start of the sentence ("This is a rare find."). Cancelation: the heading ("Your reservation").
+- `children?: ReactNode`; default: `unknown`; Highlight only. The regular text after the bold start.
+- `icon?: CalloutIcon`; default: `"diamond"`; Highlight only. The 32×32 icon on the right.
+- `imageSrc?: string`; default: `unknown`; Cancelation only. Photo address. Without it the 108×72 area shows the placeholder color.
+- `imageAlt?: string`; default: `""`; Cancelation only. Description of the photo for screen readers.
+- `status?: string`; default: `"CANCELED"`; Cancelation only. Status line, always in the danger color. Figma: "CANCELED".
+- `name?: string`; default: `"tiny house, tiny farm"`; Cancelation only. Name of the stay.
+- `code?: string`; default: `"Reservation code: XMPQKAPZ6D"`; Cancelation only. Reservation code line.
+
+Native attributes: `Omit<HTMLAttributes<HTMLDivElement>, "title" | "children">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
+
+Types:
+````ts
+export type CalloutIcon = "diamond" | "tags" | "clock";
+export type CalloutType = "highlight" | "cancelation";
+````
+
+Notes written in the code (not proof of review):
+> An information box from the Figma "Callouts" set (235:2641): a highlighted fact with an icon, or a canceled reservation. It has nothing to press.
+
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"b1b744cb3f53be2b6aff251f447ba70fd53287f5ac0d304cbd6ebf1fda1600f7","cssHash":"7c870de4baec01e609fe051d2e536c6c633b53133c7824d2ca3213f9c8e1b044","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Card
 
-Role: A surface that groups related content.
+Role: A card from the Figma Card set (238:2378). `type` picks the kind of card.
 Import: `import { Card } from "@/components/Card"`
 Source: `src/components/Card/index.ts`
-Status: starter; API: supported; Page use: full public API; Auto checks: not_run
-Reason: Starter part, unchanged
-Behavior/structure/API: starter; Visual: starter
+Status: failed; API: unsupported_api; Page use: blocked; Auto checks: not_run
+Reason: unsupported_api: unsupported props syntax: SleepCardProps | DiscountCardProps | MapCardProps | ReservationCardProps | ReservationConfirmationCardProps; TypeScript 2307: Cannot find module './superhost-medal.png' or its corresponding type declarations.
+Behavior/structure/API: failed; Visual: unverified
 
 ### Public props (! = required, ? = optional)
-- `children?: ReactNode`; default: `unknown`
 
-Native attributes: `HTMLAttributes<HTMLDivElement>`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
+Notes written in the code (not proof of review):
+> A card from the Figma Card set (238:2378). `type` picks the kind of card.
 
-Review scope: `full public API and shipped states`
-Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"b6afb317afa6409944b9d912c0c8bd012619c0225ba66d04d2605593e1223676","cssHash":"4622b6439ee7ace70d3b7e59094db2302975d8bf1de951f810a8c22feabf1c36","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"028409747be13dcff2bab6e720bf684b4fd56e2843ddecde3515b4e9761ef4f2","cssHash":"f9be88096a7d0918d8018fa18aedc4e4da6aa8833599e4325be018632c43a177","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Checkbox
@@ -185,8 +230,35 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"cebad761ee6e1943f8a63d7c8fe173ff985d838487eca3dcbc709d4d0ff6cdf1","cssHash":"f7deaba28bc662bc3c36203e2aff3313b42890337b157d45803c66d69ddc2bf9","dependencyHash":"d28f3440f310183a819dc02ba031561c15cf17c21b06138662b5b7e16f187b0b","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"cebad761ee6e1943f8a63d7c8fe173ff985d838487eca3dcbc709d4d0ff6cdf1","cssHash":"f7deaba28bc662bc3c36203e2aff3313b42890337b157d45803c66d69ddc2bf9","dependencyHash":"d28f3440f310183a819dc02ba031561c15cf17c21b06138662b5b7e16f187b0b","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/refs.ts`
+
+## Chip
+
+Role: Chip — one pill-shaped filter button (Figma "Chips" 234:2568).
+Import: `import { Chip } from "@/components/Chip"`
+Source: `src/components/Chip/index.ts`
+Status: unverified; API: supported; Page use: blocked; Auto checks: not_run
+Reason: No starter baseline or student review yet
+Behavior/structure/API: unverified; Visual: unverified
+
+### Public props (! = required, ? = optional)
+- `selected?: boolean`; default: `false`; Figma: State=Select (234:2564) — this chip is the chosen one. Sent to screen readers as aria-pressed. The chip does not change it by itself: the parent sets it, so only one chip in a row is chosen.
+- `children!: ReactNode`; default: `unknown`; The chip's text, e.g. "Hotels".
+
+Native attributes: `ButtonHTMLAttributes<HTMLButtonElement>`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
+Native defaults: `{"type":"\"button\""}`
+
+Notes written in the code (not proof of review):
+> Chip — one pill-shaped filter button (Figma "Chips" 234:2568).
+> 
+> Hover, Pressed and Focus come from CSS (:hover, :active, :focus-visible), not from props.
+> Figma has no Disabled chip, so `disabled` is passed to the native button without a new look.
+
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"7297236a9b8ff6ab5bbd24c0e5ecab5baa9e9dcf3e21f08b1478a44779a584b0","cssHash":"1b0f80931f28d0f8abcb043f510b0501f98ea4b5f2769ad6497808d0d96683d8","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
+Depends on: `pnpm-lock.yaml`
 
 ## CodeSnippet
 
@@ -221,7 +293,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"a188a92d0825333c840f18901b46b1ee49f111b911356eb21564cce68b8eef23","cssHash":"b047eeb58d7fd729b299cd09a2a3a4a233ee0c2b07488308c51d1c9555c38c70","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"a188a92d0825333c840f18901b46b1ee49f111b911356eb21564cce68b8eef23","cssHash":"b047eeb58d7fd729b299cd09a2a3a4a233ee0c2b07488308c51d1c9555c38c70","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## ComboBox
@@ -263,7 +335,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"7750d91fae3bb2072b8919b5c7f449eafcdfbbf0760d01487f04052c9040f083","cssHash":"84560471f12dce2da4fc80c1ab675cf9f59e26a9151a70038a84c97772dba238","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"7750d91fae3bb2072b8919b5c7f449eafcdfbbf0760d01487f04052c9040f083","cssHash":"84560471f12dce2da4fc80c1ab675cf9f59e26a9151a70038a84c97772dba238","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## ContainedList
@@ -300,7 +372,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"0bfbf246f54e8cd0c9f970715e9561d1224381d5110e5c4a61b129e91f8ebac1","cssHash":"d9fc49c4cbada1df460e528b32cb77400e5341529bd4bbafba0fa58602d2347b","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"0bfbf246f54e8cd0c9f970715e9561d1224381d5110e5c4a61b129e91f8ebac1","cssHash":"d9fc49c4cbada1df460e528b32cb77400e5341529bd4bbafba0fa58602d2347b","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## ContentSwitcher
@@ -337,7 +409,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"41705509cd468a7fa0deb72d7fb7e96b207faefad3ed3b75af47203588a6be89","cssHash":"af2f361d71149a8cce3c381ae42e4571194ce4aa550682d094522398793a775c","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"41705509cd468a7fa0deb72d7fb7e96b207faefad3ed3b75af47203588a6be89","cssHash":"af2f361d71149a8cce3c381ae42e4571194ce4aa550682d094522398793a775c","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## DatePicker
@@ -381,7 +453,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"f8d44980c7c85f442acb9b15d217dddbdeb125ad385e95f94cbb3fbff9929dff","cssHash":"ec5614ed566fd36a95df8506a29ba747ad072df296b81e8a4e2ccccf193fb40f","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"f8d44980c7c85f442acb9b15d217dddbdeb125ad385e95f94cbb3fbff9929dff","cssHash":"ec5614ed566fd36a95df8506a29ba747ad072df296b81e8a4e2ccccf193fb40f","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Dropdown
@@ -427,7 +499,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"a1fe73fe17ac429245a5e9c42cae86c24415f5d532e42ca9827ba39772dcbaad","cssHash":"02a67f3d2fa085685d21510a8cd90adb7403fc83d33d42cd1a8605b4fdaba629","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"a1fe73fe17ac429245a5e9c42cae86c24415f5d532e42ca9827ba39772dcbaad","cssHash":"02a67f3d2fa085685d21510a8cd90adb7403fc83d33d42cd1a8605b4fdaba629","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## FileUploader
@@ -471,7 +543,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"f34b8e3319a54cce41176d13b97d8f919632cc566eab57c1f8e6a4757b10ee25","cssHash":"7cac4b5c4bab50e768446ccd277a1416dd79e231f58ab155b24582d47efcab0b","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"f34b8e3319a54cce41176d13b97d8f919632cc566eab57c1f8e6a4757b10ee25","cssHash":"7cac4b5c4bab50e768446ccd277a1416dd79e231f58ab155b24582d47efcab0b","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Icon
@@ -502,7 +574,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"b1dea3d1ba435fed9971acfdfcfabc13406de26beaf0b48f038178cceeb3a525","cssHash":"90618475f26ad96e8828c508cc9ea804b463da82c89814896a777d24834fe580","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"b1dea3d1ba435fed9971acfdfcfabc13406de26beaf0b48f038178cceeb3a525","cssHash":"90618475f26ad96e8828c508cc9ea804b463da82c89814896a777d24834fe580","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## IconButton
@@ -538,7 +610,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `[]`
 Review evidence: `null`
-Versions: `{"codeHash":"9cf2b8146079b18391263787ba720c8547be1d1292bee840b644832756f50610","cssHash":"c1e81bdb45b6f922623a07c06a91c979633399f783f1260b65c9398abad6bc1c","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"9cf2b8146079b18391263787ba720c8547be1d1292bee840b644832756f50610","cssHash":"c1e81bdb45b6f922623a07c06a91c979633399f783f1260b65c9398abad6bc1c","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## InlineLoading
@@ -568,43 +640,32 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"d444571e4de760a7b01673eadf3f556ce57d45b464505bf0ab7806cb0a463281","cssHash":"56fbdf93cc9ec238b090aaf67e3794769b41e231e669ad4f3f914332b951f1f3","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"d444571e4de760a7b01673eadf3f556ce57d45b464505bf0ab7806cb0a463281","cssHash":"56fbdf93cc9ec238b090aaf67e3794769b41e231e669ad4f3f914332b951f1f3","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Link
 
-Role: A text link. Use it only to go to another page — to run an action, use Button.
+Role: A text link. Use it only to go to another page — to run an action, use Button. Focus is a CSS state (`:focus-visible`), not a prop. Figma has no hover look for links.
 Import: `import { Link } from "@/components/Link"`
 Source: `src/components/Link/index.ts`
-Status: starter; API: supported; Page use: full public API; Auto checks: not_run
-Reason: Starter part, unchanged
-Behavior/structure/API: starter; Visual: starter
+Status: failed; API: unsupported_api; Page use: blocked; Auto checks: not_run
+Reason: unsupported_api: unsupported props syntax: ({ variant?: "subtle"; size?: "medium"; hasIcon?: boolean; } | { variant?: "subtle"; size: "small"; hasIcon?: false; } | { variant: "legal"; size?: "small"; hasIcon?: false; })
+Behavior/structure/API: failed; Visual: unverified
 
 ### Public props (! = required, ? = optional)
-- `variant?: LinkVariant`; default: `"default"`; Figma: Variant — `inline` is a link inside a sentence (always underlined).
-- `size?: LinkSize`; default: `"md"`; Figma: Size
-- `disabled?: boolean`; default: `false`; Figma: Disabled — removes `href` so the link does not go anywhere.
-- `external?: boolean`; default: `false`; Figma: External — opens in a new window and tells screen readers that it does.
 - `children?: ReactNode`; default: `unknown`
 
-Native attributes: `AnchorHTMLAttributes<HTMLAnchorElement>`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
-
-Types:
-````ts
-export type LinkSize = "sm" | "md";
-export type LinkVariant = "default" | "inline";
-````
+Native attributes: `Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
+Native defaults: `{"variant":"\"subtle\"","hasIcon":"false"}`
 
 Notes written in the code (not proof of review):
 > A text link. Use it only to go to another page — to run an action, use Button.
-> 
-> When disabled, it removes `href` and adds `aria-disabled`. `<a>` has no disabled attribute, so
-> changing only the class would still take you to the page when clicked.
+> Focus is a CSS state (`:focus-visible`), not a prop. Figma has no hover look for links.
 
-Review scope: `full public API and shipped states`
-Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"9f173f62eeda46e00879a04169e253ca60ed733bdb9a40abd07a84319c6b7206","cssHash":"b366b4d82603603d34e33c7733be2185ef0f163c1b6da7f22616a14a7a9b48bc","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
-Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"ac55784296f3666a6a5726cfe34d6bebf9c533e8ef158966c4931bb22c78c4f7","cssHash":"bae6be7f6a9ff227a2822b6af00f7756f0d85e6e4995331f4ccc4fcf2808473c","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
+Depends on: `pnpm-lock.yaml`
 
 ## ListingCard
 
@@ -637,7 +698,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `[]`
 Review evidence: `null`
-Versions: `{"codeHash":"4948755718532da9717858d721c398cab46e9ac74cd169a5ca269b9231f88a1c","cssHash":"8ded897fc5935f48e7f2a8ddb13c412b306abf2b40af93f0acafb493b0ed1798","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"4948755718532da9717858d721c398cab46e9ac74cd169a5ca269b9231f88a1c","cssHash":"8ded897fc5935f48e7f2a8ddb13c412b306abf2b40af93f0acafb493b0ed1798","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Loading
@@ -670,7 +731,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"137028d82fd6a575a34e7f829617636d61273d440f3056136885425f24f1372c","cssHash":"983697dab7b8aa98ebf1ecd035acacf80c899c4b3a9c15e9a194d18221a2a6ed","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"137028d82fd6a575a34e7f829617636d61273d440f3056136885425f24f1372c","cssHash":"983697dab7b8aa98ebf1ecd035acacf80c899c4b3a9c15e9a194d18221a2a6ed","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Modal
@@ -715,7 +776,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"ed4690ac9e1773c3a8855177a1deae76d152dfa26afe2aa90bd26d881496d72d","cssHash":"163f3645a1594ce790877aaa6ab7e58de946f499112b72148f06499f8799b15a","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"ed4690ac9e1773c3a8855177a1deae76d152dfa26afe2aa90bd26d881496d72d","cssHash":"163f3645a1594ce790877aaa6ab7e58de946f499112b72148f06499f8799b15a","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## MultiSelect
@@ -759,8 +820,44 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"ca58f60baa3fb52a2fb380f1afd6859712dfca3483e43c253ec876c7fdfc3434","cssHash":"21eb19ad6dbced5f9331e435c4440dbe87efc69518e18aa03f23baef85d4b879","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"ca58f60baa3fb52a2fb380f1afd6859712dfca3483e43c253ec876c7fdfc3434","cssHash":"21eb19ad6dbced5f9331e435c4440dbe87efc69518e18aa03f23baef85d4b879","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
+
+## Navigation
+
+Role: Top navigation from the Figma "Navigation" set (235:2441): the Main bar, the Stays search pill, and the Expanded search bar.
+Import: `import { Navigation } from "@/components/Navigation"`
+Source: `src/components/Navigation/index.ts`
+Status: failed; API: unsupported_api; Page use: blocked; Auto checks: not_run
+Reason: unsupported_api: cannot resolve the referenced type: MouseEventHandler; TypeScript 2307: Cannot find module './logo.png' or its corresponding type declarations.
+Behavior/structure/API: failed; Visual: unverified
+
+### Public props (! = required, ? = optional)
+- `type?: NavigationType`; default: `"main"`; Figma `Type`: Main Navigation (bar), Stays Navigation (search pill), Expanded Stays Navigation (search bar).
+- `logoHref?: string`; default: `"/"`; Main only. Address of the logo link.
+- `hostHref?: string`; default: `unknown`; Main only. Address of the "Become a Host" link.
+- `onLanguageClick?: MouseEventHandler<HTMLButtonElement>`; default: `unknown`; event; Main only. Called when the globe button is pressed. No language menu is built.
+- `onMenuClick?: MouseEventHandler<HTMLButtonElement>`; default: `unknown`; event; Main only. Called when the menu/avatar pill is pressed. No menu is built.
+- `onFieldClick?: (field: NavigationField, event: MouseEvent<HTMLButtonElement>) => void`; default: `unknown`; event; Called with the field name when one search field is pressed.
+- `onSearchClick?: MouseEventHandler<HTMLButtonElement>`; default: `unknown`; event; Called when the red search button is pressed.
+- `values?: NavigationExpandedValues`; default: `unknown`; Expanded only. Value lines under Where / Check-in / Check-out / Who.
+
+Native attributes: `Omit<HTMLAttributes<HTMLElement>, "children">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
+
+Types:
+````ts
+export interface NavigationExpandedValues { where?: string; checkIn?: string; checkOut?: string; who?: string; }
+export type NavigationField = "where" | "when" | "who" | "checkIn" | "checkOut";
+export type NavigationType = "main" | "stays" | "expanded";
+````
+
+Notes written in the code (not proof of review):
+> Top navigation from the Figma "Navigation" set (235:2441): the Main bar, the Stays search pill, and the Expanded search bar.
+
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"dc343f42606b0163a6727175b06db9d685a4d3230ce52a0129646942a174561d","cssHash":"0a53226e11120ca73b46dae9afc86d39f62af92c74997fbd30462f6d449df386","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
+Depends on: `pnpm-lock.yaml`
 
 ## Notification
 
@@ -795,7 +892,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"607644b9d1d8046a98bd09bbd1c84fc499a8c8519470466b7c6758b6bab07c81","cssHash":"233165b0121b7565ac55180ff6f1b30207a97b75fd12d422f158ff9c34c480ff","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"607644b9d1d8046a98bd09bbd1c84fc499a8c8519470466b7c6758b6bab07c81","cssHash":"233165b0121b7565ac55180ff6f1b30207a97b75fd12d422f158ff9c34c480ff","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## NumberInput
@@ -838,7 +935,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"720b6c2f8e3963d21b4d1f94fe70702408be626baaeea87044698882d1d52514","cssHash":"fbcb4dbaea41732febcc45537c5e4183ce0f28eeb9da556d1e310837fa2cdc66","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"720b6c2f8e3963d21b4d1f94fe70702408be626baaeea87044698882d1d52514","cssHash":"fbcb4dbaea41732febcc45537c5e4183ce0f28eeb9da556d1e310837fa2cdc66","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## OverflowMenu
@@ -876,7 +973,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"b759d04f52c5e9264e2fde55eb88ea857dedb0b8c09723849551baa55dd74c6f","cssHash":"3dc00f43723cc226c69d0cc73e4f4bfd46bef4c997932197f0bca96e3d4763a7","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"b759d04f52c5e9264e2fde55eb88ea857dedb0b8c09723849551baa55dd74c6f","cssHash":"3dc00f43723cc226c69d0cc73e4f4bfd46bef4c997932197f0bca96e3d4763a7","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Pagination
@@ -914,7 +1011,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"1b6e093a25077dee04b114fb9906609b32fcb32cd4fe4aeff79cb91c38f95892","cssHash":"82c55c9353ce2d24c1d97bf63b7dca51c3a871f464a09bbf701ef971de2bfea7","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"1b6e093a25077dee04b114fb9906609b32fcb32cd4fe4aeff79cb91c38f95892","cssHash":"82c55c9353ce2d24c1d97bf63b7dca51c3a871f464a09bbf701ef971de2bfea7","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Popover
@@ -951,7 +1048,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"24a5dd8ca7a291e2c36f909d7e5266887237fed8a575ef15bd4989be9e856c76","cssHash":"09eaf97bf3d7669864f61df00e7e5c2ee9c091b08ec47e60adf3fc635ae22646","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"24a5dd8ca7a291e2c36f909d7e5266887237fed8a575ef15bd4989be9e856c76","cssHash":"09eaf97bf3d7669864f61df00e7e5c2ee9c091b08ec47e60adf3fc635ae22646","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## ProgressBar
@@ -991,7 +1088,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"80b08f987bc4847f7771a2c098f906b8a4521a3b5c2d47c59dd83c93eaf710fa","cssHash":"7070bf09e46496d1b963470405fb45d9ca4cacf2586c4b55e537f9cda07d0a1a","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"80b08f987bc4847f7771a2c098f906b8a4521a3b5c2d47c59dd83c93eaf710fa","cssHash":"7070bf09e46496d1b963470405fb45d9ca4cacf2586c4b55e537f9cda07d0a1a","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## ProgressIndicator
@@ -1030,45 +1127,35 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"7c3f04bb0401515f0aafdd152ec75e698b67d7734a4fc68a3ba4c281fec7d15d","cssHash":"5d29ea5bb0ee9de5fff22fe41af2ebfc1cb1c89e20fe2c6030fa11afbf7dc9e2","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"7c3f04bb0401515f0aafdd152ec75e698b67d7734a4fc68a3ba4c281fec7d15d","cssHash":"5d29ea5bb0ee9de5fff22fe41af2ebfc1cb1c89e20fe2c6030fa11afbf7dc9e2","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## RadioButton
 
-Role: A radio button for choosing one option from a set.
+Role: A radio button for choosing one option from a set (Figma "Radio Buttons with Labels" 213:1943 / "Radio Button" 213:1944).
 Import: `import { RadioButton } from "@/components/RadioButton"`
 Source: `src/components/RadioButton/index.ts`
-Status: starter; API: supported; Page use: full public API; Auto checks: not_run
-Reason: Starter part, unchanged
-Behavior/structure/API: starter; Visual: starter
+Status: stale; API: supported; Page use: blocked; Auto checks: not_run
+Reason: Starter part changed: codeHash, cssHash. The student must run pnpm ds:review RadioButton in a terminal.
+Behavior/structure/API: stale; Visual: stale
 
 ### Public props (! = required, ? = optional)
-- `orientation?: RadioButtonOrientation`; default: `"horizontal"`; Figma: Orientation — the layout direction when used as a group (`items`).
-- `label?: string`; default: `unknown`; For a single radio button, the text next to it; for a group, the group's title (legend).
-- `items?: RadioButtonOption[]`; default: `unknown`; If given, draws a group of radio buttons (radiogroup). A single radio button gives nothing to choose between, so you usually use this.
-- `selected?: string`; default: `unknown`; The selected value of the group (controlled).
-- `defaultSelected?: string`; default: `unknown`; The value selected at first in the group (uncontrolled).
-- `onSelectedChange?: (value: string) => void`; default: `unknown`; event
-- `children?: ReactNode`; default: `unknown`
+- `label?: string`; default: `unknown`; Figma: the text to the right of the circle ("Keypad"). Without it, give `aria-label` or `aria-labelledby`.
+- `subtext?: string`; default: `unknown`; Figma: Subtext — a smaller second line under the label ("Guests can open the door with a code").
 
-Native attributes: `Omit<InputHTMLAttributes<HTMLInputElement>, "type">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
-
-Types:
-````ts
-export interface RadioButtonOption { value: string; label: string; disabled?: boolean; }
-export type RadioButtonOrientation = "horizontal" | "vertical";
-````
+Native attributes: `Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "children">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
 
 Notes written in the code (not proof of review):
-> A radio button for choosing one option from a set.
+> A radio button for choosing one option from a set (Figma "Radio Buttons with Labels" 213:1943 / "Radio Button" 213:1944).
 > 
-> Without `items`, it draws one native `input[type=radio]` (group several by giving them the same name).
-> With `items`, it draws a group with fieldset + legend — moving with the arrow keys is handled by
-> the native radios that share the same name. ref points to the input for a single radio, or to the first input for a group.
+> It is one native `input[type=radio]`. Make a group by giving several radios the same `name`:
+> Tab moves into the group and the arrow keys move the choice (native behavior).
+> Hover, focus and checked are drawn by CSS (`:hover`, `:focus-visible`, `:checked`) — there is no `state` prop.
+> The ref points to the input. `className` goes on the outer `<label>` (layout only).
 
-Review scope: `full public API and shipped states`
-Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"ee5ee3f7c7df2dc195275c28ed8dd3362d881e0b747ef648a32e658f8560b53b","cssHash":"c90a941dc80141a4087e87014e83aff99869ce726e870b0f5cd5592cbdff3fec","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"e6e9e7a67f67b25db3172d874e7af3c2f0fe21732307d0c70cae090696a95480","cssHash":"26823275c22cd8c4bd4d508a0f394dc41c44cf0bb8c1b5596a716c6d19ace9cd","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Search
@@ -1102,7 +1189,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"3585ebc4d94cf7b76f9482c4572b3b841e078b7f97db9d48947d18b17240eb39","cssHash":"5310513f302f1713ef92aef04c8ca68982d09bd07d96bf9a38725cf8ec05da77","dependencyHash":"0778067baa81a2b6b636b15bcb6f7db028bd535a783ef1ededc6fbf5c9485e3a","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"3585ebc4d94cf7b76f9482c4572b3b841e078b7f97db9d48947d18b17240eb39","cssHash":"5310513f302f1713ef92aef04c8ca68982d09bd07d96bf9a38725cf8ec05da77","dependencyHash":"0778067baa81a2b6b636b15bcb6f7db028bd535a783ef1ededc6fbf5c9485e3a","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`, `src/lib/refs.ts`
 
 ## Select
@@ -1137,7 +1224,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"3008687e41858a183159a28175415767cf8b48e09041d302d39641785134965c","cssHash":"f2fef4fdb86774cd1490e70a3c992329e0d93752ba4f079dc39cca7af268c9cd","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"3008687e41858a183159a28175415767cf8b48e09041d302d39641785134965c","cssHash":"f2fef4fdb86774cd1490e70a3c992329e0d93752ba4f079dc39cca7af268c9cd","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Skeleton
@@ -1170,7 +1257,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"c53f17b413736b6d58840a25c427c2324a2347cfae49c58f363958a359f1efaf","cssHash":"3540007f15a9577ea45ee51e4fbb1cf4f6a90584b8d7be349f3bedf4182ef15e","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"c53f17b413736b6d58840a25c427c2324a2347cfae49c58f363958a359f1efaf","cssHash":"3540007f15a9577ea45ee51e4fbb1cf4f6a90584b8d7be349f3bedf4182ef15e","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Slider
@@ -1210,7 +1297,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"212a2d65986501efa780e2d1b8b11034b35712f0d6d7ac29089daf2807f0404c","cssHash":"da542604799594aef7db6d4296c03f03980c89f0275dc9742dd9fb764b9e18fb","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"212a2d65986501efa780e2d1b8b11034b35712f0d6d7ac29089daf2807f0404c","cssHash":"da542604799594aef7db6d4296c03f03980c89f0275dc9742dd9fb764b9e18fb","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## StructuredList
@@ -1249,7 +1336,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"11f2c03b1ebfec9adbc383fd2634e909762deff099dddeb8da5ca05d9ff2aae5","cssHash":"3e37e77b59716514f16b4a9cfbc9c29765f7b29c31edb1e52e21c4ffac29ce4b","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"11f2c03b1ebfec9adbc383fd2634e909762deff099dddeb8da5ca05d9ff2aae5","cssHash":"3e37e77b59716514f16b4a9cfbc9c29765f7b29c31edb1e52e21c4ffac29ce4b","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Tabs
@@ -1257,14 +1344,12 @@ Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 Role: A row of tabs that switches between panels of content.
 Import: `import { Tabs } from "@/components/Tabs"`
 Source: `src/components/Tabs/index.ts`
-Status: starter; API: supported; Page use: full public API; Auto checks: not_run
-Reason: Starter part, unchanged
-Behavior/structure/API: starter; Visual: starter
+Status: stale; API: supported; Page use: blocked; Auto checks: not_run
+Reason: Starter part changed: codeHash, cssHash. The student must run pnpm ds:review Tabs in a terminal.
+Behavior/structure/API: stale; Visual: stale
 
 ### Public props (! = required, ? = optional)
-- `variant?: TabsVariant`; default: `"line"`; Figma: Variant
-- `size?: TabsSize`; default: `"md"`; Figma: Size
-- `orientation?: TabsOrientation`; default: `"horizontal"`; Figma: Orientation
+- `variant?: TabsVariant`; default: `"line"`; Figma: Underline Tabs (line) or Pill Tabs (pill)
 - `items?: TabItem[]`; default: `[]`
 - `defaultTab?: string`; default: `unknown`
 - `onTabChange?: (id: string) => void`; default: `unknown`; event; Called with the tab's id when the selected tab changes. It isn't named onChange because that name belongs to the native DOM event.
@@ -1275,22 +1360,21 @@ Native attributes: `HTMLAttributes<HTMLDivElement>`. Not every event or ARIA att
 
 Types:
 ````ts
-export interface TabItem { id: string; label: string; content: ReactNode; disabled?: boolean; }
-export type TabsOrientation = "horizontal" | "vertical";
-export type TabsSize = "sm" | "md";
-export type TabsVariant = "line" | "contained";
+export interface TabItem { id: string; label: string; content: ReactNode; icon?: ReactNode; disabled?: boolean; }
+export type TabsVariant = "line" | "pill";
 ````
 
 Notes written in the code (not proof of review):
 > A row of tabs that switches between panels of content.
 > 
 > Follows the WAI-ARIA tabs pattern and uses a **roving tabindex**: one press of the Tab key moves
-> into the whole tab list, and inside it the arrow keys move between tabs. With 10 tabs, nobody has to press Tab 10 times.
-> The arrow direction follows orientation (←→ when horizontal, ↑↓ when vertical).
+> into the whole tab list, and inside it ← → move between tabs and select them (Home/End jump to the ends).
+> The selected tab is `aria-selected` — Figma's Line=On (line) or the white segment (pill).
+> Hover, Pressed and Focus come from CSS, not from props.
 
-Review scope: `full public API and shipped states`
-Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"17af55844dab84a292b5a4b3ea3587668bca8655d20a3e1cb3856d96a4963ba4","cssHash":"0a09328c73b881c3275b61a03e9b0608101c65241adda164c5ffa3901f110398","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"be2c8fc4c1aafcaa98f0747204d9cbae5f16f14dffeb3e3d3c7f49ad4ab889a8","cssHash":"c2d7795ebdd2240fc66dd6381be96c94eb66dbac45f797fe73431af4be3cf44d","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Tag
@@ -1325,7 +1409,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"6942312f4c3e594dccfb359cd3a1a35588dcb9cd3817995dc4db473ba9b3a74b","cssHash":"a409b276e70a6b728991eadcc194764fd530b1abfbb1002bad4971885d816292","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"6942312f4c3e594dccfb359cd3a1a35588dcb9cd3817995dc4db473ba9b3a74b","cssHash":"a409b276e70a6b728991eadcc194764fd530b1abfbb1002bad4971885d816292","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Text
@@ -1358,41 +1442,38 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"6a4988876058e71f062874b336212e9d0be9833fcec2949a77409f5818013fd7","cssHash":"3324044cee78fc329d9cb2df9e9a6eeb153eef8c25f168a79ff797f875a43b5d","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"6a4988876058e71f062874b336212e9d0be9833fcec2949a77409f5818013fd7","cssHash":"3324044cee78fc329d9cb2df9e9a6eeb153eef8c25f168a79ff797f875a43b5d","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## TextInput
 
-Role: Single-line text input.
+Role: Single-line text input (Figma "Inputs" 208:2159).
 Import: `import { TextInput } from "@/components/TextInput"`
 Source: `src/components/TextInput/index.ts`
-Status: starter; API: supported; Page use: full public API; Auto checks: not_run
-Reason: Starter part, unchanged
-Behavior/structure/API: starter; Visual: starter
+Status: stale; API: supported; Page use: blocked; Auto checks: not_run
+Reason: Starter part changed: codeHash, cssHash. The student must run pnpm ds:review TextInput in a terminal.
+Behavior/structure/API: stale; Visual: stale
 
 ### Public props (! = required, ? = optional)
-- `size?: TextInputSize`; default: `"md"`; Figma: Size
-- `invalid?: boolean`; default: `false`; Figma: Invalid
-- `helperText?: string`; default: `unknown`
-- `label?: string`; default: `unknown`
-- `children?: ReactNode`; default: `unknown`
+- `label?: string`; default: `unknown`; Figma: Label — small text inside the box, above the value. Without it, give `aria-label`.
+- `helperText?: string`; default: `unknown`; Figma: Helper Text — the line under the box. Hidden while an error message is shown.
+- `invalid?: boolean`; default: `false`; Figma: Status=Error — red box and label, `aria-invalid="true"`.
+- `errorMessage?: string`; default: `unknown`; Figma: "Error message" — shown with the error icon instead of the helper text while `invalid`.
+- `icon?: boolean`; default: `false`; Figma: Icon — the calendar icon at the right end of the box (decorative).
 
-Native attributes: `Omit<InputHTMLAttributes<HTMLInputElement>, "size">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
-
-Types:
-````ts
-export type TextInputSize = "sm" | "md" | "lg";
-````
+Native attributes: `Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "children">`. Not every event or ARIA attribute is listed here. Check the code or the review notes to see where they are passed.
 
 Notes written in the code (not proof of review):
-> Single-line text input.
+> Single-line text input (Figma "Inputs" 208:2159).
 > 
+> The label sits inside the box, the helper or error line below it. Focus and typing ("Filled") are drawn by CSS
+> (`:focus-within`) — there is no `state` prop. Clicking anywhere in the box focuses the input.
 > The ref points to the `<input>`, so form libraries (register) and focus() work as they are.
-> `className` goes on the outer wrapper, which also holds the label and helper text.
+> `className` goes on the outer wrapper (layout only).
 
-Review scope: `full public API and shipped states`
-Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"ea7aa66f550dfb462c51c3a8bba93d44925e424fd360d5579c01af4550d4561d","cssHash":"390cc18d732cd02b6ca7808d86443abf2c24fc98af785fbd95a03823aeab00b2","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Review scope: `[]`
+Review evidence: `null`
+Versions: `{"codeHash":"68b15fc4e2521a49c5ddafa13b86f105184df2fbd01381f320c7233782680ef4","cssHash":"04dd6a8ff307dce37b9dde0937023cb9802174e9616a71a9baced03ff63713d4","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Textarea
@@ -1424,7 +1505,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"91301d80b2d0852fa2c45fd0ef289786dcc5ac3222bffceba4a8f54098b02941","cssHash":"819344f50c97e1eaba57920cb604c8fa45293b57e079bb14127f95d2d2df62f9","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"91301d80b2d0852fa2c45fd0ef289786dcc5ac3222bffceba4a8f54098b02941","cssHash":"819344f50c97e1eaba57920cb604c8fa45293b57e079bb14127f95d2d2df62f9","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Tile
@@ -1464,7 +1545,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"e24b336b4990f4656b9fedfa1383c65fbcc844a9fb4b6c9576c814876150ec51","cssHash":"8f1cc36dcd38fcae79b9245961b46325495f46df43e1f0fd7792fb79f8e33140","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"e24b336b4990f4656b9fedfa1383c65fbcc844a9fb4b6c9576c814876150ec51","cssHash":"8f1cc36dcd38fcae79b9245961b46325495f46df43e1f0fd7792fb79f8e33140","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## TimePicker
@@ -1507,7 +1588,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"80e06abe08360521c78a331673155e933fac888ed6a3cb07d80fddf3ef31b08c","cssHash":"a1ce6889c7d97ffd68855973fe43ee8b95b5ce1a0a921f69db693867d4fd413a","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"80e06abe08360521c78a331673155e933fac888ed6a3cb07d80fddf3ef31b08c","cssHash":"a1ce6889c7d97ffd68855973fe43ee8b95b5ce1a0a921f69db693867d4fd413a","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Toggle
@@ -1543,7 +1624,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"136dfd34cfc64f81ba0731332fe90ab2060279496980c1ed79be76ff65a5c197","cssHash":"2381be07c87ac877ea3f4b997e61e94cb7c1f074f29d228a544b2a40174c7698","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"136dfd34cfc64f81ba0731332fe90ab2060279496980c1ed79be76ff65a5c197","cssHash":"2381be07c87ac877ea3f4b997e61e94cb7c1f074f29d228a544b2a40174c7698","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## Toggletip
@@ -1576,7 +1657,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"fe9198a413e8265aa558f2639b3e02af894397e739a6aa5cad2dccf423ee6cd7","cssHash":"d0679a0b489a6b1d9032f3a0d8628ca74621174a798b2aa5bd601ac8a64e3fd7","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"fe9198a413e8265aa558f2639b3e02af894397e739a6aa5cad2dccf423ee6cd7","cssHash":"d0679a0b489a6b1d9032f3a0d8628ca74621174a798b2aa5bd601ac8a64e3fd7","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`
 
 ## Tooltip
@@ -1608,7 +1689,7 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"6715a4132c0538bf4e9516394f52cef17c8e1515c898dba59312741c192ef66d","cssHash":"2f7fa4e6b9fd261c3edbd45b96b38a7b6c1955c31b55964f2bf5bd5eee45d001","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"6715a4132c0538bf4e9516394f52cef17c8e1515c898dba59312741c192ef66d","cssHash":"2f7fa4e6b9fd261c3edbd45b96b38a7b6c1955c31b55964f2bf5bd5eee45d001","dependencyHash":"46420e41e0ef48b3a83d591c9b1237dea688ebde6250f08e1207346f503425de","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`
 
 ## TreeView
@@ -1650,5 +1731,5 @@ Notes written in the code (not proof of review):
 
 Review scope: `full public API and shipped states`
 Review evidence: `{"source":{"kind":"starter","ref":"scripts/starter-catalog-baseline.json"}}`
-Versions: `{"codeHash":"b7e4d4d42f11888ad7fdd69c8b6039988948c661ae19e67a39862b823711ed3d","cssHash":"dd1edf1ddf942ae54026d0b510206370ea4c88a1e5f3ab267cc037010920f5d5","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"6b544003e0f24a382972099422d37e0efc8b0bf3036bfeafa1641aa9b4d45329"}`
+Versions: `{"codeHash":"b7e4d4d42f11888ad7fdd69c8b6039988948c661ae19e67a39862b823711ed3d","cssHash":"dd1edf1ddf942ae54026d0b510206370ea4c88a1e5f3ab267cc037010920f5d5","dependencyHash":"dcda0b203f9ec5f15cd91deb26aba4eb696a7919d711208c24901dd43cf83894","tokensHash":"4d24a8f754344182cf74ec61306a173037b5ed5bc02022bb5e26945a565fc294"}`
 Depends on: `pnpm-lock.yaml`, `src/lib/i18n.tsx`

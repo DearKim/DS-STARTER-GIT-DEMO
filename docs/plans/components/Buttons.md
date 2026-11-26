@@ -1,7 +1,7 @@
 ---
 kind: component
 components: [Button, Link]
-revision: 1
+revision: 2
 status: approved
 source_kind: figma
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=238-2153&m=dev
@@ -10,6 +10,8 @@ open_questions: 0
 ---
 
 # 컴포넌트 구현 계획 — Buttons (Button · Link)
+
+> **revision 2 (2026-11-26, 재정립 계획 에이전트 F, 승인 대기):** 사용자 결정 4 "Button 에 공용 모양 추가 (권장)"에 따라, 구역 부품들이 자기 버튼을 그리지 않고 쓰는 공용 모양 두 가지 — `variant="ghost"`(#F2F2F2 회색 상자)와 `variant="text"`(바탕 없는 글자 버튼, 앞 아이콘 선택) — 를 `Button` 에 더한다. revision 1 에서 승인된 내용(1~11절, Link 포함)은 바꾸지 않고, 바뀌는 것은 **12절**에만 적었다. 4절에 한 줄, 9절에 Q-16~Q-20(미답변, AI 추천 표시), 11절에 두 줄을 더했다. 모양 값은 사용자가 검수한 현재 사이트(git-demo `aa9a593`)를 Playwright 1440px 로 다시 잰 값이다. Link 는 바뀌지 않는다.
 
 > 작성: Claude Code, 2026-11-26. 디자인 시스템 적용 1단계(`docs/plans/design-system-airbnb.md` §5)의 Buttons 탭. 같은 날 사용자 결정("추천안 모두 채택", "합친 목록 + 다시 가져오기")과 리드가 채운 사실을 반영했다. 사용자 승인 전 구현 파일을 고치지 않는다. Figma 링크 하나(Buttons 탭)에 부품이 둘이라 `components: [Button, Link]` 한 계획으로 묶었다.
 
@@ -94,6 +96,7 @@ open_questions: 0
   - Camera alt: 238:2203 의 자식은 frame "Camera alt" 238:2204(16×16, x 223.5 y 15.5)와 text "Button" 238:2208(53×19, x 243.5 y 14) — **FRAME**, 안쪽 레이어(리드 get_metadata 238:2203). 같은 세트의 238:2210·2216·2242 도 design context 에서 같은 레이어 이름·구조로 나온다.
   - Keyboard arrow right: 238:2314 의 자식은 text "Show more" 238:2315(77×17)와 frame "Keyboard arrow right" 238:2316(16×16, x 81 y 0.5) — **FRAME**, 안쪽 레이어(리드 get_metadata 238:2314). 238:2322 도 FRAME(리드 get_metadata 238:2319).
   - 그래서 Nested parts 행은 238:2308 하나뿐이다.
+  - revision 2: 새 Nested parts 행 없음. `ghost`·`text` 는 다른 키트 부품을 import 하지 않는다. 앞 아이콘은 Button 을 쓰는 부품이 `icon` 으로 넘기는 `<svg>`(currentColor)이고, Button 은 칸 크기·간격·색만 정한다(12.6).
 
 ## 5. Figma 상태·크기 전체 목록
 
@@ -293,6 +296,11 @@ open_questions: 0
 | Q-13 | 새 색 역할 + 새 primitive(6절 표) | **A (추천)** 제안한 이름·매핑대로 리드가 토큰 계획에 올림. / B 이름만 바꿈. / C 값이 같은 기존 역할(R01 위반) | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 새 색 역할은 "합친 목록 + 다시 가져오기" 선택: 이름은 합친 목록대로(`link` → `text-link`, primitive `--color-link` 와 이름 충돌 회피). `surface-hover` 는 가져온 primitive `shade-02-5`(#222222)에 매핑하고 Figma 채우기 불투명도 5% 는 부품의 `::before` 층 `opacity: 0.05` 로 적용(ListingCard 하트 선례). 리드가 tokens.md revision 5 에 기록 | resolved |
 | Q-14 | Primary gradient 토큰. Figma 값은 크기마다 viewBox 가 다르지만 정규화하면 `--gradient-selfmake-1/2/3` 과 같음 | **A (추천)** 있는 `--gradient-selfmake-1`(기본·Focus 안쪽) / `-2`(Hover) / `-3`(Pressed)을 `background-size: 100% 100%` 와 함께 다시 씀. / B 크기별 새 토큰 6개 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 스타일 이름 확인: Default=Gradient 02, Hover=Gradient 03, Pressed=Gradient 01 | resolved |
 | Q-15 | 없는 글자·layout 토큰: 13pt Semibold, 선 1.5·2.5px, 모서리 2px, 12pt Underlined | **A (추천)** 13pt 는 Figma 글자 스타일을 가져와 생성, 1.5·2.5·2 는 있는 토큰 식(`calc(var(--border-width-thin) * 1.5)` 등), 12pt Underlined 는 12pt Semibold 값 + 밑줄. / B 새 layout 토큰. / C 근사(금지) | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 결과: 리드가 글자 스타일을 가져와 `--text-type-body-copy-13pt-semibold`·`--text-type-body-copy-12pt-semibold-underlined` 등이 생김(값 같음, 정확한 스타일 이름 토큰 사용) | resolved |
+| Q-16 | (rev 2) `ghost`·`text` 의 공개 API 형태(12.3). 측정한 모양은 ghost 3개(높이 32·37·48)와 text 6개인데, text 중 셋이 14px 이면서 굵기·줄 높이·여백·hover 가 서로 다르다(12.2). 글자·여백·밑줄을 낱낱의 축으로 나누면 측정하지 않은 조합이 크게 늘어난다 | **A (추천)** `variant` 에 "ghost"·"text" 를 더하고, 기존 `size` 가 그 variant 의 측정 모양 하나를 고른다. 이름은 상자 높이 순: ghost "small" 32·"medium" 37·"large" 48 / text "xsmall" 16·"small" 18·"medium" 21·"large" 24·"xlarge" 34(기본은 rev 1 처럼 "small"). 새 prop 은 text 전용 `tone`("default" = `text`, "secondary" = `text-secondary`) 하나뿐. 아이콘 칸·간격·hover·밑줄은 size 에 묶인다(12.4) · B 용도 이름의 새 prop(`look` 값 "toolbar"·"caption"·"inline" 등) — 이름은 읽기 쉽지만 prop 이 하나 늘고 `size` 와 뜻이 겹친다 · C 낱낱 prop(`underline`·`weight`·`padded`·`tone` 등) — 측정하지 않은 조합이 많이 생겨 검사할 모양이 늘어난다 | 추천안 채택 (chosen in chat, 2026-11-26) → A | resolved |
+| Q-17 | (rev 2) ghost 의 폭. 지금 페이지는 세 버튼 모두 폭 고정(Change 76 · 사진 모두 보기 136 · Show more 132). 측정한 여백으로 내용 폭을 계산하면 Change 76.31(글자 44.31 + 32, Figma 75.94), 사진 모두 보기 132.94(지금 오른쪽 빈칸 3.06 이 사라짐), Show more 132.00 | **A (추천)** 크기마다 지금 폭을 최소 폭으로(small 76 `calc(var(--spacing) * 19)` · medium 136 `* 34` · large 132 `* 33`) + 측정 여백(좌우 16 · 16 · 24.5), medium 은 내용을 왼쪽부터. → 사진 모두 보기 136·Show more 132 는 지금과 같고 Change 만 76.31(+0.31px, 기록 후 검수). 글자가 길어지면 버튼이 늘어난다 · B A 와 같되 small 의 좌우 여백 0(지금 페이지 CSS 그대로) → Change 76 정확, 대신 더 긴 글자는 가장자리에 붙는다 · C 폭 고정(`width`) — 지금과 같지만 글자가 길면 넘친다 · D 최소 폭 없이 내용 폭 — 사진 모두 보기가 3.06 좁아지고 오른쪽 기준 배치라 왼쪽 끝이 움직인다 | 추천안 채택 (chosen in chat, 2026-11-26) → A | resolved |
+| Q-18 | (rev 2) `ghost`·`text` 의 키보드 포커스 모양. Figma 에 없다. 지금 사이트에서 Tab 되는 버튼·링크는 모두 브라우저 기본 링(`outline: auto 1px`, `<button>` offset 0 · `<a>` offset 1)이고, ListingTitle Q-03·PhotoGallery Q-06·ListingDescription·Card Q-22 가 기본 링을 적었다. rev 1 Button 은 `outline: none` 뒤 Figma 링을 그린다 | **A (추천)** ghost·text 는 모두 브라우저 기본 링 하나로 통일(CSS 에 색을 쓰지 않음, 요소 자신의 모서리를 따름). rev 1 의 `outline: none` 은 primary·secondary·tertiary 에만 걸리게 좁힌다(rev 1 화면 변화 없음). 지금 `<a>` 인 Show original·Full policy·GBP·Price breakdown·More info 는 링 offset 1 → 0, Tab 이 안 되던 Learn more·리스팅 신고하기는 링이 새로 생김 · B 키트 `focus-ring` 2px 선(rev 1 Link 처럼 `outline` + 2 띄움) — 키트 안에서는 통일되지만 지금 화면과 다름 · C ghost 는 기본 링, text 는 키트 링 | 추천안 채택 (chosen in chat, 2026-11-26) → A | resolved |
+| Q-19 | (rev 2) `tone` 을 쓸 수 있는 범위. 측정한 조합: xsmall·medium 은 secondary, large·xlarge 는 default, small 은 둘 다(6 조합) | **A (추천)** text 의 모든 size 에서 두 tone 을 허용(둘 다 이미 있는 글자 역할이고 새 상태가 아님). 스토리·검수는 측정한 6 조합만 · B 측정한 6 조합만 타입으로 허용(xsmall·medium 은 secondary, large·xlarge 는 default 로 고정) | 추천안 채택 (chosen in chat, 2026-11-26) → A | resolved |
+| Q-20 | (rev 2) `ghost`·`text` 의 disabled·loading. 측정한 11개에 그런 상태가 없고 사용처도 없다. rev 1 의 disabled(#DDD 바탕·흰 글자)·loading(점 3개) 모양은 primary·secondary·tertiary 의 Figma 에만 있다 | **A (추천)** 새 모양을 만들지 않는다(R02): `disabled` 는 네이티브 동작만(클릭·Tab 없음, hover 바탕·밑줄 바뀜 없음, 커서는 rev 1 과 같은 not-allowed), 색·바탕은 그대로. rev 1 의 disabled·loading 모양 규칙은 rev 1 variant 에만 걸리게 좁힌다. `loading` 은 ghost·text 에서 타입으로 받지 않는다 · B rev 1 disabled 모양(#DDD 상자·흰 글자)을 ghost·text 에도 적용 — 글자 버튼에 회색 상자가 생기는 새 모양 · C ghost·text 는 `disabled` 도 타입에서 막음 | 추천안 채택 (chosen in chat, 2026-11-26) → A | resolved |
 
 ## 10. 검증 계획
 
@@ -316,3 +324,151 @@ open_questions: 0
 - 계획 내용에 대한 사용자 수정·결정: Q: 부품 계획 8개의 질문을 어떻게 답할까요? → A: 추천안 모두 채택 (chosen in chat, 2026-11-26). Q: 새 색 역할? → A: 합친 목록 + 다시 가져오기 (chosen in chat, 2026-11-26). Q-01~Q-15 모두 9절에 기록.
 - 승인한 revision: 1 — 사용자 "Approve revision 1·5 (권장)" 선택 (chosen in chat, 2026-11-26). 같은 선택으로 토큰 계획 revision 5 도 승인·적용됨(리드).
 - 구현 전에 남은 조건: 없음. Google G 견본 asset 등록은 구현 단계에서 한다(Q-08 A).
+- revision 2(12절) 근거 결정(chosen in chat, 2026-11-26, 리드 전달): "Button 에 공용 모양 추가 (권장)" — ghost·text 두 모양 / "Figma 스타일 값으로 맞춤" — hover #E8E8E8 → #EBEBEB, #6C6C6C → #717171, 굵기 500 → `--font-weight-medium` / "지금 크기·자간 유지 (권장)" — 13.7px·-0.1504px 등은 `calc(var(--spacing) * n)`.
+- revision 2 질문: Q: Button revision 2 질문 Q-16~Q-20 → A: 추천안 채택 (권장) (chosen in chat, 2026-11-26) — 모두 A, 9절에 기록.
+- 승인한 revision: 2 — 사용자 "승인하고 진행 (권장)" 선택 (chosen in chat, 2026-11-26). 같은 선택으로 토큰 계획 revision 6 도 승인·적용됨(리드: `control-bg-subtle`·`control-bg-subtle-hover`·`surface-hover-subtle` 생성).
+- 구현 전에 남은 조건(revision 2): 없음. 구역 계획 7개의 Nested parts 행은 12.7 대로 `size`·`tone` 을 더했다(2026-11-26).
+
+## 12. Revision 2 — 공용 모양 `variant="ghost"`·`variant="text"` (바뀌는 내용만)
+
+### 12.1 요청과 근거
+
+- 요청: 사이트 재정립(2026-11-26). 사용자 결정 4 "Button 에 공용 모양 추가 (권장)": ghost = 회색 #F2F2F2 둥근 버튼, text = 글자 버튼(앞 아이콘 선택). 구역 부품은 이 두 모양을 쓰고 자기 버튼을 그리지 않는다(R05, 스펙 C03·P05). 함께 적용한 결정: "Figma 스타일 값으로 맞춤"(hover #E8E8E8 → #EBEBEB `control-bg-subtle-hover`, 흐린 글자 #6C6C6C → #717171 `text-secondary`, 굵기 500 → `--font-weight-medium` = Figma 변수 `sds-typography-weight-medium`), "지금 크기·자간 유지 (권장)"(13.7px·-0.1504px 등은 `calc(var(--spacing) * n)`).
+- Figma: 11개 버튼 모두 Figma 에서는 컴포넌트 인스턴스가 아니라 "Button…"·"Link…" frame 이다(각 구역 계획의 Nested parts 행, 12.7). ghost·text 의 Figma 상태 세트는 없다. Figma 호출 0회(design-context 멈춤 — 리드 지시).
+- 값: 현재 사이트(dev 서버 http://127.0.0.1:5175, git-demo `aa9a593`)를 Playwright Chromium 1440×900 으로 잰 computed style·상자·hover·Tab(`<로컬 측정 폴더>/rebuild/F/measure.mjs` → `measure.json`, 글자 폭 `textw.mjs`·`textw0.mjs`)와 페이지 CSS(`my-website/pages/DetailPage.css` 198~222·274~302·507~533·774~794·823~827·842~857·1187~1194행, `CheckoutPage.css` 237~244·419~437·490~506행). 구역 계획들이 F 에게 보낸 값(ListingTitle 5절, PhotoGallery 5절, ListingOverview 3절, ListingDescription 5절 끝, Card 12.5, ReservationSummary 10절 끝, RadioButton 12.5)과 대조해 모두 같았다(Price breakdown 글자 폭만 ≈105 → 측정 107.88).
+- 읽은 규칙: `docs/ai-component-workflow.md` 1.0 R01~R09, `docs/ai-design-system-spec.md` 1.1, `docs/templates/component-plan.md`, `src/tokens/tokens.css`(현재), `src/components/Button/*`(rev 1 구현).
+
+### 12.2 확인한 사실 — 현재 사이트 측정(1440px)
+
+| # | 버튼 (구역 계획) | 지금 요소 | 상자 폭×높이 | 안쪽 여백·정렬 | 모서리 | 글자 크기/굵기/줄 높이/자간 | 색 | 밑줄 | 아이콘·간격 | hover | 키보드(지금) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| G1 | "사진 모두 보기" (PhotoGallery, /detail) | `<button>` | 136×37(폭·높이 고정) | 0 / 16, 내용 왼쪽부터·세로 가운데(내용 132.94 → 오른쪽 3.06 빈칸) | 9 | 13.7 / 500 / 20.55 / normal | 바탕 #F2F2F2, 글자 #222 | 없음 | 격자 `<img>` 18×18(asset viewBox 18.2857 을 contain 으로 줄임), 간격 4.6 | 바탕 #E8E8E8 | Tab 됨, 기본 링 |
+| G2 | "Show more" (ListingDescription) | `<button>` | 132×48(고정) | 글자 가운데(글자 83.00 → 좌우 24.5, 줄 24 → 위아래 12 와 같은 상자) | 12 | 16 / 500 / 24 / normal | #F2F2F2, #222 | 없음 | 없음 | #E8E8E8 | Tab, 기본 링 |
+| G3 | "Change" ×2 (ReservationSummary, /checkout) | `<button>` | 76×32(고정, Figma 75.94) | 글자 가운데(글자 44.31) | 8 | 12 / 500 / 18 / normal | #F2F2F2, #222 | 없음 | 없음 | #E8E8E8 | Tab, 기본 링 |
+| T1 | "공유하기" · "저장" (ListingTitle) | `<button>` | 96.45×34 · 72.23×34(내용 폭) | 8 / 12, 높이 34 고정(줄 21 이 가운데) | 8 | 14 / 500 / 21 / normal | 바탕 없음, #222 | 없음 | 공유·하트 `<img>` 16×16(stroke #222), 간격 8 | 바탕 #F7F7F7 | Tab, 기본 링 |
+| T2 | "Learn more about summaries" (ListingOverview) | `<div>` 둘(아이콘 칸 40×16 + 글자) | 아이콘 x 172 ~ 글자 끝 216.5×16(글자 164.5) | 0 | — | 12 / 400 / 16 / normal | #6C6C6C | 없음 | 정보 `<img>` 16×16(fill #6C6C6C), 글자까지 36(칸 40 안 가운데 12 + 칸 사이 24) | 없음(커서도 기본) | Tab 안 됨, 역할 없음 |
+| T3 | "Show original" (ListingDescription) | `<a href="#">`(flex 항목) | 97×24 | 0 | — | 16 / 400 / 24 / normal | #222 | 늘 — 브라우저 기본(두께·위치·skip-ink auto) | 없음 | 없음 | Tab, 기본 링 |
+| T4 | "리스팅 신고하기" (Card rev 2) | `<div>` | 120.56×21 | 0 | — | 14 / 400 / 21 / normal | #6C6C6C | hover 때만, 글자에만 | 깃발 `<img>` 16×16(fill #6C6C6C), 간격 16 | 글자 밑줄 | Tab 안 됨, 역할 없음 |
+| T5 | "Full policy" · "GBP" · "Price breakdown" (ReservationSummary) | `<a href="#">` — 문장 안 inline / "Total" 옆 flex 항목(기준선 맞춤) / block(줄 폭 340) | 64.83×17 · 28.06×18 · 340×18(글자 107.88) | 0 | — | 14 / 500 / 18 / -0.1504px | #222 | 늘(기본) | 없음 | 없음 | Tab, 기본 링 |
+| T6 | "More info" ×2 (RadioButton rev 2) | `<a href="#">` inline, 보조 글 끝 | 60.88×17 | 0 | — | 14 / 500 / 18 / -0.1504px | #6C6C6C | 늘(기본) | 없음 | 없음 | Tab, 기본 링 |
+
+- 글꼴: 페이지 `-apple-system…` 과 토큰 `"SF Pro", var(--font-sans)` 가 12개 글자 모두 같은 폭으로 그려졌다(Change 44.31 · Show more 83.00 · 사진 모두 보기 78.34 · 공유하기 48.45 · 저장 24.23 · Price breakdown 107.88 등). 자간 normal 과 0px 도 같은 폭이다.
+- 기본 링: Chromium `:focus-visible` 의 `outline: auto 1px`(이 Mac 강조색 rgb(0, 95, 204)), `<button>` offset 0 · `<a>` offset 1. 링은 요소 자신의 border-radius 를 따른다. 마우스 클릭으로는 보이지 않는다.
+- 누름(`:active`)·disabled 모양은 11개 모두 없다(페이지 CSS 에도 없다).
+- 지금 사이트 Tab 순서: /detail 공유하기 → 저장 → 사진 모두 보기 → (Learn more·리스팅 신고하기 건너뜀) → Show original → Show more. /checkout More info → More info → Full policy → Change → Change → GBP → Price breakdown.
+
+### 12.3 공개 API 에 더하는 것 (rev 1 의 primary·secondary·tertiary 와 그 prop 은 그대로)
+
+| prop / 이벤트 | 근거 | 기본값·허용값 | 실제 동작 / 결과 | 키보드·disabled 처리 | 사용자 확정 |
+|---|---|---|---|---|---|
+| `variant` | 결정 4 | rev 1 값 + "ghost" · "text" | 12.4 모양 | — | Q-16 A 채택 |
+| `size` (ghost) | G1~G3 | "small"(기본, 32 · Change) / "medium"(37 · 사진 모두 보기) / "large"(48 · Show more) | 12.4 | — | Q-16·Q-17 A 채택 |
+| `size` (text) | T1~T6 | "xsmall"(16 · Learn more) / "small"(기본, 18 · Full policy·GBP·Price breakdown·More info) / "medium"(21 · 리스팅 신고하기) / "large"(24 · Show original) / "xlarge"(34 · 공유하기·저장) | 12.4 | — | Q-16 A 채택 |
+| `tone` (text 만) | T2·T4·T6 의 흐린 글자 | "default"(기본, `text`) / "secondary"(`text-secondary`) | 글자·밑줄·아이콘(currentColor) 색 | — | Q-16·Q-19 A 채택 |
+| `icon` | G1·T1·T2·T4 | ReactNode. 보이는 조합: ghost medium(칸 18, 간격 4.6) · text xsmall(16, 36) · text medium(16, 16) · text xlarge(16, 8). 다른 ghost·text 크기에서는 rev 1 처럼 받지 않음(측정한 간격이 없음, R03) | 글자 앞. 칸 안 svg 는 칸 크기에 맞춰 그린다(격자 viewBox 18.2857 → 18, 지금 `object-fit: contain` 과 같음) | `aria-hidden`(rev 1 그대로) | Q-16 A 채택 |
+| `onClick` · `type` · `children` · `aria-*` | rev 1 | `type="button"` 기본(rev 1) | 클릭 → `onClick` 1회. 이동·주소 변화 없음(PRD "nothing, just shows it") | Tab · Enter/Space | rev 1 그대로 |
+| `href` | rev 1 Q-09 | rev 1 그대로 | 있으면 같은 모양의 `<a href>`. 지금 사용처 없음 | rev 1 그대로 | rev 1 그대로 |
+| `disabled` | 측정에 없음 | 네이티브 | Q-20 A: 클릭·Tab 없음, hover 변화 없음, 색·바탕 그대로(새 모양 없음) | 네이티브 | Q-20 A 채택 |
+| `loading` | 측정에 없음 | ghost·text 는 받지 않음(타입) | — | — | Q-20 A 채택 |
+| Hover / Focus / Pressed | 12.2 | prop 아님 | `:hover` 는 12.4 표, `:focus-visible` 은 브라우저 기본 링(Q-18 A), Pressed 모양 없음 | — | Q-18 A 채택 |
+
+- 타입: `variant` 로 나뉜 union. `variant` 를 생략하면 rev 1 과 같다(primary · small). ghost·text 에 "full-width" 나 `loading` 을 주면 타입 오류, primary·secondary·tertiary 에 `tone` 을 주면 타입 오류.
+- 클래스: `ds-button ds-button--ghost ds-button--medium`, `ds-button ds-button--text ds-button--xsmall ds-button--tone-secondary` 형식. `data-testid="ds-button"` 그대로. `state` prop 은 만들지 않는다.
+- 쓰는 모습: `<Button variant="ghost" size="medium" icon={<GridIcon />} onClick={…}>사진 모두 보기</Button>`, `<Button variant="text" size="small" tone="secondary" onClick={…}>More info</Button>`.
+
+### 12.4 모양 8개 (현재 사이트 값 → 토큰 식, Q-16·Q-17·Q-18 A 기준)
+
+| 모양 | 상자 | 안쪽 여백·정렬 | 모서리 | 글꼴·크기·굵기 | 줄 높이 | 자간 | 색 | 밑줄 | 아이콘 칸·간격 | hover |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ghost small (G3) | 높이 32 `calc(var(--spacing) * 8)`, 최소 폭 76 `* 19` | 좌우 16 `* 4`, 가운데 | 8 `--radius-md` | `--font-type-body-copy-12pt-regular` · `--text-type-body-copy-12pt-regular`(12) · `--font-weight-medium`(500) | `--leading-normal`(18) | `--tracking-type-body-copy-12pt-regular`(0) | 바탕 `control-bg-subtle`, 글자 `text` | 없음 | — | 바탕 `control-bg-subtle-hover` |
+| ghost medium (G1) | 높이 37 `* 9.25`, 최소 폭 136 `* 34` | 좌우 16 `* 4`, 내용 왼쪽부터·세로 가운데 | 9 `calc(var(--radius-sm) * 2.25)` | `--font-type-body-copy-13pt-regular` · 크기 `calc(var(--spacing) * 3.425)`(13.7) · `--font-weight-medium` | `--leading-normal`(20.55) | `--tracking-type-body-copy-13pt-regular`(0) | 같음 | 없음 | 18 `* 4.5`, 간격 4.6 `* 1.15` | 같음 |
+| ghost large (G2) | 높이 48(= 12 + 24 + 12), 최소 폭 132 `* 33` | 위아래 12 `* 3`, 좌우 24.5 `* 6.125`, 가운데 | 12 `--radius-lg` | `--font-type-body-copy-16pt-regular` · `--text-type-body-copy-16pt-regular`(16) · `--font-weight-medium` | `--leading-normal`(24) | `--tracking-type-body-copy-16pt-regular`(0) | 같음 | 없음 | — | 같음 |
+| text xsmall (T2) | 높이 16, 폭 = 내용 | 0 | — | `--font-type-body-copy-12pt-regular` · `--text-type-body-copy-12pt-regular` · `--font-weight-type-body-copy-12pt-regular`(400) | 16 `* 4` | 0(같은 묶음 tracking) | `tone` | 없음 | 16 `* 4`, 간격 36 `* 9` | 없음 |
+| text small (T5·T6) | 높이 18, 문장 안 inline(기준선 맞춤) | 0 | — | `--font-type-body-copy-14pt-regular` · `--text-type-body-copy-14pt-regular` · `--font-weight-medium` | 18 `* 4.5` | -0.1504px `calc(var(--spacing) * -0.0376)` | `tone` | 늘 — 브라우저 기본(`underline`, 두께·위치·skip-ink auto) | — | 없음 |
+| text medium (T4) | 높이 21 | 0 | — | 14pt regular 묶음(400) | `--leading-normal`(21) | 0 | `tone` | hover 때 글자에만(브라우저 기본 밑줄) | 16 `* 4`, 간격 16 `* 4` | 글자 밑줄 |
+| text large (T3) | 높이 24 | 0 | — | 16pt regular 묶음(400) | `--leading-normal`(24) | 0 | `tone` | 늘(브라우저 기본) | — | 없음 |
+| text xlarge (T1) | 높이 34 `* 8.5`(고정), 폭 = 내용 | 위아래 8 `* 2` · 좌우 12 `* 3`(높이 고정이라 줄 21 이 가운데) | 8 `--radius-md` | 14pt regular 글꼴·크기 + `--font-weight-medium` | `--leading-normal`(21) | 0 | `tone` | 없음 | 16 `* 4`, 간격 8 `* 2` | 바탕 `surface-hover-subtle` |
+
+- 공통: 커서 pointer, 한 줄(nowrap) — rev 1 그대로. 누름 모양 없음. 아이콘과 글자는 세로 가운데. 모서리는 요소 자신에 둔다 — 브라우저 기본 링이 9·12·8 모서리를 따라 그려져 지금 페이지와 같다(Q-18 A).
+- 기대 크기(지금 글자): Change 76.31×32(Q-17 A, 지금 76), 사진 모두 보기 136×37, Show more 132×48, 공유하기 96.45×34, 저장 72.23×34, Learn more 216.5×16, Show original 97×24, 리스팅 신고하기 120.56×21, Full policy 64.83×18, GBP 28.06×18, Price breakdown 107.88×18, More info 60.88×18.
+- text small 은 14/400/18 문장 안에 놓이는 `inline-flex` 상자다. 글자·줄 높이가 문장과 같아 줄 높이 18 이 늘지 않고 기준선이 맞는다("GBP" 와 "Total"). 버튼 안에서는 줄바꿈하지 않는다 — 지금 `<a>` 는 둘로 나뉠 수 있지만 지금 화면에서는 모두 한 줄이라 위치가 같다.
+- text xsmall 의 간격 36 은 지금 줄의 "아이콘 칸 40 안 가운데(12) + 칸 사이 24" 를 버튼 안에 담은 것이다. 버튼을 줄 왼쪽에서 12 들여 놓는 것은 ListingOverview 래퍼가 한다(그 계획 3절).
+
+### 12.5 색·글자 토큰 (rev 2 에서 더 쓰는 것)
+
+| 요소 / 상태 | 지금 값·alpha / Figma 변수 | primitive | semantic / 역할 | 생성 CSS의 해석 값 | 값·역할 일치 여부 | 미확정 또는 새 매핑 필요 사유 |
+|---|---|---|---|---|---|---|
+| ghost 바탕 | #F2F2F2 / Fills - Vibrant (Use Plus Lighter \| Darker)/Tertiary(리드가 가져옴) | fills-vibrant-use-plus-lighter-darker-tertiary | `control-bg-subtle`(새 역할) | #F2F2F2 | 일치 | 결정 2 표. 리드가 토큰 계획 revision 6 에 기록 |
+| ghost hover 바탕 | 지금 #E8E8E8 → 결정 2 로 #EBEBEB / Neutral 02 | neutral-02 | `control-bg-subtle-hover`(새 역할) | #EBEBEB | 결정으로 값 바뀜(지금보다 3 밝음) | revision 6. `border-subtle`(같은 값, 선 역할)과 역할이 달라 쓰지 않음 |
+| ghost 글자 · text default 글자·밑줄·아이콘 | #222222 / Shade 02 | shade-02 | `text` | #222222 | 일치 | — |
+| text secondary 글자·밑줄·아이콘 | 지금 #6C6C6C → 결정 2 로 #717171 / Neutral 07 | neutral-07 | `text-secondary` | #717171 | 결정으로 값 바뀜 | 새 역할 없음 |
+| text xlarge hover 바탕 | #F7F7F7(Figma hover 없음, 지금 페이지 값) | neutral-01 | `surface-hover-subtle`(새 역할) | #F7F7F7 | 일치 | 리드 목록에 유지 확정, revision 6. `surface-hover`(#222 5%, Tertiary hover)와 다름 |
+| 포커스 링 | 브라우저 기본(색은 브라우저·OS) | — | 토큰 없음(Q-18 A) | — | — | CSS 에 색을 쓰지 않음 |
+
+| 쓰는 곳 | 지금 값 | 토큰 |
+|---|---|---|
+| 글자 크기 12 · 14 · 16 | 12 / 14 / 16px | `--text-type-body-copy-12pt-regular` · `-14pt-regular` · `-16pt-regular` (글꼴은 같은 이름의 `--font-type-*`) |
+| 글자 크기 13.7 | 13.7px(Figma 스타일 없음) | `calc(var(--spacing) * 3.425)`(결정 3) |
+| 굵기 500 / 400 | 500 / 400 | `--font-weight-medium`(결정 2 표) / `--font-weight-type-body-copy-NNpt-regular` |
+| 줄 높이 16 · 18 | 16 / 18px | `calc(var(--spacing) * 4)` / `* 4.5` |
+| 줄 높이 20.55 · 21 · 24 | 글자 × 1.5 | `--leading-normal` |
+| 자간 -0.1504px | -0.1504px | `calc(var(--spacing) * -0.0376)`(RadioButton rev 2 와 같은 식) |
+| 모서리 9 | 9px | `calc(var(--radius-sm) * 2.25)` |
+
+- 새 토큰: 이 revision 이 만드는 것 없음. 쓰는 새 역할 3개(`control-bg-subtle`·`control-bg-subtle-hover`·`surface-hover-subtle`)는 리드의 토큰 계획 revision 6 이 만든다. 이 계획은 `docs/plans/tokens.md` 를 고치지 않는다.
+- 토큰으로 정확히 쓸 수 없는 값: 없음(13.7 = `* 3.425`, 4.6 = `* 1.15`, 24.5 = `* 6.125`, 37 = `* 9.25`, 34 = `* 8.5`, 136 = `* 34`, 132 = `* 33`, 76 = `* 19`, 18 = `* 4.5`).
+- 사용자 결정으로 화면 값이 바뀌는 것: ghost hover #E8E8E8 → #EBEBEB, 흐린 글자·아이콘 #6C6C6C → #717171. 측정과 달라질 수 있는 것: Change 폭 +0.31(Q-17), 링 offset 1 → 0(Q-18), Price breakdown 누르는 영역(12.7).
+
+### 12.6 아이콘·asset
+
+- Button 은 ghost·text 의 아이콘 그림을 갖지 않는다. 쓰는 부품이 `icon` 에 `<svg>`(fill/stroke `currentColor`)를 넘긴다. Button 이 정하는 것: 칸 크기(16 / 18), 글자와의 간격, 색(글자 색 = currentColor), 칸 안 svg 를 칸 크기에 맞춰 그리기, `aria-hidden`.
+- 지금 사이트 asset(구역 계획들이 같은 경로를 `<svg>` 로 옮긴다. Button 스토리 견본도 같은 경로를 쓴다):
+
+| asset | sha256 앞 12자리 | 크기·색 | 쓰는 모양 |
+|---|---|---|---|
+| `my-assets/images/detail-icon-show-all.svg` | c2c092019ec9 | viewBox 18.2857, 칸 18 | ghost medium |
+| `my-assets/images/detail-icon-share.svg` | 84caaf0e729b | 16, stroke #222 | text xlarge |
+| `my-assets/images/detail-icon-save.svg` | 1a6e3a27a321 | 16, stroke #222 | text xlarge |
+| `my-assets/images/detail-icon-info.svg` | bfc16e24ec0d | 16, fill #6C6C6C | text xsmall |
+| `my-assets/images/detail-icon-flag.svg` | 8ff7f798733f | 16, fill #6C6C6C | text medium |
+
+- Figma 원본 벡터는 읽지 않았다(design-context 멈춤). 리드가 정한 대체(현재 페이지 asset)를 각 구역 계획이 기록했다. 다른 그림으로 바꾸지 않는다(R03).
+
+### 12.7 사용처 — 구역 계획의 Nested parts 행과 맞춘 props
+
+| 구역 계획 · 행 | 그 계획의 "Kit component and props" (인용) | revision 2 로 쓸 props | 지금 화면과 다른 점 |
+|---|---|---|---|
+| PhotoGallery 4절 (frame 812:4787) | `Button { variant="ghost" icon={격자 <svg>} onClick={onShowAllClick} children="사진 모두 보기" }` | + `size="medium"` | hover 색(결정 2) |
+| ListingDescription 4절 (frame 812:11236) | `Button { variant="ghost", onClick=onShowMoreClick }`, 글자 `showMoreLabel` | + `size="large"` | hover 색 |
+| ReservationSummary 4절 (frame 812:12314 · 812:12327) | `Button { variant="ghost" onClick=onChangeDates / onChangeGuests } children "Change"` | `size="small"`(기본값, 생략 가능) | 폭 76 → 76.31(Q-17 A), hover 색 |
+| ListingTitle 4절 (frame 812:6949 · 812:6956) | `Button { variant="text" icon={공유 <svg>} onClick={onShareClick} children="공유하기" }` · `Button { variant="text" icon={하트 <svg>} onClick={onSaveClick} children="저장" }` | + `size="xlarge"` | 없음 |
+| ListingOverview 4절 (frame 812:11218) | `Button { variant="text" icon={정보 <svg>} onClick={onLearnMoreClick} children="Learn more about summaries" }` | + `size="xsmall" tone="secondary"` | 색(결정 2). 이제 Tab·기본 링 |
+| ListingDescription 4절 (frame 812:11229) | `Button { variant="text", onClick=onShowOriginalClick }`, 글자 `showOriginalLabel` | + `size="large"` | `<a>` → `<button>`, 링 offset 1 → 0 |
+| Card rev 2 4절 (frame 812:7557) | `Button { variant="text", icon=<깃발 svg>, onClick=onReportClick }` | + `size="medium" tone="secondary"` | 색. 이제 Tab·기본 링 |
+| ReservationSummary 4절 (frame 812:12309 · 812:12354 · 812:12360) | `Button { variant="text" onClick=onPolicyClick / onCurrencyClick / onBreakdownClick }` children 각 글자, GBP 는 aria-label | `size="small"`(기본값, 생략 가능) | Price breakdown 누르는 영역 340×18 → 107.88×18(줄 배치는 ReservationSummary 래퍼), 링 offset |
+| RadioButton rev 2 4절 (frame 812:12252 · 812:12266) | `Button { variant="text" onClick=onActionClick } children actionLabel("More info")`, 글자 색 `text-secondary` | `size="small" tone="secondary"` | 색 |
+
+- 이름 대조: 7개 계획 모두 `variant="ghost"`·`variant="text"` 이름이 이 계획과 같다. 빠진 것은 `size`·`tone` 뿐이다(기본값과 같은 Change·Full policy·GBP·Price breakdown 은 생략해도 된다). 각 계획의 담당(또는 리드)이 그 행에 더한다 — 이 에이전트는 다른 계획을 고치지 않았다.
+- ghost·text 가 아니라고 기록된 버튼(이 revision 대상 아님): Inspiration 여행지·Show more, Footer 링크·버튼, CheckoutHeading 뒤로 링크. CheckoutStep "Next" 는 rev 1 `secondary` · `small`.
+
+### 12.8 영향과 변경 파일
+
+- 변경 파일(승인 뒤): `src/components/Button/Button.tsx`(variant 별 union, `tone`, 아이콘 조건), `Button.css`(ghost·text 규칙 + rev 1 규칙의 범위 좁힘), `Button.stories.tsx`(새 스토리 `Ghost`·`Text` — 흰 캔버스, 12.2 의 글자·아이콘, text small 은 14/400/18 문장 안 견본. @ds-generated 라 손으로 고치면 충돌 보고·보존), `index.ts`(새 타입 export). `Button.figma.tsx`·Link 파일은 바꾸지 않는다(ghost·text 의 Figma 원본 세트 없음).
+- rev 1 에 주는 영향: 화면 변화 없음. rev 1 의 `:focus-visible { outline: none }`·disabled·loading 모양 규칙을 primary·secondary·tertiary 에만 걸리게 좁힌다(ghost·text 에 #DDD 모양이 새지 않게). `ds-button--small` 클래스 이름이 ghost·text 와 겹치므로 크기 규칙은 variant 와 함께 고른다(예 `.ds-button--ghost.ds-button--small`).
+- 기존 사용처: `Text.stories` 의 Button 2개·CheckoutStep "Next"(계획) — 기본·secondary 라 그대로.
+- 구현 순서: 토큰 계획 revision 6 → 이 revision → 구역 부품들.
+
+### 12.9 검증 계획 (rev 2 에서 더함)
+
+| 확인 대상 | 원본의 기대 결과 | 검사 방법 | 완료 증거 |
+|---|---|---|---|
+| 8개 모양 기본 상태 | 12.4 표와 기대 크기(상자·글자·색·모서리·아이콘 칸과 간격·밑줄) | Storybook iframe DOM 측정 + 현재 사이트와 나란히 스크린샷(흰 캔버스) | |
+| hover | ghost 바탕 #EBEBEB, text xlarge 바탕 #F7F7F7, text medium 글자에만 밑줄, 나머지 변화 없음 | Playwright 실제 포인터 hover 후 computed style | |
+| focus | Tab 에서 브라우저 기본 링, 요소 모서리를 따름, 자리 밀림 없음. 마우스 클릭으로는 링 없음 | Playwright 실제 키보드 + 스크린샷 | |
+| 클릭 | `onClick` 1회, 주소 변화 없음 | play `fn()` + `userEvent.click` | |
+| 문장 안 text small | 14/400/18 문장 줄 높이 18 유지, "GBP" 와 "Total" 기준선 같음 | DOM 측정 | |
+| disabled(Q-20 A) | 클릭 0회, Tab 에서 빠짐, 색·바탕 그대로 | play | |
+| rev 1 회귀 | rev 1 스토리 모양·play 그대로 | `pnpm ai:check Button`, `pnpm ai:verify Button`, `pnpm typecheck`, `pnpm ds:guard` | |
+| 사용처 | 구역 부품 구현 뒤 각 페이지 위치·크기가 12.4 기대 크기와 같음 | 각 구역 계획의 검증 | |
+
+명령 검사와 시각 대조를 따로 기록한다. 아직 수행한 검사는 없다.

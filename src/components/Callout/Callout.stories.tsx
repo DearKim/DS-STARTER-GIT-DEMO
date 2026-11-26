@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
+import { imageUrl } from "@/assets/images";
 import { Callout } from "./Callout";
 
 const FIGMA_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=235-2641";
@@ -17,7 +18,8 @@ const meta = {
     icon: "diamond",
   },
   argTypes: {
-    type: { control: "inline-radio", options: ["highlight", "cancelation"] },
+    type: { control: "inline-radio", options: ["highlight", "cancelation", "banner"] },
+    iconSrc: { control: "text" },
     icon: { control: "inline-radio", options: ["diamond", "tags", "clock"] },
     title: { control: "text" },
     imageSrc: { control: "text" },
@@ -90,5 +92,60 @@ export const IconTypes: Story = {
     const callouts = canvas.getAllByTestId("ds-callout");
     await expect(callouts).toHaveLength(3);
     for (const callout of callouts) await expect(callout.querySelector(".ds-callout__icon svg")).not.toBeNull();
+  },
+};
+
+/**
+ * Plan revision 2 — the Home "Your reservation" card: Cancelation with a photo (`imageSrc`), Figma width 361.
+ * The photo is decorative (alt ""); the stay name next to it is text.
+ */
+export const CancelationWithPhoto: Story = {
+  args: { type: "cancelation", imageSrc: imageUrl("reservation-1"), imageAlt: "" },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 361 }}>
+        <Story />
+      </div>
+    ),
+  ],
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const root = canvas.getByTestId("ds-callout");
+    const photo = root.querySelector("img");
+    await expect(photo).not.toBeNull();
+    await expect(photo?.getAttribute("alt")).toBe("");
+    await expect(canvas.getByText("CANCELED")).toBeInTheDocument();
+    await expect(canvas.getByText("tiny house, tiny farm")).toBeInTheDocument();
+    await expect(canvas.queryAllByRole("button")).toHaveLength(0);
+    (document.activeElement as HTMLElement | null)?.blur();
+    await userEvent.tab();
+    await expect(root.contains(document.activeElement)).toBe(false);
+  },
+};
+
+/**
+ * Plan revision 2 — `type="banner"`: the Checkout "Rare find!" strip at its page width (390).
+ * Background follows the user decision (surface-raised #F7F7F7 instead of the page's #FBEFF8); the gem picture is the page asset.
+ */
+export const Banner: Story = {
+  args: { type: "banner", iconSrc: imageUrl("checkout-icon-rare-find"), children: "Rare find! This place is usually booked" },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 390 }}>
+        <Story />
+      </div>
+    ),
+  ],
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const root = canvas.getByTestId("ds-callout");
+    await expect(root).toHaveClass("ds-callout--banner");
+    await expect(canvas.getByText("Rare find! This place is usually booked")).toBeInTheDocument();
+    await expect(root.querySelector("img")?.getAttribute("alt")).toBe("");
+    await expect(canvas.queryAllByRole("button")).toHaveLength(0);
+    await expect(canvas.queryAllByRole("link")).toHaveLength(0);
+    (document.activeElement as HTMLElement | null)?.blur();
+    await userEvent.tab();
+    await expect(root.contains(document.activeElement)).toBe(false);
   },
 };

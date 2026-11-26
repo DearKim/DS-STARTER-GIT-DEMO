@@ -1,7 +1,7 @@
 ---
 kind: component
 component: Callout
-revision: 1
+revision: 2
 status: approved
 source_kind: figma
 source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=235-2641&m=dev
@@ -10,6 +10,8 @@ open_questions: 0
 ---
 
 # 컴포넌트 구현 계획 — Callout
+
+> **revision 2 (2026-11-26, 재정립 계획 에이전트 E, 승인 대기):** (1) Home "Your reservation" 줄을 Cancelation + 사진으로 그리는 방법을 확인하고(이미 승인된 `imageSrc` 로 됨, 새 prop 없음 — 스토리·차이만 더함), (2) Checkout 의 한 줄 "Rare find!" 띠 모양을 `type="banner"` 로 더한다. 사용자 결정 "페이지 모양 유지 (권장)" 때문이다. revision 1 에서 승인된 내용(1~11절)은 바꾸지 않고 바뀌는 것은 **12절**에만 적었다. 4절에 행 하나, 9절에 Q-10~Q-15, 11절에 한 줄을 더했다. 같은 날 사용자 답("추천안 모두 채택", "Figma 스타일 값으로 맞춤", "지금 크기·자간 유지")을 반영했다: 띠 바탕은 `surface-raised`(#F7F7F7), 띠 아이콘은 현재 페이지 그림을 쓴다. 띠 아이콘의 Figma 원본 형식(벡터/그림)은 여전히 읽지 못했지만, 사용자가 채택한 대안(현재 페이지 asset)이 그 빈칸을 덮어 `facts_complete: true` 로 했다(12.5).
 
 > 작성: Claude Code, 2026-11-26. 근거: `docs/plans/design-system-airbnb.md` 1단계 목록의 `Callout`(새로 만듦). 이 문서는 계획이며, 사용자 승인 전에는 구현 파일을 만들지 않는다. 사이트 페이지는 이 계획에서 고치지 않는다.
 > 갱신(2026-11-26, revision 1 유지): 사용자가 채팅에서 "추천안 모두 채택"을 골랐다. 그 결정과 리드가 확인한 사실(새 토큰)을 반영했다. 계획 승인은 아직 받지 않았다.
@@ -60,6 +62,7 @@ open_questions: 0
 | Figma instance | Original component / set | Figma variant | Found in requested variants | Kit component and props | Status |
 |---|---|---|---|---|---|
 | `Callout Icons` 235:2614 | `Callout Icons`(set 235:2613) | Type=Diamond. 인스턴스 안쪽 노드 I235:2614;235:2573은 Diamond 변형 235:2578의 그룹 235:2573이다. | 235:2640 Property Highlight | none — drawn inside this part from the Figma SVG(`icon`: diamond·tags·clock, 기본 diamond, 세트 235:2613의 원본 SVG 3종) | confirmed |
+| — (rev 2: Checkout 띠 아이콘, frame "Icon" 812:12367 32×32 — 인스턴스 아님) | — | — | rev 2 `type="banner"`(Checkout 812:12363) | none — 페이지가 `iconSrc` 로 주는 그림(`checkout-icon-rare-find.png`)을 장식 `<img alt="">` 32×32 로 그림(Q-11 A) | confirmed |
 
 - 인스턴스가 없음을 확인한 근거: Cancelation 235:2639에는 인스턴스가 없다. get_design_context에서 이 변형의 노드(232:2130~232:2138)는 모두 frame·text이고, 인스턴스를 뜻하는 `I…;…` id나 컴포넌트 함수가 없다.
 - 글자는 키트 `Text`를 쓰지 않고 Callout 안에서 글자 토큰으로 그린다. Text의 variant(body·body-sm·title)에 16pt·18pt·12pt Semibold가 없다(Q-04 A·Q-05 A).
@@ -172,8 +175,14 @@ asset 이름은 MCP asset 해시 앞 8자이고, 괄호 안은 내려받은 파�
 | Q-07 | 폭(Figma 349·361 고정) | A. 부모 폭 채움, Storybook은 Figma 폭(추천). B. 고정 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
 | Q-08 | 색 역할 | A. 제안대로(추천). B. 사용자가 이름 지정. C. 다시 가져온 뒤 역할만 지정 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 새 색 역할은 "합친 목록 + 다시 가져오기"로 결정했다. `icon-accent`·`icon-accent-subtle`·`image-placeholder-subtle`은 합친 목록의 이름과 같고, primitive `accent-01`·`accent-02`는 리드가 가져왔다. | resolved |
 | Q-09 | 스타일 없는 12px/400 글자(232:2138) | A. 새 글자 토큰(추천). B. Figma에 스타일 지정 후 가져오기. C. 다른 토큰 섞기 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 리드가 Typography를 가져와 생긴 `body-copy-12pt-regular`(12/400)가 정확히 같다 → 그 토큰을 쓴다. | resolved |
+| Q-10 | (rev 2) Checkout "Rare find!" 띠(812:12363, Callout 인스턴스 아님)를 어떻게 만들지. 사용자 결정 "구역도 부품으로"·"페이지 모양 유지" | **A (추천)** Callout 에 `type="banner"` 를 더함: 분홍 바탕 한 줄, 가운데, `children` = 글자, `iconSrc` = 그림(12.3절) · B 새 부품(예 `Banner`) — 정보 상자라는 같은 역할의 복제 · C 기존 `type="highlight"` 로 그림(흰 상자·테두리·두 문장 — 현재 모양과 다름) | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-11 | (rev 2) 띠 아이콘. 현재 페이지는 `checkout-icon-rare-find.png`(32×32 RGBA 래스터, 분홍 보석, sha256 535b9a25c90e). Callout Icons Diamond(235:2578, 선 그림)와 다른 그림. Figma 812:12367 의 원본 형식은 읽지 못함(design_context 실패) | **A (추천)** 페이지가 `iconSrc` 로 PNG 를 넘기고 Callout 은 장식 `<img alt="">` 32×32 로 그림(현재 모양 그대로, Card 메달 PNG 와 같은 방식) · B Callout Icons `icon="diamond"` SVG 를 씀(모양이 바뀜) · C 구현 전에 Figma 812:12367 을 한 번 더 읽어 벡터면 `<svg>` JSX 로 그림 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 리드 확인: Figma design-context 가 응답하지 않아 C 는 할 수 없음 — 현재 페이지 asset 을 쓰는 것이 채택된 대안 | resolved |
+| Q-12 | (rev 2) 띠 바탕 #FBEFF8 의 primitive·역할이 없음(accent-01 #F6D7DF 와 다름) | **A (추천)** 새 매핑: primitive #FBEFF8(Figma 이름 미조회) → 새 역할(예 `surface-accent-subtle`, 리드 tokens rev 6) · B `icon-accent-subtle`(#F6D7DF)로 바꿈(더 진한 분홍, 모양이 달라짐) | 사용자 결정 "Figma 스타일 값으로 맞춤" (chosen in chat, 2026-11-26) → #FBEFF8 은 #F7F7F7, 기존 역할 `surface-raised`(리드 대응표). 새 역할 `surface-accent-subtle` 은 만들지 않음 | resolved |
+| Q-13 | (rev 2) 띠 글자 14px / 500 / 줄 높이 18 / 자간 -0.1504px: 500 은 키트 합성 토큰 `--font-weight-medium`, 자간 토큰 없음(모두 0) | **A (추천)** 500 은 `--font-weight-medium` 사용 확정, 자간은 같은 값의 새 토큰(리드 tokens rev 6), 줄 높이 `calc(var(--spacing) * 4.5)` · B 자간 0(글자 폭 약 6px 넓어짐, 가운데 정렬이라 위치가 3px 씩 바뀜) | 사용자 결정 "Figma 스타일 값으로 맞춤" + "지금 크기·자간 유지 (권장)" (chosen in chat, 2026-11-26) → 500 은 `--font-weight-medium`(Figma 변수 sds-typography-weight-medium), 자간 `calc(var(--spacing) * -0.0376)`, 줄 높이 `calc(var(--spacing) * 4.5)` | resolved |
+| Q-14 | (rev 2) Home 카드 크기 차이(12.2 표): 현재 페이지 363 폭(Figma 361 보다 2 넓음 → 카드 간격이 386, Figma 384), CANCELED·이름 줄 높이 1px 차이. Callout(rev 1)은 Figma 값(361, 줄 높이 normal) | **A (추천)** Callout rev 1 그대로(Figma 와 같음). 페이지는 361 칸 + 사이 23 으로 놓는다(현재보다 2번째 카드부터 2·4·6…px 왼쪽, 글자 1px 이내) · B 현재 페이지에 맞추는 옵션을 더함(363 폭·줄 높이 14/19 — Figma 근거 없음) | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-15 | (rev 2) Home 사진의 대체 글. 현재 `alt=""`. 바로 옆에 숙소 이름 "tiny house, tiny farm" 이 글자로 있음 | **A (추천)** `imageAlt=""`(장식 — 이름은 글자가 읽음, 지금과 같음) · B 숙소 이름을 alt 로(화면 읽기가 이름을 두 번 읽음) · C 사진을 설명하는 다른 문구 | 추천안 채택 — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
 
-모든 질문이 해결됐다. 이 결정들은 계획 내용이며, 계획 승인("Approve revision 1")은 아직 받지 않았다.
+revision 1 의 질문(Q-01~Q-09)과 revision 2 의 질문(Q-10~Q-15)이 모두 해결됐다. revision 2 계획 승인("Approve revision 2")은 아직 받지 않았다.
 
 ## 10. 검증 계획
 
@@ -194,3 +203,87 @@ asset 이름은 MCP asset 해시 앞 8자이고, 괄호 안은 내려받은 파�
 - 계획 내용에 대한 사용자 수정·결정: Q: 부품 계획 8개의 질문 91개를 어떻게 답할까요? → A: 추천안 모두 채택 (chosen in chat, 2026-11-26). Q: 새 색 역할 → A: 합친 목록 + 다시 가져오기 (chosen in chat, 2026-11-26).
 - 승인한 revision: 1 — 사용자 "Approve revision 1·5 (권장)" 선택 (chosen in chat, 2026-11-26)
 - 구현 전에 남은 조건: 없음. tokens.md revision 5(`icon-accent`·`icon-accent-subtle`·`image-placeholder-subtle`)는 적용됐다.
+- revision 2(12절) 사용자 결정(chosen in chat, 2026-11-26): "추천안 모두 채택 (권장)" — Q-10·Q-11·Q-14·Q-15 / "Figma 스타일 값으로 맞춤" — Q-12·Q-13(굵기) / "지금 크기·자간 유지 (권장)" — Q-13(자간).
+- 승인한 revision: 2 — 사용자 "승인하고 진행 (권장)" 선택 (chosen in chat, 2026-11-26)
+- revision 2 구현 전 조건: 없음 — 새 토큰이 필요 없다(`surface-raised`·`text`·`--font-weight-medium`·`--radius-lg` 는 이미 있음).
+
+## 12. Revision 2 — Home 예약 사진과 Checkout "Rare find!" 띠 (바뀌는 내용만)
+
+### 12.1 요청과 근거
+
+- 요청: 사이트 재정립(2026-11-26). 사용자 결정 "구역도 부품으로 (권장)"·"페이지 모양 유지 (권장)" — 페이지 모양과 Figma 부품 모양이 다르면 페이지를 바꾸지 않고 부품에 variant 를 더한다.
+- 읽은 자료:
+  - Home: `my-website/figma/Home.layers.xml` "Your reservations" 767:348(1513×165)의 `Callouts` 인스턴스 424:10809·424:10810·424:10811·767:349(각 361×165, x 0·384·768·1152 → 카드 사이 23). 현재 페이지 `HomePage.tsx` 136~153행, `HomePage.css` 247~327행.
+  - Checkout: Q5QD `get_metadata 812:1056`(2026-11-26 직접 조회) 오른쪽 열 812:12280 > 812:12362(위 여백 24) > 띠 **812:12363**(390×48): 아이콘 묶음 812:12364 (56.5,16) 40×16 > 812:12365 32×32(y −8) > 812:12366 32×36 > frame "Icon" **812:12367** 32×32, 글자 812:12679 (96.5,15) 237×18 "Rare find! This place is usually booked". 인스턴스 없음(rev 1 1절과 같음). 현재 페이지 `CheckoutPage.tsx` 231~235행, `CheckoutPage.css` 508~537행.
+  - Playwright 1440px 측정과 Storybook(6007) `components-callout--cancelation`·`--property-highlight` 측정: `<로컬 측정 폴더>/rebuild/E/parts-measure.json`, `checkout-measure.json`. 두 페이지 모두 콘솔 오류 0, 깨진 그림 0.
+- Figma 호출: 이 에이전트 2회(`get_metadata 812:1056` 성공, `get_design_context 812:12280` 실패 — 전송 끊김, 다시 부르지 않음). 그래서 띠의 Figma 색·글자 스타일 이름과 812:12367 아이콘의 원본 형식(벡터/그림 채우기)을 읽지 못했다.
+- 읽은 규칙: `docs/ai-component-workflow.md` 1.0 R01~R09, `docs/ai-design-system-spec.md` 1.1.
+
+### 12.2 Home "Your reservation" — 사진이 있는 Cancelation
+
+- 사실: rev 1 이 승인한 `imageSrc`·`imageAlt`(Q-05 A)로 이미 그릴 수 있다. 사진이 있으면 108×72 자리를 `object-fit: cover` 로 채우고 모서리 12 로 자른다. 사진 `reservation-1.jpg`~`reservation-6.jpg` 는 240×160(3:2 = 108×72 와 같은 비율). → **새 prop 이 필요 없다.**
+- 페이지는 6장(PRD), Figma 는 4장(줄이 옆으로 넘침). 장 수는 페이지 데이터다.
+- 현재 페이지와 Callout(rev 1, Storybook 측정)의 차이:
+
+| 요소 | 현재 Home 페이지 | Callout Cancelation (Storybook) | Figma |
+|---|---|---|---|
+| 카드 | **363**×165(flex 361 이지만 안쪽 최소 폭 313 + 여백 48 + 테두리 2 때문에 2 늘어남), 여백 24 + 테두리 1 | 361×165(여백 23 + 테두리 1, 안쪽 313) | 361×165 |
+| 카드 사이 | 23 → 간격 386 | (페이지 배치) | 23 → 간격 384 |
+| 제목 "Your reservation" | 313×21, 18/590 | 313×21, 18/590 | 1절 표 |
+| 사진 | 108×72, 모서리 12, 바탕 #DDD | 108×72, 모서리 12, `image-placeholder-subtle` | 108×72 |
+| CANCELED | 높이 14(줄 높이 14px), #C13515 12/590 | 높이 15(normal) | leading normal |
+| 숙소 이름 | 위에서 16, 높이 19(19px) | 위에서 17, 높이 18(normal) | |
+| 예약 코드 | 위에서 43, 높이 14 | 위에서 43, 높이 15 | |
+| 사진 대체 글 | `alt=""` | `imageAlt` 기본 "" | — |
+
+- 이 revision 에서 더하는 것: 스토리 `CancelationWithPhoto`(361 칸, `imageUrl("reservation-1")` — 스토리가 `@/assets/images` 를 읽음, 부품 코드는 그림을 import 하지 않음). Q-14·Q-15 의 답에 따라 차이를 기록한다.
+
+### 12.3 Checkout "Rare find!" 띠 — `type="banner"` (Q-10 A 기준)
+
+| 요소 | 현재 페이지(측정) | Figma 812:12363 | CSS |
+|---|---|---|---|
+| 상자 | 390×48(부모 폭), 바탕 원래 #FBEFF8, 모서리 12, 여백 12, 테두리·그림자 없음 | 390×48 | 폭 100%, 높이 `calc(var(--spacing) * 12)`, padding `* 3`, `--radius-lg`, 바탕 `surface-raised` #F7F7F7(Q-12 사용자 결정) |
+| 배치 | 아이콘 + 8 + 글자, 가로 가운데·세로 가운데. 아이콘 x +51.81, 글자 x +91.81 | 아이콘 x 56.5, 글자 x 96.5(237 폭) — 같은 가운데 정렬, 글꼴 폭 차이 | `justify-content: center`, `align-items: center`, gap `* 2` |
+| 아이콘 | 32×32 `<img>` PNG(분홍 보석, 장식) | frame "Icon" 812:12367 32×32(원본 형식 미조회) | `* 8`, 페이지가 주는 `iconSrc` 를 `<img alt="">`(Q-11) |
+| 글자 | 14px / 500 / 줄 높이 18 / 자간 -0.1504px / #222222, 한 줄(줄바꿈 없음), 246.38 폭 | 237×18 | `--text-type-body-copy-14pt-regular`·`--font-type-body-copy-14pt-regular`, `--font-weight-medium`, 줄 높이 `calc(var(--spacing) * 4.5)`, 자간 `calc(var(--spacing) * -0.0376)`, `white-space: nowrap`(Q-13) |
+
+| prop | 근거 | 기본값·허용값 | 실제 동작 / 결과 | 키보드·disabled 처리 | 사용자 확정 |
+|---|---|---|---|---|---|
+| `type` | Checkout 812:12363 | rev 1 의 `"highlight"`·`"cancelation"` + `"banner"` | `banner`: 위 표의 한 줄 띠. Figma Callouts 세트(235:2641)에는 없는 모양이고 Checkout 화면 frame 이 근거 | 누를 요소 없음(rev 1 Q-06 A 와 같음) | Q-10 추천안 채택 |
+| `children`(banner) | text 812:12680 | "Rare find! This place is usually booked" | 한 줄 글자 | — | Q-10 추천안 채택 |
+| `iconSrc`(banner) | 812:12367 / `checkout-icon-rare-find.png` | 없음 / 그림 주소(페이지가 `imageUrl()` 로 넘김) | 32×32 장식 `<img alt="">`. 없으면 글자만 | — | Q-11 추천안 채택 |
+
+- `title`·`icon`·`imageSrc`·`status`·`name`·`code` 는 banner 에서 쓰지 않는다. 루트는 rev 1 과 같은 `<div data-testid="ds-callout" class="ds-callout ds-callout--banner">`(정적 정보, `role="status"` 없음 — 바뀌는 알림이 아님).
+- CSS 는 `.ds-callout--banner` 가 rev 1 공통 상자(흰 바탕·테두리·여백 23)를 이 모양으로 바꾼다. 다른 부품의 `.ds-*` 를 건드리지 않는다.
+
+### 12.4 색·글자 토큰 (rev 2 에서 더 쓰는 것)
+
+| 요소 / 상태 | 현재 값·alpha (Figma 변수: 미조회) | primitive | semantic / 역할 | 생성 CSS의 해석 값 | 값·역할 일치 여부 | 미확정 또는 새 매핑 필요 사유 |
+|---|---|---|---|---|---|---|
+| 띠 바탕 | 원래 #FBEFF8 | fills-vibrant-use-plus-lighter-darker-quaternary | `surface-raised` | #F7F7F7 | 사용자 결정으로 바꿈 | Q-12: "Figma 스타일 값으로 맞춤" — #FBEFF8 → #F7F7F7(리드 대응표). 새 역할 없음 |
+| 띠 글자 | #222222 | shade-02 | `text` | #222222 | 일치 | — |
+| Home 사진·글자 | rev 1 6절 그대로 | — | — | — | 일치 | — |
+
+- 띠 글자: 크기 `--text-type-body-copy-14pt-regular`(14px)·글꼴 `--font-type-body-copy-14pt-regular`(이 Mac 에서 페이지 글꼴과 같은 `.SF NS`, CDP 확인), 굵기 500 → `--font-weight-medium`(Figma 변수 sds-typography-weight-medium), 줄 높이 `calc(var(--spacing) * 4.5)`, 자간 -0.1504px → `calc(var(--spacing) * -0.0376)`(Q-13 사용자 결정: 지금 값 유지).
+- 신규 token: 없음.
+
+### 12.5 아이콘·asset
+
+| asset / Figma 노드 | 원본 파일/벡터 경로 또는 해시 | 크기·색·stroke·회전 | 나타나는 상태·조합 | 나타나지 않는 상태·조합 | 확인 여부 |
+|---|---|---|---|---|---|
+| 띠 아이콘 812:12367 | `my-assets/images/checkout-icon-rare-find.png`(sha256 535b9a25c90e, 32×32 RGBA, 커밋 de048b6 에서 들어옴) | 32×32, 분홍 보석(여러 색 래스터) | `type="banner"` + `iconSrc` | 다른 type | 확인 — 사용자가 채택한 대안(현재 페이지 asset, Q-11 A). Figma 812:12367 원본 형식(벡터/그림 채우기)은 design-context 가 응답하지 않아 읽지 못한 채로 남는다 |
+| Home 사진 | `reservation-1.jpg`~`-6.jpg`(예 reservation-1 sha256 e7e058c5f486, 240×160) | 108×72 cover, 모서리 12 | `type="cancelation"` + `imageSrc` | — | 확인 — 페이지 데이터 |
+
+### 12.6 영향받는 사용처와 파일
+
+- `type` 기본값 `"highlight"` 와 기존 두 type 의 모양은 그대로다. Callout 을 쓰는 페이지는 아직 없다.
+- 변경할 파일: `Callout.tsx`(`type` 에 `"banner"`, `iconSrc`), `Callout.css`(`.ds-callout--banner`), `Callout.stories.tsx`(`CancelationWithPhoto`·`Banner` 스토리), `Callout.figma.tsx`(banner 는 Figma 세트 변형이 아니므로 Code Connect 대응을 넣지 않음).
+
+### 12.7 검증 계획 (rev 2 에서 더함)
+
+| 확인 대상 | 원본의 기대 결과 | 검사 방법 | 완료 증거 |
+|---|---|---|---|
+| `CancelationWithPhoto` | 361×165, 사진 108×72 cover·모서리 12, 글자 위치 12.2 표(Q-14 답대로) | Storybook iframe 과 Home 나란히 DOM 측정·스크린샷 | |
+| `Banner` | 390 칸에서 390×48, 바탕 #F7F7F7(`surface-raised`, 사용자 결정 — 원래 #FBEFF8), 모서리 12, 아이콘 32 + 8 + 글자 한 줄 가운데, 글자 자간 -0.1504px | Storybook iframe 과 `/checkout` 나란히 DOM 측정·스크린샷 | |
+| 기능·접근성 | banner·cancelation 모두 누를 요소 없음(Tab 이 멈추지 않음), 사진·아이콘 alt 가 Q-15·Q-11 답과 같음 | play `userEvent.tab`, DOM 검사 | |
+| rev 1 회귀 | 기존 스토리 모양·play 그대로 | `pnpm ai:check Callout`, `pnpm ai:verify Callout`, `pnpm typecheck`, `pnpm ds:guard` | |

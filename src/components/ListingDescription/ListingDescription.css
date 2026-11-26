@@ -1,0 +1,46 @@
+/* ListingDescription — Detail 설명 구역(Figma 812:11223 + 812:11231). 값은 docs/plans/components/ListingDescription.md §5·§6.
+   semantic·layout 토큰만 쓴다. 버튼 모양은 Button(text·ghost), 안내 문장은 Text 가 그린다 — 여기서는 배치만. */
+.ds-listing-description {
+  box-sizing: border-box;
+  width: 100%;
+  padding-bottom: calc(var(--spacing) * 12);
+  border-top: var(--border-width-thin) solid var(--color-border);
+}
+
+/* 번역 안내: 구분선 아래 32, 653×50, 안쪽 좌우 16, 세로 가운데, 사이 4, 모서리 8 */
+.ds-listing-description__notice {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  box-sizing: border-box;
+  height: calc(var(--spacing) * 12.5);
+  margin-top: calc(var(--spacing) * 8);
+  padding: 0 calc(var(--spacing) * 4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+}
+
+/* 설명 글: 안내 아래 32, 높이 176 에서 자름 */
+.ds-listing-description__body {
+  height: calc(var(--spacing) * 44);
+  margin-top: calc(var(--spacing) * 8);
+  overflow: hidden;
+}
+
+/* 16/400, 줄 높이 22, 줄바꿈(\n) 그대로 */
+.ds-listing-description__text {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+  line-height: calc(var(--spacing) * 5.5);
+  white-space: pre-line;
+}
+
+/* Show more: 글 칸 아래 16 */
+.ds-listing-description__more {
+  display: flex;
+  margin-top: calc(var(--spacing) * 4);
+}

@@ -12,14 +12,14 @@
     }
   ],
   "counts": {
-    "primitive": 22,
+    "primitive": 25,
     "layout": 105,
-    "semantic": 46
+    "semantic": 53
   },
   "bySource": {
-    "declared": 108,
+    "declared": 111,
     "synthesized": 19,
-    "human": 46
+    "human": 53
   },
   "reviewThreshold": 0.6,
   "review": [
@@ -388,7 +388,7 @@
   "missingRoles": [],
   "figma": {
     "fileKey": "Q5QDGE5WoXefOxgm5fziH3",
-    "importedAt": "2026-11-26T00:38:01.627Z",
+    "importedAt": "2026-11-26T02:38:53.429Z",
     "variables": [
       {
         "figma": "Shade 01",
@@ -625,6 +625,39 @@
         "figma": "Neutral 01",
         "tier": "primitive",
         "token": "neutral-01",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Fills - Vibrant (Use Plus Lighter | Darker)/Tertiary",
+        "tier": "primitive",
+        "token": "fills-vibrant-use-plus-lighter-darker-tertiary",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Grays/White",
+        "tier": "primitive",
+        "token": "grays-white",
+        "applied": true,
+        "how": {
+          "ko": "계층 선언 없음 → primitive",
+          "en": "no tier declared → primitive"
+        },
+        "hint": null
+      },
+      {
+        "figma": "Grays/Black",
+        "tier": "primitive",
+        "token": "grays-black",
         "applied": true,
         "how": {
           "ko": "계층 선언 없음 → primitive",
@@ -960,6 +993,51 @@
       "cssVar": "--color-neutral-01",
       "value": "#F7F7F7",
       "hex": "#F7F7F7",
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
+      }
+    },
+    {
+      "layer": "primitive",
+      "category": "COLOR",
+      "name": "fills-vibrant-use-plus-lighter-darker-tertiary",
+      "cssVar": "--color-fills-vibrant-use-plus-lighter-darker-tertiary",
+      "value": "#F2F2F2",
+      "hex": "#F2F2F2",
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
+      }
+    },
+    {
+      "layer": "primitive",
+      "category": "COLOR",
+      "name": "grays-white",
+      "cssVar": "--color-grays-white",
+      "value": "#FFFFFF",
+      "hex": "#FFFFFF",
+      "ref": null,
+      "source": "declared",
+      "confidence": 1,
+      "reason": {
+        "ko": "학생 Figma의 정확한 원시 색",
+        "en": "Exact raw color from your Figma"
+      }
+    },
+    {
+      "layer": "primitive",
+      "category": "COLOR",
+      "name": "grays-black",
+      "cssVar": "--color-grays-black",
+      "value": "#000000",
+      "hex": "#000000",
       "ref": null,
       "source": "declared",
       "confidence": 1,
@@ -3290,6 +3368,111 @@
       "value": "var(--color-error-01)",
       "hex": "#FEF8F6",
       "ref": "error-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "border-accent",
+      "cssVar": "--color-border-accent",
+      "value": "var(--color-accent-02)",
+      "hex": "#D03660",
+      "ref": "accent-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "control-bg-subtle",
+      "cssVar": "--color-control-bg-subtle",
+      "value": "var(--color-fills-vibrant-use-plus-lighter-darker-tertiary)",
+      "hex": "#F2F2F2",
+      "ref": "fills-vibrant-use-plus-lighter-darker-tertiary",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "control-bg-subtle-hover",
+      "cssVar": "--color-control-bg-subtle-hover",
+      "value": "var(--color-neutral-02)",
+      "hex": "#EBEBEB",
+      "ref": "neutral-02",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "surface-subtle",
+      "cssVar": "--color-surface-subtle",
+      "value": "var(--color-neutral-01)",
+      "hex": "#F7F7F7",
+      "ref": "neutral-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "surface-hover-subtle",
+      "cssVar": "--color-surface-hover-subtle",
+      "value": "var(--color-neutral-01)",
+      "hex": "#F7F7F7",
+      "ref": "neutral-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "image-frame",
+      "cssVar": "--color-image-frame",
+      "value": "var(--color-shade-01)",
+      "hex": "#FFFFFF",
+      "ref": "shade-01",
+      "source": "human",
+      "confidence": 1,
+      "reason": {
+        "ko": ".ds/semantic.json 에서 사람이 지정",
+        "en": "Set by a person in .ds/semantic.json"
+      }
+    },
+    {
+      "layer": "semantic",
+      "category": "COLOR",
+      "name": "image-scrim",
+      "cssVar": "--color-image-scrim",
+      "value": "var(--color-grays-black)",
+      "hex": "#000000",
+      "ref": "grays-black",
       "source": "human",
       "confidence": 1,
       "reason": {

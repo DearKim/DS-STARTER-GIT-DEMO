@@ -1,0 +1,171 @@
+/* Footer — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   값의 근거: docs/plans/components/Footer.md revision 1 (Figma "Footer" 389:7358, 현재 사이트 값.
+   열 목록 간격·열 아래 여백만 Figma 값 — Q-03). 글자 크기·자간·줄 높이는 지금 값 그대로(결정 3). */
+.ds-footer {
+  /* 안쪽 위 48 · 아래 80 */
+  padding: calc(var(--spacing) * 12) 0 calc(var(--spacing) * 20);
+  background: var(--color-surface-subtle);
+  color: var(--color-text);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  letter-spacing: calc(var(--spacing) * -0.0375);
+}
+
+/* 3열 영역: 좌우 48, 최대 1920 가운데 */
+.ds-footer__top {
+  max-width: calc(var(--spacing) * 480);
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing) * 12);
+}
+
+/* 열 461.3 × 3, 사이 16. 열 아래 48(Figma 389:7362 — Q-03) */
+.ds-footer__columns {
+  display: grid;
+  grid-template-columns: repeat(3, calc(var(--spacing) * 115.325));
+  gap: calc(var(--spacing) * 4);
+  padding-bottom: calc(var(--spacing) * 12);
+}
+
+/* 열 제목 14 / 500 / 18, 아래 16 */
+.ds-footer__heading {
+  margin: 0 0 calc(var(--spacing) * 4);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: inherit;
+}
+
+/* 항목 높이 20 · 사이 16 = 36 간격(Figma 389:7366 — Q-03) */
+.ds-footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-footer__item {
+  display: flex;
+}
+
+/* 링크 글자 14 / 400 / 20. 바탕·밑줄 없음, hover 때 밑줄(Q-01). 누르면 콜백만 */
+.ds-footer__link {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  line-height: calc(var(--spacing) * 5);
+  letter-spacing: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ds-footer__link:hover {
+  text-decoration: underline;
+}
+
+/* 아래 줄: 위 1px Neutral 02 선(전체 폭), 안쪽 24 · 48, 최대 1920 */
+.ds-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: calc(var(--spacing) * 480);
+  margin: 0 auto;
+  padding: calc(var(--spacing) * 6) calc(var(--spacing) * 12);
+  border-top: var(--border-width-thin) solid var(--color-border-subtle);
+}
+
+/* ©·"·" 14 / 400 / 18, 사이 8, 세로 가운데 */
+.ds-footer__legal {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  line-height: calc(var(--spacing) * 4.5);
+}
+
+.ds-footer__privacy-icon {
+  display: block;
+  width: calc(var(--spacing) * 6.5);
+  height: calc(var(--spacing) * 3);
+  object-fit: contain;
+}
+
+.ds-footer__settings {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+}
+
+/* 언어·통화 버튼 14 / 500 / 18, 여백 6 · 12, 모서리 12, 사이 8. 바탕 없음, hover 없음(결정 2) */
+.ds-footer__setting {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  margin: 0;
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3);
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 4.5);
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+/* 통화 버튼 폭 69, 가운데 */
+.ds-footer__setting--currency {
+  justify-content: center;
+  width: calc(var(--spacing) * 17.25);
+}
+
+/* 소셜: 왼쪽 12, 사이 20 */
+.ds-footer__social {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 5);
+  margin: 0;
+  padding: 0 0 0 calc(var(--spacing) * 3);
+  list-style: none;
+}
+
+.ds-footer__social li {
+  display: flex;
+}
+
+/* 16×16 아이콘 버튼, 모서리 8 */
+.ds-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.ds-footer__icon {
+  display: block;
+  flex: none;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+
+/* Focus: 버튼 상자 둘레 2px focus-ring, 크기 변화 없음(Q-01) */
+.ds-footer__link:focus-visible,
+.ds-footer__setting:focus-visible,
+.ds-footer__social-link:focus-visible {
+  outline: var(--border-width-thick) solid var(--color-focus-ring);
+  outline-offset: 0;
+}

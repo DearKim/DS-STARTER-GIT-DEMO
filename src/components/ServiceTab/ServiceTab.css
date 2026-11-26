@@ -1,0 +1,63 @@
+/* ServiceTab — Figma "Service tab" 세트(418:3150)를 현재 Home 페이지 모양으로 그린다(계획 revision 1, Q-01 A).
+   semantic·layout 토큰만 쓴다. */
+.ds-service-tab,
+.ds-service-tab *,
+.ds-service-tab *::before,
+.ds-service-tab *::after {
+  box-sizing: border-box;
+}
+
+/* 탭 전체: 폭 60, 아이콘 칸과 글자 사이 12, 가운데 정렬. 글자가 60보다 길면 양쪽으로 똑같이 넘친다. */
+.ds-service-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
+  width: calc(var(--spacing) * 15);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-on-image);
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* Hover(Q-05 A): 현재 페이지처럼 탭 전체를 불투명도 0.8로. 포커스 링은 브라우저 기본값(Q-06 A). */
+.ds-service-tab:hover {
+  opacity: 0.8;
+}
+
+/* 아이콘 칸: 60×62, 여백 6, 모서리 12, 흰 바탕. 그림 전체를 칸 안에 맞춘다(페이지 모양). */
+.ds-service-tab__icon {
+  display: block;
+  flex: none;
+  width: calc(var(--spacing) * 15);
+  height: calc(var(--spacing) * 15.5);
+  padding: calc(var(--spacing) * 1.5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  object-fit: contain;
+}
+
+/* Status=Selected: 아이콘 칸 전체에 1.5 테두리, Accent 02(Q-04 사용자 결정) */
+.ds-service-tab--selected .ds-service-tab__icon {
+  border: calc(var(--border-width-thin) * 1.5) solid var(--color-border-accent);
+}
+
+/* 글자: Body Copy/16pt Regular, 흰색, 줄 높이 24(현재 페이지 값) */
+.ds-service-tab__label {
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  line-height: calc(var(--spacing) * 6);
+  color: var(--color-on-image);
+  white-space: nowrap;
+}
+
+/* Status=Selected 글자: Body Copy/16pt Semibold(590) */
+.ds-service-tab--selected .ds-service-tab__label {
+  font-family: var(--font-type-body-copy-16pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-16pt-semibold);
+}

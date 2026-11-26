@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import type { HTMLAttributes, MouseEventHandler, ReactNode } from "react";
+import { Button } from "../Button";
 import medalUrl from "./superhost-medal.png";
 import "./Card.css";
 
@@ -8,6 +9,12 @@ import "./Card.css";
  * "Default Card" (238:2494) is the ListingCard component.
  */
 export type CardType = "sleep" | "discount" | "map" | "reservation" | "reservation-confirmation";
+
+/**
+ * Look of the sleep and reservation cards (plan revision 2, Q-18).
+ * `card` = the Figma Card set values. `detail` = the Detail page look (812:393): booking box and bedroom cards.
+ */
+export type CardLayout = "card" | "detail";
 
 /** One price line: an underlined name and an amount on the right. `tone: "discount"` colors the amount green. */
 export interface CardLineItem {
@@ -21,6 +28,8 @@ interface CardBaseProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "
 /** Figma "Sleep Card" (238:2379). */
 export interface SleepCardProps extends CardBaseProps {
   type: "sleep";
+  /** `detail` draws the Detail page bedroom card: photo 212 high with corner 8, title 500/20, gray line 18. */
+  layout?: CardLayout;
   /** Photo address. Without it the photo area shows the placeholder color. */
   imageSrc?: string;
   imageAlt?: string;
@@ -83,6 +92,8 @@ export interface MapCardProps extends CardBaseProps {
 /** Figma "Reservation Card" (238:2383). */
 export interface ReservationCardProps extends CardBaseProps {
   type: "reservation";
+  /** `detail` draws the Detail page booking box (532 high, page spacing, total amount Semibold). */
+  layout?: CardLayout;
   /** Crossed-out price. Figma default: "$500". */
   originalPrice?: string;
   /** Figma default: "$440". */
@@ -101,8 +112,14 @@ export interface ReservationCardProps extends CardBaseProps {
   guests?: string;
   /** Figma default: "Reserve". */
   reserveLabel?: string;
-  /** Called when the Reserve button is pressed. */
-  onReserveClick?: MouseEventHandler<HTMLButtonElement>;
+  /** Called when Reserve is pressed (also when it is a link). */
+  onReserveClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  /** When set, Reserve is a real link (`<a href>`) with the same look. */
+  reserveHref?: string;
+  /** Text under the box with a flag icon ("리스팅 신고하기"). Without it nothing is drawn under the box. */
+  reportLabel?: string;
+  /** Called when the report button under the box is pressed. */
+  onReportClick?: MouseEventHandler<HTMLButtonElement>;
   /** Figma default: "You won’t be charged yet". */
   note?: string;
   /** Figma default: four lines, the second one a discount. */
@@ -174,6 +191,18 @@ const DOTS = [
 
 function Photo({ src, alt }: { src?: string; alt?: string }) {
   return src ? <img className="ds-card__image" src={src} alt={alt ?? ""} decoding="async" draggable={false} /> : null;
+}
+
+/** Flag 16×16 from the Detail page asset `detail-icon-flag.svg` (Figma 812:7560). Color comes from the Button. */
+function FlagIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+      <path
+        d="M7.5011 1C8.0283 1 8.4602 1.40794 8.49835 1.92537L8.5011 2V3H14.0011C14.3137 3 14.5446 3.28164 14.4946 3.58107L14.4819 3.63736L13.5206 7L14.4819 10.3626C14.5624 10.6445 14.3852 10.9251 14.1141 10.9873L14.0587 10.9967L14.0011 11H8.5011C7.9739 11 7.542 10.592 7.50385 10.0746L7.5011 10V9H2.5011V15H1.5011V1H7.5011ZM8.5011 4H7.5011V8H8.5011V4Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
 }
 
 /** Figma heart 238:2465 / 238:2537 (24×24): Shade 02 30% inside, white outline 2. */
@@ -274,7 +303,7 @@ function AirCoverLogo() {
 function SleepBody({ imageSrc, imageAlt, title = "Bedroom 2", description = "2 single beds" }: SleepCardProps) {
   return (
     <>
-      <div className="ds-card__media">
+      <div className={imageSrc ? "ds-card__media ds-card__media--has-image" : "ds-card__media"}>
         <Photo src={imageSrc} alt={imageAlt} />
       </div>
       <p className="ds-card__sleep-title ds-card__text-16-medium">{title}</p>
@@ -389,6 +418,7 @@ function Field({ label, value, className }: { label: string; value: string; clas
 }
 
 function ReservationBody({
+  layout = "card",
   originalPrice = "$500",
   price = "$440",
   priceUnit = "night",
@@ -399,11 +429,13 @@ function ReservationBody({
   guests = "1 guest",
   reserveLabel = "Reserve",
   onReserveClick,
+  reserveHref,
   note = "You won’t be charged yet",
   lineItems = RESERVATION_LINES,
   totalLabel = "Total before taxes",
   total = "$2,400",
 }: ReservationCardProps) {
+  const detail = layout === "detail";
   return (
     <>
       <div className="ds-card__header">
@@ -417,7 +449,14 @@ function ReservationBody({
             <Star />
             <span>{rating}</span>
           </p>
-          <Separator tone="text" />
+          {detail ? (
+            // Detail page: the dot is the text character "·" (plan revision 2, D6).
+            <span className="ds-card__dot-text ds-card__text-14" aria-hidden="true">
+              ·
+            </span>
+          ) : (
+            <Separator tone="text" />
+          )}
           <p className="ds-card__text-14 ds-card__tone-tertiary">{reviewCount}</p>
         </div>
       </div>
@@ -426,15 +465,22 @@ function ReservationBody({
         <Field className="ds-card__field--check-out" label="CHECKOUT" value={checkOut} />
         <Field className="ds-card__field--guests" label="GUESTS" value={guests} />
       </div>
-      <button type="button" className="ds-card__reserve ds-card__text-16" onClick={onReserveClick}>
-        {reserveLabel}
-      </button>
+      {reserveHref !== undefined ? (
+        <a className="ds-card__reserve ds-card__text-16" href={reserveHref} onClick={onReserveClick}>
+          {reserveLabel}
+        </a>
+      ) : (
+        <button type="button" className="ds-card__reserve ds-card__text-16" onClick={onReserveClick}>
+          {reserveLabel}
+        </button>
+      )}
       <p className="ds-card__note ds-card__text-14 ds-card__tone-tertiary">{note}</p>
       <LineItems items={lineItems} />
       <hr className="ds-card__divider" />
       <p className="ds-card__line ds-card__total">
         <span className="ds-card__text-16-strong">{totalLabel}</span>
-        <span className="ds-card__text-16">{total}</span>
+        {/* Figma 238:2395 draws the amount Regular; the Detail page draws it Semibold (D15). */}
+        <span className={detail ? "ds-card__text-16-strong" : "ds-card__text-16"}>{total}</span>
       </p>
     </>
   );
@@ -524,7 +570,7 @@ const CONTENT_PROPS = new Set([
   "type", "imageSrc", "imageAlt", "title", "description", "badge", "details", "originalPrice", "price", "priceUnit",
   "totalPrice", "rating", "reviewCount", "isFavorite", "onFavoriteClick", "dates", "onClose", "checkIn", "checkOut",
   "guests", "reserveLabel", "onReserveClick", "note", "lineItems", "totalLabel", "total", "propertyType",
-  "protectionText", "heading",
+  "protectionText", "heading", "layout", "reserveHref", "reportLabel", "onReportClick",
 ]);
 
 /** A card from the Figma Card set (238:2378). `type` picks the kind of card. */
@@ -533,7 +579,31 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(props, r
   const rest = Object.fromEntries(
     Object.entries(props).filter(([key]) => key !== "className" && !CONTENT_PROPS.has(key)),
   ) as HTMLAttributes<HTMLDivElement>;
-  const classes = ["ds-card", `ds-card--${props.type}`, className].filter(Boolean).join(" ");
+  const layout = props.type === "sleep" || props.type === "reservation" ? props.layout : undefined;
+  const report = props.type === "reservation" && props.reportLabel ? props : undefined;
+  const classes = [
+    "ds-card",
+    `ds-card--${props.type}`,
+    layout === "detail" && "ds-card--layout-detail",
+    report && "ds-card--with-report",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  if (report) {
+    // The report line sits under the box (Figma 812:7557 is outside the Card instance), so the root holds both.
+    return (
+      <div ref={ref} className={classes} data-testid="ds-card" {...rest}>
+        <div className="ds-card__box">{renderBody(props)}</div>
+        <div className="ds-card__report">
+          <Button variant="text" size="medium" tone="secondary" icon={<FlagIcon />} onClick={report.onReportClick}>
+            {report.reportLabel}
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className={classes} data-testid="ds-card" {...rest}>

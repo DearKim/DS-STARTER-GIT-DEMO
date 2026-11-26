@@ -1,7 +1,7 @@
 {
   "level": "L2a",
-  "sourceHash": "12e8d80506746da4",
-  "generatedAt": "2026-11-26T01:27:14.922Z",
+  "sourceHash": "cb7c94b7d89fb4e0",
+  "generatedAt": "2026-11-26T03:06:35.327Z",
   "ownership": {
     "tokenValue": "figma",
     "tokenName": "figma",
@@ -363,6 +363,21 @@
       "reason": "학생 Figma의 정확한 원시 색"
     },
     "COLOR:neutral-01": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:fills-vibrant-use-plus-lighter-darker-tertiary": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:grays-white": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:grays-black": {
       "source": "declared",
       "confidence": 1,
       "reason": "학생 Figma의 정확한 원시 색"
@@ -1118,6 +1133,41 @@
       "reason": ".ds/semantic.json 에서 사람이 지정"
     },
     "COLOR:danger-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border-accent": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:control-bg-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:control-bg-subtle-hover": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-hover-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:image-frame": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:image-scrim": {
       "source": "human",
       "confidence": 1,
       "reason": ".ds/semantic.json 에서 사람이 지정"
