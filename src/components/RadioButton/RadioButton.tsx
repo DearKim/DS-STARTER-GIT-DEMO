@@ -1,98 +1,60 @@
-import { forwardRef, useId, useState } from "react";
-import type { InputHTMLAttributes, ReactNode } from "react";
+import { forwardRef, useId } from "react";
+import type { InputHTMLAttributes } from "react";
 import "./RadioButton.css";
 
-export type RadioButtonOrientation = "horizontal" | "vertical";
-
-export interface RadioButtonOption {
-  value: string;
-  label: string;
-  disabled?: boolean;
-}
-
-export interface RadioButtonProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
-  /** Figma: Orientation — the layout direction when used as a group (`items`). */
-  orientation?: RadioButtonOrientation;
-  /** For a single radio button, the text next to it; for a group, the group's title (legend). */
+export interface RadioButtonProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "children"> {
+  /** Figma: the text to the right of the circle ("Keypad"). Without it, give `aria-label` or `aria-labelledby`. */
   label?: string;
-  /** If given, draws a group of radio buttons (radiogroup). A single radio button gives nothing to choose between, so you usually use this. */
-  items?: RadioButtonOption[];
-  /** The selected value of the group (controlled). */
-  selected?: string;
-  /** The value selected at first in the group (uncontrolled). */
-  defaultSelected?: string;
-  onSelectedChange?: (value: string) => void;
-  children?: ReactNode;
+  /** Figma: Subtext — a smaller second line under the label ("Guests can open the door with a code"). */
+  subtext?: string;
 }
 
 /**
- * A radio button for choosing one option from a set.
+ * A radio button for choosing one option from a set (Figma "Radio Buttons with Labels" 213:1943 / "Radio Button" 213:1944).
  *
- * Without `items`, it draws one native `input[type=radio]` (group several by giving them the same name).
- * With `items`, it draws a group with fieldset + legend — moving with the arrow keys is handled by
- * the native radios that share the same name. ref points to the input for a single radio, or to the first input for a group.
+ * It is one native `input[type=radio]`. Make a group by giving several radios the same `name`:
+ * Tab moves into the group and the arrow keys move the choice (native behavior).
+ * Hover, focus and checked are drawn by CSS (`:hover`, `:focus-visible`, `:checked`) — there is no `state` prop.
+ * The ref points to the input. `className` goes on the outer `<label>` (layout only).
  */
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(function RadioButton(
-  { orientation = "horizontal", label, items, selected, defaultSelected, onSelectedChange, className, children, id: idProp, name: nameProp, disabled, ...rest },
+  { label, subtext, className, id: idProp, "aria-describedby": describedBy, "aria-labelledby": labelledBy, ...rest },
   ref,
 ) {
   const autoId = useId();
-  const [inner, setInner] = useState(defaultSelected ?? "");
-  const current = selected ?? inner;
-
-  if (items) {
-    const name = nameProp ?? autoId;
-    const choose = (value: string) => {
-      if (selected === undefined) setInner(value);
-      onSelectedChange?.(value);
-    };
-    const classes = ["ds-radiobutton", "ds-radiobutton--group", `ds-radiobutton--${orientation}`, className]
-      .filter(Boolean)
-      .join(" ");
-    return (
-      <fieldset className={classes} data-testid="ds-radiobutton" disabled={disabled}>
-        {label ? <legend className="ds-radiobutton__legend">{label}</legend> : null}
-        <div className="ds-radiobutton__options">
-          {items.map((item, i) => {
-            const id = `${autoId}-${i}`;
-            return (
-              <span key={item.value} className="ds-radiobutton__option">
-                {/* rest 를 먼저 펼친다 — 묶음의 선택 상태는 onSelectedChange 로만 바뀐다. */}
-                <input
-                  {...rest}
-                  ref={i === 0 ? ref : undefined}
-                  id={id}
-                  type="radio"
-                  name={name}
-                  value={item.value}
-                  className="ds-radiobutton__field"
-                  checked={current === item.value}
-                  disabled={item.disabled}
-                  onChange={() => choose(item.value)}
-                />
-                <label className="ds-radiobutton__label" htmlFor={id}>
-                  {item.label}
-                </label>
-              </span>
-            );
-          })}
-        </div>
-        {children}
-      </fieldset>
-    );
-  }
-
   const id = idProp ?? autoId;
-  const text = label ?? children;
-  const classes = ["ds-radiobutton", `ds-radiobutton--${orientation}`, className].filter(Boolean).join(" ");
+  const labelId = label ? `${id}-label` : undefined;
+  const subtextId = subtext ? `${id}-subtext` : undefined;
+  // 이름은 라벨 글자만, 보조 글은 설명으로 읽히게 한다(<label> 안의 글자가 모두 이름에 합쳐지지 않도록).
+  const labelled = labelledBy ?? (rest["aria-label"] ? undefined : labelId);
+  const described = [describedBy, subtextId].filter(Boolean).join(" ") || undefined;
+  const classes = ["ds-radiobutton", subtext ? "ds-radiobutton--subtext" : null, className].filter(Boolean).join(" ");
+
   return (
-    <span className={classes} data-testid="ds-radiobutton">
-      <input ref={ref} id={id} type="radio" name={nameProp} className="ds-radiobutton__field" disabled={disabled} {...rest} />
-      {text ? (
-        <label className="ds-radiobutton__label" htmlFor={id}>
-          {text}
-        </label>
+    <label className={classes} htmlFor={id} data-testid="ds-radiobutton">
+      <span className="ds-radiobutton__control">
+        <input ref={ref} id={id} type="radio" className="ds-radiobutton__input" aria-labelledby={labelled} aria-describedby={described} {...rest} />
+        {/* Figma 213:1944: circle r 11.5 with a 1px stroke (24×24) and a center dot r 4. Colors come from CSS tokens. */}
+        <svg className="ds-radiobutton__svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <circle className="ds-radiobutton__circle" cx="12" cy="12" r="11.5" />
+          <circle className="ds-radiobutton__dot" cx="12" cy="12" r="4" />
+        </svg>
+        <span className="ds-radiobutton__ring" aria-hidden="true" />
+      </span>
+      {label || subtext ? (
+        <span className="ds-radiobutton__text">
+          {label ? (
+            <span id={labelId} className="ds-radiobutton__label">
+              {label}
+            </span>
+          ) : null}
+          {subtext ? (
+            <span id={subtextId} className="ds-radiobutton__subtext">
+              {subtext}
+            </span>
+          ) : null}
+        </span>
       ) : null}
-    </span>
+    </label>
   );
 });

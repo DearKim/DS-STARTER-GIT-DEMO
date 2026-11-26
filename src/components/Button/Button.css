@@ -1,58 +1,208 @@
-/* Button — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+/* Button — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   승인 계획: docs/plans/components/Buttons.md revision 1.
+   버튼 자신은 누르는 영역이고, 모양(바탕·테두리·포커스 링)은 ::before 층이 그린다.
+   그래서 Pressed 에서 그림만 좌우로 줄여도(Q-03) 누르는 영역은 그대로다. */
 .ds-button {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--spacing) * 2);
-  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
-  border: var(--border-width-thin) solid transparent;
-  border-radius: var(--radius-md);
-  font-family: var(--font-sans);
-  font-size: var(--text-body-1);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--leading-normal);
-  background: var(--color-surface);
-  color: var(--color-text);
-  transition: background var(--duration-fast) var(--ease-standard);
+  gap: calc(var(--spacing) * 1);
+  margin: 0;
+  padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
+  border: none;
+  background: none;
+  appearance: none;
+  font-family: var(--font-type-body-copy-13pt-semibold);
+  font-size: var(--text-type-body-copy-13pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-13pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-13pt-semibold);
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
+.ds-button::before,
+.ds-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  box-sizing: border-box;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+/* Tertiary 의 Hover·Pressed 바탕: Figma "Shade 02 - 5%" = 역할 색 + 채우기 불투명도 5% (ListingCard 하트 선례) */
+.ds-button::after {
+  display: none;
+  background: var(--color-surface-hover);
+  opacity: 0.05;
+}
+
+.ds-button:focus-visible {
+  outline: none;
+}
+
+/* ── Size ── */
+/* Figma 의 모든 Full Width 변형은 높이 47 이다. 글꼴 줄 높이(normal)가 브라우저마다 18~19 로 달라도 47 을 지킨다. */
+.ds-button--full-width {
+  width: 100%;
+  min-height: calc(var(--spacing) * 11.75);
+  padding: calc(var(--spacing) * 3.5) 0;
+  font-family: var(--font-type-body-copy-16pt-semibold);
+  font-size: var(--text-type-body-copy-16pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-16pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-16pt-semibold);
+}
+
+/* ── Primary (238:2153) ── */
 .ds-button--primary {
-  background: var(--color-primary);
   color: var(--color-on-primary);
 }
 
+.ds-button--primary::before {
+  background-image: var(--gradient-selfmake-1);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.ds-button--primary:hover:not(.ds-button--disabled, .ds-button--loading)::before {
+  background-image: var(--gradient-selfmake-2);
+}
+
+.ds-button--primary:active:not(.ds-button--disabled, .ds-button--loading)::before {
+  background-image: var(--gradient-selfmake-3);
+}
+
+/* ── Secondary (238:2188): Hover 는 Figma 에 차이가 없다 ── */
 .ds-button--secondary {
-  background: var(--color-surface-raised);
-  color: var(--color-text);
-  border-color: var(--color-border);
+  color: var(--color-on-inverse);
 }
 
-.ds-button--outline {
-  background: transparent;
-  border-color: var(--color-border-strong);
-  color: var(--color-text);
+.ds-button--secondary::before {
+  background: var(--color-surface-inverse);
 }
 
+/* ── Tertiary (238:2256) ── */
 .ds-button--tertiary {
-  background: transparent;
-  border-color: transparent;
   color: var(--color-text);
 }
 
-.ds-button--primary:hover:not(:disabled) { background: var(--color-primary-hover); }
-.ds-button--primary:active:not(:disabled) { background: var(--color-primary-active); }
-
-.ds-button--l { min-height: calc(var(--spacing) * 10); }
-.ds-button--m { min-height: calc(var(--spacing) * 8); }
-.ds-button--s { min-height: calc(var(--spacing) * 7); }
-
-.ds-button:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.ds-button--tertiary::before {
+  border: var(--border-width-thin) solid var(--color-border-emphasis);
 }
 
-.ds-button:disabled,
-.ds-button[aria-disabled="true"] {
-  color: var(--color-text-disabled);
+.ds-button--tertiary:hover:not(.ds-button--disabled, .ds-button--loading)::after,
+.ds-button--tertiary:active:not(.ds-button--disabled, .ds-button--loading)::after {
+  display: block;
+}
+
+/* ── Pressed: Full Width 는 그림만 좌우 16씩 줄어든다(520 → 488) ── */
+.ds-button--full-width:active:not(.ds-button--disabled, .ds-button--loading)::before,
+.ds-button--full-width:active:not(.ds-button--disabled, .ds-button--loading)::after {
+  inset: 0 calc(var(--spacing) * 4);
+}
+
+/* ── Focus ── */
+/* Primary·Secondary: 안쪽 2px 테두리 + 4px 떨어진 바깥 틀(모서리 8 + 4 = 12). 자리를 차지하지 않는다. */
+.ds-button--primary:focus-visible::before,
+.ds-button--secondary:focus-visible::before {
+  box-shadow:
+    inset 0 0 0 var(--border-width-thick) var(--color-focus-ring-inner),
+    0 0 0 calc(var(--spacing) * 1) var(--color-focus-ring);
+}
+
+/* Tertiary Full Width: 테두리가 2.5px 로 두꺼워진다(크기 그대로, 안쪽 선).
+   Chrome 은 border 두께를 정수 px 로 내리므로 1px 테두리 + 안쪽 1.5px 그림자로 2.5px 를 그린다. */
+.ds-button--tertiary.ds-button--full-width:focus-visible::before {
+  border-color: var(--color-focus-ring);
+  box-shadow: inset 0 0 0 calc(var(--border-width-thin) * 1.5) var(--color-focus-ring);
+}
+
+/* Tertiary Small: Figma Focus 는 Hover 와 같은 모양이다. */
+.ds-button--tertiary.ds-button--small:focus-visible::after {
+  display: block;
+}
+
+/* ── Disabled · Loading ── */
+.ds-button--disabled,
+.ds-button--primary.ds-button--loading,
+.ds-button--tertiary.ds-button--loading {
+  color: var(--color-on-disabled);
+}
+
+.ds-button--disabled::before,
+.ds-button--primary.ds-button--loading::before,
+.ds-button--tertiary.ds-button--loading::before {
+  border: none;
+  background: var(--color-surface-disabled);
+}
+
+.ds-button--disabled {
   cursor: not-allowed;
+}
+
+.ds-button--loading {
+  cursor: progress;
+}
+
+/* 글자는 화면에서 숨기고 읽기 프로그램 이름으로만 남긴다(Q-05). */
+.ds-button--loading .ds-button__label {
+  position: absolute;
+  width: var(--border-width-thin);
+  height: var(--border-width-thin);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 점 3개(36×8). 위아래 여백은 Figma 의 점 상자(Full Width 19 = 6+8+5, Small 16)와 같게 둔다. */
+.ds-button__dots {
+  display: block;
+  flex: none;
+  margin: calc(var(--spacing) * 1.5) 0 calc(var(--spacing) * 1.25);
+}
+
+.ds-button--small .ds-button__dots {
+  margin: calc(var(--spacing) * 1) 0;
+}
+
+.ds-button--secondary.ds-button--small .ds-button__dots {
+  margin: calc(var(--spacing) * 1.5) 0 calc(var(--spacing) * 0.5);
+}
+
+/* Tertiary Small Loading 은 Figma 에서 84×47 이다(점 상자 15). */
+.ds-button--tertiary.ds-button--small .ds-button__dots {
+  margin: calc(var(--spacing) * 0.875) 0;
+}
+
+.ds-button__dot--muted {
+  fill: var(--color-loading-dot-muted);
+}
+
+/* ── Icon = On (Secondary·Tertiary Full Width) ── */
+.ds-button__icon {
+  display: inline-flex;
+  flex: none;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  overflow: hidden;
+}
+
+.ds-button__icon > * {
+  display: block;
+  flex: none;
+}
+
+/* Tertiary: 24×24 칸을 왼쪽 24 · 위 12 에 두고 글자는 가운데 그대로. */
+.ds-button--tertiary .ds-button__icon {
+  position: absolute;
+  top: calc(var(--spacing) * 3);
+  left: calc(var(--spacing) * 6);
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
 }

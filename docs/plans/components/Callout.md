@@ -1,0 +1,196 @@
+---
+kind: component
+component: Callout
+revision: 1
+status: approved
+source_kind: figma
+source_url: https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=235-2641&m=dev
+facts_complete: true
+open_questions: 0
+---
+
+# 컴포넌트 구현 계획 — Callout
+
+> 작성: Claude Code, 2026-11-26. 근거: `docs/plans/design-system-airbnb.md` 1단계 목록의 `Callout`(새로 만듦). 이 문서는 계획이며, 사용자 승인 전에는 구현 파일을 만들지 않는다. 사이트 페이지는 이 계획에서 고치지 않는다.
+> 갱신(2026-11-26, revision 1 유지): 사용자가 채팅에서 "추천안 모두 채택"을 골랐다. 그 결정과 리드가 확인한 사실(새 토큰)을 반영했다. 계획 승인은 아직 받지 않았다.
+
+## 1. 요청과 적용 규칙
+
+- 요청한 작업: Figma "Callouts" 세트(235:2641)를 Storybook 부품 `Callout`으로 만든다. 세트 안에서 쓰는 "Callout Icons" 세트(235:2613)의 아이콘 3종은 Callout 안에서 그린다(Q-03 A2).
+- 원본 노드:
+  - Callouts 235:2641(이 계획의 `source_url`)
+  - Callout Icons 235:2613(https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/testing-Airbnb-UI-Kit--Community---%EB%B3%B5%EC%82%AC-?node-id=235-2613&m=dev)
+- 읽은 공통 규칙: `docs/ai-component-workflow.md` 버전 1.0 / R01~R09(R05의 Nested parts 규칙 포함)
+- 읽은 스펙: `docs/ai-design-system-spec.md` 버전 1.1
+- Figma 조회: 2026-11-26 Figma Desktop MCP로 직접 조회했다(캐시 아님).
+  - `get_design_context 235:2641`: 두 변형의 코드와 스크린샷
+  - `get_design_context 235:2613`: 세 변형의 코드와 스크린샷
+  - `get_variable_defs 235:2641`, `get_variable_defs 235:2613`
+  - 응답은 잘리지 않았다.
+  - asset 3개는 scratchpad로 내려받아 읽었고, 프로젝트에는 복사하지 않았다.
+- 리드가 확인한 사실(2026-11-26): Colors 245:3518·Typography 245:3517·Elevation 245:3354를 가져와 `ds:tokens`를 실행했다. 그 결과 primitive `--color-accent-01`·`--color-accent-02`와 글자 토큰 `body-copy-12pt-regular`가 생겼다.
+- 페이지 쪽 참고 자료(읽기만 함, `my-website/figma/*.layers.xml`과 `Checkout.png`):
+  - Home의 "Your reservations"(767:348)에는 `Callouts` 인스턴스 4개(424:10809·424:10810·424:10811·767:349, 각 361×165)가 있다. Cancelation 변형이며, 롤아웃 문서 §6에서도 Callout 대응으로 바로잡았다.
+  - Checkout의 "Rare find! This place is usually booked"는 Callout 인스턴스가 아닌 일반 frame이다(분홍 바탕 한 줄, 아이콘이 왼쪽).
+- 대상 코드·토큰 기준: git-demo 작업 폴더의 현재 `src/tokens/tokens.css`(위 가져오기 반영 뒤). 새 색 역할은 리드가 `docs/plans/tokens.md` revision 5에 넣는다.
+
+## 2. 컴포넌트의 역할과 AI의 해석
+
+| 항목 | 확인된 사실과 출처 | AI의 해석 | 사용자의 확정/정정 |
+|---|---|---|---|
+| 부품의 역할 | 세트의 축은 `Property 1` 하나이고 값은 Property Highlight와 Cancelation이다(Figma 기본값은 Cancelation). Property Highlight(235:2640): 흰 상자 안에 굵은 문장 + 보통 문장, 오른쪽에 아이콘 32. Cancelation(235:2639): "Your reservation" 제목, 사진 자리, "CANCELED", 숙소 이름, 예약 코드. | 숙소의 특징이나 예약 상태를 알려 주는 정보 상자. 누르는 부품이 아니다. | Q-01 A·Q-02 A 채택 |
+| 누를 수 있는 영역 | Figma에 링크·버튼·hover 모양이 없다. | 없음(정적 상자) | Q-06 A 채택 |
+| 클릭/선택/열림 동작 | 없음 | 만들지 않음 | Q-06 A 채택 |
+| 키보드·포커스 범위 | Focus 변형 없음 | 포커스가 가는 요소 없음 | Q-06 A 채택 |
+| disabled 동작 | 없음 | 만들지 않음 | Q-06 A 채택 |
+
+## 3. 기존 부품과 변경 범위
+
+- 같은 역할의 기존 컴포넌트, 공개 import, 사용처:
+  - `src/components/`에 Callout·Callouts·Callout Icons라는 이름의 부품이 없다.
+  - 가장 가까운 것은 `Notification`이다. 다만 tone(info/success/warning/danger), inline/toast, 닫기 버튼을 갖고 `role="status"`/`"alert"`로 읽히는 상태 알림이라 역할이 다르다. 그대로 둔다(Q-01 A).
+  - `Card`(키트 기본 상자)와 `Tile`도 이름과 역할이 다르다.
+- 기존 props·stories에서 확인한 지원 범위: 해당 없음(새 부품).
+- 새 부품이 필요한 이유: 같은 이름의 키트 부품이 없고, Notification을 바꾸면 그 부품의 상태 알림 계약이 달라진다.
+- 변경할 파일(승인 후): `src/components/Callout/Callout.tsx`·`.css`·`.stories.tsx`·`Callout.figma.tsx`·`index.ts`(새로).
+- 승인된 변경에서 영향받는 기존 사용처: 없음. 새 색 역할은 기존 역할의 값을 바꾸지 않는다.
+
+## 4. Nested parts
+
+| Figma instance | Original component / set | Figma variant | Found in requested variants | Kit component and props | Status |
+|---|---|---|---|---|---|
+| `Callout Icons` 235:2614 | `Callout Icons`(set 235:2613) | Type=Diamond. 인스턴스 안쪽 노드 I235:2614;235:2573은 Diamond 변형 235:2578의 그룹 235:2573이다. | 235:2640 Property Highlight | none — drawn inside this part from the Figma SVG(`icon`: diamond·tags·clock, 기본 diamond, 세트 235:2613의 원본 SVG 3종) | confirmed |
+
+- 인스턴스가 없음을 확인한 근거: Cancelation 235:2639에는 인스턴스가 없다. get_design_context에서 이 변형의 노드(232:2130~232:2138)는 모두 frame·text이고, 인스턴스를 뜻하는 `I…;…` id나 컴포넌트 함수가 없다.
+- 글자는 키트 `Text`를 쓰지 않고 Callout 안에서 글자 토큰으로 그린다. Text의 variant(body·body-sm·title)에 16pt·18pt·12pt Semibold가 없다(Q-04 A·Q-05 A).
+- 키트 부품을 import하지 않는다.
+
+## 5. Figma 상태·크기 전체 목록
+
+| Figma 노드 ID / 조합 | 읽기 근거 | 발생 이벤트 또는 지속 상태 | 적용 영역 | 기본 상태와 다른 값·구조 | 아이콘 유무 | 코드 API/CSS 연결 | 확정 여부 |
+|---|---|---|---|---|---|---|---|
+| 235:2640 Property 1=Property Highlight | get_design_context + 스크린샷 | 지속: 변형 | 상자 전체 | 폭 349, 여백 24, 간격 8, 문장(flex 1) + 아이콘 32 | 있음(기본 Diamond, 오른쪽 위) | `type="highlight"` | 확정 |
+| 235:2639 Property 1=Cancelation | get_design_context + 스크린샷 | 지속: 변형 | 상자 전체 | 폭 361, 여백 24, 세로 간격 24. 제목 / 사진 108×72 + 글 묶음 | 없음 | `type="cancelation"` | 확정 |
+| 235:2578 Callout Icons Type=Diamond | get_design_context 235:2613 | 지속: 아이콘 종류 | 아이콘 32×32 | 그룹 30.742×29.79, 위치 (0.63, 1.1) | — | `icon="diamond"`(기본) | 확정 |
+| 235:2602 Callout Icons Type=Tags | get_design_context 235:2613 | 지속: 아이콘 종류 | 아이콘 32×32 | 그룹 33.157×31.427, 위치 (−0.58, 0.29). 32 칸을 조금 넘는다(넘는 부분을 자르지 않음). | — | `icon="tags"` | 확정 |
+| 235:2611 Callout Icons Type=Clock | get_design_context 235:2613 | 지속: 아이콘 종류 | 아이콘 32×32 | 그룹 32×32, 위치 (0, 0) | — | `icon="clock"` | 확정 |
+
+- Focus 링이 감싸는 범위: 해당 없음(누를 요소 없음, Q-06 A).
+- Figma에 실제로 없는 상태·조합: hover, pressed, focus, disabled. Cancelation에 아이콘을 넣은 모양도 없다(`icon`은 highlight에서만 쓴다). CANCELED 말고 다른 예약 상태 모양도 없다.
+- Tags·Clock: Callouts 안에서 그린 모양은 Figma에 없다. 사용자가 Q-03 A2로 아이콘 세트의 3종을 Callout 안 같은 32×32 자리에서 고르도록 정했다.
+- 미조회·실패·잘린 응답:
+  - 실패나 잘림은 없다.
+  - Property Highlight의 높이는 내용에 맞춰 늘어난다(코드에 고정 높이 없음).
+  - Cancelation 높이 165는 Home 인스턴스에서 읽었다. 165 = 24+21+24+72+24로 테두리 두께가 더해지지 않았으므로, 테두리는 Figma 안쪽 선으로 본다. 렌더 검사에서 2px 이내 차이를 확인한다.
+  - design context가 보고한 Callouts의 속성은 `Property 1` 하나뿐이다.
+
+### 크기·간격 (Figma 값 → CSS)
+
+| 요소 | Figma 값 | CSS |
+|---|---|---|
+| 상자(두 변형 공통) | 흰 바탕, 테두리 1 #DDDDDD(안쪽 선), 모서리 12, 여백 24 | `--border-width-thin`, `--radius-lg`, padding `calc(var(--spacing) * 6)`. 안쪽 선과 맞추는 방법(테두리 두께만큼 padding을 빼기)은 구현 때 원본 대조로 확인한다. |
+| 폭 | Property Highlight 349, Cancelation 361 | 부모 폭을 채운다(Q-07 A). Storybook은 Figma 폭(349·361)의 칸에서 보여 준다. |
+| Property Highlight | 문장과 아이콘 사이 8. 위쪽 정렬(items-start). 아이콘 32×32 | gap `calc(var(--spacing) * 2)`, 아이콘 `calc(var(--spacing) * 8)` |
+| Cancelation 세로 묶음 232:2130 | 제목과 아래 줄 사이 24 | gap `calc(var(--spacing) * 6)` |
+| Cancelation 줄 232:2132 | 사진 108×72(모서리 12)과 글 묶음 사이 16 | `calc(var(--spacing) * 27)`×`calc(var(--spacing) * 18)`, `--radius-lg`, gap `* 4` |
+| 글 묶음 232:2134 / 232:2136 | CANCELED와 다음 묶음 사이 2. 이름과 코드 사이 8 | gap `calc(var(--spacing) * 0.5)` / `* 2` |
+| 줄 높이 | 글자 상자는 `leading-normal`. 스타일의 lineHeight 100은 단위를 알 수 없다. | `line-height: normal` |
+
+## 6. 색·alpha·디자인 토큰 대응
+
+| 요소 / 상태 | Figma 원본 값·alpha / 변수 | primitive | semantic / 역할 | 생성 CSS의 해석 값 | 값·역할 일치 여부 | 미확정 또는 새 매핑 필요 사유 |
+|---|---|---|---|---|---|---|
+| 상자 바탕 | #FFFFFF / Shade 01 | shade-01 | `surface` | #FFFFFF | 일치(부품 표면) | — |
+| 상자 테두리 | #DDDDDD / Neutral 03 | neutral-03 | `border` | #DDDDDD | 일치 | — |
+| 문장·제목·숙소 이름·예약 코드 | #222222 / Shade 02 | shade-02 | `text` | #222222 | 일치 | — |
+| "CANCELED" | #C13515 / Error 02 | error-02 | `danger` | #C13515 | 일치(오류·위험 = 취소 상태, Q-08 A) | — |
+| 사진 자리 232:2133 | #DDDDDD / Neutral 03 | neutral-03 | `image-placeholder-subtle`(새, 합친 목록) | rev 5 적용 뒤 #DDDDDD | 일치 | 기존 `image-placeholder`는 #B0B0B0(Neutral 06)이라 값이 다르다. `border`·`indicator`는 값만 같고 역할이 다르다. |
+| 아이콘 선(세 아이콘 모두) | #D03660 / Accent 02 | accent-02(지금 있음) | `icon-accent`(새, 합친 목록) | rev 5 적용 뒤 #D03660 | 일치 | 새 역할. primitive는 리드가 가져옴 |
+| 아이콘 연한 채움(세 아이콘 모두) | #F6D7DF / Accent 01 | accent-01(지금 있음) | `icon-accent-subtle`(새, 합친 목록) | rev 5 적용 뒤 #F6D7DF | 일치 | 새 역할 |
+| 아이콘 흰 채움(Tags·Clock) | #FFFFFF(SVG `white`) / Shade 01 | shade-01 | `surface` | #FFFFFF | 일치(아이콘이 놓인 상자 바탕과 같은 흰색, Q-08 A) | — |
+| Diamond 마스크 | `fill="white"`(`<mask>` 안) | — | 없음 | — | 해당 없음 | Figma 안쪽 선을 표현하는 마스크라 화면에 보이는 색이 아니다. |
+| 그림자 | 없음 | — | — | — | — | 두 변형 모두 effect가 없다. |
+
+- 컴포넌트 fill과 Figma 부모 배경을 구분한 결과: 상자 자체가 흰색 fill이다. 세트 스크린샷의 회색은 Figma 세트 캔버스 배경이다. Storybook 캔버스는 페이지와 같은 흰 배경을 쓴다.
+- 같은 값의 후보가 여러 개일 때 선택 근거:
+  - #DDDDDD는 `border`·`indicator` 역할이 이미 있다. 하지만 사진 자리 채움은 둘 다와 역할이 달라 `image-placeholder-subtle`을 쓴다.
+  - 흰색은 부품 표면인 `surface`만 쓴다. `info`·`success`·`warning`은 흰색으로 잘못 매핑된 역할이라 쓰지 않는다.
+- 신규 token:
+  - 새 역할: `icon-accent`·`icon-accent-subtle`·`image-placeholder-subtle`. 리드가 tokens.md revision 5에 넣는다.
+  - primitive `accent-01`·`accent-02`·`neutral-03`은 지금 `tokens.css`에 있다.
+- 글자 토큰(모두 지금 `tokens.css`에 있음):
+
+| Figma 스타일 | 쓰는 곳 | 토큰 |
+|---|---|---|
+| Body Copy/16pt Semibold(16/590) | "This is a rare find.", 숙소 이름 | `--text-type-body-copy-16pt-semibold` + `--font-weight-type-body-copy-16pt-semibold` + `--font-type-body-copy-16pt-semibold` |
+| Body Copy/16pt Regular(16/400) | "Hope’s place on Airbnb is usually fully booked." | `--text-type-body-copy-16pt-regular` + weight + font |
+| Body Copy/18pt Semibold(18/590) | "Your reservation" | `--text-type-body-copy-18pt-semibold` + weight + font |
+| Body Copy/12pt Semibold(12/590) | "CANCELED" | `--text-type-body-copy-12pt-semibold` + weight + font |
+| 스타일 없음: SF Pro Regular 12/400(232:2138) | "Reservation code: XMPQKAPZ6D" | `--text-type-body-copy-12pt-regular` + `--font-weight-type-body-copy-12pt-regular` + `--font-type-body-copy-12pt-regular`(값 12/400이 정확히 같음, Q-09 A) |
+
+- 토큰 생성 경로·검증 계획: 리드가 tokens.md revision 5를 적용한다(`pnpm ds:apply-token-plan docs/plans/tokens.md` → `pnpm ds:tokens`). 그 뒤 구현에서 쓰는 모든 `var(--…)`가 정의돼 있는지 `pnpm ds:guard`(G13)로 확인한다. 생성물은 직접 고치지 않는다.
+
+## 7. 원본 아이콘·asset
+
+asset 이름은 MCP asset 해시 앞 8자이고, 괄호 안은 내려받은 파일의 sha256 앞 12자다.
+
+| asset / Figma 노드 | 원본 파일/벡터 경로 또는 해시 | 크기·색·stroke·회전 | 나타나는 상태·조합 | 나타나지 않는 상태·조합 | 확인 여부 |
+|---|---|---|---|---|---|
+| Diamond 그룹 235:2573(변형 235:2578, Callouts 안 I235:2614;235:2573) | 569836a9….svg (d7494e75e365) | 상자 30.879×30.386. 채움 #F6D7DF. 다이아 외곽 stroke #D03660 2.383(마스크로 안쪽만), 윗면 선·가운데 선 stroke #D03660 1.192. 회전 없음 | highlight + `icon="diamond"`(기본) | cancelation | 확인 |
+| Tags 그룹 235:2600(변형 235:2602) | f229b359….svg (3d1799b7c383) | 상자 33.244×31.872. 꼬리표 2장(채움 흰색, stroke #D03660 1), 안쪽 채움 #F6D7DF, 구멍 원 r1.3 stroke #D03660 1.25 | highlight + `icon="tags"` | cancelation | 확인 |
+| Clock 그룹 235:2609(변형 235:2611) | 6f0ace34….svg (62dec7217a5c) | 32×32. 원 r15.25(채움 흰색, stroke #D03660 1.5), 부채꼴 #F6D7DF, 바늘 stroke #D03660 1.5 | highlight + `icon="clock"` | cancelation | 확인 |
+
+- 그리는 방법: 키트 규칙대로 `<svg>` JSX로 그리고, 경로·크기·위치는 원본 그대로 쓴다. 아이콘이 여러 색이라 `currentColor` 하나로는 칠할 수 없으므로, 각 path의 색을 CSS 토큰 클래스로 준다(ListingCard 하트와 같은 방식).
+- Diamond의 `<mask>`는 그대로 둔다.
+- 아이콘은 장식이라 `aria-hidden`을 붙인다.
+
+## 8. 공개 API와 실제 기능
+
+| prop / 이벤트 | 근거 | 기본값·허용값 | 실제 동작 / 결과 | 키보드·disabled 처리 | 사용자 확정 |
+|---|---|---|---|---|---|
+| `type` | 세트 축 `Property 1` | `"highlight"` / `"cancelation"` | 변형에 맞게 렌더 | — | Q-02 A |
+| `title`(highlight) | text 145:1889 앞부분 | "This is a rare find." | 굵은 글(16pt Semibold) | — | Q-04 A |
+| `children`(highlight) | text 145:1889 뒷부분 | "Hope’s place on Airbnb is usually fully booked." | title 뒤에 공백을 두고 같은 문단에 보통 글(16pt Regular) | — | Q-04 A |
+| `icon`(highlight) | Callout Icons 235:2613 | `"diamond"`(기본) / `"tags"` / `"clock"` | 오른쪽 위 32×32 아이콘, `aria-hidden` | — | Q-03 A2 |
+| `title`(cancelation) | 232:2131 | "Your reservation" | 18pt Semibold 제목 | — | Q-05 A |
+| `imageSrc` / `imageAlt` | 232:2133 | 없음 / "" | 있으면 108×72 사진을 채우고, 없으면 #DDDDDD 자리 | — | Q-05 A |
+| `status` | 232:2135 | "CANCELED" | 12pt Semibold, 늘 `danger` 색 | — | Q-05 A |
+| `name` | 232:2137 | "tiny house, tiny farm" | 16pt Semibold | — | Q-05 A |
+| `code` | 232:2138 | "Reservation code: XMPQKAPZ6D" | 12pt Regular | — | Q-05 A |
+| 최상위 요소 | — | `<div>` | `data-testid="ds-callout"`, 클래스 `ds-callout`·`ds-callout--<type>`. 링크·버튼 없음 | 포커스가 가는 요소 없음 | Q-06 A |
+
+## 9. Q&A와 사용자 결정
+
+| 질문 ID | 미확정 항목과 근거 | 선택지 / 각 선택의 영향 | 사용자 답 | 해결 상태 |
+|---|---|---|---|---|
+| Q-01 | 부품 이름과 역할(Notification은 상태 알림) | A. 새 `Callout`, Notification 유지(추천). B. Notification에 variant 추가 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-02 | 범위. Home "Your reservations"가 Cancelation 인스턴스 | A. 두 변형 모두(추천). B. Property Highlight만 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 롤아웃 문서 §6도 Home "Your reservation"을 Callout으로 바로잡았다. | resolved |
+| Q-03 | 아이콘(`Callout Icons` 235:2614, 같은 이름의 키트 부품 없음) | A1. `none`, diamond만. A2. `none`, diamond·tags·clock(추천). B. 별도 `CalloutIcon` 부품 | 추천안 채택(A2) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-04 | Property Highlight 문장 API | A. `title` + `children`(추천). B. `children` 하나 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-05 | Cancelation API | A. `title`·`imageSrc`·`imageAlt`·`status`·`name`·`code`, status는 늘 danger(추천). B. 상태를 canceled로 고정 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-06 | 동작(Figma에 누를 곳 없음) | A. 정적 상자(추천). B. Cancelation 전체를 링크로 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-07 | 폭(Figma 349·361 고정) | A. 부모 폭 채움, Storybook은 Figma 폭(추천). B. 고정 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26) | resolved |
+| Q-08 | 색 역할 | A. 제안대로(추천). B. 사용자가 이름 지정. C. 다시 가져온 뒤 역할만 지정 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 새 색 역할은 "합친 목록 + 다시 가져오기"로 결정했다. `icon-accent`·`icon-accent-subtle`·`image-placeholder-subtle`은 합친 목록의 이름과 같고, primitive `accent-01`·`accent-02`는 리드가 가져왔다. | resolved |
+| Q-09 | 스타일 없는 12px/400 글자(232:2138) | A. 새 글자 토큰(추천). B. Figma에 스타일 지정 후 가져오기. C. 다른 토큰 섞기 | 추천안 채택(A) — 사용자가 "추천안 모두 채택" 선택 (chosen in chat, 2026-11-26). 리드가 Typography를 가져와 생긴 `body-copy-12pt-regular`(12/400)가 정확히 같다 → 그 토큰을 쓴다. | resolved |
+
+모든 질문이 해결됐다. 이 결정들은 계획 내용이며, 계획 승인("Approve revision 1")은 아직 받지 않았다.
+
+## 10. 검증 계획
+
+| 확인 대상 | 원본의 기대 결과 | 검사 방법 | 완료 증거 |
+|---|---|---|---|
+| 기본 상태와 캔버스 배경 | 235:2641 스크린샷과 같은 모양. 흰 상자와 흰 캔버스 | Storybook iframe 스크린샷·computed style | |
+| 모든 상태·크기 | highlight(349 칸)와 cancelation(361 칸, 높이 165)이 같은 여백·간격·글자 크기. 테두리 안쪽 선과의 차이(2px 이내)를 기록 | DOM 측정, 원본 대조 | |
+| 아이콘과 노출 조건 | `icon` 3종이 235:2613 스크린샷과 같은 모양·위치로 오른쪽 위 32×32에 있음. cancelation에는 아이콘 없음 | DOM·스크린샷 대조 | |
+| 클릭·입력·선택 등 기능 | 누를 요소가 없음 | Storybook play에서 버튼·링크가 없음을 확인 | |
+| disabled / Tab / Focus | Tab이 Callout 안에서 멈추지 않음 | play `userEvent.tab` | |
+| Nested parts identity | 해당 없음: 아이콘 행이 `none`이라 키트 부품을 import하지 않음 | 코드 검토, `ai:check` | |
+| 공통 규칙 및 기존 사용처 | 토큰만 사용, Notification 등 기존 부품에 영향 없음 | `pnpm ai:check Callout`, `pnpm ai:verify Callout`, `pnpm typecheck`, `pnpm ds:guard` | |
+
+명령 검사와 시각 원본 대조를 따로 기록한다. 아직 수행한 검사는 없다.
+
+## 11. 사용자 검토
+
+- 계획 내용에 대한 사용자 수정·결정: Q: 부품 계획 8개의 질문 91개를 어떻게 답할까요? → A: 추천안 모두 채택 (chosen in chat, 2026-11-26). Q: 새 색 역할 → A: 합친 목록 + 다시 가져오기 (chosen in chat, 2026-11-26).
+- 승인한 revision: 1 — 사용자 "Approve revision 1·5 (권장)" 선택 (chosen in chat, 2026-11-26)
+- 구현 전에 남은 조건: 없음. tokens.md revision 5(`icon-accent`·`icon-accent-subtle`·`image-placeholder-subtle`)는 적용됐다.

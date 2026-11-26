@@ -1,21 +1,571 @@
-/* Card — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
-/* 표면색(surface)이 배경색(bg)과 같을 수 있으므로 경계는 테두리·그림자로 만든다. */
+/* Card — Figma Card set 238:2378 (Sleep · Discount · Map · Reservation · Reservation Confirmation).
+   semantic·layout 토큰만 쓴다. Default Card 는 ListingCard. 값의 근거는 docs/plans/components/Card.md §5·§6. */
 .ds-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 2);
-  padding: calc(var(--spacing) * 4);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-lg);
-  font-family: var(--font-sans);
-  font-size: var(--text-body-2);
-  line-height: var(--leading-normal);
-  background: var(--color-surface-raised);
-  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  font-family: var(--font-type-body-copy-14pt-regular);
   color: var(--color-text);
 }
 
-.ds-card:focus-visible {
-  outline: var(--border-width-thick) solid var(--color-primary);
-  outline-offset: var(--border-width-thick);
+/* 기본 여백만 지운다(:where 로 우선순위 0 — 아래 요소별 margin 이 이긴다). */
+:where(.ds-card) :where(p, h3) {
+  margin: 0;
+}
+
+/* ── 글자 스타일 (Figma text style → 토큰). 줄 높이는 Figma 코드의 leading normal. ── */
+.ds-card__text-10-strong,
+.ds-card__text-12,
+.ds-card__text-14,
+.ds-card__text-14-strong,
+.ds-card__text-16,
+.ds-card__text-16-underlined,
+.ds-card__text-16-strong,
+.ds-card__text-16-medium,
+.ds-card__text-22-strong {
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* Mirco Text/10pt Semibold */
+.ds-card__text-10-strong {
+  font-family: var(--font-type-mirco-text-10pt-semibold);
+  font-size: var(--text-type-mirco-text-10pt-semibold);
+  font-weight: var(--font-weight-type-mirco-text-10pt-semibold);
+  letter-spacing: var(--tracking-type-mirco-text-10pt-semibold);
+}
+
+/* 12px Regular ("Entire cabin", 스타일 연결 없음 — 같은 값의 Body Copy/12pt Regular) */
+.ds-card__text-12 {
+  font-family: var(--font-type-body-copy-12pt-regular);
+  font-size: var(--text-type-body-copy-12pt-regular);
+  font-weight: var(--font-weight-type-body-copy-12pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-12pt-regular);
+}
+
+/* Body Copy/14pt Regular */
+.ds-card__text-14 {
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+}
+
+/* Body Copy/14pt Semibold */
+.ds-card__text-14-strong {
+  font-family: var(--font-type-body-copy-14pt-semibold);
+  font-size: var(--text-type-body-copy-14pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-14pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-14pt-semibold);
+}
+
+/* Body Copy/16pt Regular */
+.ds-card__text-16 {
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+}
+
+/* Body Copy/16pt Regular Underlined (밑줄 두께·위치 from-font, skip-ink none) */
+.ds-card__text-16-underlined {
+  font-family: var(--font-type-body-copy-16pt-regular-underlined);
+  font-size: var(--text-type-body-copy-16pt-regular-underlined);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular-underlined);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular-underlined);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+/* Body Copy/16pt Semibold */
+.ds-card__text-16-strong {
+  font-family: var(--font-type-body-copy-16pt-semibold);
+  font-size: var(--text-type-body-copy-16pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-16pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-16pt-semibold);
+}
+
+/* "Bedroom 2" 16px Medium 510 (스타일 없음). 16pt Medium 스타일이 없어 굵기는 18pt Medium 토큰(510) — 계획 Q-17 */
+.ds-card__text-16-medium {
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-18pt-medium);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+}
+
+/* Header/22pt Semibold */
+.ds-card__text-22-strong {
+  font-family: var(--font-type-header-22pt-semibold);
+  font-size: var(--text-type-header-22pt-semibold);
+  font-weight: var(--font-weight-type-header-22pt-semibold);
+  letter-spacing: var(--tracking-type-header-22pt-semibold);
+}
+
+.ds-card__tone-secondary {
+  color: var(--color-text-secondary);
+}
+
+.ds-card__tone-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+/* 한 줄 글자가 칸보다 길면 말줄임(Figma 크기에서는 잘리지 않는다). */
+.ds-card__single {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── 공용 조각 ── */
+.ds-card__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-image-placeholder);
+}
+
+.ds-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 하트 24×24, 사진 오른쪽 위에서 16·16. 속은 Shade 02 30%, 테두리는 흰색 2. */
+.ds-card__heart {
+  position: absolute;
+  top: calc(var(--spacing) * 4);
+  right: calc(var(--spacing) * 4);
+  z-index: 1;
+  display: flex;
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.ds-card__heart-shape {
+  fill-opacity: 0.3;
+  stroke: var(--color-on-image);
+}
+
+/* 사진 점 49×6, 가운데. 첫 점 흰색, 나머지 Neutral 03(고정, 계획 Q-14). */
+.ds-card__dots {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--spacing) * 2);
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.ds-card__dot {
+  color: var(--color-indicator);
+}
+
+.ds-card__dot--current {
+  color: var(--color-on-image);
+}
+
+.ds-card__row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+  min-width: 0;
+}
+
+/* 별 16×16 칸 + 4 + 숫자 */
+.ds-card__rating {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: calc(var(--spacing) * 1);
+}
+
+.ds-card__star {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  color: var(--color-text);
+}
+
+/* Figma Star 1 의 위치: inset 4.19% 6.28% 12.34% 6.28% */
+.ds-card__star-shape {
+  position: absolute;
+  top: 4.19%;
+  left: 6.28%;
+  width: 87.44%;
+  height: 83.47%;
+}
+
+.ds-card__separator {
+  flex-shrink: 0;
+}
+
+.ds-card__separator--text {
+  color: var(--color-text);
+}
+
+.ds-card__separator--tertiary {
+  color: var(--color-text-tertiary);
+}
+
+/* 취소선: 글자 칸 위에서 8 에 1px(Discount), 11 에 2px(Reservation). 글자 색과 같은 색. */
+.ds-card__strike {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.ds-card__strike::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--spacing) * 2);
+  left: 0;
+  right: 0;
+  height: var(--border-width-thin);
+  background: currentColor;
+}
+
+.ds-card__strike--thick::after {
+  top: calc(var(--spacing) * 2.75);
+  height: var(--border-width-thick);
+}
+
+/* ── Sleep (238:2379) ── */
+.ds-card--sleep .ds-card__media {
+  aspect-ratio: 319 / 212;
+}
+
+.ds-card__sleep-title {
+  margin-top: calc(var(--spacing) * 4);
+}
+
+.ds-card__sleep-description {
+  margin-top: calc(var(--spacing) * 1);
+}
+
+/* ── Discount (238:2461) ── */
+.ds-card--discount .ds-card__media {
+  aspect-ratio: 324 / 308;
+}
+
+/* 배지: 왼쪽 위 16·16, 안쪽 4/8, 모서리 4, 흰 바탕 */
+.ds-card__badge {
+  position: absolute;
+  top: calc(var(--spacing) * 4);
+  left: calc(var(--spacing) * 4);
+  z-index: 1;
+  padding: calc(var(--spacing) * 1) calc(var(--spacing) * 2);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* 글 묶음은 사진 아래 16. 별점은 Figma 처럼 글 묶음 위에 겹쳐 오른쪽 끝에 둔다(긴 둘째 줄이 줄어들지 않게). */
+.ds-card__body {
+  position: relative;
+  margin-top: calc(var(--spacing) * 4);
+}
+
+.ds-card__body > .ds-card__rating {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ds-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  min-width: 0;
+}
+
+.ds-card__info-lines {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 1);
+  min-width: 0;
+}
+
+/* ── Map (238:2517) ── */
+.ds-card--map {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevation-03);
+}
+
+.ds-card--map .ds-card__media {
+  aspect-ratio: 327 / 211;
+  border-radius: 0;
+}
+
+.ds-card--map .ds-card__dots {
+  bottom: calc(var(--spacing) * 3);
+}
+
+/* 닫기 24×24, 왼쪽 위 16·16: 원 Shade 02 30% + 흰 X */
+.ds-card__close {
+  position: absolute;
+  top: calc(var(--spacing) * 4);
+  left: calc(var(--spacing) * 4);
+  z-index: 1;
+  display: flex;
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.ds-card__close-circle {
+  fill-opacity: 0.3;
+}
+
+.ds-card__close-mark {
+  fill: var(--color-on-image);
+}
+
+/* 흰 패널 78: 안쪽 16, 왼쪽 이름·가격(사이 12), 오른쪽 별점 */
+.ds-card__panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+  padding: calc(var(--spacing) * 4);
+  background: var(--color-surface);
+}
+
+.ds-card__map-info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 3);
+  min-width: 0;
+}
+
+/* ── Reservation (238:2383) · Reservation Confirmation (238:2420) — 흰 바탕, 테두리 1, 모서리 12, Elevation 03.
+   내용은 바깥 가장자리에서 24(테두리 1 + 안쪽 23). ── */
+.ds-card--reservation,
+.ds-card--reservation-confirmation {
+  padding: calc(var(--spacing) * 6 - var(--border-width-thin));
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-elevation-03);
+}
+
+.ds-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+}
+
+/* "$500" "$440" "night" 기준선 정렬, 사이 4 */
+.ds-card__header-price {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--spacing) * 1);
+}
+
+/* 별점 묶음은 머리줄 위에서 6 */
+.ds-card__header-rating {
+  flex-shrink: 0;
+  margin-top: calc(var(--spacing) * 1.5);
+}
+
+/* 날짜·인원 칸: 위 두 칸 56(모서리 12 위쪽), 아래 칸 56(모서리 12 아래쪽), 위 칸과 1px 겹침. 선 1px Neutral 07. */
+.ds-card__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: calc(var(--spacing) * 6);
+}
+
+.ds-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 0.5);
+  box-sizing: border-box;
+  height: calc(var(--spacing) * 14);
+  min-width: 0;
+  border: var(--border-width-thin) solid var(--color-border-field);
+  color: var(--color-text);
+}
+
+.ds-card__field--check-in {
+  padding: calc(var(--spacing) * 3 - var(--border-width-thin)) 0 0 calc(var(--spacing) * 3 - var(--border-width-thin));
+  border-top-left-radius: var(--radius-lg);
+}
+
+/* 오른쪽 칸은 왼쪽 선이 없다(왼쪽 칸의 선을 같이 씀). 글자는 칸의 Figma 왼쪽 끝(0.5 겹침)에서 12. */
+.ds-card__field--check-out {
+  padding: calc(var(--spacing) * 3 - var(--border-width-thin)) 0 0 calc(var(--spacing) * 3 - var(--border-width-thin) / 2);
+  border-left: 0;
+  border-top-right-radius: var(--radius-lg);
+}
+
+.ds-card__field--guests {
+  grid-column: 1 / -1;
+  margin-top: calc(var(--border-width-thin) * -1);
+  padding: calc(var(--spacing) * 3) 0 0 calc(var(--spacing) * 3 - var(--border-width-thin));
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.ds-card__field-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Reserve: 칸 아래 19, 안쪽 16/24, 모서리 8, Gradient 02. hover 는 Primary Hover 와 같은 Gradient 03(계획 Q-16). */
+.ds-card__reserve {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: calc(var(--spacing) * 4.75);
+  padding: calc(var(--spacing) * 4) calc(var(--spacing) * 6);
+  border: 0;
+  border-radius: var(--radius-md);
+  background-image: var(--gradient-selfmake-1);
+  color: var(--color-on-primary);
+  cursor: pointer;
+}
+
+.ds-card__reserve:hover {
+  background-image: var(--gradient-selfmake-2);
+}
+
+/* 안내: 버튼 아래 21, 가운데 */
+.ds-card__note {
+  margin-top: calc(var(--spacing) * 5.25);
+  text-align: center;
+}
+
+/* 금액 줄: 위 24, 줄 사이 16 */
+.ds-card__lines {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  margin: calc(var(--spacing) * 6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-card__line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+}
+
+.ds-card__amount--discount {
+  color: var(--color-text-discount);
+}
+
+/* 구분선 1px Neutral 03: 위 내용에서 23 아래, 선 다음 24 */
+.ds-card__divider {
+  box-sizing: border-box;
+  width: 100%;
+  height: 0;
+  margin: calc(var(--spacing) * 6 - var(--border-width-thin)) 0 calc(var(--spacing) * 6);
+  border: 0;
+  border-top: var(--border-width-thin) solid var(--color-border);
+}
+
+/* Reservation Confirmation: 사진 124×106 + 12 + 숙소 정보(별점 줄은 사진 아래 끝에 맞춤) */
+.ds-card__listing {
+  display: flex;
+  gap: calc(var(--spacing) * 3);
+}
+
+.ds-card__thumb {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: calc(var(--spacing) * 31);
+  height: calc(var(--spacing) * 26.5);
+  border-radius: var(--radius-lg);
+  background: var(--color-image-placeholder);
+}
+
+.ds-card__listing-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ds-card__listing-title {
+  margin-top: calc(var(--spacing) * 1);
+}
+
+.ds-card__listing-meta {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  margin-top: auto;
+}
+
+/* 메달: 16×16 흰 칸 안 12×15(왼쪽 2, 위 0.5), 원본 PNG 를 Figma 자르기 그대로 */
+.ds-card__medal {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  background: var(--color-surface);
+}
+
+.ds-card__medal-crop {
+  position: absolute;
+  top: calc(var(--spacing) * 0.125);
+  left: calc(var(--spacing) * 0.5);
+  overflow: hidden;
+  width: calc(var(--spacing) * 3);
+  height: calc(var(--spacing) * 3.75);
+}
+
+.ds-card__medal-image {
+  position: absolute;
+  top: -10.53%;
+  left: -20.79%;
+  width: 148.25%;
+  height: 121.05%;
+  max-width: none;
+}
+
+/* 보호 줄: 글자(위 1 아래) + 4 + AirCover 로고 67×14 */
+.ds-card__protection {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 1);
+}
+
+.ds-card__protection-text {
+  padding-top: calc(var(--spacing) * 0.25);
+}
+
+.ds-card__logo {
+  flex-shrink: 0;
+}
+
+.ds-card__logo-ink {
+  color: var(--color-text);
+}
+
+.ds-card__logo-brand {
+  color: var(--color-primary);
 }

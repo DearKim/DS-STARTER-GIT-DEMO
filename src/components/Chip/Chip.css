@@ -1,0 +1,52 @@
+/* Chip — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   값의 근거: docs/plans/components/Chip.md revision 1 (Figma Chips 234:2568). */
+.ds-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: calc(var(--spacing) * 10);
+  margin: 0;
+  padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 5);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+  line-height: normal;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Hover 234:2565 · Pressed 234:2566 · Focus 234:2563 — 테두리가 Shade 02 로 바뀐다. */
+.ds-chip:not(.ds-chip--selected):not(:disabled):hover,
+.ds-chip:not(.ds-chip--selected):not(:disabled):active,
+.ds-chip:not(.ds-chip--selected):focus-visible {
+  border-color: var(--color-border-emphasis);
+}
+
+/* Pressed 234:2566 — 상자 전체가 0.898배(53/59, 35.932/40). Q-03: 옆 칩이 움직이지 않게 transform 으로. */
+.ds-chip:not(:disabled):active {
+  transform: scale(0.898);
+}
+
+/* Focus 234:2563 — 칩 바깥 1px 링, 칩과 2px 띄움. 선택된 칩에도 같은 링(Q-04). */
+.ds-chip:focus-visible {
+  outline: var(--border-width-thin) solid var(--color-focus-ring);
+  outline-offset: calc(var(--spacing) * 0.5);
+}
+
+/* Select 234:2564 — 지속 선택 상태(selected prop). */
+.ds-chip--selected {
+  border-color: var(--color-selected);
+  background: var(--color-selected);
+  color: var(--color-on-selected);
+}
+
+/* Figma 에 Disabled 모양이 없다 — 반응만 끈다(새 모양 없음). */
+.ds-chip:disabled {
+  cursor: default;
+}

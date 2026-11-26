@@ -1,0 +1,291 @@
+/* Navigation — Figma "Navigation" 세트(235:2441). semantic·layout 토큰만 쓴다.
+   Figma 테두리는 안쪽 선이라 레이아웃에 더해지지 않는다. CSS border 는 안쪽 칸을 줄이므로,
+   바깥 가장자리에서 잰 Figma 값에서 --border-width-thin 을 빼서 같은 위치를 만든다. */
+.ds-navigation,
+.ds-navigation *,
+.ds-navigation *::before,
+.ds-navigation *::after {
+  box-sizing: border-box;
+}
+
+.ds-navigation {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}
+
+/* Main 8:297: 1440×81 흰 바, 네 변 Neutral 03 테두리. 폭은 부모를 채운다(Q-10). 그림자 없음. */
+.ds-navigation--main {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: calc(var(--spacing) * 20.25);
+  border: var(--border-width-thin) solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.ds-navigation--stays,
+.ds-navigation--expanded {
+  display: inline-flex;
+}
+
+/* 누를 수 있는 요소의 기본 모양을 지운다. 포커스 링은 브라우저 기본값을 그대로 쓴다(Figma 에 Focus 없음). */
+.ds-navigation__field,
+.ds-navigation__search-button,
+.ds-navigation__language,
+.ds-navigation__menu,
+.ds-navigation__segment {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* Logo 8:192: (80,21) 102×32, PNG 는 칸을 덮는다(object-cover). */
+.ds-navigation__logo {
+  position: absolute;
+  top: calc(var(--spacing) * 5.25 - var(--border-width-thin));
+  left: calc(var(--spacing) * 20 - var(--border-width-thin));
+  display: block;
+  width: calc(var(--spacing) * 25.5);
+  height: calc(var(--spacing) * 8);
+}
+
+.ds-navigation__logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* "Drop down" 27:9260: (544,17), 가로 가운데(중심 720). */
+.ds-navigation__center {
+  position: absolute;
+  top: calc(var(--spacing) * 4.25 - var(--border-width-thin));
+  left: 50%;
+  display: flex;
+  transform: translateX(-50%);
+}
+
+/* Login 8:194: (1111,21) 249×38, 오른쪽 여백 80. 글자·지구본·알약 사이 24. */
+.ds-navigation__actions {
+  position: absolute;
+  top: calc(var(--spacing) * 5.25 - var(--border-width-thin));
+  right: calc(var(--spacing) * 20 - var(--border-width-thin));
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 9.5);
+}
+
+/* "Become a Host" 8:187: 위에서 11, 14pt Semibold, Shade 02 */
+.ds-navigation__host {
+  margin-top: calc(var(--spacing) * 2.75);
+  font-family: var(--font-type-body-copy-14pt-semibold);
+  font-size: var(--text-type-body-copy-14pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-14pt-semibold);
+  line-height: normal;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* 지구본 6:807: 위에서 11, 16×16, stroke 1.5 Shade 02 (원 선이 칸 밖으로 0.75 나간다) */
+.ds-navigation__language {
+  display: flex;
+  flex: none;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * 2.75);
+  color: var(--color-text);
+}
+
+.ds-navigation__globe {
+  overflow: visible;
+}
+
+/* 메뉴·아바타 알약 6:802: 81×38, 흰색, Neutral 02 테두리, 모서리 29(높이의 절반을 넘어 둥근 알약과 같다) */
+.ds-navigation__menu {
+  position: relative;
+  display: block;
+  flex: none;
+  width: calc(var(--spacing) * 20.25);
+  height: calc(var(--spacing) * 9.5);
+  border: var(--border-width-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* 메뉴 선 6:761: (12, 13.5) 14×9.5 */
+.ds-navigation__menu-lines {
+  position: absolute;
+  top: calc(var(--spacing) * 3.375 - var(--border-width-thin));
+  left: calc(var(--spacing) * 3 - var(--border-width-thin));
+}
+
+/* 아바타 6:789: (42,2) 32×34. 알림 점은 위로 2 넘친다. */
+.ds-navigation__avatar {
+  position: absolute;
+  top: calc(var(--spacing) * 0.5 - var(--border-width-thin));
+  left: calc(var(--spacing) * 10.5 - var(--border-width-thin));
+  overflow: visible;
+}
+
+.ds-navigation__avatar-circle {
+  fill: var(--color-avatar-placeholder);
+}
+
+.ds-navigation__avatar-person {
+  fill: var(--color-on-image);
+}
+
+.ds-navigation__avatar-dot {
+  fill: var(--color-primary);
+  stroke: var(--color-surface);
+}
+
+/* 검색 알약(Stays 235:2440 / Main 안 27:9260): 352×48, 왼쪽 28·오른쪽 8·위아래 8, 간격 24, Neutral 02 테두리.
+   Figma 그림자(Y 4, blur 2, 검정 4%)는 보류: Figma effect 스타일이 필요하고 그 뒤 다시 가져와야 한다(계획 §6). */
+.ds-navigation__search {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 6);
+  padding: calc(var(--spacing) * 2 - var(--border-width-thin)) calc(var(--spacing) * 2 - var(--border-width-thin))
+    calc(var(--spacing) * 2 - var(--border-width-thin)) calc(var(--spacing) * 7 - var(--border-width-thin));
+  border: var(--border-width-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+}
+
+/* Frame 9 235:2430: 글자 3개와 구분선 2개, 간격 16 */
+.ds-navigation__fields {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 4);
+}
+
+.ds-navigation__field {
+  font-family: var(--font-type-body-copy-13pt-semibold);
+  font-size: var(--text-type-body-copy-13pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-13pt-semibold);
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* "Add guests" 235:2435: 13pt Regular, Neutral 08 */
+.ds-navigation__field--muted {
+  font-family: var(--font-type-body-copy-13pt-regular);
+  font-size: var(--text-type-body-copy-13pt-regular);
+  font-weight: var(--font-weight-type-body-copy-13pt-regular);
+  color: var(--color-text-tertiary);
+}
+
+/* 구분선: 폭 0 칸 위의 1px 세로선. 알약은 길이 24·Neutral 02, 펼친 막대는 길이 25·Neutral 04. */
+.ds-navigation__divider {
+  position: relative;
+  flex: none;
+  width: 0;
+  height: calc(var(--spacing) * 6);
+}
+
+.ds-navigation__divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--border-width-thin);
+  background: var(--color-border-subtle);
+}
+
+.ds-navigation__divider--tall {
+  height: calc(var(--spacing) * 6.25);
+}
+
+.ds-navigation__divider--tall::before {
+  background: var(--color-border-medium);
+}
+
+/* 검색 원 Group 2: 32×32(알약), 48×48(펼친 막대). 원은 Primary 02, 돋보기는 흰색. */
+.ds-navigation__search-button {
+  display: flex;
+  flex: none;
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+  border-radius: var(--radius-full);
+}
+
+.ds-navigation__search-button--large {
+  width: calc(var(--spacing) * 12);
+  height: calc(var(--spacing) * 12);
+}
+
+.ds-navigation__search-circle {
+  fill: var(--color-primary);
+}
+
+.ds-navigation__search-glass {
+  stroke: var(--color-on-primary);
+}
+
+/* 펼친 막대 234:4360: 743×63, Neutral 04 테두리, 좌우 6, 자식 사이 1. 그림자 없음. */
+.ds-navigation__bar {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 0.25);
+  padding: 0 calc(var(--spacing) * 1.5 - var(--border-width-thin));
+  border: var(--border-width-thin) solid var(--color-border-medium);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+}
+
+/* 칸(Frame 21·22: 129, Frame 24·23: 209): 위아래 14·좌우 24, 제목과 값 사이 4. 위아래는 바깥 테두리 두께만큼 뺀다. */
+.ds-navigation__segment {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: calc(var(--spacing) * 1);
+  width: calc(var(--spacing) * 32.25);
+  padding: calc(var(--spacing) * 3.5 - var(--border-width-thin)) calc(var(--spacing) * 6);
+  background: var(--color-surface);
+  text-align: left;
+}
+
+.ds-navigation__segment--wide {
+  width: calc(var(--spacing) * 52.25);
+}
+
+/* Frame 24 234:4346: 왼쪽 모서리만 둥글다 */
+.ds-navigation__segment:first-child {
+  border-start-start-radius: var(--radius-full);
+  border-end-start-radius: var(--radius-full);
+}
+
+/* "Where"·"Check-in"·"Check-out"·"Who": 12pt Semibold, Shade 02.
+   Figma 글자 상자 높이는 14(234:4347). 브라우저의 normal 줄 높이는 15라서 칸 높이를 Figma 값으로 둔다. */
+.ds-navigation__segment-label {
+  height: calc(var(--spacing) * 3.5);
+  font-family: var(--font-type-body-copy-12pt-semibold);
+  font-size: var(--text-type-body-copy-12pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-12pt-semibold);
+  line-height: normal;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* 값: 14pt Regular, Neutral 07 */
+.ds-navigation__segment-value {
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  line-height: normal;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}

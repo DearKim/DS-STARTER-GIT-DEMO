@@ -2,10 +2,13 @@
   "$comment": "scripts/figma-tokens.mjs 가 Figma MCP 로 가져온 변수. 손으로 고치지 말고 다시 가져온다. 우리 쪽 정의는 .ds/source.json.",
   "schema_version": "1.0",
   "file_key": "Q5QDGE5WoXefOxgm5fziH3",
-  "imported_at": "2026-11-25T06:22:55.807Z",
+  "imported_at": "2026-11-26T00:38:01.627Z",
   "nodes": [
     "389:2752",
-    "389:7765"
+    "389:7765",
+    "245:3518",
+    "245:3517",
+    "245:3354"
   ],
   "collections": [
     {
@@ -107,6 +110,69 @@
           "type": "COLOR",
           "value": "#C13515",
           "figmaName": "Error 02"
+        },
+        {
+          "id": "figma-shade-02---5%",
+          "name": "shade-02---5%",
+          "type": "COLOR",
+          "value": "#222222",
+          "figmaName": "Shade 02 - 5%"
+        },
+        {
+          "id": "figma-discounts",
+          "name": "discounts",
+          "type": "COLOR",
+          "value": "#008A05",
+          "figmaName": "Discounts"
+        },
+        {
+          "id": "figma-link",
+          "name": "link",
+          "type": "COLOR",
+          "value": "#004CC4",
+          "figmaName": "Link"
+        },
+        {
+          "id": "figma-accent-02",
+          "name": "accent-02",
+          "type": "COLOR",
+          "value": "#D03660",
+          "figmaName": "Accent 02"
+        },
+        {
+          "id": "figma-accent-01",
+          "name": "accent-01",
+          "type": "COLOR",
+          "value": "#F6D7DF",
+          "figmaName": "Accent 01"
+        },
+        {
+          "id": "figma-error-01",
+          "name": "error-01",
+          "type": "COLOR",
+          "value": "#FEF8F6",
+          "figmaName": "Error 01"
+        },
+        {
+          "id": "figma-primary-01",
+          "name": "primary-01",
+          "type": "COLOR",
+          "value": "#F6475F",
+          "figmaName": "Primary 01"
+        },
+        {
+          "id": "figma-neutral-05",
+          "name": "neutral-05",
+          "type": "COLOR",
+          "value": "#C2C2C2",
+          "figmaName": "Neutral 05"
+        },
+        {
+          "id": "figma-neutral-01",
+          "name": "neutral-01",
+          "type": "COLOR",
+          "value": "#F7F7F7",
+          "figmaName": "Neutral 01"
         }
       ]
     },
@@ -195,6 +261,30 @@
           "type": "FLOAT",
           "value": 24,
           "figmaName": "var(--sds-size-space-600)"
+        },
+        {
+          "id": "figma-elevation-01",
+          "name": "elevation-01",
+          "type": "STRING",
+          "category": "SHADOW",
+          "value": "0px 4px 18px 0px #0000002B",
+          "figmaName": "Elevation 01"
+        },
+        {
+          "id": "figma-elevation-02",
+          "name": "elevation-02",
+          "type": "STRING",
+          "category": "SHADOW",
+          "value": "0px 1px 5px -363px #00000030",
+          "figmaName": "Elevation 02"
+        },
+        {
+          "id": "figma-elevation-03",
+          "name": "elevation-03",
+          "type": "STRING",
+          "category": "SHADOW",
+          "value": "0px 6px 16px 0px #0000001F",
+          "figmaName": "Elevation 03"
         },
         {
           "id": "figma-gradient-selfmake-1",
@@ -425,6 +515,195 @@
         "questions": [
           "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
         ]
+      },
+      {
+        "name": "Body Copy/12pt Regular",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 12, weight: 400, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "12",
+          "weight": "400",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Mirco Text/10pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 10, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "10",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/12pt Semibold Underlined",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 12, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "12",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/13pt Regular",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 13, weight: 400, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "13",
+          "weight": "400",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/13pt Semibold",
+        "raw": "Font(family: \"SF Pro\", style: Semibold, size: 13, weight: 590, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Semibold",
+          "size": "13",
+          "weight": "590",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/16pt Regular Underlined",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 16, weight: 400, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "16",
+          "weight": "400",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/18pt Regular",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 18, weight: 400, lineHeight: 24, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "18",
+          "weight": "400",
+          "lineHeight": "24",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "24",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Body Copy/18pt Medium",
+        "raw": "Font(family: \"SF Pro\", style: Medium, size: 18, weight: 510, lineHeight: 24, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Medium",
+          "size": "18",
+          "weight": "510",
+          "lineHeight": "24",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "24",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
+      },
+      {
+        "name": "Header/22pt Regular",
+        "raw": "Font(family: \"SF Pro\", style: Regular, size: 22, weight: 400, lineHeight: 100, letterSpacing: 0)",
+        "fields": {
+          "family": "SF Pro",
+          "style": "Regular",
+          "size": "22",
+          "weight": "400",
+          "lineHeight": "100",
+          "letterSpacing": "0"
+        },
+        "lineHeight": {
+          "status": "review-required",
+          "value": null,
+          "raw": "100",
+          "reason": "퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        },
+        "questions": [
+          "줄높이 확인: 퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다."
+        ]
       }
     ],
     "questions": [
@@ -432,7 +711,23 @@
     ]
   },
   "effects": {
-    "converted": [],
+    "converted": [
+      {
+        "name": "elevation-01",
+        "raw": "Effect(type: DROP_SHADOW, color: #0000002B, offset: (0, 4), radius: 18, spread: 0)",
+        "value": "0px 4px 18px 0px #0000002B"
+      },
+      {
+        "name": "elevation-02",
+        "raw": "Effect(type: DROP_SHADOW, color: #00000030, offset: (0, 1), radius: 5, spread: -363)",
+        "value": "0px 1px 5px -363px #00000030"
+      },
+      {
+        "name": "elevation-03",
+        "raw": "Effect(type: DROP_SHADOW, color: #0000001F, offset: (0, 6), radius: 16, spread: 0)",
+        "value": "0px 6px 16px 0px #0000001F"
+      }
+    ],
     "review": []
   },
   "gradients": [
@@ -523,6 +818,27 @@
     "Error 02": "#C13515",
     "Body Copy/16pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 16, weight: 590, lineHeight: 100, letterSpacing: 0)",
     "Gradient 02": "",
-    "Gradient 01": ",,"
+    "Gradient 01": ",,",
+    "Body Copy/12pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 12, weight: 400, lineHeight: 100, letterSpacing: 0)",
+    "Shade 02 - 5%": "#222222",
+    "Discounts": "#008A05",
+    "Link": "#004CC4",
+    "Accent 02": "#D03660",
+    "Accent 01": "#F6D7DF",
+    "Error 01": "#FEF8F6",
+    "Primary 01": "#F6475F",
+    "Neutral 05": "#C2C2C2",
+    "Neutral 01": "#F7F7F7",
+    "Mirco Text/10pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 10, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/12pt Semibold Underlined": "Font(family: \"SF Pro\", style: Semibold, size: 12, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/13pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 13, weight: 400, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/13pt Semibold": "Font(family: \"SF Pro\", style: Semibold, size: 13, weight: 590, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/16pt Regular Underlined": "Font(family: \"SF Pro\", style: Regular, size: 16, weight: 400, lineHeight: 100, letterSpacing: 0)",
+    "Body Copy/18pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 18, weight: 400, lineHeight: 24, letterSpacing: 0)",
+    "Body Copy/18pt Medium": "Font(family: \"SF Pro\", style: Medium, size: 18, weight: 510, lineHeight: 24, letterSpacing: 0)",
+    "Header/22pt Regular": "Font(family: \"SF Pro\", style: Regular, size: 22, weight: 400, lineHeight: 100, letterSpacing: 0)",
+    "Elevation 01": "Effect(type: DROP_SHADOW, color: #0000002B, offset: (0, 4), radius: 18, spread: 0)",
+    "Elevation 02": "Effect(type: DROP_SHADOW, color: #00000030, offset: (0, 1), radius: 5, spread: -363)",
+    "Elevation 03": "Effect(type: DROP_SHADOW, color: #0000001F, offset: (0, 6), radius: 16, spread: 0)"
   }
 }

@@ -1,61 +1,119 @@
-/* RadioButton — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+/* RadioButton — Figma "Radio Buttons with Labels" 213:1943 · "Radio Button" 213:1944. semantic·layout 토큰만 쓴다. */
 .ds-radiobutton {
-  font-family: var(--font-sans);
-  font-size: var(--text-body-2);
-  line-height: var(--leading-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 3);
   color: var(--color-text);
+  cursor: pointer;
 }
 
-.ds-radiobutton--group {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  min-width: 0;
-}
-
-.ds-radiobutton__legend {
-  padding: 0;
-  margin-bottom: calc(var(--spacing) * 2);
-  color: var(--color-text-secondary);
-}
-
-.ds-radiobutton__options {
-  display: flex;
+/* Subtext=on: 원과 글 사이 16, 위쪽 정렬, 글 묶음 위 여백 2·줄 사이 4. */
+.ds-radiobutton--subtext {
+  align-items: flex-start;
   gap: calc(var(--spacing) * 4);
 }
 
-.ds-radiobutton--vertical .ds-radiobutton__options {
-  flex-direction: column;
-  gap: calc(var(--spacing) * 2);
+.ds-radiobutton:has(.ds-radiobutton__input:disabled) {
+  cursor: default;
 }
 
-.ds-radiobutton:not(.ds-radiobutton--group),
-.ds-radiobutton__option {
-  display: inline-flex;
-  align-items: center;
-  gap: calc(var(--spacing) * 2);
-}
-
-.ds-radiobutton__field {
+/* 원 칸 24×24. 숨긴 네이티브 input 이 칸을 덮어 클릭·키보드를 받는다. */
+.ds-radiobutton__control {
+  position: relative;
   flex: none;
-  width: calc(var(--spacing) * 4);
-  height: calc(var(--spacing) * 4);
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
+  border-radius: var(--radius-full);
+}
+
+.ds-radiobutton__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  accent-color: var(--color-primary);
-  cursor: pointer;
+  opacity: 0;
+  cursor: inherit;
 }
 
-.ds-radiobutton__field:focus-visible {
-  outline: var(--border-width-thick) solid var(--color-primary);
-  outline-offset: var(--border-width-thick);
+.ds-radiobutton__svg {
+  display: block;
+  pointer-events: none;
 }
 
+/* 157:2614 기본: 채움 Shade 01, 테두리 1 Neutral 03 */
+.ds-radiobutton__circle {
+  fill: var(--color-control-bg);
+  stroke: var(--color-border);
+  stroke-width: var(--border-width-thin);
+}
+
+.ds-radiobutton__dot {
+  display: none;
+  fill: var(--color-on-selected);
+}
+
+/* 157:2619 Hover·Unchecked: 줄 전체에 포인터를 올리면 테두리만 Shade 02 (Q-06 A). 선택된 원은 바뀌지 않는다(213:1527). */
+.ds-radiobutton:hover .ds-radiobutton__input:not(:checked):not(:disabled) + .ds-radiobutton__svg .ds-radiobutton__circle {
+  stroke: var(--color-border-emphasis);
+}
+
+/* 157:2718 Checked: 원 채움·테두리 Shade 02 + 가운데 흰 점 지름 8 */
+.ds-radiobutton__input:checked + .ds-radiobutton__svg .ds-radiobutton__circle {
+  fill: var(--color-selected);
+  stroke: var(--color-selected);
+}
+
+.ds-radiobutton__input:checked + .ds-radiobutton__svg .ds-radiobutton__dot {
+  display: inline;
+}
+
+/* 157:2633·157:2711 Focus: 원 테두리 Shade 02 + 원 가장자리에서 2px 흰 간격 + 2px 링(바깥 지름 32).
+   링은 레이아웃 밖에 그려 라벨이 움직이지 않는다(Q-05 A). */
+.ds-radiobutton__input:focus-visible:not(:checked) + .ds-radiobutton__svg .ds-radiobutton__circle {
+  stroke: var(--color-border-emphasis);
+}
+
+.ds-radiobutton__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+.ds-radiobutton__input:focus-visible ~ .ds-radiobutton__ring {
+  box-shadow:
+    0 0 0 var(--border-width-thick) var(--color-control-bg),
+    0 0 0 calc(var(--border-width-thick) * 2) var(--color-focus-ring);
+}
+
+.ds-radiobutton__text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 1);
+  min-width: 0;
+}
+
+.ds-radiobutton--subtext .ds-radiobutton__text {
+  padding-top: calc(var(--spacing) * 0.5);
+}
+
+/* Body Copy/16pt Regular, Shade 02 */
 .ds-radiobutton__label {
-  cursor: pointer;
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+  line-height: normal;
+  color: var(--color-text);
 }
 
-.ds-radiobutton__field:disabled,
-.ds-radiobutton__field:disabled + .ds-radiobutton__label {
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
+/* Body Copy/14pt Regular, Neutral 08 */
+.ds-radiobutton__subtext {
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+  line-height: normal;
+  color: var(--color-text-tertiary);
 }

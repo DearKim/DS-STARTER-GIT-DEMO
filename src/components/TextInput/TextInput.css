@@ -1,50 +1,128 @@
-/* TextInput — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+/* TextInput — Figma "Inputs" 208:2159. semantic·layout 토큰만 쓴다. */
 .ds-textinput {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 1.5);
-  font-family: var(--font-sans);
+  gap: calc(var(--spacing) * 3);
+  width: 100%;
+  min-width: 0;
   color: var(--color-text);
 }
 
+/* 상자: 테두리 1 Neutral 06, 채움 없음, 모서리 8.
+   Figma 의 테두리는 여백 안쪽에 겹친다 → CSS 여백에서 테두리 두께를 빼 글자 위치를 맞춘다.
+   Label=off: 상하 16·좌우 12 (높이 51) */
+.ds-textinput__box {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 1);
+  box-sizing: border-box;
+  width: 100%;
+  padding: calc(var(--spacing) * 4 - var(--border-width-thin)) calc(var(--spacing) * 3 - var(--border-width-thin));
+  border: var(--border-width-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: text;
+}
+
+/* Label=on: 사방 12 (높이 61) — Filled+Label+Icon 도 같게(Q-05 A) */
+.ds-textinput--labelled .ds-textinput__box {
+  padding: calc(var(--spacing) * 3 - var(--border-width-thin));
+}
+
+/* Focus·Filled: 2px Shade 02 — 1px 테두리 색 + 바깥 1px 링(208:2149 측정: 상자 밖 1px·안 1px, 글자 그대로, Q-04 A).
+   Hover 는 Figma 에서 Default 와 같아 따로 두지 않는다(Q-02 A). */
+.ds-textinput__box:focus-within {
+  border-color: var(--color-focus-ring);
+  box-shadow: 0 0 0 var(--border-width-thin) var(--color-focus-ring);
+}
+
+/* Status=Error: 테두리 Error 02 + 채움 Error 01(Default·Hover). 포커스 중에는 채움 없이 2px. */
+.ds-textinput--invalid .ds-textinput__box {
+  border-color: var(--color-danger);
+  background: var(--color-danger-subtle);
+}
+
+.ds-textinput--invalid .ds-textinput__box:focus-within {
+  border-color: var(--color-danger);
+  background: none;
+  box-shadow: 0 0 0 var(--border-width-thin) var(--color-danger);
+}
+
+/* Body Copy/12pt Regular, Neutral 07 (Error: Error 02) */
 .ds-textinput__label {
-  font-size: var(--text-body-2);
+  font-family: var(--font-type-body-copy-12pt-regular);
+  font-size: var(--text-type-body-copy-12pt-regular);
+  font-weight: var(--font-weight-type-body-copy-12pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-12pt-regular);
+  line-height: normal;
+  color: var(--color-text-secondary);
+  cursor: text;
+}
+
+.ds-textinput--invalid .ds-textinput__label {
+  color: var(--color-danger);
+}
+
+/* 값 줄: 글자 + 오른쪽 끝 아이콘, 위쪽 정렬(Q-05 A) */
+.ds-textinput__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+/* 자리 글·값: Body Copy/16pt Regular. 값 Shade 02, 자리 글 Neutral 07, caret Neutral 07(Q-11 A). */
+.ds-textinput__field {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: none;
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+  line-height: normal;
+  color: var(--color-text);
+  caret-color: var(--color-text-secondary);
+}
+
+.ds-textinput__field::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 1;
+}
+
+.ds-textinput__icon {
+  flex: none;
+  color: var(--color-text);
+}
+
+/* helper: Body Copy/16pt Regular, Neutral 07, 상자 아래 12 */
+.ds-textinput__helper {
+  margin: 0;
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-16pt-regular);
+  line-height: normal;
   color: var(--color-text-secondary);
 }
 
-.ds-textinput__field {
-  min-height: calc(var(--spacing) * 8);
-  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
-  border: var(--border-width-thin) solid var(--color-border-strong);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-raised);
-  color: inherit;
-  font: inherit;
-  font-size: var(--text-body-2);
+/* 오류 줄: 아이콘 16 + 8 + Body Copy/14pt Regular, Error 02, 아래쪽 정렬 */
+.ds-textinput__error {
+  display: flex;
+  align-items: flex-end;
+  gap: calc(var(--spacing) * 2);
+  margin: 0;
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+  line-height: normal;
+  color: var(--color-danger);
 }
 
-.ds-textinput__field:hover:not(:disabled) { border-color: var(--color-primary); }
-
-.ds-textinput__field:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.ds-textinput__error-icon {
+  flex: none;
 }
-
-.ds-textinput__field:disabled {
-  color: var(--color-text-disabled);
-  background: var(--color-surface);
-  cursor: not-allowed;
-}
-
-/* 오류는 색만이 아니라 테두리 두께로도 구분된다. */
-.ds-textinput__field[aria-invalid="true"] {
-  border-color: var(--color-danger);
-  border-width: var(--border-width-thick);
-}
-
-.ds-textinput__help { font-size: var(--text-body-2); color: var(--color-text-secondary); }
-.ds-textinput__helpInvalid, .ds-textinput__help--invalid { font-size: var(--text-body-2); color: var(--color-danger); }
-
-.ds-textinput--sm .ds-textinput__field { min-height: calc(var(--spacing) * 7); }
-.ds-textinput--md .ds-textinput__field { min-height: calc(var(--spacing) * 8); }
-.ds-textinput--lg .ds-textinput__field { min-height: calc(var(--spacing) * 10); }

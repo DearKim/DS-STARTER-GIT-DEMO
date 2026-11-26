@@ -1,4 +1,6 @@
-/* Tabs — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+/* Tabs — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   값의 근거: docs/plans/components/Tabs.md revision 1
+   (Figma Underline Tabs 229:2214 = --line, Pill Tabs 237:2219 = --pill). */
 .ds-tabs {
   display: flex;
   flex-direction: column;
@@ -6,83 +8,210 @@
   color: var(--color-text);
 }
 
-.ds-tabs--vertical { flex-direction: row; gap: calc(var(--spacing) * 4); }
-
-.ds-tabs__list {
-  display: flex;
-  gap: calc(var(--spacing) * 1);
-  border-bottom: var(--border-width-thin) solid var(--color-border);
-}
-
-.ds-tabs--vertical .ds-tabs__list {
-  flex-direction: column;
-  border-bottom: 0;
-  border-right: var(--border-width-thin) solid var(--color-border);
-  flex: 0 0 auto;
-}
-
 .ds-tabs__tab {
   position: relative;
-  padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 4);
+  display: inline-flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   border: 0;
   background: transparent;
-  color: var(--color-text-secondary);
-  font: inherit;
-  font-size: var(--text-body-2);
-  font-weight: var(--font-weight-medium);
+  line-height: normal;
   white-space: nowrap;
   cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-standard);
 }
 
-.ds-tabs__tab:hover:not(:disabled) { color: var(--color-text); }
-
+/* 링은 아래 가상 요소로 그린다(Figma Focus 변형). */
 .ds-tabs__tab:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: -2px;
+  outline: none;
 }
 
 .ds-tabs__tab:disabled {
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
+  cursor: default;
 }
 
-/* 선택 상태를 색만으로 전달하지 않는다 — 밑줄(또는 채움)을 함께 둔다. */
-.ds-tabs__tab[aria-selected="true"] { color: var(--color-primary); }
+.ds-tabs__label {
+  display: block;
+}
 
-.ds-tabs--line .ds-tabs__tab[aria-selected="true"]::after {
+/* ── Underline Tabs (line) ─────────────────────────────────────────── */
+
+/* 목록 아래 선 없음, 라벨 사이 32(Q-08·Q-12). */
+.ds-tabs--line .ds-tabs__list {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 8);
+}
+
+/* Icon=Off: 14pt Regular, 선택 안 됨 Neutral 07 (229:2086). */
+.ds-tabs--line .ds-tabs__tab {
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-type-body-copy-14pt-regular);
+  font-size: var(--text-type-body-copy-14pt-regular);
+  font-weight: var(--font-weight-type-body-copy-14pt-regular);
+  letter-spacing: var(--tracking-type-body-copy-14pt-regular);
+}
+
+/* Icon=On: 14pt Semibold (150:2358). */
+.ds-tabs--line .ds-tabs__tab--icon {
+  font-family: var(--font-type-body-copy-14pt-semibold);
+  font-size: var(--text-type-body-copy-14pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-14pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-14pt-semibold);
+}
+
+.ds-tabs__icon {
+  display: inline-flex;
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
+}
+
+.ds-tabs__icon > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 밑줄 자리는 선택과 상관없이 늘 확보한다(Q-08): 라벨 아래 16, 그 마지막 2px 이 밑줄. 폭 = 라벨 폭(Q-02). */
+.ds-tabs--line .ds-tabs__label {
+  position: relative;
+  padding-bottom: calc(var(--spacing) * 4);
+}
+
+.ds-tabs--line .ds-tabs__label::after {
   content: "";
   position: absolute;
-  left: 0;
   right: 0;
-  bottom: calc(var(--border-width-thin) * -1);
-  height: calc(var(--spacing) * 0.5);
-  background: var(--color-primary);
-}
-
-.ds-tabs--vertical.ds-tabs--line .ds-tabs__tab[aria-selected="true"]::after {
-  left: auto;
-  top: 0;
   bottom: 0;
-  right: calc(var(--border-width-thin) * -1);
-  width: calc(var(--spacing) * 0.5);
-  height: auto;
+  left: 0;
+  height: var(--border-width-thick);
+  background: transparent;
 }
 
-.ds-tabs--contained .ds-tabs__list { gap: 0; border-bottom: 0; }
+/* Line=On = 선택된 탭(Q-01): 글자 Shade 02, 밑줄 Shade 02 (150:2355, 229:2085). */
+.ds-tabs--line .ds-tabs__tab[aria-selected="true"] {
+  color: var(--color-text);
+}
 
-.ds-tabs--contained .ds-tabs__tab {
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+.ds-tabs--line .ds-tabs__tab[aria-selected="true"] .ds-tabs__label::after {
+  background: var(--color-selected);
+}
+
+/* Hover·Pressed, Icon=On: 아이콘·라벨 Shade 02 (225:1727, 229:1867, 225:1728, 229:1866). */
+.ds-tabs--line .ds-tabs__tab--icon:where(:not(:disabled)):is(:hover, :active) {
+  color: var(--color-text);
+}
+
+/* Hover·Pressed, Icon=Off: 라벨 Neutral 06 (229:2084, 229:2081, 229:2087, 229:2082). */
+.ds-tabs--line .ds-tabs__tab:where(:not(.ds-tabs__tab--icon, :disabled)):is(:hover, :active) {
+  color: var(--color-text-muted);
+}
+
+/* Hover·Pressed·Line=On, Icon=On: 밑줄 Neutral 04 (225:1728, 229:1866). */
+.ds-tabs--line .ds-tabs__tab--icon[aria-selected="true"]:where(:not(:disabled)):is(:hover, :active) .ds-tabs__label::after {
+  background: var(--color-indicator-hover);
+}
+
+/* Hover·Pressed·Line=On, Icon=Off: 밑줄 = 라벨 색 Neutral 06 (229:2087, 229:2082). */
+.ds-tabs--line .ds-tabs__tab:where(:not(.ds-tabs__tab--icon, :disabled))[aria-selected="true"]:is(:hover, :active) .ds-tabs__label::after {
+  background: currentColor;
+}
+
+/* Focus: 아이콘·라벨 Shade 02, 선택 탭 밑줄 Shade 02 (225:1762, 227:1790, 229:2083, 229:2080). hover 보다 뒤에 둔다. */
+.ds-tabs--line .ds-tabs__tab:focus-visible {
+  color: var(--color-text);
+}
+
+.ds-tabs--line .ds-tabs__tab[aria-selected="true"]:focus-visible .ds-tabs__label::after {
+  background: var(--color-selected);
+}
+
+/* Focus 링, Icon=On (225:1762, 227:1790): 아이콘+라벨에서 10 띄운 2px Shade 02, 모서리 8.
+   탭 크기는 그대로(Q-03). 아래끝은 밑줄 자리 16 중 위쪽 12 지점(라벨 아래 10 + 링 2). */
+.ds-tabs--line .ds-tabs__tab--icon:focus-visible::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--spacing) * -3);
+  right: calc(var(--spacing) * -3);
+  bottom: calc(var(--spacing) * 1);
+  left: calc(var(--spacing) * -3);
+  border: var(--border-width-thick) solid var(--color-focus-ring);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+/* Focus 링, Icon=Off (229:2083, 229:2080): 라벨+밑줄에서 위·좌우 16·아래 2 띄운 2px Neutral 04,
+   그 바로 바깥 2px Shade 02, 모서리 8. */
+.ds-tabs--line .ds-tabs__tab:not(.ds-tabs__tab--icon):focus-visible::before,
+.ds-tabs--line .ds-tabs__tab:not(.ds-tabs__tab--icon):focus-visible::after {
+  content: "";
+  position: absolute;
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+.ds-tabs--line .ds-tabs__tab:not(.ds-tabs__tab--icon):focus-visible::before {
+  top: calc(var(--spacing) * -5);
+  right: calc(var(--spacing) * -5);
+  bottom: calc(var(--spacing) * -1.5);
+  left: calc(var(--spacing) * -5);
+  border: var(--border-width-thick) solid var(--color-focus-ring);
+}
+
+.ds-tabs--line .ds-tabs__tab:not(.ds-tabs__tab--icon):focus-visible::after {
+  top: calc(var(--spacing) * -4.5);
+  right: calc(var(--spacing) * -4.5);
+  bottom: calc(var(--spacing) * -1);
+  left: calc(var(--spacing) * -4.5);
+  border: var(--border-width-thick) solid var(--color-focus-ring-inner);
+}
+
+/* ── Pill Tabs (pill) ──────────────────────────────────────────────── */
+
+/* 바깥 Neutral 02, 여백 4, 알약 (237:2217). */
+.ds-tabs--pill .ds-tabs__list {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  padding: calc(var(--spacing) * 1);
+  border-radius: var(--radius-full);
+  background: var(--color-track);
+}
+
+/* 칸: 151 고정 너비(Q-10), 여백 12·8, 14pt Semibold Shade 02. */
+.ds-tabs--pill .ds-tabs__tab {
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--spacing) * 37.75);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  font-family: var(--font-type-body-copy-14pt-semibold);
+  font-size: var(--text-type-body-copy-14pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-14pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-14pt-semibold);
+}
+
+/* 선택 칸 흰색 (237:2209). Figma 그림자(0 6px 8.5px rgba(0,0,0,.08))는 토큰 입력 경로가 없어 보류 — 계획 6·10절. */
+.ds-tabs--pill .ds-tabs__tab[aria-selected="true"] {
   background: var(--color-surface);
 }
 
-.ds-tabs--contained .ds-tabs__tab[aria-selected="true"] {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-on-primary);
+/* Hover: 선택 안 된 칸 흰색 (237:2212). */
+.ds-tabs--pill .ds-tabs__tab[aria-selected="false"]:not(:disabled):hover {
+  background: var(--color-surface);
 }
 
+/* Focus: 칸 바탕 #F7F7F7 + 안쪽 2px Shade 02 테두리, 칸 크기 그대로 (237:2194, Q-03). */
+.ds-tabs--pill .ds-tabs__tab:focus-visible {
+  background: var(--color-surface-focus);
+  box-shadow: inset 0 0 0 var(--border-width-thick) var(--color-focus-ring);
+}
+
+/* ── 패널 — Figma 에 없음. 계획 범위 밖이라 기존 키트 값을 유지하고 포커스 색만 Tabs 의 focus-ring 으로. ── */
 .ds-tabs__panel {
   padding: calc(var(--spacing) * 4) 0;
   font-size: var(--text-body-2);
@@ -91,8 +220,6 @@
 }
 
 .ds-tabs__panel:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  outline: var(--border-width-thick) solid var(--color-focus-ring);
+  outline-offset: calc(var(--spacing) * 0.5);
 }
-
-.ds-tabs--sm .ds-tabs__tab { padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3); }

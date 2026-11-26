@@ -1,60 +1,65 @@
-/* Link — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1). */
+/* Link — semantic/layout 토큰만 참조한다. primitive 직접 참조 금지(G1).
+   승인 계획: docs/plans/components/Buttons.md revision 1 (Figma Links 238:2309). */
 .ds-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: calc(var(--spacing) * 1);
-  font-family: var(--font-sans);
-  font-size: var(--text-body-2);
-  line-height: var(--leading-normal);
-  color: var(--color-primary);
+  color: var(--color-text);
+  font-family: var(--font-type-body-copy-14pt-semibold);
+  font-size: var(--text-type-body-copy-14pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-14pt-semibold);
+  letter-spacing: var(--tracking-type-body-copy-14pt-semibold);
+  line-height: normal;
   text-decoration: none;
-  text-underline-offset: calc(var(--spacing) * 0.75);
-  border-radius: var(--radius-sm);
+  white-space: nowrap;
   cursor: pointer;
 }
 
-.ds-link--md {
-  font-size: var(--text-body-1);
-}
-
-.ds-link:hover {
-  color: var(--color-primary-hover);
+/* Size=Small: Figma "Body Copy/12pt Semibold Underlined", 자간 조정 끔(kern 0). */
+.ds-link--small {
+  font-family: var(--font-type-body-copy-12pt-semibold-underlined);
+  font-size: var(--text-type-body-copy-12pt-semibold-underlined);
+  font-weight: var(--font-weight-type-body-copy-12pt-semibold-underlined);
+  letter-spacing: var(--tracking-type-body-copy-12pt-semibold-underlined);
+  font-kerning: none;
   text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
 }
 
-.ds-link:active {
-  color: var(--color-primary-active);
+/* Type=Legal Link */
+.ds-link--legal {
+  color: var(--color-text-link);
 }
 
-/* 문장 속 링크는 색만으로 구분되지 않게 늘 밑줄을 긋는다(WCAG 1.4.1). */
-.ds-link--inline {
-  display: inline;
-  font-size: inherit;
-  text-decoration: underline;
-}
-
+/* Focus: 글자 상자에서 2px 바깥이 링의 바깥 가장자리이고, 링은 안쪽으로 그린다(Figma 안쪽 선).
+   링 색 = 글자 색. 자리를 차지하지 않는다. */
 .ds-link:focus-visible {
-  outline: var(--border-width-thick) solid var(--color-primary);
-  outline-offset: var(--border-width-thin);
+  outline: none;
 }
 
-.ds-link--disabled,
-.ds-link--disabled:hover {
-  color: var(--color-text-disabled);
-  text-decoration: none;
-  cursor: not-allowed;
-}
-
-.ds-link__external {
-  flex: none;
-}
-
-.ds-link__sr {
+.ds-link:focus-visible::after {
+  content: "";
   position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+  inset: calc(var(--spacing) * -0.5);
+  box-sizing: border-box;
+  border: var(--border-width-thick) solid currentColor;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+/* Subtle Small 의 링은 1.5px. Chrome 은 border 두께를 정수 px 로 내리므로 안쪽 그림자로 그린다. */
+.ds-link--subtle.ds-link--small:focus-visible::after {
+  border: none;
+  box-shadow: inset 0 0 0 calc(var(--border-width-thin) * 1.5) currentColor;
+}
+
+.ds-link--legal:focus-visible::after {
+  border-radius: calc(var(--radius-sm) / 2);
+}
+
+.ds-link__icon {
+  display: block;
+  flex: none;
 }

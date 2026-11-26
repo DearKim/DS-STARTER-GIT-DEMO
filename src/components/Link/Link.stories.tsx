@@ -1,9 +1,9 @@
-/* @ds-generated bdf1c6cef5079ffb — `pnpm ds:gen` 이 만든 파일입니다.
-   기준선: Link (core)
-   직접 고치면 다음 생성 때 충돌로 보고되고 덮어쓰지 않습니다. */
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
+import { expect, within, userEvent } from "@storybook/test";
 import { Link } from "./Link";
+
+/* Figma: Links 238:2309 (plan: docs/plans/components/Buttons.md revision 1). */
+const FIGMA_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=238-2309";
 
 const meta = {
   title: "Components/Link",
@@ -11,51 +11,71 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
+    design: { type: "figma", url: FIGMA_URL },
+    docs: { description: { component: "A text link. Use it only to go to another page — to run an action, use Button. Focus is a real keyboard state." } },
   },
-  args: { href: "#", children: "Learn more about token tiers", variant: "default", size: "md", disabled: false, external: false },
+  args: { href: "#", children: "Cleaning fee" },
   argTypes: {
-    variant: { control: "inline-radio", options: ["default", "inline"] },
-    size: { control: "inline-radio", options: ["sm", "md"] },
-    disabled: { control: "boolean" },
-    external: { control: "boolean" },
+    variant: { control: "inline-radio", options: ["subtle", "legal"] },
+    size: { control: "inline-radio", options: ["medium", "small"] },
+    hasIcon: { control: "boolean" },
+    href: { control: "text" },
+    children: { control: "text" },
   },
 } satisfies Meta<typeof Link>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: { variant: "default" },
+/** Subtle · Medium · Icon=Off (238:2325). */
+export const Subtle: Story = {
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByTestId("ds-link")).toBeInTheDocument();
+    const link = within(canvasElement).getByTestId("ds-link");
+    await expect(link).toHaveTextContent("Cleaning fee");
+    await expect(link).toHaveAttribute("href", "#");
+    await userEvent.tab();
+    await expect(link).toHaveFocus();
   },
 };
 
-export const Inline: Story = {
-  args: { variant: "inline" },
+/** Subtle · Medium · Icon=On (238:2314): the arrow after the text. */
+export const SubtleWithIcon: Story = {
+  args: { hasIcon: true, children: "Show more" },
+  play: async ({ canvasElement }) => {
+    const link = within(canvasElement).getByTestId("ds-link");
+    await expect(link).toHaveTextContent("Show more");
+    await expect(link.querySelector("svg")).not.toBeNull();
+  },
 };
 
-export const Disabled: Story = { args: { disabled: true } };
+/** Subtle · Small (238:2310). */
+export const SubtleSmall: Story = {
+  args: { size: "small", children: "Show" },
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByTestId("ds-link")).toHaveClass("ds-link--small");
+  },
+};
 
-export const External: Story = { args: { external: true } };
+/** Legal · Small (238:2329). */
+export const Legal: Story = {
+  args: { variant: "legal", size: "small", children: "Terms of Service" },
+  play: async ({ canvasElement }) => {
+    const link = within(canvasElement).getByTestId("ds-link");
+    await expect(link).toHaveClass("ds-link--legal");
+    await userEvent.tab();
+    await expect(link).toHaveFocus();
+  },
+};
 
-/** Every Figma variant side by side, to compare with Figma — Variant × Size. */
+/** The four Figma combinations side by side. Focus is a real keyboard state — press Tab to see it. */
 export const Matrix: Story = {
   parameters: { controls: { disable: true } },
-  render: (args) => (
-    <div style={{ display: "grid", gap: 16 }}>
-      {(["default","inline"] as const).map((variant) => (
-        <div key={variant} style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          {(["sm","md"] as const).map((size) => (
-            <Link key={size} {...args} variant={variant} size={size} />
-          ))}
-        </div>
-      ))}
+  render: () => (
+    <div style={{ display: "grid", gap: 24, justifyItems: "start" }}>
+      <Link href="#">Cleaning fee</Link>
+      <Link href="#" hasIcon>Show more</Link>
+      <Link href="#" size="small">Show</Link>
+      <Link href="#" variant="legal" size="small">Terms of Service</Link>
     </div>
   ),
 };
-
-/* Figma 의 State variant(hover, active, focus, visited)는 prop 이 아니다.
-   코드에서는 CSS 의사클래스(:hover/:active/:focus-visible)와 disabled 속성이 처리한다.
-   실제 상호작용과 어긋나지 않도록 story 로 고정하지 않는다. */

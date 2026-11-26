@@ -1,0 +1,169 @@
+/* Callout — Figma "Callouts" 세트(235:2641) + "Callout Icons"(235:2613). semantic·layout 토큰만 쓴다.
+   Figma 테두리는 안쪽 선이라 여백 24 가 바깥 가장자리에서 잰 값이다. CSS 에서는 테두리 두께만큼 padding 을 뺀다. */
+.ds-callout,
+.ds-callout * {
+  box-sizing: border-box;
+}
+
+/* 두 변형 공통 상자: 흰색, Neutral 03 테두리, 모서리 12, 여백 24. 폭은 부모를 채운다(Q-07). 그림자 없음. */
+.ds-callout {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: calc(var(--spacing) * 6 - var(--border-width-thin));
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* Property Highlight 235:2640: 문장(남은 폭) + 아이콘 32, 사이 8 */
+.ds-callout--highlight {
+  gap: calc(var(--spacing) * 2);
+}
+
+/* text 145:1889: 16pt Regular 문장 앞에 16pt Semibold 부분 */
+.ds-callout__text {
+  flex: 1 0 0;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-type-body-copy-16pt-regular);
+  font-size: var(--text-type-body-copy-16pt-regular);
+  font-weight: var(--font-weight-type-body-copy-16pt-regular);
+  line-height: normal;
+}
+
+.ds-callout__lead {
+  font-family: var(--font-type-body-copy-16pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-16pt-semibold);
+}
+
+/* Callout Icons 235:2614: 32×32. Tags 는 칸 밖으로 조금 나가므로 자르지 않는다. */
+.ds-callout__icon {
+  display: flex;
+  flex: none;
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+}
+
+.ds-callout__icon-svg {
+  overflow: visible;
+}
+
+.ds-callout__icon-fill {
+  fill: var(--color-icon-accent-subtle);
+}
+
+.ds-callout__icon-paper {
+  fill: var(--color-surface);
+}
+
+.ds-callout__icon-line {
+  stroke: var(--color-icon-accent);
+}
+
+/* Diamond 의 Figma 안쪽 선 마스크: 모양의 alpha 만 쓴다. svg 의 fill="none" 을 물려받으면 마스크가 비므로
+   불투명한 채움(currentColor)을 준다. 색은 보이지 않는다. */
+.ds-callout__icon-mask {
+  mask-type: alpha;
+}
+
+.ds-callout__icon-mask path {
+  fill: currentColor;
+}
+
+/* Cancelation 235:2639: 제목과 아래 줄 사이 24 */
+.ds-callout__content {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 6);
+  min-width: 0;
+}
+
+.ds-callout__title,
+.ds-callout__status,
+.ds-callout__name,
+.ds-callout__code {
+  margin: 0;
+  line-height: normal;
+}
+
+/* "Your reservation" 232:2131: 18pt Semibold */
+.ds-callout__title {
+  font-family: var(--font-type-body-copy-18pt-semibold);
+  font-size: var(--text-type-body-copy-18pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-18pt-semibold);
+}
+
+/* 232:2132: 사진 108×72 + 글 묶음, 사이 16 */
+.ds-callout__row {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 4);
+  width: 100%;
+}
+
+/* 사진 자리 232:2133: Neutral 03, 모서리 12. 사진이 있으면 덮는다. */
+.ds-callout__image {
+  flex: none;
+  width: calc(var(--spacing) * 27);
+  height: calc(var(--spacing) * 18);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-image-placeholder-subtle);
+}
+
+.ds-callout__image-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 232:2134: CANCELED 와 아래 묶음 사이 2 / 232:2136: 이름과 코드 사이 8 */
+.ds-callout__details {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 0.5);
+  min-width: 0;
+}
+
+.ds-callout__names {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+  min-width: 0;
+}
+
+.ds-callout__status,
+.ds-callout__name,
+.ds-callout__code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* "CANCELED" 232:2135: 12pt Semibold, Error 02 */
+.ds-callout__status {
+  font-family: var(--font-type-body-copy-12pt-semibold);
+  font-size: var(--text-type-body-copy-12pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-12pt-semibold);
+  color: var(--color-danger);
+}
+
+/* 숙소 이름 232:2137: 16pt Semibold */
+.ds-callout__name {
+  font-family: var(--font-type-body-copy-16pt-semibold);
+  font-size: var(--text-type-body-copy-16pt-semibold);
+  font-weight: var(--font-weight-type-body-copy-16pt-semibold);
+}
+
+/* 예약 코드 232:2138: 12px/400(스타일 없음 → body-copy-12pt-regular 와 같은 값) */
+.ds-callout__code {
+  font-family: var(--font-type-body-copy-12pt-regular);
+  font-size: var(--text-type-body-copy-12pt-regular);
+  font-weight: var(--font-weight-type-body-copy-12pt-regular);
+}

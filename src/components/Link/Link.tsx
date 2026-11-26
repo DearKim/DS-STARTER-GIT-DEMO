@@ -1,66 +1,50 @@
 import { forwardRef } from "react";
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 import "./Link.css";
-import { useText } from "../../lib/i18n";
 
-export type LinkVariant = "default" | "inline";
-export type LinkSize = "sm" | "md";
+/** Figma Links 238:2309 — Type = Subtle Link / Legal Link */
+export type LinkVariant = "subtle" | "legal";
+/** Figma Links 238:2309 — Size = Medium / Small */
+export type LinkSize = "medium" | "small";
 
-export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  /** Figma: Variant — `inline` is a link inside a sentence (always underlined). */
-  variant?: LinkVariant;
-  /** Figma: Size */
-  size?: LinkSize;
-  /** Figma: Disabled — removes `href` so the link does not go anywhere. */
-  disabled?: boolean;
-  /** Figma: External — opens in a new window and tells screen readers that it does. */
-  external?: boolean;
-  children?: ReactNode;
+type LinkBaseProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & { children?: ReactNode };
+
+/**
+ * Only the four Figma combinations are allowed:
+ * Subtle · Medium (with or without the arrow), Subtle · Small, Legal · Small.
+ */
+export type LinkProps = LinkBaseProps &
+  (
+    | { variant?: "subtle"; size?: "medium"; /** Figma: Icon = On — the arrow after the text */ hasIcon?: boolean }
+    | { variant?: "subtle"; size: "small"; hasIcon?: false }
+    | { variant: "legal"; size?: "small"; hasIcon?: false }
+  );
+
+/** Figma "Keyboard arrow right" (238:2316), 16×16, original path. */
+function ArrowRight() {
+  return (
+    <svg className="ds-link__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path d="M6 12L10 8L6 4" fill="none" stroke="currentColor" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 /**
  * A text link. Use it only to go to another page — to run an action, use Button.
- *
- * When disabled, it removes `href` and adds `aria-disabled`. `<a>` has no disabled attribute, so
- * changing only the class would still take you to the page when clicked.
+ * Focus is a CSS state (`:focus-visible`), not a prop. Figma has no hover look for links.
  */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
-  { variant = "default", size = "md", disabled = false, external = false, className, children, href, target, rel, ...rest },
+  { variant = "subtle", size, hasIcon = false, className, children, ...rest },
   ref,
 ) {
-  const t = useText();
-  const classes = [
-    "ds-link",
-    `ds-link--${variant}`,
-    `ds-link--${size}`,
-    disabled && "ds-link--disabled",
-    external && "ds-link--external",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const resolvedSize: LinkSize = variant === "legal" ? "small" : (size ?? "medium");
+  const showIcon = hasIcon && variant === "subtle" && resolvedSize === "medium";
+  const classes = ["ds-link", `ds-link--${variant}`, `ds-link--${resolvedSize}`, className].filter(Boolean).join(" ");
 
   return (
-    <a
-      ref={ref}
-      className={classes}
-      data-testid="ds-link"
-      href={disabled ? undefined : href}
-      role={disabled ? "link" : undefined}
-      aria-disabled={disabled || undefined}
-      target={external ? (target ?? "_blank") : target}
-      rel={external ? (rel ?? "noopener noreferrer") : rel}
-      {...rest}
-    >
+    <a ref={ref} className={classes} data-testid="ds-link" {...rest}>
       {children}
-      {external ? (
-        <>
-          <svg className="ds-link__external" viewBox="0 0 16 16" width="12" height="12" aria-hidden focusable="false">
-            <path d="M9 3h4v4M13 3L7 9M11 9.5V13H3V5h3.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span className="ds-link__sr">{t.newWindow}</span>
-        </>
-      ) : null}
+      {showIcon ? <ArrowRight /> : null}
     </a>
   );
 });

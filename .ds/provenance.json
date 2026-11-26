@@ -1,7 +1,7 @@
 {
   "level": "L2a",
-  "sourceHash": "df761168805da04a",
-  "generatedAt": "2026-11-25T10:41:55.187Z",
+  "sourceHash": "12e8d80506746da4",
+  "generatedAt": "2026-11-26T01:27:14.922Z",
   "ownership": {
     "tokenValue": "figma",
     "tokenName": "figma",
@@ -200,6 +200,60 @@
       "layer": "layout",
       "confidence": 0.5,
       "reason": "텍스트 스타일 \"Body Copy/16pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-12pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/12pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-mirco-text-10pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Mirco Text/10pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-12pt-semibold-underlined",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/12pt Semibold Underlined\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-13pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/13pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-13pt-semibold",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/13pt Semibold\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-16pt-regular-underlined",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/16pt Regular Underlined\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-18pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/18pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-body-copy-18pt-medium",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Body Copy/18pt Medium\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
+    },
+    {
+      "name": "type-header-22pt-regular",
+      "layer": "layout",
+      "confidence": 0.5,
+      "reason": "텍스트 스타일 \"Header/22pt Regular\" 의 줄높이 단위를 알 수 없어 줄높이는 넣지 않았습니다(퍼센트인지 픽셀인지 확인할 단위가 없습니다. 값 크기만으로 추측하지 않습니다.)."
     }
   ],
   "tokens": {
@@ -264,6 +318,51 @@
       "reason": "학생 Figma의 정확한 원시 색"
     },
     "COLOR:error-02": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:shade-02-5": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:discounts": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:link": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:accent-02": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:accent-01": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:error-01": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:primary-01": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:neutral-05": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "학생 Figma의 정확한 원시 색"
+    },
+    "COLOR:neutral-01": {
       "source": "declared",
       "confidence": 1,
       "reason": "학생 Figma의 정확한 원시 색"
@@ -339,6 +438,21 @@
       "reason": "기존/가져온 비색상 layout 값"
     },
     "SPACING_UNIT:var-sds-size-space-600": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SHADOW:elevation-01": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SHADOW:elevation-02": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "기존/가져온 비색상 layout 값"
+    },
+    "SHADOW:elevation-03": {
       "source": "declared",
       "confidence": 1,
       "reason": "기존/가져온 비색상 layout 값"
@@ -598,6 +712,186 @@
       "confidence": 1,
       "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Semibold\""
     },
+    "FONT_SIZE:type-body-copy-12pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Regular\""
+    },
+    "FONT_WEIGHT:type-body-copy-12pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Regular\""
+    },
+    "FONT_FAMILY:type-body-copy-12pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Regular\""
+    },
+    "LETTER_SPACING:type-body-copy-12pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Regular\""
+    },
+    "FONT_SIZE:type-mirco-text-10pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Mirco Text/10pt Semibold\""
+    },
+    "FONT_WEIGHT:type-mirco-text-10pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Mirco Text/10pt Semibold\""
+    },
+    "FONT_FAMILY:type-mirco-text-10pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Mirco Text/10pt Semibold\""
+    },
+    "LETTER_SPACING:type-mirco-text-10pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Mirco Text/10pt Semibold\""
+    },
+    "FONT_SIZE:type-body-copy-12pt-semibold-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold Underlined\""
+    },
+    "FONT_WEIGHT:type-body-copy-12pt-semibold-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold Underlined\""
+    },
+    "FONT_FAMILY:type-body-copy-12pt-semibold-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold Underlined\""
+    },
+    "LETTER_SPACING:type-body-copy-12pt-semibold-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/12pt Semibold Underlined\""
+    },
+    "FONT_SIZE:type-body-copy-13pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Regular\""
+    },
+    "FONT_WEIGHT:type-body-copy-13pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Regular\""
+    },
+    "FONT_FAMILY:type-body-copy-13pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Regular\""
+    },
+    "LETTER_SPACING:type-body-copy-13pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Regular\""
+    },
+    "FONT_SIZE:type-body-copy-13pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Semibold\""
+    },
+    "FONT_WEIGHT:type-body-copy-13pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Semibold\""
+    },
+    "FONT_FAMILY:type-body-copy-13pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Semibold\""
+    },
+    "LETTER_SPACING:type-body-copy-13pt-semibold": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/13pt Semibold\""
+    },
+    "FONT_SIZE:type-body-copy-16pt-regular-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular Underlined\""
+    },
+    "FONT_WEIGHT:type-body-copy-16pt-regular-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular Underlined\""
+    },
+    "FONT_FAMILY:type-body-copy-16pt-regular-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular Underlined\""
+    },
+    "LETTER_SPACING:type-body-copy-16pt-regular-underlined": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/16pt Regular Underlined\""
+    },
+    "FONT_SIZE:type-body-copy-18pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Regular\""
+    },
+    "FONT_WEIGHT:type-body-copy-18pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Regular\""
+    },
+    "FONT_FAMILY:type-body-copy-18pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Regular\""
+    },
+    "LETTER_SPACING:type-body-copy-18pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Regular\""
+    },
+    "FONT_SIZE:type-body-copy-18pt-medium": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Medium\""
+    },
+    "FONT_WEIGHT:type-body-copy-18pt-medium": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Medium\""
+    },
+    "FONT_FAMILY:type-body-copy-18pt-medium": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Medium\""
+    },
+    "LETTER_SPACING:type-body-copy-18pt-medium": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Body Copy/18pt Medium\""
+    },
+    "FONT_SIZE:type-header-22pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Regular\""
+    },
+    "FONT_WEIGHT:type-header-22pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Regular\""
+    },
+    "FONT_FAMILY:type-header-22pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Regular\""
+    },
+    "LETTER_SPACING:type-header-22pt-regular": {
+      "source": "declared",
+      "confidence": 1,
+      "reason": "Figma 텍스트 스타일 \"Header/22pt Regular\""
+    },
     "COLOR:bg": {
       "source": "human",
       "confidence": 1,
@@ -694,6 +988,136 @@
       "reason": ".ds/semantic.json 에서 사람이 지정"
     },
     "COLOR:indicator": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:selected": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:on-selected": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:focus-ring": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:focus-ring-inner": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border-emphasis": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:control-bg": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-inverse": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:on-inverse": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-disabled": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:on-disabled": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-hover": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:surface-focus": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text-link": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text-muted": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:indicator-hover": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:track": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border-medium": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:loading-dot-muted": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:avatar-placeholder": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:border-field": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:text-discount": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:icon-accent": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:icon-accent-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:image-placeholder-subtle": {
+      "source": "human",
+      "confidence": 1,
+      "reason": ".ds/semantic.json 에서 사람이 지정"
+    },
+    "COLOR:danger-subtle": {
       "source": "human",
       "confidence": 1,
       "reason": ".ds/semantic.json 에서 사람이 지정"

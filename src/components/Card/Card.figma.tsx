@@ -1,13 +1,30 @@
-/* @ds-generated 545bb28d084a373f — `pnpm ds:gen` 이 만든 파일입니다.
-   Figma: Card (0:5400)
-   직접 고치면 다음 생성 때 충돌로 보고되고 덮어쓰지 않습니다. */
 import figma from "@figma/code-connect";
 import { Card } from "./Card";
 
-figma.connect(Card, "https://www.figma.com/design/SAMPLEKEY123/?node-id=0-5400", {
-  props: {
-  },
-  example: ({  }) => (
-    <Card  />
-  ),
+const FIGMA_URL = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/?node-id=238-2378";
+
+/* Figma Card set 238:2378. "Default Card" is connected to ListingCard. */
+figma.connect(Card, FIGMA_URL, {
+  variant: { "Card type": "Sleep Card" },
+  example: () => <Card type="sleep" title="Bedroom 2" description="2 single beds" />,
+});
+
+figma.connect(Card, FIGMA_URL, {
+  variant: { "Card type": "Discount Card" },
+  example: () => <Card type="discount" title="Private room in San Francisco" />,
+});
+
+figma.connect(Card, FIGMA_URL, {
+  variant: { "Card type": "Map Card" },
+  example: () => <Card type="map" title="Groveland, California" />,
+});
+
+figma.connect(Card, FIGMA_URL, {
+  variant: { "Card type": "Reservation Card" },
+  example: () => <Card type="reservation" />,
+});
+
+figma.connect(Card, FIGMA_URL, {
+  variant: { "Card type": "Reservation Confirmation Card" },
+  example: () => <Card type="reservation-confirmation" />,
 });

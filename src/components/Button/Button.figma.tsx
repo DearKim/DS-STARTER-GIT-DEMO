@@ -1,26 +1,33 @@
-/* @ds-generated ac8399c960d7381a — `pnpm ds:gen` 이 만든 파일입니다.
-   Figma: Button (0:4856)
-   직접 고치면 다음 생성 때 충돌로 보고되고 덮어쓰지 않습니다. */
 import figma from "@figma/code-connect";
 import { Button } from "./Button";
 
-figma.connect(Button, "https://www.figma.com/design/SAMPLEKEY123/?node-id=0-4856", {
-  props: {
-    variant: figma.enum("Type", {
-      "Primary": "primary",
-      "Secondary": "secondary",
-      "Outline": "outline",
-      "Tertiary": "tertiary",
-    }),
-    size: figma.enum("Size", {
-      "L": "l",
-      "M": "m",
-      "S": "s",
-    }),
-    hasIcon: figma.boolean("Has icon"),
-    children: figma.string("Label"),
-  },
-  example: ({ variant, size, hasIcon, children }) => (
-    <Button variant={variant} size={size} hasIcon={hasIcon}>{children}</Button>
+/* Figma: Primary Buttons 238:2153 · Secondary Buttons 238:2188 · Tertiary Buttons 238:2256.
+   State Hover/Pressed/Focus are CSS states, so only Loading and Disabled map to props. */
+const FILE = "https://www.figma.com/design/Q5QDGE5WoXefOxgm5fziH3/";
+
+const props = {
+  size: figma.enum("Size", { "Full Width": "full-width", Small: "small" }),
+  loading: figma.enum("State", { Loading: true }),
+  disabled: figma.enum("State", { Disabled: true }),
+} as const;
+
+figma.connect(Button, `${FILE}?node-id=238-2153`, {
+  props,
+  example: ({ size, loading, disabled }) => (
+    <Button variant="primary" size={size} loading={loading} disabled={disabled}>Button</Button>
+  ),
+});
+
+figma.connect(Button, `${FILE}?node-id=238-2188`, {
+  props,
+  example: ({ size, loading, disabled }) => (
+    <Button variant="secondary" size={size} loading={loading} disabled={disabled}>Button</Button>
+  ),
+});
+
+figma.connect(Button, `${FILE}?node-id=238-2256`, {
+  props,
+  example: ({ size, loading, disabled }) => (
+    <Button variant="tertiary" size={size} loading={loading} disabled={disabled}>Button</Button>
   ),
 });
